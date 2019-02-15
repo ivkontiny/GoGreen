@@ -31,4 +31,4 @@ Run `maven site`
 
 
 ## Alec Nonnemaker
-https://imgur.com/a/fPqRwGY
+![](https://imgur.com/a/fPqRwGY)
