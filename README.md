@@ -27,5 +27,7 @@ Run `maven site`
 
 ## Dragos Vecerdea
 
+## Jochem van Lith
+
 
 ## Alec Nonnemaker
