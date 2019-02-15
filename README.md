@@ -24,6 +24,17 @@ Run `maven site`
 
 ## Wouter Jehee
 
+![](https://imgur.com/a/pNEACla)
+
+Goals
+- Learning how to work with a team, scrum specifically
+- Learning to be really comfortable with git
+- Designing an actual product and making it all fit together
+
+Interests:
+I hope to work mainly on the backend of the application,
+dealing with databases and handling requests and responses
+from the client application on the server side.
 
 ## Dragos Vecerdea
 
