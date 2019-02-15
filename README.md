@@ -28,7 +28,7 @@ Run `maven site`
 ## Dragos Vecerdea
 
 ## Jochem van Lith
-
+![](https://imgur.com/hPWq14Y)
 
 ## Alec Nonnemaker
 ![](https://imgur.com/a/fPqRwGY)
