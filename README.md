@@ -43,6 +43,32 @@ from the client application on the server side.
 
 ## Alec Nonnemaker
 ![](https://imgur.com/a/fPqRwGY)
+Strong points:
+I’m good at working in groups
+-	I had a class in high school where we had to do projects in groups, so I learned working together and doing your own tasks while communicating with group members.
+-	In a team working together is very important so being good at that will help the team a lot.
+Good at learning new stuff online
+-	In my high school projects I had to learn a lot of new skills online like working with an Arduino or making an android app.
+-	If someone in a team can easily learn new skills it is helpful for him and also for teammates because he can help them understand it.
+Weaker points:
+Sometimes I don’t speak up enough
+-	Sometimes if I have an idea I won’t speak up so the idea doesn’t get heard even though it could be a good idea. Usually I just overthink stuff and decide not to say it which is not good.
+-	If someone in a team has good ideas but doesn’t speak up, those ideas will go to waste.
+I go to far in stuff that is probably not reachable and too difficult instead of choosing the easier route which sometimes is not worth it and wastes time.
+-	In a project in high school I worked the first 4 of the 8 weeks on something very difficult which ended not working. That wasted a lot of time.
+-	If I waste a lot of time on one thing which I don’t end up using I will be less valuable to my team.
+
+GROW
+GOAL
+-	I want to learn to speak up and learn how to make important decisions in a team.
+-	Working on big projects will include a lot of important decisions to be made and if I want my opinion to be heard I have to learn to speak up and contribute to the decision.
+-	If by the end of the project I can look back at some of the big decisions and reflect if I contributed to them.
+Reality
+-	I am trying to speak more and just say what’s on my mind even though it may not always be right. Even it is not right, I get corrected and learn something.
+Options
+-	I can try to lead conversations and start the conversation for important decisions. That should make it easier to have a bigger voice in decisions.
+Will
+-	To achieve my goal I just have to do it. It might be hard in the beginning but I will get used to it and it will get easier.
 
 ## Ali Sinan Cetingoz
 
