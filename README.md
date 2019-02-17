@@ -115,6 +115,8 @@ Will
 ## Ali Sinan Cetingoz
 ![](https://imgur.com/MDB2iee)
 
+netID: scetingoz
+
 Goals to achieve:
 -	Working as a team: Everyone of us will have to do their part without procrastinating in order to progress smoothly. As this will be a long process, presumably after a few weeks things are going to become more difficult, so the whole group needs to motivate each other. Also most certainly, all of us will have strengths and weaknesses on different parts of the project, so we will need to help each other out in those circumstances.
 -	Speaking up and communicating: A thing that will help us in the future is speaking up and showing our contribution during a teamwork. If all of us put our ideas into words and not hold them in us, we will understand our ways of thinking a lot faster, find a common idea that all of us would like to work on, and most importantly, the group members will feel closer to each other, making the teamwork fun and more efficient. I hope to achieve that during this project.
