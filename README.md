@@ -86,6 +86,9 @@ I am also interested in design, so I would like to implement a bit of that as we
 
 ## Alec Nonnemaker
 ![](https://imgur.com/a/fPqRwGY)
+
+netID = anonnemaker
+
 Strong points:
 I’m good at working in groups
 -	I had a class in high school where we had to do projects in groups, so I learned working together and doing your own tasks while communicating with group members.
