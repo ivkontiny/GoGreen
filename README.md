@@ -73,7 +73,7 @@ Will
 ## Ali Sinan Cetingoz
 
 ## Ivaylo Georgiev
-![image](https://imgur.com/a/BFXy5Vg)
+![](https://imgur.com/a/BFXy5Vg)
 
 I have 2 learning goals I would like to achieve during this course:
 1.	I would like to understand what it means to work on a project with a team and to have deadlines for certain aspects of the project. I’m guessing this is the way programmers in companies are supposed to work and I hope the course really teaches us how to manage doing this;
