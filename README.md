@@ -144,3 +144,23 @@ I have worked in a team on multiple occasions – I was a part of a Mathematics 
 I was also programming a lot of algorithms since I was an Informatics competitor for about 5 years. But in these competitions time and space efficiency was pretty much everything we were asked to think about. While in this project I think the most important aspect of the program is to be easy to understand and to be easy to use. So, since I have never programmed a GUI and a working server before, I guess I’ll need to learn how to do that.
 
 I am really motivated to research and work really hard in order for this project to be a success. After talking with my teammates I understood that they are really motivated as well, so I hope we can make the perfect application. We will be helping each other a lot and I am sure that after the end of quarter 3 all of us would have become better programmers and would know much more about programming in Java than before.
+
+
+## Jeroen Looij
+![picture](https://i.imgur.com/GoJ54Gc.jpg)
+
+NetId: jlooij
+
+Strong point: 
+- I can focus on a task for long periods of time once i get into it
+- I tend to pick up new information quickly.
+
+Weak points:
+- I am rather chaotic and bad at organizing.
+- I am not very good at communicating effectively.
+- I tend to procrastinate my work too long.
+- I have a tendency to spend too long on figuring something out on my own before asking for help.
+
+Goals: 
+- learn to work in a team.
+- become a better programmer and learn how to make a big project from scratch.
