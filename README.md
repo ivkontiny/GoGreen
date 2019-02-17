@@ -26,10 +26,23 @@ Run `maven site`
 
 ![](https://imgur.com/a/pNEACla)
 
+netID: wjehee
+
+Strong points
+- I tend to be able to focus for a long time and finish something, even if it takes the whole day
+- I feel very motivated and dedicated to get a project done
+- Some experience in creating applications for myself and as an assignment
+
+Weak points
+- Quite bad at planning and time management
+- Good at postponing my work
+- I generally try to create more than is intended, making it overcomplicated
+
 Goals
 - Learning how to work with a team, scrum specifically
 - Learning to be really comfortable with git
 - Designing an actual product and making it all fit together
+- Overall becoming a better programmer, working with different libraries
 
 Interests:
 I hope to work mainly on the backend of the application,
