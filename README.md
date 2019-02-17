@@ -39,23 +39,23 @@ from the client application on the server side.
 ## Dragos Vecerdea
 ![](https://imgur.com/snAWRzG)
 
-Goals:
+- Goals:
 - Understand how to put together small different software pieces
 - Understand all the important technologies needed for creating a fully functional software
 - Be a member of a pretty large team, a bring the right contributions to it
 - Get used to deadlines, and other managerial things involved in a large project
-Strong points:
+- Strong points:
 - A good understanding of the way algorithms work and how to make the most out of them
 depending on the needs
 - A strong mathematical foundation
 - Some experience in creating a piece of software from the scratch
-Weaker points:
+- Weaker points:
 - I sometimes skip steps just to finish stuff faster.
 - I am not always patient and I loose my motivation if things are getting crazy
 - I am usually against using libraries in Java preferring to write the entire piece of code on my
 own. But this time I should listen to Andy and start looking for useful packages/libraries.
 
-Conclusion; I wish us luck and I feel that there is no way this project could go wrong as long as we 
+- Conclusion: I wish us luck and I feel that there is no way this project could go wrong as long as we 
 stick to the guidelines and listen to each other.
 
 ## Jochem van Lith
