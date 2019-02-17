@@ -79,7 +79,8 @@ Options
 Will
 -	To achieve my goal I just have to do it. It might be hard in the beginning but I will get used to it and it will get easier.
 
-## Ali Sinan Cetingoz`
+## Ali Sinan Cetingoz
+![](https://imgur.com/H1akYI1)
 
 ## Ivaylo Georgiev
 ![picture](https://scontent-amt2-1.xx.fbcdn.net/v/t1.0-9/20799782_1053845061419379_7534088380030013011_n.jpg?_nc_cat=108&_nc_ht=scontent-amt2-1.xx&oh=ac6279e3b52682b92ae6ff9efec48492&oe=5CE20026)
