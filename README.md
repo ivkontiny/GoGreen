@@ -70,10 +70,10 @@ Options
 Will
 -	To achieve my goal I just have to do it. It might be hard in the beginning but I will get used to it and it will get easier.
 
-## Ali Sinan Cetingoz
+## Ali Sinan Cetingoz`
 
 ## Ivaylo Georgiev
-![](https://imgur.com/a/BFXy5Vg)
+![picture](https://scontent-amt2-1.xx.fbcdn.net/v/t1.0-9/20799782_1053845061419379_7534088380030013011_n.jpg?_nc_cat=108&_nc_ht=scontent-amt2-1.xx&oh=ac6279e3b52682b92ae6ff9efec48492&oe=5CE20026)
 
 I have 2 learning goals I would like to achieve during this course:
 1.	I would like to understand what it means to work on a project with a team and to have deadlines for certain aspects of the project. I’m guessing this is the way programmers in companies are supposed to work and I hope the course really teaches us how to manage doing this;
