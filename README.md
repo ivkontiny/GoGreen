@@ -75,6 +75,8 @@ Will
 ## Ivaylo Georgiev
 ![picture](https://scontent-amt2-1.xx.fbcdn.net/v/t1.0-9/20799782_1053845061419379_7534088380030013011_n.jpg?_nc_cat=108&_nc_ht=scontent-amt2-1.xx&oh=ac6279e3b52682b92ae6ff9efec48492&oe=5CE20026)
 
+netID: igeorgiev
+
 I have 2 learning goals I would like to achieve during this course:
 1.	I would like to understand what it means to work on a project with a team and to have deadlines for certain aspects of the project. I’m guessing this is the way programmers in companies are supposed to work and I hope the course really teaches us how to manage doing this;
 2.	I would also like to improve my programming skills throughout this course. Up until now I have programmed only data structures, algorithms and “applications” needed for the Computer Exam of OOP. But I don’t think that this is what real-life programs need to do. I guess they need to be easy to read and understand from the users, i.e. having a good GUI and to not crash if something is typed wrong from the user, i.e. having a well-thought structure and being tested multiple times.
