@@ -39,23 +39,23 @@ from the client application on the server side.
 ## Dragos Vecerdea
 ![](https://imgur.com/snAWRzG)
 
-- Goals:
+Goals:
 - Understand how to put together small different software pieces
 - Understand all the important technologies needed for creating a fully functional software
 - Be a member of a pretty large team, a bring the right contributions to it
 - Get used to deadlines, and other managerial things involved in a large project
-- Strong points:
+Strong points:
 - A good understanding of the way algorithms work and how to make the most out of them
 depending on the needs
 - A strong mathematical foundation
 - Some experience in creating a piece of software from the scratch
-- Weaker points:
+Weaker points:
 - I sometimes skip steps just to finish stuff faster.
 - I am not always patient and I loose my motivation if things are getting crazy
 - I am usually against using libraries in Java preferring to write the entire piece of code on my
 own. But this time I should listen to Andy and start looking for useful packages/libraries.
 
-- Conclusion: I wish us luck and I feel that there is no way this project could go wrong as long as we 
+Conclusion; I wish us luck and I feel that there is no way this project could go wrong as long as we 
 stick to the guidelines and listen to each other.
 
 ## Jochem van Lith
@@ -101,6 +101,19 @@ Will
 
 ## Ali Sinan Cetingoz
 ![](https://imgur.com/MDB2iee)
+
+Goals to achieve:
+-	Working as a team: Everyone of us will have to do their part without procrastinating in order to progress smoothly. As this will be a long process, presumably after a few weeks things are going to become more difficult, so the whole group needs to motivate each other. Also most certainly, all of us will have strengths and weaknesses on different parts of the project, so we will need to help each other out in those circumstances.
+-	Speaking up and communicating: A thing that will help us in the future is speaking up and showing our contribution during a teamwork. If all of us put our ideas into words and not hold them in us, we will understand our ways of thinking a lot faster, find a common idea that all of us would like to work on, and most importantly, the group members will feel closer to each other, making the teamwork fun and more efficient. I hope to achieve that during this project.
+-	Becoming better programmers: During the last 2 quarters, we did not have a chance to program Java language with our fellow students. This project gives us the chance to learn things together and share our programming knowledge with each other. Presumably all of us have some deficiencies in different parts of programming, and by sharing our knowledge we may fill in those deficiencies.
+
+Strong point:
+-	I played in some music bands which needed a lot of teamwork for a long period of time, so I am experienced about working as a team in long periods of time, and I am pretty sure that if all of us work without procrastinating this project will work smoothly.
+
+Weak point:
+-	I did't have any programming experience before coming to TU Delft, so I am still not a confident programmer.
+
+
 
 ## Ivaylo Georgiev
 ![picture](https://scontent-amt2-1.xx.fbcdn.net/v/t1.0-9/20799782_1053845061419379_7534088380030013011_n.jpg?_nc_cat=108&_nc_ht=scontent-amt2-1.xx&oh=ac6279e3b52682b92ae6ff9efec48492&oe=5CE20026)
