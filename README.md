@@ -1,4 +1,4 @@
-# CSE1105 Template Repository
+﻿# CSE1105 Template Repository
 
 This a template repository to help you get started on making the best project possible!
 
@@ -40,6 +40,15 @@ from the client application on the server side.
 
 ## Jochem van Lith
 ![](https://imgur.com/hPWq14Y)
+
+Goals:
+- Learn how to work efficient with a team
+- Learn to deliver a complete product; combine everything we learned
+- Become a better programmer on all sides
+
+In order to reach my goals I'd like to help building features on both backend and frontend. 
+Furthermore, I'd like to take part a lot in the overall organisation and communication of the group. 
+I am also interested in design, so I would like to implement a bit of that as well.
 
 ## Alec Nonnemaker
 ![](https://imgur.com/a/fPqRwGY)
