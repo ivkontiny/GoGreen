@@ -157,6 +157,7 @@ I am really motivated to research and work really hard in order for this project
 ![picture](https://i.imgur.com/GoJ54Gc.jpg)
 
 NetId: jlooij
+Student number: 4926506
 
 Strong point: 
 - I can focus on a task for long periods of time once i get into it
