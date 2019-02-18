@@ -78,10 +78,16 @@ stick to the guidelines and listen to each other.
 ## Jochem van Lith
 ![](https://imgur.com/hPWq14Y)
 
+netID: jaevanlith
+Studentnum: 4917634
+
 Goals:
 - Learn how to work efficient with a team
+	I've worked together in high school on several small projects. But we never used specific methods nor programs (like git) to do this efficiently.
 - Learn to deliver a complete product; combine everything we learned
+	So far I've only done tasks seperately. For example created a game on web, tasks on database and created a specific Java app (OOP). Fitting all of these together is one of my goals.
 - Become a better programmer on all sides
+	All the programming experience I have, are gained through this course. I hope to develop them throughout the project.
 
 In order to reach my goals I'd like to help building features on both backend and frontend. 
 Furthermore, I'd like to take part a lot in the overall organisation and communication of the group. 
