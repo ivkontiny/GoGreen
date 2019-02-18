@@ -27,6 +27,7 @@ Run `maven site`
 ![](https://imgur.com/a/pNEACla)
 
 netID: wjehee
+studentNumber: 4953355
 
 Strong points
 - I tend to be able to focus for a long time and finish something, even if it takes the whole day
