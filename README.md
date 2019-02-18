@@ -91,6 +91,7 @@ I am also interested in design, so I would like to implement a bit of that as we
 ![](https://imgur.com/a/fPqRwGY)
 
 netID = anonnemaker
+studentNumber: 4953282
 
 Strong points:
 I’m good at working in groups
