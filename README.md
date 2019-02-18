@@ -50,9 +50,11 @@ dealing with databases and handling requests and responses
 from the client application on the server side.
 
 ## Dragos Vecerdea
+
 ![](https://imgur.com/snAWRzG)
 
 netID: dvecerdea
+
 - Goals:
 - Understand how to put together small different software pieces
 - Understand all the important technologies needed for creating a fully functional software
