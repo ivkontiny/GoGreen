@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< Updated upstream
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
@@ -10,9 +9,5 @@
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_10" project-jdk-name="10" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/classes" />
-=======
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_10" project-jdk-name="10" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/out" />
->>>>>>> Stashed changes
   </component>
 </project>
