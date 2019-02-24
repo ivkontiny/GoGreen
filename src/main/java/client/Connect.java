@@ -32,7 +32,7 @@ public class Connect {
             if(charset != null){
                 try(BufferedReader reader = new BufferedReader(new InputStreamReader(response, charset))){
                     for(String line; (line = reader.readLine()) != null;){
-                        System.out.println(line);
+                        System.out.println(ParseResponse.parseJson(line));
                     }
                 }
             }
