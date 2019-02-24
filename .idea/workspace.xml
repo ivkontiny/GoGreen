@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="fe5dba17-031a-41c6-b1a7-595dc66e770d" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/src/main/java/client/ParseResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_0.xml" beforeDir="false" />
@@ -11,6 +12,9 @@
       <change beforePath="$PROJECT_DIR$/OOP-Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/OOP-Project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
+=======
+    <list default="true" id="fe5dba17-031a-41c6-b1a7-595dc66e770d" name="Default Changelist" comment="" />
+>>>>>>> Stashed changes
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,7 +27,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/client/Login.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="461">
+=======
+            <state relative-caret-position="260">
+>>>>>>> Stashed changes
               <caret line="69" selection-start-line="69" selection-end-line="69" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -32,6 +40,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< Updated upstream
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/client/Connect.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -46,6 +55,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
               <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/client/Connect.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="34" column="49" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
@@ -53,8 +69,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="374">
               <caret line="43" column="41" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="41" />
+=======
+            <state relative-caret-position="289">
+              <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
@@ -78,6 +99,7 @@
         </entry>
       </file>
     </leaf>
+<<<<<<< Updated upstream
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -90,10 +112,13 @@
     <findStrings>
       <find>jaco</find>
     </findStrings>
+=======
+>>>>>>> Stashed changes
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< Updated upstream
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -102,6 +127,8 @@
       </list>
     </option>
   </component>
+=======
+>>>>>>> Stashed changes
   <component name="MavenProjectNavigator">
     <treeState>
       <expand>
@@ -125,7 +152,21 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< Updated upstream
       <pane id="Scope" />
+=======
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="OOP-Project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="OOP-Project" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+>>>>>>> Stashed changes
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -238,7 +279,11 @@
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+<<<<<<< Updated upstream
       <window_info id="Web" order="7" side_tool="true" />
+=======
+      <window_info anchor="bottom" id="Spring" />
+>>>>>>> Stashed changes
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3289689" />
@@ -246,6 +291,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+<<<<<<< Updated upstream
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
@@ -254,6 +300,13 @@
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Version Control" order="14" />
+=======
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Messages" order="10" />
+      <window_info anchor="right" id="Bean Validation" />
+>>>>>>> Stashed changes
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -272,11 +325,16 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/client/Login.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state relative-caret-position="461">
+=======
+        <state relative-caret-position="260">
+>>>>>>> Stashed changes
           <caret line="69" selection-start-line="69" selection-end-line="69" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+<<<<<<< Updated upstream
         </state>
       </provider>
     </entry>
@@ -318,6 +376,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+=======
+>>>>>>> Stashed changes
         </state>
       </provider>
     </entry>
@@ -432,10 +492,14 @@
     </states>
   </component>
   <component name="mavenExecuteGoalHistory">
+<<<<<<< Updated upstream
     <option value="$PROJECT_DIR$" />
     <option value="site" />
     <option value="install" />
     <option value="maven site" />
     <option value="maven install" />
+=======
+    <option value="" />
+>>>>>>> Stashed changes
   </component>
 </project>
