@@ -8,24 +8,24 @@ import java.util.HashMap;
 @Repository
 public class Dao {
 
-    private static HashMap<Integer, Greeting> greetings;
+    private static HashMap<String, String> users;
 
     static {
 
-        greetings = new HashMap<Integer, Greeting>() {{
-            put(1, new Greeting(1, "hallo", "hoit"));
-            put(2, new Greeting(2, "hallo", "hoiadadt"));
-            put(3, new Greeting(3, "halloasdad", "hoit"));
+        users = new HashMap<String, String>() {{
+            put("user1", "password1");
+            put("user2", "password2");
+            put("user3", "password3");
         }};
     }
 
-    public Collection<Greeting> getAllGreetings() {
-        return this.greetings.values();
+    public Collection<String> getAllUsers() {
+        return this.users.keySet();
     }
 
-    public Greeting getGreetingById(int id) {
-        return this.greetings.get(id);
-    }
+   // public Greeting getGreetingById(int id) {
+     //   return this.greetings.get(id);
+    //}
 
 
 }

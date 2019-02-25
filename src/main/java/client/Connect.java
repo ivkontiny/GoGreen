@@ -10,8 +10,13 @@ import java.net.URLConnection;
 
 public class Connect {
 
-    public static void serverConnection() {
-        String url = "https://java-gogreen-rest.herokuapp.com/1";
+    public static void serverConnection(String name, String pass){
+        String url = "http://localhost:8080/login";
+        url+="?username=";
+        url = url + name;
+        url = url + "&";
+        url+="password=";
+        url = url + pass;
         String cset = "UTF-8";
 
         try {
