@@ -1,4 +1,5 @@
 package client;
+
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,7 +12,7 @@ import javafx.stage.Stage;
 
 public class Register {
 
-    public static void display(){
+    public static void display() {
 
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
@@ -38,9 +39,9 @@ public class Register {
         GridPane.setConstraints(name, 0, 1);
 
         //TextField for name
-        TextField nField = new TextField();
-        nField.setPromptText("e.g. Andy");
-        GridPane.setConstraints(nField, 1, 1);
+        TextField naField = new TextField();
+        naField.setPromptText("e.g. Andy");
+        GridPane.setConstraints(naField, 1, 1);
 
         //Label for surname
         Label surname = new Label("Surname:");
@@ -80,11 +81,11 @@ public class Register {
         //Register button
         Button reg = new Button("Register");
         GridPane.setConstraints(reg, 0, 6);
-        reg.setOnAction(e ->window.close() );
+        reg.setOnAction(e -> window.close() );
 
 
-        grid.getChildren().addAll(mailLabel, mailField, name, nField, surname, surField, nameLabel, nameField, passLabel,
-                passField, confPass, confPassField, reg);
+        grid.getChildren().addAll(mailLabel, mailField, name, naField, surname, surField, nameLabel,
+                nameField, passLabel, passField, confPass, confPassField, reg);
 
 
         Scene scene = new Scene(grid, 350, 250);

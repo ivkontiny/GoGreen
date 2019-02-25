@@ -1,4 +1,5 @@
 package client;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -16,7 +17,7 @@ public class Login extends Application {
     Button register;
     Button logIn;
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         launch(args);
     }
 
