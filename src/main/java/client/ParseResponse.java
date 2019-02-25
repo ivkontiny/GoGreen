@@ -4,9 +4,9 @@ import org.json.JSONObject;
 
 public class ParseResponse {
 
-    public static String parseJson(String res) {
+    public static Boolean parseJson(String res){
         JSONObject obj = new JSONObject(res);
-        String password = obj.getString("password");
-        return password;
+        Boolean status = obj.getBoolean("status");
+        return status;
     }
 }

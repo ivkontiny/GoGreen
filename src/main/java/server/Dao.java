@@ -13,14 +13,14 @@ public class Dao {
     static {
 
         users = new HashMap<String, String>() {{
-            put("user1", "password1");
-            put("user2", "password2");
-            put("user3", "password3");
+            put("username1", "password1");
+            put("username2", "password2");
+            put("username3", "password3");
         }};
     }
 
-    public Collection<String> getAllUsers() {
-        return this.users.keySet();
+    public static HashMap<String,String> getAllUsers() {
+        return users;
     }
 
    // public Greeting getGreetingById(int id) {
