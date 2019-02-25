@@ -49,7 +49,7 @@ public class Login extends Application {
         logIn = new Button("Log in");
         GridPane.setConstraints(logIn, 0, 2);
         logIn.setOnAction(e -> {
-            Connect.serverConnection();
+            Connect.serverConnection(nameField.getText(), passField.getText());
             window.close();
         });
 
