@@ -1,17 +1,21 @@
 package client;
 
-import java.io.BufferedReader;
+import org.springframework.http.*;
+import org.springframework.web.client.RestTemplate;
+
+/*import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
+import java.net.URLConnection;*/
+import java.util.Arrays;
 
 public class Connect {
 
     public static void serverConnection(String name, String pass){
-        String url = "http://localhost:8080/login";
+        /*String url = "http://localhost:8080/login";
         url+="?username=";
         url = url + name;
         url = url + "&";
@@ -45,6 +49,22 @@ public class Connect {
             System.out.println("Malformed URL!");
         } catch (IOException e1) {
             System.out.println("IOException!");
-        }
+        }*/
+
+        String url = "http://localhost:8080/login";
+        url += "?username=" + name;
+        url += "&password=" + pass;
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(new MediaType[] {MediaType.APPLICATION_JSON}));
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        String result = response.getBody();
+
+        System.out.println(ParseResponse.parseJson(result));
     }
 }
