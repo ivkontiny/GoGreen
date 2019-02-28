@@ -14,7 +14,25 @@ import java.util.Arrays;
 
 public class Connect {
 
-    public static void serverConnection(String name, String pass){
+    public static Boolean serverRegister(User user)
+    {
+        String url = "http://localhost:8080/register";
+        url += "?username=" + user.getUsername();
+        HttpHeaders headers = new HttpHeaders();
+     //  headers.add("Accept", MediaType.APPLICATION_JSON_VALUE);
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        // Data attached to the request.
+        HttpEntity<User> requestBody = new HttpEntity<>(user, headers);
+
+        // Send request with POST method.
+        User response = restTemplate.postForObject(url, requestBody, User.class);
+        if(response == null) return false;
+        return true;
+    }
+    public static void serverLogin(String name, String pass){
         /*String url = "http://localhost:8080/login";
         url+="?username=";
         url = url + name;
@@ -65,6 +83,6 @@ public class Connect {
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
         String result = response.getBody();
 
-        System.out.println(ParseResponse.parseJson(result));
+        System.out.println(ParseResponse.parseStatus(result));
     }
 }

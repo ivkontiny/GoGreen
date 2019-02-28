@@ -2,10 +2,7 @@ package client;
 
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -81,7 +78,22 @@ public class Register {
         //Register button
         Button reg = new Button("Register");
         GridPane.setConstraints(reg, 0, 6);
-        reg.setOnAction(e -> window.close() );
+        reg.setOnAction(e ->
+        {
+            User newuser = new User(nameField.getText(), mailField.getText(), String.valueOf(confPassField.getText().hashCode()), naField.getText(), surField.getText());
+            if(Connect.serverRegister(newuser))
+            {
+                window.close();
+            }
+            else
+            {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning");
+                alert.setHeaderText("Username already in use");
+                alert.setContentText("Please choose another username");
+                alert.showAndWait();
+            }
+        });
 
 
         grid.getChildren().addAll(mailLabel, mailField, name, naField, surname, surField, nameLabel,
@@ -90,7 +102,8 @@ public class Register {
 
         Scene scene = new Scene(grid, 350, 250);
         window.setScene(scene);
-        window.showAndWait();
+        window.show();
+        //window.showAndWait();
 
     }
 }
