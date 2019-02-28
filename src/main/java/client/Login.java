@@ -50,7 +50,7 @@ public class Login extends Application {
         logIn = new Button("Log in");
         GridPane.setConstraints(logIn, 0, 2);
         logIn.setOnAction(e -> {
-            Connect.serverConnection(nameField.getText(), passField.getText());
+            Connect.serverLogin(nameField.getText(), String.valueOf(passField.getText().hashCode()));
             window.close();
         });
 
