@@ -23,14 +23,11 @@ public class Dao {
         return users;
     }
 
-
-    public static void putuser(String key, User value)
-    {
-        users.put(key,value);
     }
-   // public Greeting getGreetingById(int id) {
-     //   return this.greetings.get(id);
-    //}
+    {
+    public static void putuser(String key, User value)
+        users.put(key,value);
+
 
 
 }
