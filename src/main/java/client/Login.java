@@ -21,6 +21,15 @@ public class Login extends Application {
         launch(args);
     }
 
+    private static String SESSION_ID = "";
+
+    public static String getSessionId() {
+        return SESSION_ID;
+    }
+
+    public static void setSessionId(String sessionId) {
+        SESSION_ID = sessionId;
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
