@@ -1,33 +1,32 @@
 package server;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.Collection;
-import java.util.HashMap;
+import java.time.LocalDateTime;
 
 
 @RestController
 public class LoginController {
 
     @Autowired
-    private LoginService greetingService;
+    private LoginService loginService;
 
 
-    @RequestMapping("/login")
-    public Login logingin(@RequestParam(value="username", defaultValue = "user") String username,
-                          @RequestParam(value="password", defaultValue="pass") String password) {
+    @PostMapping("/login")
+    public String logingin(@RequestBody String credentials) {
 
-        Login actualUser;
-        if(Dao.getAllUsers().containsKey(username) && password.equals(Dao.getAllUsers().get(username))) actualUser =  new Login(username,password,true);
-        else
-        {
-            actualUser = new Login(username,password,false);
+        String sessionID = null;
+        String[] userlogin = credentials.split(":");
+        String username = userlogin[0];
+        String password = userlogin[1];
+        if(Dao.getAllUsers().containsKey(username) && password.equals(Dao.getAllUsers().get(username).getPassword())) {
+            sessionID = SessionIDGenerator.getAlphaNumericString(42);
+            Dao.putsession(sessionID, new Session(username, LocalDateTime.now()));
         }
-        return actualUser;
+        return sessionID;
     }
 
 }

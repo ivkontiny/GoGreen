@@ -9,12 +9,16 @@ import java.util.HashMap;
 public class Dao {
 
     private static HashMap<String,User> users;
+    private static HashMap<String,Session> activesessions;
 
     static {
 
+        activesessions = new HashMap<String,Session>();
         users = new HashMap<String, User>() {
             {
-                put("username1", new User("username1", "user@mail.com", String.valueOf("password1".hashCode()), "user", "user"));
+                put("username1", new User("username1", "use1@mail.com", String.valueOf("user".hashCode()), "user", "user"));
+                put("username2", new User("username2", "user2@mail.com", String.valueOf("user".hashCode()), "user", "user"));
+                put("username3", new User("username3", "user3@mail.com", String.valueOf("user".hashCode()), "user", "user"));
             }
         };
     }
@@ -23,8 +27,15 @@ public class Dao {
         return users;
     }
 
-    public static void putuser (String key, User value) {
-        users.put(key, value);
+    public static HashMap<String,Session> getAllSessions(){return activesessions; }
+
+
+    public static void putuser(String key, User value)
+    {
+        users.put(key,value);
     }
+
+    public static void putsession(String sessionID, Session newsession) {activesessions.put(sessionID,newsession); }
+
 
 }
