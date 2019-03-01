@@ -23,11 +23,8 @@ public class Dao {
         return users;
     }
 
+    public static void putuser (String key, User value) {
+        users.put(key, value);
     }
-    {
-    public static void putuser(String key, User value)
-        users.put(key,value);
-
-
 
 }
