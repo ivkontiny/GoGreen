@@ -16,10 +16,10 @@ public class RegisterController {
 
     //Post Request for registering new user
     @PostMapping("/register")
-    static User newuser(@RequestParam(value="username", defaultValue = "user") String username,@RequestBody User newuser) {
-        if(Dao.getAllUsers().containsKey(username)) newuser = null;
-        else
-        {
+    static User newuser(@RequestParam(value = "username", defaultValue = "user") String username,@RequestBody User newuser) {
+        if (Dao.getAllUsers().containsKey(username)) {
+            newuser = null;
+        } else {
             Dao.putuser(newuser.getUsername(),newuser);
         }
         return newuser;

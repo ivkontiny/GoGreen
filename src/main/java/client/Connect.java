@@ -2,7 +2,7 @@ package client;
 
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
-import server.Application;
+//import server.Application;
 
 /*import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,14 +10,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;*/
-import java.util.Arrays;
+import java.net.URLConnection;
+import java.util.Arrays;*/
 
 public class Connect {
 
 
-    public static void serverGetMail()
-    {
+    /** Get the email of a user with a concrete sessionID.
+     */
+    public static void serverGetMail() {
         String url = "http://localhost:8080/user/";
         url += Login.getSessionId();
         HttpHeaders headers = new HttpHeaders();
@@ -25,15 +26,21 @@ public class Connect {
         RestTemplate restTemplate = new RestTemplate();
 
         HttpEntity<String> requestBody = new HttpEntity<>(headers);
-        ResponseEntity<String> response = restTemplate.exchange(url,HttpMethod.GET, requestBody,String.class);
+        ResponseEntity<String> response;
+        response = restTemplate.exchange(url, HttpMethod.GET, requestBody,String.class);
         System.out.println(response.getBody());
     }
-    public static Boolean serverRegister(User user)
-    {
+
+
+    /** Registers a user.
+     * @param user the user to register
+     * @return true if the user is registered successfully, false otherwise
+     */
+    public static Boolean serverRegister(User user) {
         String url = "http://localhost:8080/register";
         url += "?username=" + user.getUsername();
         HttpHeaders headers = new HttpHeaders();
-     //  headers.add("Accept", MediaType.APPLICATION_JSON_VALUE);
+        // headers.add("Accept", MediaType.APPLICATION_JSON_VALUE);
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         RestTemplate restTemplate = new RestTemplate();
@@ -43,16 +50,21 @@ public class Connect {
 
         // Send request with POST method.
         User response = restTemplate.postForObject(url, requestBody, User.class);
-        if(response == null)
-        {
+        if (response == null) {
             return false;
         }
         return true;
     }
-    public static String serverLogin(String name, String pass){
+
+    /** Tries to log a user in.
+     * @param name username of the user
+     * @param pass password of the user
+     * @return returns whether the log in was successful or not
+     */
+    public static String serverLogin(String name, String pass) {
 
         String url = "http://localhost:8080/login";
-        String logincredentials = name+":"+pass;
+        String logincredentials = name + ":" + pass;
 
         HttpHeaders headers = new HttpHeaders();
         //  headers.add("Accept", MediaType.APPLICATION_JSON_VALUE);
@@ -68,11 +80,11 @@ public class Connect {
         Login.setSessionId(response);
 
         String resp;
-        if(response == null)
-        {
+        if (response == null) {
             resp = "Login Failed";
+        } else {
+            resp = "Logged in as " + name; //" with Session ID: " + response;
         }
-        else resp = "Logged in as " + name; //" with Session ID: " + response;
 
         return resp;
     }

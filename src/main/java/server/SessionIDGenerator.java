@@ -3,6 +3,11 @@ package server;
 public class SessionIDGenerator {
 
     // function to generate a random string of length n
+
+    /** Creates a sessionID.
+     * @param n the length of the sessionID
+     * @return the generated sessionID
+     */
     public String getAlphaNumericString(int n) {
 
         // chose a Character random from this String
