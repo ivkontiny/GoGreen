@@ -14,10 +14,10 @@ public class SessionController {
     private LoginService loginService;
 
     @GetMapping("/user/{sessionID}")
-    public String getusers(@PathVariable("sessionID") String sessionID ){
+    public static String getusers(@PathVariable("sessionID") String sessionID ){
 
         //return sessionID;
         String username = Dao.getAllSessions().get(sessionID).getUsername();
-        return Dao.getAllUsers().get(sessionID).getMail();
+        return username;
     }
 }
