@@ -16,14 +16,14 @@ public class LoginController {
 
 
     @PostMapping("/login")
-    public String logingin(@RequestBody String credentials) {
+    public static String logingin(@RequestBody String credentials) {
 
         String sessionID = null;
         String[] userlogin = credentials.split(":");
         String username = userlogin[0];
         String password = userlogin[1];
         if(Dao.getAllUsers().containsKey(username) && password.equals(Dao.getAllUsers().get(username).getPassword())) {
-            sessionID = SessionIDGenerator.getAlphaNumericString(42);
+            sessionID = new SessionIDGenerator().getAlphaNumericString(42);
             Dao.putsession(sessionID, new Session(username, LocalDateTime.now()));
         }
         return sessionID;
