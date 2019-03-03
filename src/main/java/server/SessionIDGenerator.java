@@ -3,7 +3,7 @@ package server;
 public class SessionIDGenerator {
 
     // function to generate a random string of length n
-    static String getAlphaNumericString(int n) {
+    public String getAlphaNumericString(int n) {
 
         // chose a Character random from this String
         String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
