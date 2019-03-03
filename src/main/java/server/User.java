@@ -6,18 +6,28 @@ public class User {
     private String password;
     private String name;
     private String surname;
-    public User()
-    {
+
+
+    public User() {
 
     }
-    public User(String username, String mail, String password, String name, String surname)
-    {
+
+
+    /** Create a new User object.
+     * @param username the username of the usern
+     * @param mail the email of the user
+     * @param password the password of the user
+     * @param name the first name of the user
+     * @param surname the last name of the user
+     */
+    public User(String username, String mail, String password, String name, String surname) {
         this.username = username;
         this.mail = mail;
         this.password = password;
         this.name = name;
         this.surname = surname;
     }
+
     public String getMail() {
         return mail;
     }

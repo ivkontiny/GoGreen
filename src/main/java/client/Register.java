@@ -9,6 +9,8 @@ import javafx.stage.Stage;
 
 public class Register {
 
+    /** Creating a new window when trying to register.
+     */
     public static void display() {
 
         Stage window = new Stage();
@@ -78,15 +80,11 @@ public class Register {
         //Register button
         Button reg = new Button("Register");
         GridPane.setConstraints(reg, 0, 6);
-        reg.setOnAction(e ->
-        {
+        reg.setOnAction(e -> {
             User newuser = new User(nameField.getText(), mailField.getText(), String.valueOf(confPassField.getText().hashCode()), naField.getText(), surField.getText());
-            if(Connect.serverRegister(newuser))
-            {
+            if (Connect.serverRegister(newuser)) {
                 window.close();
-            }
-            else
-            {
+            } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Warning");
                 alert.setHeaderText("Username already in use");

@@ -12,7 +12,7 @@ public class Dao {
 
     static {
 
-        activesessions = new HashMap<String,Session>(){
+        activesessions = new HashMap<String,Session>() {
             {
                 //put("1", new Session("username1", LocalDateTime.now()));
             }
@@ -31,15 +31,18 @@ public class Dao {
     }
 
 
-    public  static HashMap<String,Session> getAllSessions(){return activesessions; }
+    public  static HashMap<String,Session> getAllSessions() {
+        return activesessions;
+    }
 
 
-    public static void putuser(String key, User value)
-    {
+    public static void putuser(String key, User value) {
         users.put(key,value);
     }
 
-    public static void putsession(String sessionID, Session newsession) {activesessions.put(sessionID,newsession); }
+    public static void putsession(String sessionID, Session newsession) {
+        activesessions.put(sessionID,newsession);
+    }
 
 
 }

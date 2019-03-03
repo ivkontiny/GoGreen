@@ -59,7 +59,9 @@ public class Login extends Application {
         logIn = new Button("Log in");
         GridPane.setConstraints(logIn, 0, 2);
         logIn.setOnAction(e -> {
-            System.out.println(Connect.serverLogin(nameField.getText(), String.valueOf(passField.getText().hashCode())));
+            String response;
+            response = Connect.serverLogin(nameField.getText(), String.valueOf(passField.getText().hashCode()));
+            System.out.println(response);
             window.close();
         });
 
