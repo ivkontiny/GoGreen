@@ -49,7 +49,7 @@ public class Connect {
         }
         return true;
     }
-    public static void serverLogin(String name, String pass){
+    public static String serverLogin(String name, String pass){
 
         String url = "http://localhost:8080/login";
         String logincredentials = name+":"+pass;
@@ -66,10 +66,14 @@ public class Connect {
         // Send request with POST method.
         String response = restTemplate.postForObject(url, requestBody, String.class);
         Login.setSessionId(response);
+
+        String resp;
         if(response == null)
         {
-            System.out.println("Login Failed");
+            resp = "Login Failed";
         }
-        else System.out.println("Logged in as " + name + " with Session ID: " + response);
+        else resp = "Logged in as " + name; //" with Session ID: " + response;
+
+        return resp;
     }
 }
