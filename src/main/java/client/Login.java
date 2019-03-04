@@ -21,6 +21,15 @@ public class Login extends Application {
         launch(args);
     }
 
+    private static String SESSION_ID = "";
+
+    public static String getSessionId() {
+        return SESSION_ID;
+    }
+
+    public static void setSessionId(String sessionId) {
+        SESSION_ID = sessionId;
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -50,7 +59,9 @@ public class Login extends Application {
         logIn = new Button("Log in");
         GridPane.setConstraints(logIn, 0, 2);
         logIn.setOnAction(e -> {
-            Connect.serverConnection(nameField.getText(), passField.getText());
+            String response;
+            response = Connect.serverLogin(nameField.getText(), String.valueOf(passField.getText().hashCode()));
+            System.out.println(response);
             window.close();
         });
 

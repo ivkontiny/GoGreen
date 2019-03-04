@@ -2,6 +2,8 @@
 target/
 .idea/
 .settings/
+.classpath/
+.project/
 
 pom.xml.tag
 pom.xml.releaseBackup
