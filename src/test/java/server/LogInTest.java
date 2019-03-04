@@ -1,25 +1,34 @@
 package server;
 
+import org.junit.Before;
 import org.junit.Test;
+import util.User;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 public class LogInTest {
 
+    User usertest;
+
+    @Before
+    public void initialize()
+    {
+        usertest = new User("1","1","1","1","1");
+    }
     @Test
     public void TestLogInFailed()
     {
-        assertNull(LoginController.logingin("1:1"));
+        assertNull(LoginController.LogIN("1:1"));
     }
 
     @Test
     public void TestLogInOK()
     {
         //Dao test = mock(Dao.class);
-        User usertest = new User("1","1","1","1","1");
-        Dao.putuser("1",usertest);
-        assertNotNull(LoginController.logingin("1:1"));
+        Dao.putUser("1",usertest);
+        assertNotNull(LoginController.LogIN("1:1"));
+        Dao.removeUser("1");
     }
     
 }

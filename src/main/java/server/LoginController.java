@@ -20,7 +20,7 @@ public class LoginController {
      * @return the sessionID of the user if the logging in was successful, null otherwise
      */
     @PostMapping("/login")
-    public static String logingin(@RequestBody String credentials) {
+    public static String LogIN(@RequestBody String credentials) {
 
         String sessionID = null;
         String[] userlogin = credentials.split(":");
@@ -29,7 +29,7 @@ public class LoginController {
         if (Dao.getAllUsers().containsKey(username)
                 && password.equals(Dao.getAllUsers().get(username).getPassword())) {
             sessionID = new SessionIDGenerator().getAlphaNumericString(42);
-            Dao.putsession(sessionID, new Session(username, LocalDateTime.now()));
+            Dao.putSession(sessionID, new Session(username, LocalDateTime.now()));
         }
         return sessionID;
     }

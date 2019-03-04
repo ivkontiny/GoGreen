@@ -2,6 +2,7 @@ package client;
 
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
+import util.User;
 //import server.Application;
 
 /*import java.io.BufferedReader;

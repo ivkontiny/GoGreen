@@ -1,13 +1,14 @@
 package server;
 
 import org.springframework.stereotype.Repository;
+import util.User;
 
 import java.util.HashMap;
 
 @Repository
 public class Dao {
 
-    private static HashMap<String,User> users;
+    private static HashMap<String, User> users;
     private static HashMap<String,Session> activesessions;
 
     static {
@@ -36,12 +37,26 @@ public class Dao {
     }
 
 
-    public static void putuser(String key, User value) {
+    public static void putUser(String key, User value) {
         users.put(key,value);
     }
 
-    public static void putsession(String sessionID, Session newsession) {
+    public static boolean userExists(String key) { return Dao.getAllUsers().containsKey(key); }
+
+    public static boolean sessionExists(String key) { return Dao.getAllSessions().containsKey(key); }
+
+    public static void putSession(String sessionID, Session newsession) {
         activesessions.put(sessionID,newsession);
+    }
+
+    public static void removeUser(String key)
+    {
+        users.remove(key);
+    }
+
+    public static void removeSession(String key)
+    {
+        activesessions.remove(key);
     }
 
 
