@@ -19,7 +19,7 @@ public class RegisterTest {
         assertFalse(Dao.getAllUsers().containsKey("user1"));
         when(test.getUsername()).thenReturn("user1");
         //we add user1
-        RegisterController.RegisterUser("user1", test);
+        RegisterController.registerUser("user1", test);
         //now user1 exists
         assertTrue(Dao.getAllUsers().containsKey("user1"));
 
@@ -32,11 +32,11 @@ public class RegisterTest {
         User test = mock(User.class);
         when(test.getUsername()).thenReturn("user1");
         //we add user2
-        RegisterController.RegisterUser("user1", test);
+        RegisterController.registerUser("user1", test);
         //now user2 is stored in the server
         assertTrue(Dao.getAllUsers().containsKey("user1"));
         //no other user should be able to register with user2
-        assertNull(RegisterController.RegisterUser("user1",test));
+        assertNull(RegisterController.registerUser("user1",test));
 
         Dao.removeUser("user1");
 

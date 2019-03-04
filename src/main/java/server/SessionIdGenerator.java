@@ -1,33 +1,33 @@
 package server;
 
-public class SessionIDGenerator {
+public class SessionIdGenerator {
 
     // function to generate a random string of length n
 
     /** Creates a sessionID.
-     * @param n the length of the sessionID
+     * @param length the length of the sessionID
      * @return the generated sessionID
      */
-    public String getAlphaNumericString(int n) {
+    public String getAlphaNumericString(int length) {
 
         // chose a Character random from this String
-        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        String alphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 + "0123456789"
                 + "abcdefghijklmnopqrstuvxyz";
 
         // create StringBuffer size of AlphaNumericString
-        StringBuilder sb = new StringBuilder(n);
+        StringBuilder sb = new StringBuilder(length);
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < length; i++) {
 
             // generate a random number between
             // 0 to AlphaNumericString variable length
             int index
-                    = (int) (AlphaNumericString.length()
+                    = (int) (alphaNumericString.length()
                     * Math.random());
 
             // add Character one by one in end of sb
-            sb.append(AlphaNumericString
+            sb.append(alphaNumericString
                     .charAt(index));
         }
 
