@@ -20,8 +20,12 @@ public class SessionController {
     @GetMapping("/user/{sessionID}")
     public static String getusers(@PathVariable("sessionID") String sessionID ) {
 
+        String username = null;
         //return sessionID;
-        String username = Dao.getAllSessions().get(sessionID).getUsername();
+        if(Dao.sessionExists(sessionID)) {
+            username = Dao.getAllSessions().get(sessionID).getUsername();
+        }
+
         return username;
     }
 }

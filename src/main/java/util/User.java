@@ -1,4 +1,4 @@
-package client;
+package util;
 
 public class User {
     private String username;
