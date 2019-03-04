@@ -20,9 +20,8 @@ public class Dao {
         };
         users = new HashMap<String, User>() {
             {
-                put("username1", new User("username1", "use1@mail.com", String.valueOf("user".hashCode()), "user", "user"));
-                put("username2", new User("username2", "user2@mail.com", String.valueOf("user".hashCode()), "user", "user"));
-                put("username3", new User("username3", "user3@mail.com", String.valueOf("user".hashCode()), "user", "user"));
+                User adduser = new User("u1", "u1", String.valueOf("user".hashCode()), "u1", "u1");
+                put("username1",adduser);
             }
         };
     }
@@ -41,21 +40,23 @@ public class Dao {
         users.put(key,value);
     }
 
-    public static boolean userExists(String key) { return Dao.getAllUsers().containsKey(key); }
-
-    public static boolean sessionExists(String key) { return Dao.getAllSessions().containsKey(key); }
-
-    public static void putSession(String sessionID, Session newsession) {
-        activesessions.put(sessionID,newsession);
+    public static boolean userExists(String key) {
+        return Dao.getAllUsers().containsKey(key);
     }
 
-    public static void removeUser(String key)
-    {
+    public static boolean sessionExists(String key) {
+        return Dao.getAllSessions().containsKey(key);
+    }
+
+    public static void putSession(String sessionId, Session newsession) {
+        activesessions.put(sessionId,newsession);
+    }
+
+    public static void removeUser(String key) {
         users.remove(key);
     }
 
-    public static void removeSession(String key)
-    {
+    public static void removeSession(String key) {
         activesessions.remove(key);
     }
 

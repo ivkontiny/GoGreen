@@ -17,11 +17,13 @@ public class Login extends Application {
     Button register;
     Button logIn;
 
+    private static String SESSION_ID = "";
+
     public static void main(String[] args) {
         launch(args);
     }
 
-    private static String SESSION_ID = "";
+
 
     public static String getSessionId() {
         return SESSION_ID;

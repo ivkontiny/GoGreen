@@ -19,7 +19,7 @@ public class LogInTest {
     @Test
     public void TestLogInFailed()
     {
-        assertNull(LoginController.LogIN("1:1"));
+        assertNull(LoginController.logIn("1:1"));
     }
 
     @Test
@@ -27,7 +27,7 @@ public class LogInTest {
     {
         //Dao test = mock(Dao.class);
         Dao.putUser("1",usertest);
-        assertNotNull(LoginController.LogIN("1:1"));
+        assertNotNull(LoginController.logIn("1:1"));
         Dao.removeUser("1");
     }
     
