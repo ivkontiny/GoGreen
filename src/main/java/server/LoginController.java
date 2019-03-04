@@ -1,37 +1,33 @@
 package server;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.HashMap;
 
 
 @RestController
 public class LoginController {
 
     @Autowired
-    private LoginService loginService;
+    private LoginService greetingService;
 
 
-    /** Trying to log a user in.
-     * @param credentials the username and password, concatenated with a :-sign.
-     * @return the sessionID of the user if the logging in was successful, null otherwise
-     */
-    @PostMapping("/login")
-    public static String logingin(@RequestBody String credentials) {
+    @RequestMapping("/login")
+    public Login logingin(@RequestParam(value="username", defaultValue = "user") String username,
+                          @RequestParam(value="password", defaultValue="pass") String password) {
 
-        String sessionID = null;
-        String[] userlogin = credentials.split(":");
-        String username = userlogin[0];
-        String password = userlogin[1];
-        if (Dao.getAllUsers().containsKey(username)
-                && password.equals(Dao.getAllUsers().get(username).getPassword())) {
-            sessionID = new SessionIDGenerator().getAlphaNumericString(42);
-            Dao.putsession(sessionID, new Session(username, LocalDateTime.now()));
+        Login actualUser;
+        if(Dao.getAllUsers().containsKey(username) && password.equals(Dao.getAllUsers().get(username))) actualUser =  new Login(username,password,true);
+        else
+        {
+            actualUser = new Login(username,password,false);
         }
-        return sessionID;
+        return actualUser;
     }
 
 }
