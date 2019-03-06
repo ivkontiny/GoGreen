@@ -10,7 +10,7 @@ import static org.junit.Assert.assertNull;
 
 public class LogInTest {
 
-    Account usertest;
+    /**Account usertest;
 
     @Before
     public void initialize()
@@ -20,15 +20,18 @@ public class LogInTest {
     @Test
     public void TestLogInFailed()
     {
-        assertNull(LoginController.logIn("1:1"));
+        LoginController lc = new LoginController();
+        assertNull(lc.logIn("1:1"));
     }
     @Test
     public void TestLogInOK()
     {
         //Dao test = mock(Dao.class);
-        Dao.putUser("1",usertest);
-        assertNotNull(LoginController.logIn("1:1"));
+        Dao db = new Dao();
+        LoginController lc = new LoginController();
+        db.putUser("1",usertest);
+        assertNotNull(lc.logIn("1:1"));
         Dao.removeUser("1");
-    }
+    }**/
     
 }
