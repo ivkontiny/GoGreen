@@ -9,10 +9,9 @@ public abstract class Dao {
     public Connection conn;
 
     public Dao() {
-
-        String url = "jdbc:postgresql://142.93.230.132/gogreen";
-
         try {
+            String url = "jdbc:postgresql://142.93.230.132/gogreen";
+
             Properties props = new Properties();
             props.setProperty("user", "gogreen");
             props.setProperty("password", "gogreen123");

@@ -8,7 +8,7 @@ public class AccountService {
     AccountDao db = new AccountDao();
 
     public boolean checkLogin(String username, String password) {
-        if (db.getAccount(username) != null) {
+        if (db.exists(username)) {
             String expPass = db.getAccount(username).getPassword();
             return (password.equals(expPass));
         }
@@ -16,10 +16,9 @@ public class AccountService {
     }
 
     public boolean createAccount(Account acc) {
-        if (db.getAccount(acc.getUsername()) == null) {
-            return db.createAccount(acc);
+        if (db.exists(acc.getUsername())) {
+            return false;
         }
-
-        return false;
+        return db.createAccount(acc);
     }
 }
