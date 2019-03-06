@@ -1,8 +1,10 @@
 package server;
 
+import Services.SessionService;
+import database.Dao;
 import org.junit.Test;
-import util.Session;
-import util.Account;
+import pojos.Session;
+import pojos.Account;
 
 import java.time.LocalDateTime;
 

@@ -1,4 +1,4 @@
-package util;
+package pojos;
 
 public class Account {
     private String username;

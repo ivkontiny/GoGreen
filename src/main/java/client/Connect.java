@@ -2,7 +2,7 @@ package client;
 
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
-import util.Account;
+import pojos.Account;
 
 //import server.Application;
 
