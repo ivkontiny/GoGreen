@@ -28,7 +28,7 @@ public class AccountController {
         return sessionId;
     }
 
-    @RequestMapping("/get_accounts/{username}")
+    @RequestMapping("/get_account/{username}")
     public Account getAccounts(@PathVariable("username") String username) {
         AccountDao db = new AccountDao();
 

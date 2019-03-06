@@ -3,35 +3,11 @@ package database;
 import pojos.Account;
 
 import java.sql.*;
-import java.util.HashMap;
-import java.util.Properties;
 
-public class AccountDao {
-
-    private Connection conn;
-
-    private static HashMap<String, Account> users ;
-
-    static
-    {
-        users = new HashMap<>();
-    }
+public class AccountDao extends Dao {
 
     public AccountDao() {
-
-        String url = "jdbc:postgresql://142.93.230.132/gogreen";
-
-        try {
-            Properties props = new Properties();
-            props.setProperty("user", "gogreen");
-            props.setProperty("password", "gogreen123");
-
-            this.conn = DriverManager.getConnection(url, props);
-
-        } catch(Exception e) {
-
-            System.out.println(e);
-        }
+        super();
     }
 
     public Account getAccount(String username) {
@@ -42,8 +18,6 @@ public class AccountDao {
             st.setString(1, username);
             ResultSet rs = st.executeQuery();
 
-            Account a = null;
-
             rs.next();
             String name = rs.getString("username");
             String email = rs.getString("email");
@@ -51,7 +25,7 @@ public class AccountDao {
             String firstname = rs.getString("first_name");
             String lastname = rs.getString("last_name");
             int points = rs.getInt("total_points");
-            a = new Account(name, email, password, firstname, lastname);
+            Account a = new Account(name, email, password, firstname, lastname);
             a.setPoints(points);
 
             rs.close();
@@ -93,21 +67,4 @@ public class AccountDao {
         }
 
     }
-
-    public  static HashMap<String, Account> getAllUsers() {
-        return users;
-    }
-
-    public static void putUser(String key, Account value) {
-        users.put(key,value);
-    }
-
-    public static boolean userExists(String key) {
-        return AccountDao.getAllUsers().containsKey(key);
-    }
-
-    public static void removeUser(String key) {
-        users.remove(key);
-    }
-
 }
