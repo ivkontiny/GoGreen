@@ -36,7 +36,7 @@ public class Dao {
 
     public Account getAccount(String username) {
         try {
-            String query = "SELECT * FROM account where username=?";
+            String query = "SELECT * FROM account WHERE username=?";
 
             PreparedStatement st = this.conn.prepareStatement(query);
             st.setString(1, username);
@@ -65,6 +65,33 @@ public class Dao {
         }
 
         return null;
+    }
+
+    public boolean createAccount(Account acc) {
+        try {
+            String query = "INSERT INTO account (username, email, password," +
+                    " total_points, first_name, last_name)" +
+                    " VALUES  (?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement st = this.conn.prepareStatement(query);
+            st.setString(1, acc.getUsername());
+            st.setString(2, acc.getMail());
+            st.setString(3, acc.getPassword());
+            st.setInt(4, acc.getPoints());
+            st.setString(5, acc.getFirstName());
+            st.setString(6, acc.getLastName());
+            ResultSet rs = st.executeQuery();
+
+            rs.close();
+            st.close();
+
+            return true;
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return false;
     }
 
     public  static HashMap<String, Account> getAllUsers() {
