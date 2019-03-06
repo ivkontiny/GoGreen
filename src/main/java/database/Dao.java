@@ -10,7 +10,12 @@ public class Dao {
 
     private Connection conn;
 
-    private static HashMap<String, Account> users;
+    private static HashMap<String, Account> users ;
+
+    static
+    {
+        users = new HashMap<>();
+    }
 
     public Dao() {
 

@@ -8,6 +8,11 @@ public class SessionService {
 
     private static HashMap<String, Session> activesessions;
 
+    static
+    {
+        activesessions = new HashMap<>();
+    }
+
     public static boolean sessionExists(String key) {
         return SessionService.getAllSessions().containsKey(key);
     }
