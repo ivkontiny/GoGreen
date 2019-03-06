@@ -10,6 +10,13 @@ public class AccountDao extends Dao {
         super();
     }
 
+    public boolean exists(String username) {
+        if (this.getAccount(username) == null) {
+            return false;
+        }
+        return true;
+    }
+
     public Account getAccount(String username) {
         try {
             String query = "SELECT * FROM account WHERE username=?";
@@ -30,7 +37,6 @@ public class AccountDao extends Dao {
 
             rs.close();
             st.close();
-
             return a;
 
         } catch(Exception e) {
@@ -54,13 +60,13 @@ public class AccountDao extends Dao {
             st.setInt(4, acc.getPoints());
             st.setString(5, acc.getFirstName());
             st.setString(6, acc.getLastName());
+
             st.execute();
-
             st.close();
-
             return true;
 
         } catch (Exception e) {
+
             System.out.println("we got into dao");
             System.out.println(e);
             return false;
