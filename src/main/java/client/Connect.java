@@ -2,7 +2,7 @@ package client;
 
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
-import util.User;
+import util.Account;
 
 //import server.Application;
 
@@ -25,13 +25,13 @@ public class Connect {
     }
 
 
-    /** Registers a user.
-     * @param user the user to register
-     * @return true if the user is registered successfully, false otherwise
+    /** Registers a account.
+     * @param account the account to register
+     * @return true if the account is registered successfully, false otherwise
      */
-    public static Boolean serverRegister(User user) {
+    public static Boolean serverRegister(Account account) {
         String url = "http://localhost:8080/register";
-        url += "?username=" + user.getUsername();
+        url += "?username=" + account.getUsername();
         HttpHeaders headers = new HttpHeaders();
         // headers.add("Accept", MediaType.APPLICATION_JSON_VALUE);
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -39,10 +39,10 @@ public class Connect {
         RestTemplate restTemplate = new RestTemplate();
 
         // Data attached to the request.
-        HttpEntity<User> requestBody = new HttpEntity<>(user, headers);
+        HttpEntity<Account> requestBody = new HttpEntity<>(account, headers);
 
         // Send request with POST method.
-        User response = restTemplate.postForObject(url, requestBody, User.class);
+        Account response = restTemplate.postForObject(url, requestBody, Account.class);
         if (response == null) {
             return false;
         }

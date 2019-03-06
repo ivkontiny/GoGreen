@@ -3,15 +3,14 @@ package server;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.sql.ResultSet;
+import util.Account;
 
 @RestController
 public class DatabaseController {
 
     @RequestMapping("/get_accounts/{username}")
     public Account getAccounts(@PathVariable("username") String username) {
-        DatabaseInteraction db = new DatabaseInteraction();
+        Dao db = new Dao();
 
         try {
             return db.getAccount(username);

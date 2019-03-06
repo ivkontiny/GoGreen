@@ -1,42 +1,72 @@
 package server;
 
-import org.springframework.stereotype.Repository;
-import util.User;
+import util.Account;
 
+import java.sql.*;
 import java.util.HashMap;
+import java.util.Properties;
 
-@Repository
 public class Dao {
 
-    private static HashMap<String, User> users;
-    private static HashMap<String,Session> activesessions;
+    private Connection conn;
 
-    static {
+    private static HashMap<String, Account> users;
 
-        activesessions = new HashMap<String,Session>() {
-            {
-                //put("1", new Session("username1", LocalDateTime.now()));
-            }
-        };
-        users = new HashMap<String, User>() {
-            {
-                User adduser = new User("u1", "u1", String.valueOf("user".hashCode()), "u1", "u1");
-                put("username1",adduser);
-            }
-        };
+    public Dao() {
+
+        String url = "jdbc:postgresql://142.93.230.132/gogreen";
+
+        try {
+            Properties props = new Properties();
+            props.setProperty("user", "gogreen");
+            props.setProperty("password", "gogreen123");
+
+            this.conn = DriverManager.getConnection(url, props);
+
+        } catch(Exception e) {
+
+            System.out.println(e);
+        }
     }
 
-    public  static HashMap<String,User> getAllUsers() {
+    public Account getAccount(String username) {
+        try {
+            String query = "SELECT * FROM account where username=?";
+
+            PreparedStatement st = this.conn.prepareStatement(query);
+            st.setString(1, username);
+            ResultSet rs = st.executeQuery();
+
+            Account a = null;
+
+            rs.next();
+            String name = rs.getString("username");
+            String email = rs.getString("email");
+            String password = rs.getString("password");
+            String firstname = rs.getString("first_name");
+            String lastname = rs.getString("last_name");
+            int points = rs.getInt("total_points");
+            a = new Account(name, email, password, firstname, lastname);
+            a.setPoints(points);
+
+            rs.close();
+            st.close();
+
+            return a;
+
+        } catch(Exception e) {
+
+            System.out.println(e);
+        }
+
+        return null;
+    }
+
+    public  static HashMap<String, Account> getAllUsers() {
         return users;
     }
 
-
-    public  static HashMap<String,Session> getAllSessions() {
-        return activesessions;
-    }
-
-
-    public static void putUser(String key, User value) {
+    public static void putUser(String key, Account value) {
         users.put(key,value);
     }
 
@@ -44,20 +74,8 @@ public class Dao {
         return Dao.getAllUsers().containsKey(key);
     }
 
-    public static boolean sessionExists(String key) {
-        return Dao.getAllSessions().containsKey(key);
-    }
-
-    public static void putSession(String sessionId, Session newsession) {
-        activesessions.put(sessionId,newsession);
-    }
-
     public static void removeUser(String key) {
         users.remove(key);
-    }
-
-    public static void removeSession(String key) {
-        activesessions.remove(key);
     }
 
 

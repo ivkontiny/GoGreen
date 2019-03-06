@@ -2,44 +2,44 @@ package client;
 
 import org.junit.Before;
 import org.junit.Test;
-import util.User;
+import util.Account;
 
 import static org.junit.Assert.*;
 
 public class ConnectTest {
 
-    User user;
+    Account account;
 
     @Before public void initialize() {
-        user = new User("john", "john@mail.com", "pass", "John", "Baker");
+        account = new Account("john", "john@mail.com", "pass", "John", "Baker");
     }
 
 
 
     @Test
     public void testRegisterTrue() {
-        assertTrue(Connect.serverRegister(user));
+        assertTrue(Connect.serverRegister(account));
     }
 
     @Test
     public void testRegisterFalse() {
-        user.setUsername("username1");
-        assertFalse(Connect.serverRegister(user));
+        account.setUsername("username1");
+        assertFalse(Connect.serverRegister(account));
 
     }
 
     @Test
     public void testLoginFalse() {
-        user.setUsername("jack");
-        String value = Connect.serverLogin(user.getUsername(), user.getPassword());
+        account.setUsername("jack");
+        String value = Connect.serverLogin(account.getUsername(), account.getPassword());
         assertEquals("Login Failed", value);
     }
 
     @Test
     public void testLoginTrue() {
-        user.setUsername("username1");
-        user.setPassword(String.valueOf("user".hashCode()));
-        String value = Connect.serverLogin(user.getUsername(), user.getPassword());
+        account.setUsername("username1");
+        account.setPassword(String.valueOf("account".hashCode()));
+        String value = Connect.serverLogin(account.getUsername(), account.getPassword());
         assertEquals("Logged in as username1", value);
     }
 

@@ -1,9 +1,10 @@
 package server;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import util.Session;
+import util.SessionIdGenerator;
 
 import java.time.LocalDateTime;
 
@@ -11,8 +12,6 @@ import java.time.LocalDateTime;
 @RestController
 public class LoginController {
 
-    @Autowired
-    private LoginService loginService;
 
 
     /** Trying to log a user in.
@@ -29,7 +28,7 @@ public class LoginController {
         if (Dao.getAllUsers().containsKey(username)
                 && password.equals(Dao.getAllUsers().get(username).getPassword())) {
             sessionId = new SessionIdGenerator().getAlphaNumericString(42);
-            Dao.putSession(sessionId, new Session(username, LocalDateTime.now()));
+            SessionService.putSession(sessionId, new Session(username, LocalDateTime.now()));
         }
         return sessionId;
     }

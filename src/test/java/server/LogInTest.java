@@ -2,26 +2,25 @@ package server;
 
 import org.junit.Before;
 import org.junit.Test;
-import util.User;
+import util.Account;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 public class LogInTest {
 
-    User usertest;
+    Account usertest;
 
     @Before
     public void initialize()
     {
-        usertest = new User("1","1","1","1","1");
+        usertest = new Account("1","1","1","1","1");
     }
     @Test
     public void TestLogInFailed()
     {
         assertNull(LoginController.logIn("1:1"));
     }
-
     @Test
     public void TestLogInOK()
     {
