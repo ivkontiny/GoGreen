@@ -4,6 +4,8 @@ target/
 .settings/
 .classpath/
 .project/
+src/main/java/server/.classpath
+src/main/java/server/.project
 
 pom.xml.tag
 pom.xml.releaseBackup
