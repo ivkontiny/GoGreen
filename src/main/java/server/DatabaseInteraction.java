@@ -9,12 +9,12 @@ public class DatabaseInteraction {
 
     public DatabaseInteraction() {
 
-        String url = "jdbc:postgresql:gogreen";
+        String url = "jdbc:postgresql://142.93.230.132/gogreen";
 
         try {
             Properties props = new Properties();
             props.setProperty("user", "gogreen");
-            props.setProperty("password", "123");
+            props.setProperty("password", "gogreen123");
 
             this.conn = DriverManager.getConnection(url, props);
 
@@ -34,13 +34,12 @@ public class DatabaseInteraction {
 
             Account a = null;
 
-            while (rs.next()) {
-                String name = rs.getString("username");
-                String email = rs.getString("email");
-                String password = rs.getString("password");
-                int points = rs.getInt("total_points");
-                a = new Account(name, email, password, points);
-            }
+            rs.next();
+            String name = rs.getString("username");
+            String email = rs.getString("email");
+            String password = rs.getString("password");
+            int points = rs.getInt("total_points");
+            a = new Account(name, email, password, points);
 
             rs.close();
             st.close();
