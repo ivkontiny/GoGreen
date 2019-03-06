@@ -1,14 +1,15 @@
 package util;
 
-public class User {
+public class Account {
     private String username;
     private String mail;
     private String password;
-    private String name;
-    private String surname;
+    private String firstname;
+    private String lastname;
+    private int points;
 
 
-    public User() {
+    public Account() {
 
     }
 
@@ -20,12 +21,13 @@ public class User {
      * @param name first name of the user
      * @param surname last name of the user
      */
-    public User(String username, String mail, String password, String name, String surname) {
+    public Account(String username, String mail, String password, String name, String surname) {
         this.username = username;
         this.mail = mail;
         this.password = password;
-        this.name = name;
-        this.surname = surname;
+        this.firstname = name;
+        this.lastname = surname;
+        this.points = 0;
     }
 
 
@@ -53,19 +55,23 @@ public class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String name) {
+        this.firstname = name;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLastName() {
+        return lastname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLastName(String surname) {
+        this.lastname = surname;
     }
+
+    public int getPoints() { return this.points; }
+
+    public void setPoints(int points) { this.points = points; }
 }

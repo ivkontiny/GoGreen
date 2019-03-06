@@ -2,7 +2,8 @@ package server;
 
 import org.junit.Before;
 import org.junit.Test;
-import util.User;
+import util.Account;
+import util.Session;
 
 import java.time.LocalDateTime;
 
@@ -11,14 +12,14 @@ import static org.junit.Assert.assertNull;
 
 public class SessionTest {
 
-    User testuser;
+    Account testuser;
     Session testsession;
 
     @Before
     public void configure()
     {
         testsession = new Session("user1", LocalDateTime.now());
-        testuser = new User("1","1","1","1","1");
+        testuser = new Account("1","1","1","1","1");
     }
     @Test
     public void SessionConstructor()
@@ -67,9 +68,9 @@ public class SessionTest {
     @Test
     public void SessionControl()
     {
-        Dao.putSession("1", testsession);
+        SessionService.putSession("1", testsession);
         assertTrue(SessionController.getusers("1").equals("user1"));
-        Dao.removeSession("1");
+        SessionService.removeSession("1");
         assertNull(SessionController.getusers("1"));
     }
 }

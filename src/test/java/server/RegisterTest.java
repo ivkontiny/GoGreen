@@ -1,7 +1,7 @@
 package server;
 
 import org.junit.Test;
-import util.User;
+import util.Account;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
@@ -14,7 +14,7 @@ public class RegisterTest {
     @Test
     public void RegisterOK()
     {
-        User test = mock(User.class);
+        Account test = mock(Account.class);
         //user1 does not exist yet
         assertFalse(Dao.getAllUsers().containsKey("user1"));
         when(test.getUsername()).thenReturn("user1");
@@ -29,7 +29,7 @@ public class RegisterTest {
     @Test
     public void RegisterFAILED()
     {
-        User test = mock(User.class);
+        Account test = mock(Account.class);
         when(test.getUsername()).thenReturn("user1");
         //we add user2
         RegisterController.registerUser("user1", test);
