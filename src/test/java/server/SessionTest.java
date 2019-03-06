@@ -1,6 +1,6 @@
 package server;
 
-import Services.SessionService;
+import services.SessionService;
 import org.junit.Before;
 import org.junit.Test;
 import pojos.Account;
