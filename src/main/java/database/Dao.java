@@ -1,6 +1,6 @@
-package server;
+package database;
 
-import util.Account;
+import pojos.Account;
 
 import java.sql.*;
 import java.util.HashMap;

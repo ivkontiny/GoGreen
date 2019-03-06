@@ -6,7 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import util.Account;
+import pojos.Account;
 
 public class Register {
 

@@ -1,7 +1,8 @@
 package server;
 
+import database.Dao;
 import org.junit.Test;
-import util.Account;
+import pojos.Account;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;

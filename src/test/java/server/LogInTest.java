@@ -1,8 +1,9 @@
 package server;
 
+import database.Dao;
 import org.junit.Before;
 import org.junit.Test;
-import util.Account;
+import pojos.Account;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;

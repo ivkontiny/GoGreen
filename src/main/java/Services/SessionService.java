@@ -1,6 +1,6 @@
-package server;
+package Services;
 
-import util.Session;
+import pojos.Session;
 
 import java.util.HashMap;
 

@@ -1,9 +1,10 @@
 package server;
 
+import database.Dao;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import util.Account;
+import pojos.Account;
 
 @RestController
 public class DatabaseController {

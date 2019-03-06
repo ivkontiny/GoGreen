@@ -1,9 +1,10 @@
 package server;
 
+import Services.SessionService;
 import org.junit.Before;
 import org.junit.Test;
-import util.Account;
-import util.Session;
+import pojos.Account;
+import pojos.Session;
 
 import java.time.LocalDateTime;
 
