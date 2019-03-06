@@ -1,6 +1,6 @@
 package server;
 
-import Services.SessionService;
+import services.SessionService;
 import database.Dao;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
