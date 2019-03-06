@@ -1,10 +1,5 @@
 package server;
 
-import database.Dao;
-import org.junit.Before;
-import org.junit.Test;
-import pojos.Account;
-
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
@@ -26,12 +21,12 @@ public class LogInTest {
     @Test
     public void TestLogInOK()
     {
-        //Dao test = mock(Dao.class);
-        Dao db = new Dao();
+        //AccountDao test = mock(AccountDao.class);
+        AccountDao db = new AccountDao();
         LoginController lc = new LoginController();
         db.putUser("1",usertest);
         assertNotNull(lc.logIn("1:1"));
-        Dao.removeUser("1");
+        AccountDao.removeUser("1");
     }**/
     
 }

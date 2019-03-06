@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.Properties;
 
-public class Dao {
+public class AccountDao {
 
     private Connection conn;
 
@@ -17,7 +17,7 @@ public class Dao {
         users = new HashMap<>();
     }
 
-    public Dao() {
+    public AccountDao() {
 
         String url = "jdbc:postgresql://142.93.230.132/gogreen";
 
@@ -62,9 +62,9 @@ public class Dao {
         } catch(Exception e) {
 
             System.out.println(e);
+            return null;
         }
 
-        return null;
     }
 
     public boolean createAccount(Account acc) {
@@ -80,18 +80,18 @@ public class Dao {
             st.setInt(4, acc.getPoints());
             st.setString(5, acc.getFirstName());
             st.setString(6, acc.getLastName());
-            ResultSet rs = st.executeQuery();
+            st.execute();
 
-            rs.close();
             st.close();
 
             return true;
 
         } catch (Exception e) {
+            System.out.println("we got into dao");
             System.out.println(e);
+            return false;
         }
 
-        return false;
     }
 
     public  static HashMap<String, Account> getAllUsers() {
@@ -103,7 +103,7 @@ public class Dao {
     }
 
     public static boolean userExists(String key) {
-        return Dao.getAllUsers().containsKey(key);
+        return AccountDao.getAllUsers().containsKey(key);
     }
 
     public static void removeUser(String key) {
