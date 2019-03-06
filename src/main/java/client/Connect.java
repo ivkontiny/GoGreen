@@ -42,11 +42,8 @@ public class Connect {
         HttpEntity<Account> requestBody = new HttpEntity<>(account, headers);
 
         // Send request with POST method.
-        Account response = restTemplate.postForObject(url, requestBody, Account.class);
-        if (response == null) {
-            return false;
-        }
-        return true;
+        boolean response = restTemplate.postForObject(url, requestBody, Boolean.class);
+        return response;
     }
 
     /** Tries to log a user in.
