@@ -35,14 +35,14 @@
         </StackPane>
     </right>
     <center>
-        <Pane prefHeight="327.0" prefWidth="354.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-                <Label layoutX="60.0" layoutY="133.0" text="Welcome Alec">
+                <Label layoutX="60.0" layoutY="124.0" text="Welcome Alec">
                     <font>
                         <Font size="35.0" />
                     </font>
                 </Label>
             </children>
-        </Pane>
+        </AnchorPane>
     </center>
 </BorderPane>
