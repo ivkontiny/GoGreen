@@ -74,4 +74,18 @@ public class AccountDao extends Dao {
         }
 
     }
+
+    public void deleteAccount(Account account) {
+        try {
+            String query = "DELETE FROM account WHERE username = ?";
+
+            PreparedStatement st = this.conn.prepareStatement(query);
+            st.setString(1, account.getUsername());
+
+            st.execute();
+            st.close();
+        } catch (SQLException sqlE) {
+            System.out.println(sqlE);
+        }
+    }
 }
