@@ -74,6 +74,61 @@ public class AccountDao extends Dao {
         }
 
     }
+    
+    public String[] getNamesOfFriends(String username) {
+    	try {
+    		String[] ret = new String[10];
+    		String query = "SELECT * From account order BY total_points DESC";
+    		PreparedStatement st = this.conn.prepareStatement(query);
+    		ResultSet rs = st.executeQuery();
+    		int i = 0;
+    		while(rs.next()) {
+    			String name = rs.getString("username");
+    			ret[i] = name;
+    			i++;
+			}
+    		return ret;
+    	} catch(Exception e) {
+    	System.out.println(e);
+    	return null;
+     	}
+    }
+    
+    public int[] getPointOfFriends(String username) {
+    	try {
+    		int[] ret = new int[10];
+    		String query = "SELECT * From account order BY total_points DESC";
+    		PreparedStatement st = this.conn.prepareStatement(query);
+    		ResultSet rs = st.executeQuery();
+    		int i = 0;
+    		while(rs.next()) {
+    			int points = rs.getInt("total_points");
+    			ret[i] = points;
+    			i++;
+			}
+    		return ret;
+    	} catch(Exception e) {
+    	System.out.println(e);
+    	return null;
+     	}
+    }
+    public void Addpoints(int toadd, String username) {
+    	try {
+    		String query = "SELECT total_points FROM account WHERE username=?";
+    		PreparedStatement st1 = this.conn.prepareStatement(query);
+    		st1.setString(1, username);
+    		ResultSet rs = st1.executeQuery();
+    		rs.next();
+    		int plus = rs.getInt("total_points");
+    		String query2 = "Update Account SET total_points=? WHERE username=?";
+    		PreparedStatement st = this.conn.prepareStatement(query2);
+    		st.setString(2, username);
+    		st.setInt(1, toadd + plus);
+    		st.executeQuery();
+    		} catch(Exception e){
+    			System.out.println(e);
+    	}
+    }
 
     public void deleteAccount(Account account) {
         try {
