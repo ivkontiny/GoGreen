@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class ConnectTest {
 
-    Account account;
+    /**Account account;
 
     @Before public void initialize() {
         account = new Account("john", "john@mail.com", "pass", "John", "Baker");
@@ -41,6 +41,6 @@ public class ConnectTest {
         account.setPassword(String.valueOf("account".hashCode()));
         String value = Connect.serverLogin(account.getUsername(), account.getPassword());
         assertEquals("Logged in as username1", value);
-    }
+    }**/
 
 }
