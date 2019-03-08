@@ -1,12 +1,12 @@
 package server;
 
 import database.AccountDao;
-import org.junit.Assert;
+import database.ActivityDao;
 import org.junit.Test;
 import pojos.Account;
+import pojos.Activity;
 import services.AccountService;
-
-import javax.validation.constraints.AssertTrue;
+import services.ActivityService;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
@@ -16,7 +16,7 @@ import static org.mockito.Mockito.when;
 public class LogInTest {
 
     @Test
-    public void LogInOK()
+    public void LogInOk()
     {
         AccountService test = mock(AccountService.class);
         AccountController ac = new AccountController();
@@ -52,7 +52,7 @@ public class LogInTest {
         assertNotNull(ac.getAccounts("user"));
     }
     @Test
-    public void RegisterUserOK()
+    public void RegisterUserOk()
     {
         Account accounttoadd = new Account();
         AccountService test = mock(AccountService.class);
@@ -71,4 +71,79 @@ public class LogInTest {
         when(test.createAccount(accounttoadd)).thenReturn(false);
         assertFalse(ac.registerUser("username",accounttoadd));
     }
+
+    @Test
+    public void AccountServiceOk()
+    {
+        Account testaccount = new Account("user", "user", "password", "user", "user");
+        AccountDao test = mock(AccountDao.class);
+        AccountService as = new AccountService();
+        as.setDb(test);
+        when(test.exists("user")).thenReturn(true);
+        when(test.getAccount("user")).thenReturn(testaccount);
+        assertTrue(as.checkLogin("user", "password"));
+    }
+
+    @Test
+    public void AccountServiceFailed()
+    {
+        //Account testaccount = new Account("user", "user", "password", "user", "user");
+        AccountDao test = mock(AccountDao.class);
+        AccountService as = new AccountService();
+        as.setDb(test);
+        when(test.exists("user")).thenReturn(false);
+        //when(test.getAccount("user")).thenReturn(testaccount);
+        assertFalse(as.checkLogin("user", "password"));
+    }
+
+    @Test
+    public void AccountServiceCreateFailed()
+    {
+        Account testaccount = new Account("user", "user", "password", "user", "user");
+        AccountDao test = mock(AccountDao.class);
+        AccountService as = new AccountService();
+        as.setDb(test);
+        when(test.exists("user")).thenReturn(true);
+        when(test.createAccount(testaccount)).thenReturn(false);
+        assertFalse(as.createAccount(testaccount));
+    }
+
+    @Test
+    public void AccountServiceCreateOk()
+    {
+        Account testaccount = new Account("user", "user", "password", "user", "user");
+        AccountDao test = mock(AccountDao.class);
+        AccountService as = new AccountService();
+        as.setDb(test);
+        when(test.exists("user")).thenReturn(false);
+        when(test.createAccount(testaccount)).thenReturn(true);
+        assertTrue(as.createAccount(testaccount));
+    }
+
+    @Test
+    public void ActivityServiceOk()
+    {
+        ActivityDao test = mock(ActivityDao.class);
+        ActivityService acts = new ActivityService();
+        acts.setDb(test);
+        Activity testactivity = new Activity();
+        when(test.getActivity("lunch")).thenReturn(testactivity);
+        assertEquals(testactivity,acts.getActivity("lunch"));
+
+    }
+
+    @Test
+    public void ActivityServiceFailed()
+    {
+        ActivityDao test = mock(ActivityDao.class);
+        ActivityService acts = new ActivityService();
+        acts.setDb(test);
+        Activity testactivity = new Activity();
+        when(test.getActivity("lunch")).thenReturn(null);
+        assertNull(acts.getActivity("lunch"));
+
+    }
+
 }
+
+
