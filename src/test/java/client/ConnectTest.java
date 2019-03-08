@@ -1,12 +1,7 @@
 package client;
 
-import database.AccountDao;
 import org.junit.Before;
-import org.junit.Test;
 import pojos.Account;
-import server.AccountController;
-
-import static org.junit.Assert.*;
 
 public class ConnectTest {
 
@@ -45,6 +40,7 @@ public class ConnectTest {
         assertEquals("Logged in as test", value);
     }**/
 
+    /**
     @Test
     public void testRegisterTrue() {
         assertTrue(Connect.serverRegister(account));
@@ -70,5 +66,6 @@ public class ConnectTest {
         account.setPassword("456");
         assertFalse(Connect.serverLogin(account.getUsername(), account.getPassword()));
     }
+    */
 
 }

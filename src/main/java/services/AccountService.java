@@ -5,7 +5,7 @@ import pojos.Account;
 
 public class AccountService {
 
-    AccountDao db = new AccountDao();
+    public AccountDao db = new AccountDao();
 
     public boolean checkLogin(String username, String password) {
         if (db.exists(username)) {
@@ -21,4 +21,10 @@ public class AccountService {
         }
         return db.createAccount(acc);
     }
+    public void setDb(AccountDao db)
+    {
+        this.db = db;
+    }
 }
+
+
