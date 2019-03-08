@@ -8,8 +8,7 @@ import static org.junit.Assert.*;
 
 public class ConnectTest {
 
-    /*
-    Account account;
+    /**Account account;
 
     @Before public void initialize() {
         account = new Account("john", "john@mail.com", "pass", "John", "Baker");
@@ -38,6 +37,5 @@ public class ConnectTest {
         String value = Connect.serverLogin(account.getUsername(), account.getPassword());
         assertEquals("Logged in as test", value);
     }
-    **/
 
 }

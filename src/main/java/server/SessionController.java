@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class SessionController {
 
 
+
     /** Check whether the sessionID exists.
      * @param sessionId the sessionID to check for
      * @return the username of the holder of the sessionID
      */
     @GetMapping("/user/{sessionID}")
-    public String getusers(@PathVariable("sessionID") String sessionId ) {
+    public static String getusers(@PathVariable("sessionID") String sessionId ) {
 
         String username = null;
         //return sessionID;
