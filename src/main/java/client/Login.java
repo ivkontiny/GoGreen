@@ -1,14 +1,14 @@
 package client;
 
+import GUI.Main;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class Login extends Application {
 
@@ -61,10 +61,23 @@ public class Login extends Application {
         logIn = new Button("Log in");
         GridPane.setConstraints(logIn, 0, 2);
         logIn.setOnAction(e -> {
-            String response;
-            response = Connect.serverLogin(nameField.getText(), String.valueOf(passField.getText().hashCode()));
-            System.out.println(response);
-            window.close();
+            //String response;
+            if (Connect.serverLogin(nameField.getText(), String.valueOf(passField.getText().hashCode()))) {
+                Main ma = new Main();
+                try {
+                    ma.start(window);
+                } catch (IOException ioe) {
+                    System.out.println(ioe);
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Login Failed!");
+                alert.setHeaderText("Login Failed!");
+                alert.setContentText("Please check your credentials!");
+                alert.showAndWait();
+            }
+            /**System.out.println(response);
+            window.close();**/
         });
 
         //Register button
@@ -76,7 +89,7 @@ public class Login extends Application {
         grid.getChildren().addAll(nameLabel, nameField, passLabel, passField, logIn, register);
 
 
-        scene = new Scene(grid, 500, 350);
+        scene = new Scene(grid, 600, 400);
         window.setScene(scene);
         window.show();
     }

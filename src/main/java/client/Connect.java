@@ -51,7 +51,7 @@ public class Connect {
      * @param pass password of the user
      * @return returns whether the log in was successful or not
      */
-    public static String serverLogin(String name, String pass) {
+    public static boolean serverLogin(String name, String pass) {
 
         String url = "http://localhost:8080/login";
         String logincredentials = name + ":" + pass;
@@ -69,13 +69,15 @@ public class Connect {
         String response = restTemplate.postForObject(url, requestBody, String.class);
         Login.setSessionId(response);
 
-        String resp;
+        /**String resp;
         if (response == null) {
             resp = "Login Failed";
         } else {
             resp = "Logged in as " + name; //" with Session ID: " + response;
         }
 
-        return resp;
+        return resp;**/
+
+        return (response != null);
     }
 }

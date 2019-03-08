@@ -10,6 +10,8 @@ public class Activity {
     Date date;
     String username;
 
+    public Activity(){};
+
     public Activity(String description, Category category, int points, Date date, String username) {
         this.description = description;
         this.category = category;
