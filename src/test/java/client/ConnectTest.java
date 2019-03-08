@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class ConnectTest {
 
-    Account account;
+    /**Account account;
 
     @Before public void initialize() {
         account = new Account("john", "john@mail.com", "pass", "John", "Baker");
