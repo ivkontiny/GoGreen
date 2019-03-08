@@ -17,11 +17,6 @@ public class ConnectTest {
 
 
     @Test
-    public void testRegisterTrue() {
-        assertTrue(Connect.serverRegister(account));
-    }
-
-    @Test
     public void testRegisterFalse() {
         account.setUsername("username1");
         assertFalse(Connect.serverRegister(account));
@@ -37,10 +32,10 @@ public class ConnectTest {
 
     @Test
     public void testLoginTrue() {
-        account.setUsername("username1");
-        account.setPassword(String.valueOf("account".hashCode()));
+        account.setUsername("test");
+        account.setPassword(String.valueOf("test".hashCode()));
         String value = Connect.serverLogin(account.getUsername(), account.getPassword());
-        assertEquals("Logged in as username1", value);
+        assertEquals("Logged in as test", value);
     }
 
 }
