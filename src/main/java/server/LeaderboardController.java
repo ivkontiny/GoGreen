@@ -21,8 +21,7 @@ public class LeaderboardController {
 	@RequestMapping("/addpoints/{username}")
 	public String addPoints(@PathVariable("username")String username) {
 		try {
-		LeaderboardDao db = new LeaderboardDao();
-		ls.getDb().addPoints(1000, username);
+		ls.addPoints(1000, username);
 		return "Succesfully added points to" + username;
 		} catch(Exception e) {
 			return e.toString();

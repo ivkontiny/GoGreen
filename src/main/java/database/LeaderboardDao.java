@@ -8,6 +8,9 @@ import java.util.ArrayList;
 
 public class LeaderboardDao extends Dao {
 
+
+    public LeaderboardDao() { super(); }
+
     public void addPoints(int toadd, String username) {
         try {
             String query = "SELECT total_points FROM account WHERE username=?";

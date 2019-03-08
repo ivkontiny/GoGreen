@@ -9,8 +9,7 @@ public class Leaderboard {
 
 	private ArrayList<String> usernames;
 	private ArrayList<Integer> points;
-	AccountService as = new AccountService();
-	AccountDao db = new AccountDao();
+
 	public Leaderboard(ArrayList<String> usernames, ArrayList<Integer> points) {
 		this.usernames = usernames;
 		this.points = points;

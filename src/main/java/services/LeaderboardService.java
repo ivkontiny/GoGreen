@@ -11,6 +11,10 @@ public class LeaderboardService {
     {
         return db.getLeaderboard(username);
     }
+    public void addPoints(int toadd,String username)
+    {
+        db.addPoints(toadd,username);
+    }
     public LeaderboardDao getDb()
     {
         return this.db;
