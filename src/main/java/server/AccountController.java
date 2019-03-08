@@ -10,7 +10,7 @@ import util.SessionIdGenerator;
 public class AccountController {
 
     AccountService ls = new AccountService();
-
+    AccountDao db = new AccountDao();
     /** Trying to log a user in.
      * @param credentials the username and password, concatenated with a :-sign.
      * @return the sessionID of the user if the logging in was successful, null otherwise
@@ -30,15 +30,7 @@ public class AccountController {
 
     @RequestMapping("/get_account/{username}")
     public Account getAccounts(@PathVariable("username") String username) {
-        AccountDao db = new AccountDao();
-
-        try {
             return db.getAccount(username);
-
-        } catch(Exception e) {
-
-        }
-        return null;
     }
 
     @PostMapping("/register")

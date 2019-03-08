@@ -25,16 +25,17 @@ public class AccountDao extends Dao {
             st.setString(1, username);
             ResultSet rs = st.executeQuery();
 
-            rs.next();
-            String name = rs.getString("username");
-            String email = rs.getString("email");
-            String password = rs.getString("password");
-            String firstname = rs.getString("first_name");
-            String lastname = rs.getString("last_name");
-            int points = rs.getInt("total_points");
-            Account a = new Account(name, email, password, firstname, lastname);
-            a.setPoints(points);
-
+            Account a = null;
+            if(rs.next()) {
+                String name = rs.getString("username");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                String firstname = rs.getString("first_name");
+                String lastname = rs.getString("last_name");
+                int points = rs.getInt("total_points");
+                a = new Account(name, email, password, firstname, lastname);
+                a.setPoints(points);
+            }
             rs.close();
             st.close();
             return a;
