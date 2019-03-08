@@ -73,4 +73,28 @@ public class AccountDao extends Dao {
         }
 
     }
+    public Account[] getLeaderboards() {
+    	try {
+    		Account[] ret = new Account[5];
+    		String query = "SELECT * From account order BY total_points DESC";
+    		PreparedStatement st = this.conn.prepareStatement(query);
+    		ResultSet rs = st.executeQuery();
+    		for(int i = 0; i < 5; i++) {
+                rs.next();
+                String name = rs.getString("username");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                String firstname = rs.getString("first_name");
+                String lastname = rs.getString("last_name");
+                int points = rs.getInt("total_points");
+                Account a = new Account(name, email, password, firstname, lastname);
+                a.setPoints(points);
+                ret[i] = a;
+    		}
+    		return ret;
+    	} catch(Exception e) {
+    		System.out.println(e);
+    		return null;
+    	}
+    }
 }
