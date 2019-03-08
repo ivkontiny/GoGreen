@@ -69,9 +69,10 @@ public class SessionTest {
     @Test
     public void SessionControl()
     {
+        SessionController sc = new SessionController();
         SessionService.putSession("1", testsession);
-        assertTrue(SessionController.getusers("1").equals("user1"));
+        assertTrue(sc.getusers("1").equals("user1"));
         SessionService.removeSession("1");
-        assertNull(SessionController.getusers("1"));
+        assertNull(sc.getusers("1"));
     }
 }
