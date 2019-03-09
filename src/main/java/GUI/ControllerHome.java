@@ -39,7 +39,7 @@ public class ControllerHome implements Initializable {
     public static void welcomeMessage(Parent root)
     {
         javafx.scene.control.Label Welcome = (Label) root.lookup("#Welcome");
-        if (Welcome!=null) Welcome.setText("Welcome" + Connect.getUsername());
+        if (Welcome!=null) Welcome.setText("Welcome " + Connect.getUsername());
     }
 
     public void testing(ActionEvent actionEvent) {
