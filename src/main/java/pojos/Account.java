@@ -85,4 +85,21 @@ public class Account {
 	public void setId(int id) {
 		this.count = id;
 	}
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Account) {
+            Account that = (Account) obj;
+
+            if (this.username.equals(that.username) &&
+                this.mail.equals(that.mail) &&
+                this.password.equals(that.password) &&
+                this.firstname.equals(that.firstname) &&
+                this.lastname.equals(that.lastname))
+                return true;
+        }
+
+        return false;
+    }
 }

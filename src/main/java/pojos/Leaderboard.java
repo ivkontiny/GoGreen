@@ -26,4 +26,17 @@ public class Leaderboard {
 	public void setPoints(ArrayList<Integer> points) {
 		this.points = points;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Leaderboard) {
+			Leaderboard that = (Leaderboard) obj;
+
+			if (this.usernames.equals(that.usernames) &&
+				this.points.equals(that.points))
+				return true;
+		}
+
+		return false;
+	}
 }

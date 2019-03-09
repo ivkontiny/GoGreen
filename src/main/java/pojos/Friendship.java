@@ -43,4 +43,18 @@ public class Friendship {
     public void setStatus(Boolean status) {
         this.accepted = status;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Friendship) {
+            Friendship that = (Friendship) obj;
+
+            if (this.sender.equals(that.sender) &&
+                this.receiver.equals(that.receiver) &&
+                this.accepted == that.accepted)
+                return true;
+        }
+
+        return false;
+    }
 }
