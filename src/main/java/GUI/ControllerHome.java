@@ -1,5 +1,6 @@
 package GUI;
 
+import client.Connect;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -32,6 +34,12 @@ public class ControllerHome implements Initializable {
     public void loadMyLog(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("MyLog.fxml"));
         rootPane.getChildren().setAll(pane);
+    }
+
+    public static void welcomeMessage(Parent root)
+    {
+        javafx.scene.control.Label Welcome = (Label) root.lookup("#Welcome");
+        if (Welcome!=null) Welcome.setText("Welcome" + Connect.getUsername());
     }
 
     public void testing(ActionEvent actionEvent) {

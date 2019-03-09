@@ -21,9 +21,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Home.fxml"));
-        Label lblData = (Label) root.lookup("#Welcome");
-        if (lblData!=null) lblData.setText("Welcome" + Connect.getUsername());
-        primaryStage.setTitle("Hello World");
+        ControllerHome.welcomeMessage(root);
+        primaryStage.setTitle("GO GREEN");
         primaryStage.setScene(new Scene(root));
 
         primaryStage.show();
