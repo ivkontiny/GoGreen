@@ -15,10 +15,16 @@ public class FriendRequestService {
         return db.friendshipExists(friendship);
     }
 
-    public boolean sendRequest(String requester, String receiver)
+    public boolean sendRequest(String sender, String receiver)
     {
-        Friendship friendship = new Friendship(requester,receiver);
+        Friendship friendship = new Friendship(sender,receiver);
         return db.sendRequest(friendship);
+    }
+
+    public boolean acceptRequest(String sender, String receiver)
+    {
+        Friendship friendship = new Friendship(sender, receiver);
+        return db.acceptRequest(friendship);
     }
     public ArrayList<Friendship> getFriendships(String user)
     {

@@ -49,6 +49,9 @@ public class AccountDao extends Dao {
 
     public boolean createAccount(Account acc) {
         try {
+
+            if(exists(acc.getUsername())) return false;
+
             String query = "INSERT INTO account (username, email, password," +
                     " total_points, first_name, last_name)" +
                     " VALUES  (?, ?, ?, ?, ?, ?)";
@@ -78,13 +81,14 @@ public class AccountDao extends Dao {
         try {
             String query = "DELETE FROM account WHERE username = ?";
 
+            if(!exists(account.getUsername())) return;
             PreparedStatement st = this.conn.prepareStatement(query);
             st.setString(1, account.getUsername());
-
             st.execute();
             st.close();
+
         } catch (SQLException sqlE) {
-            //System.out.println("HERE");
+            System.out.println("HERE");
             System.out.println(sqlE);
         }
     }
