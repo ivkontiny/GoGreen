@@ -21,6 +21,11 @@ public class AccountService {
         }
         return db.createAccount(acc);
     }
+
+    public boolean userExists(String user)
+    {
+        return db.exists(user);
+    }
     public void setDb(AccountDao db)
     {
         this.db = db;

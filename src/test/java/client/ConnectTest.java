@@ -1,7 +1,12 @@
 package client;
 
+import database.AccountDao;
 import org.junit.Before;
+import org.junit.Test;
 import pojos.Account;
+
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 public class ConnectTest {
 
@@ -13,7 +18,7 @@ public class ConnectTest {
 
 
 
-    /**@Test
+    /*@Test
     public void testRegisterTrue() {
         assertTrue(Connect.serverRegister(account));
     }
@@ -40,14 +45,12 @@ public class ConnectTest {
         assertEquals("Logged in as test", value);
     }**/
 
-    /**
     @Test
     public void testRegisterTrue() {
         assertTrue(Connect.serverRegister(account));
         AccountDao ad = new AccountDao();
         ad.deleteAccount(account);
     }
-
     @Test
     public void testRegisterFalse() {
         account.setUsername("azaidman");
@@ -66,6 +69,5 @@ public class ConnectTest {
         account.setPassword("456");
         assertFalse(Connect.serverLogin(account.getUsername(), account.getPassword()));
     }
-    */
 
 }
