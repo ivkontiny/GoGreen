@@ -33,9 +33,9 @@ public class ControllerHome implements Initializable {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("MyLog.fxml"));
         rootPane.getChildren().setAll(pane);
     }
-
-    public void testing(ActionEvent actionEvent) {
-        System.out.println("Button is working!");
+    public void loadActivities(javafx.event.ActionEvent actionEvent) throws IOException {
+        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Activities.fxml"));
+        rootPane.getChildren().setAll(pane);
     }
 }
 

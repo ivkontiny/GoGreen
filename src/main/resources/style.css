@@ -1,0 +1,18 @@
+/*.categorieMenuButton{
+    -fx-shape: "M 400 300 Q 425 275 450 275 L 550 275 Q 575 275 600 300 L 600 300 L 400 300";
+    -fx-pref-width: 80.0;
+    -fx-text-alignment: CENTER;
+}
+.categorieMenuButton > .categorieMenuButton-label {
+    -fx-alignment: center;
+}*/
+.tab{
+    -fx-shape: "M 400 300 Q 425 275 450 275 L 550 275 Q 575 275 600 300 L 600 300 L 400 300";
+    -fx-pref-width: 80.0;
+    -fx-text-alignment: center;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: white;
+}
