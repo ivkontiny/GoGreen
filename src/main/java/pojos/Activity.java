@@ -59,4 +59,20 @@ public class Activity {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Activity) {
+            Activity that = (Activity) obj;
+
+            if (this.description.equals(that.description) &&
+                this.category == that.category &&
+                this.points == that.points &&
+                this.date.equals(that.date) &&
+                this.username.equals(that.username))
+                return true;
+        }
+
+        return false;
+    }
 }
