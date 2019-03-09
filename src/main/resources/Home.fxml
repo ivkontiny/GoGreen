@@ -37,7 +37,7 @@
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-                <Label layoutX="60.0" layoutY="124.0" text="Welcome Alec">
+                <Label fx:id="Welcome" layoutX="60.0" layoutY="124.0" text="Welcome message">
                     <font>
                         <Font size="35.0" />
                     </font>

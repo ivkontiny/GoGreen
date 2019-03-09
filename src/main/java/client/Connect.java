@@ -9,6 +9,20 @@ import pojos.Account;
 public class Connect {
 
 
+    /** Get the email of a user with a concrete sessionID.
+     */
+    public static String getUsername() {
+        String url = "http://localhost:8080/user/";
+        url += Login.getSessionId();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        RestTemplate restTemplate = new RestTemplate();
+
+        HttpEntity<String> requestBody = new HttpEntity<>(headers);
+        ResponseEntity<String> response;
+        response = restTemplate.exchange(url, HttpMethod.GET, requestBody,String.class);
+        return response.getBody();
+    }
 
 
     /** Registers a account.

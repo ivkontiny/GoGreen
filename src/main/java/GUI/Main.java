@@ -1,9 +1,12 @@
 package GUI;
 
+import client.Connect;
+import client.Login;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -18,6 +21,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Home.fxml"));
+        Label lblData = (Label) root.lookup("#Welcome");
+        if (lblData!=null) lblData.setText("Welcome" + Connect.getUsername());
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root));
 
