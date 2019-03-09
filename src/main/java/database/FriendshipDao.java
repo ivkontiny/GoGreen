@@ -1,10 +1,6 @@
 package database;
 
-import pojos.Activity;
-import pojos.Category;
 import pojos.Friendship;
-
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -12,6 +8,28 @@ import java.util.ArrayList;
 public class FriendshipDao extends Dao {
 
     public FriendshipDao() {super();}
+
+    public boolean acceptRequest(Friendship friendship)
+    {
+        try {
+            if (!requestExists(friendship)) return false;
+            String query = "UPDATE friendship SET accepted = true WHERE " +
+                    "sender = ?" +
+                    "AND receiver = ?";
+            PreparedStatement update = this.conn.prepareStatement(query);
+            update.setString(1, friendship.getSender());
+            update.setString(2, friendship.getReceiver());
+            update.execute();
+            update.close();
+            return true;
+
+        } catch(Exception e) {
+            System.out.println(e);
+            return false;
+        }
+
+
+    }
 
     public ArrayList<Friendship> getFriendships(String username)
     {
@@ -43,20 +61,14 @@ public class FriendshipDao extends Dao {
     public boolean friendshipExists(Friendship friendship)
     {
         try {
-            String query = "SELECT * FROM friendship WHERE (sender = ? AND receiver = ? )" +
-                    "OR (sender = ? AND receiver = ?)";
-            PreparedStatement request = this.conn.prepareStatement(query);
-            request.setString(1, friendship.getSender());
-            request.setString(2, friendship.getReceiver());
-            request.setString(3, friendship.getReceiver());
-            request.setString(4, friendship.getSender());
-            ResultSet rs = request.executeQuery();
-            //System.out.println(rs.getString(1));
-            boolean result = false;
-            if(rs.next())result = true;
-            rs.close();
-            request.close();
-            return result;
+
+            ArrayList<Friendship> friendships = getFriendships(friendship.getSender());
+            for(Friendship search: friendships)
+            {
+                if(search.getReceiver().equals(friendship.getReceiver()) ||
+                search.getSender().equals(friendship.getReceiver())) return true;
+            }
+            return false;
 
         } catch (Exception e) {
 
@@ -64,7 +76,23 @@ public class FriendshipDao extends Dao {
             return false;
         }
     }
+    public boolean requestExists(Friendship friendship)
+    {
+        try {
 
+            ArrayList<Friendship> friendships = getFriendships(friendship.getSender());
+            for(Friendship search: friendships)
+            {
+                if(search.getReceiver().equals(friendship.getReceiver())) return true;
+            }
+            return false;
+
+        } catch (Exception e) {
+
+            System.out.println(e);
+            return false;
+        }
+    }
     public boolean sendRequest(Friendship friendship)
     {
             try {

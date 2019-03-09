@@ -138,7 +138,7 @@ public class LogInTest {
         ActivityDao test = mock(ActivityDao.class);
         ActivityService acts = new ActivityService();
         acts.setDb(test);
-        Activity testactivity = new Activity();
+        //Activity testactivity = new Activity();
         when(test.getActivity("lunch")).thenReturn(null);
         assertNull(acts.getActivity("lunch"));
 
