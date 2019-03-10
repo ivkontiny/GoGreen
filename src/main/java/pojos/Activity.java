@@ -1,14 +1,16 @@
 package pojos;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Activity {
 
-    String description;
+    String description = "meal";
     Category category;
-    int points;
-    Date date;
-    String username;
+    int points = 10;
+    Date date = Date.valueOf(LocalDate.now());
+    String username = "test";
 
     public Activity(){};
 
