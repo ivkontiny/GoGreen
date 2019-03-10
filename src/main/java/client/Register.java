@@ -2,7 +2,11 @@ package client;
 
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -82,7 +86,11 @@ public class Register {
         Button reg = new Button("Register");
         GridPane.setConstraints(reg, 0, 6);
         reg.setOnAction(e -> {
-            Account newuser = new Account(nameField.getText(), mailField.getText(), String.valueOf(confPassField.getText().hashCode()), naField.getText(), surField.getText());
+            Account newuser = new Account(
+                    nameField.getText(), mailField.getText(),
+                            String.valueOf(confPassField.getText().hashCode()),
+                            naField.getText(), surField.getText());
+
             if (Connect.serverRegister(newuser)) {
                 window.close();
             } else {

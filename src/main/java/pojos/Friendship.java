@@ -7,13 +7,16 @@ public class Friendship {
     private String receiver;
     private Boolean accepted;
 
-    public Friendship()
-    {
-        this.accepted=false;
+    public Friendship() {
+        this.accepted = false;
     }
 
-    public Friendship(String requester, String receiver)
-    {
+    /**
+     * Creates a new friendship with given parameters.
+     * @param requester the sender of the friend request
+     * @param receiver the receiver of the friend request
+     */
+    public Friendship(String requester, String receiver) {
         this.sender = requester;
         this.receiver = receiver;
         this.accepted = false;
@@ -49,10 +52,11 @@ public class Friendship {
         if (obj instanceof Friendship) {
             Friendship that = (Friendship) obj;
 
-            if (this.sender.equals(that.sender) &&
-                this.receiver.equals(that.receiver) &&
-                this.accepted == that.accepted)
+            if (this.sender.equals(that.sender)
+                    && this.receiver.equals(that.receiver)
+                    && this.accepted == that.accepted) {
                 return true;
+            }
         }
 
         return false;
