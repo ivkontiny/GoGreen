@@ -23,9 +23,9 @@ public class FriendRequestController {
         //return receiver;
         if(!as.userExists(sender)) return false;
         if(!as.userExists(receiver)) return false;
-        if(frs.friendshipExists(sender,receiver)) return false;
+        if(frs.friendshipExists(new Friendship(sender,receiver))) return false;
         //if(frs.friendshipExists(sender,receiver)) return false;
-        return frs.sendRequest(sender,receiver);
+        return frs.sendRequest(new Friendship(sender,receiver));
     }
 
     @RequestMapping("/accept_request/{username}")
@@ -35,8 +35,8 @@ public class FriendRequestController {
         //return receiver;
         if(!as.userExists(receiver)) return false;
         if(!as.userExists(sender)) return false;
-        if(!frs.friendshipExists(sender,receiver)) return false;
-        return frs.acceptRequest(sender,receiver);
+        if(!frs.friendshipExists(new Friendship(sender,receiver))) return false;
+        return frs.acceptRequest(new Friendship(sender,receiver));
     }
 
     @RequestMapping("/friendships/{username}")
