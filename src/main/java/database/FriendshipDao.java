@@ -9,6 +9,7 @@ public class FriendshipDao extends Dao {
 
     public FriendshipDao() {super();}
 
+    private AccountDao ad = new AccountDao();
     public boolean acceptRequest(Friendship friendship)
     {
         try {
@@ -76,6 +77,25 @@ public class FriendshipDao extends Dao {
             return false;
         }
     }
+    public void removeFriendship(Friendship friendship)
+    {
+        try{
+            String query = "DELETE FROM friendship WHERE (receiver = ? AND sender = ?) " +
+                    "OR (receiver = ? AND sender = ?)";
+
+            if(!friendshipExists(friendship)) return;
+            PreparedStatement st = this.conn.prepareStatement(query);
+            st.setString(1, friendship.getSender());
+            st.setString(2, friendship.getReceiver());
+            st.setString(3, friendship.getReceiver());
+            st.setString(4, friendship.getSender());
+            st.execute();
+            st.close();
+
+        } catch (Exception e){
+            return;
+        }
+    }
     public boolean requestExists(Friendship friendship)
     {
         try {
@@ -96,8 +116,9 @@ public class FriendshipDao extends Dao {
     public boolean sendRequest(Friendship friendship)
     {
             try {
-                if(friendshipExists(friendship)) return false;
 
+                if(!ad.exists(friendship.getSender()) || !ad.exists(friendship.getReceiver())) return false;
+                if(friendshipExists(friendship)) return false;
                 String query = "INSERT INTO friendship (sender, receiver, accepted)" +
                         " VALUES  (?, ?, ?)";
 

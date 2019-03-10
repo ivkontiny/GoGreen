@@ -1,6 +1,7 @@
 package server;
 
 import database.AccountDao;
+import database.ActivityDao;
 import database.FriendshipDao;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import pojos.Account;
 import pojos.Friendship;
 
+import javax.validation.constraints.AssertTrue;
+
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
 
@@ -21,6 +24,7 @@ public class DaoTest {
     private AccountDao accountDao;
     private FriendshipDao friendshipDao;
     private Account newaccount;
+    private ActivityDao activityDao;
 
     @Before
     public void configure()
@@ -28,7 +32,7 @@ public class DaoTest {
         newaccount = new Account("user_test","user","user","user","user");
     }
     @Test
-    public void CreateExists()
+    public void createExistsAccount()
     {
 
         accountDao = new AccountDao();
@@ -42,7 +46,7 @@ public class DaoTest {
     }
 
     @Test
-    public void Get()
+    public void getAccount()
     {
         accountDao = new AccountDao();
         accountDao.deleteAccount(newaccount);
@@ -51,6 +55,30 @@ public class DaoTest {
         assertNotNull(accountDao.getAccount("user_test"));
         accountDao.deleteAccount(newaccount);
 
+    }
+
+    @Test
+    public void existsFriendship()
+    {
+        friendshipDao = new FriendshipDao();
+        Friendship testfriendships = new Friendship("test", "bob");
+        friendshipDao.sendRequest(testfriendships);
+        assertTrue(friendshipDao.friendshipExists(testfriendships));
+        friendshipDao.removeFriendship(testfriendships);
+        assertFalse(friendshipDao.friendshipExists(testfriendships));
+        assertNotNull(friendshipDao.getFriendships("test"));
+    }
+
+    @Test
+    public void sendAcceptFriendship()
+    {
+        friendshipDao = new FriendshipDao();
+        Friendship testfriendships = new Friendship("test", "bob");
+        assertTrue(friendshipDao.sendRequest(testfriendships));
+        assertTrue(friendshipDao.acceptRequest(testfriendships));
+        assertFalse(friendshipDao.sendRequest(testfriendships));
+        friendshipDao.removeFriendship(testfriendships);
+        assertFalse(friendshipDao.acceptRequest(testfriendships));
     }
 
 }

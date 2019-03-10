@@ -20,13 +20,14 @@ public class ActivityDao extends Dao {
             ps.setString(1, description);
             ResultSet rs = ps.executeQuery();
 
-            rs.next();
-            Category cat = Category.valueOf(rs.getString(3));
-            int points = rs.getInt(4);
-            Date date = rs.getDate(5);
-            String username = rs.getString(6);
-
-            Activity a = new Activity(description, cat, points, date, username);
+            Activity a = null;
+            if(rs.next()) {
+                Category cat = Category.valueOf(rs.getString(3));
+                int points = rs.getInt(4);
+                Date date = rs.getDate(5);
+                String username = rs.getString(6);
+                a = new Activity(description, cat, points, date, username);
+            }
             return a;
 
         } catch (Exception e) {
@@ -55,6 +56,23 @@ public class ActivityDao extends Dao {
 
             System.out.println(e);
             return false;
+        }
+    }
+
+    public void removeActivity(Activity act)
+    {
+        try {
+            String query = "DELETE FROM activity WHERE username = ? AND description = ?";
+
+            if(getActivity(act.getDescription()) == null) return;
+            PreparedStatement st = this.conn.prepareStatement(query);
+            st.setString(1, act.getUsername());
+            st.setString(2, act.getDescription());
+            st.execute();
+            st.close();
+
+        } catch (Exception e) {
+            return;
         }
     }
 }
