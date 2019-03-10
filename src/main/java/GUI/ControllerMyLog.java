@@ -23,4 +23,8 @@ public class ControllerMyLog implements Initializable {
         ControllerHome.welcomeMessage(pane);
         rootPane.getChildren().setAll(pane);
     }
+    public void loadActivities(javafx.event.ActionEvent actionEvent) throws IOException {
+        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Activities.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
 }
