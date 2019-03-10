@@ -18,7 +18,7 @@ import javax.validation.constraints.AssertTrue;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
 
-public class DaoTest {
+public class AccountDaoTest {
 
 
     private AccountDao accountDao;
@@ -57,28 +57,5 @@ public class DaoTest {
 
     }
 
-    @Test
-    public void existsFriendship()
-    {
-        friendshipDao = new FriendshipDao();
-        Friendship testfriendships = new Friendship("test", "bob");
-        friendshipDao.sendRequest(testfriendships);
-        assertTrue(friendshipDao.friendshipExists(testfriendships));
-        friendshipDao.removeFriendship(testfriendships);
-        assertFalse(friendshipDao.friendshipExists(testfriendships));
-        assertNotNull(friendshipDao.getFriendships("test"));
-    }
-
-    @Test
-    public void sendAcceptFriendship()
-    {
-        friendshipDao = new FriendshipDao();
-        Friendship testfriendships = new Friendship("test", "bob");
-        assertTrue(friendshipDao.sendRequest(testfriendships));
-        assertTrue(friendshipDao.acceptRequest(testfriendships));
-        assertFalse(friendshipDao.sendRequest(testfriendships));
-        friendshipDao.removeFriendship(testfriendships);
-        assertFalse(friendshipDao.acceptRequest(testfriendships));
-    }
 
 }
