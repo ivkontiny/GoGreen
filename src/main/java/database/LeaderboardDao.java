@@ -13,18 +13,12 @@ public class LeaderboardDao extends Dao {
 
     public void addPoints(int toadd, String username) {
         try {
-            String query = "SELECT total_points FROM account WHERE username=?";
-            PreparedStatement st1 = this.conn.prepareStatement(query);
-            st1.setString(1, username);
-            ResultSet rs = st1.executeQuery();
-            if(rs.next()) {
-                int plus = rs.getInt("total_points");
-                String query2 = "Update Account SET total_points=? WHERE username=?";
-                PreparedStatement st = this.conn.prepareStatement(query2);
-                st.setString(2, username);
-                st.setInt(1, toadd + plus);
-                st.executeQuery();
-            }
+            String query = "UPDATE account SET total_points= total_points + ? WHERE username= ? ";
+            PreparedStatement st = this.conn.prepareStatement(query);
+            st.setInt(1, toadd);
+            st.setString(2,username);
+            st.executeQuery();
+            st.close();
         } catch(Exception e){
             System.out.println(e);
         }
@@ -32,6 +26,7 @@ public class LeaderboardDao extends Dao {
 
     public Leaderboard getLeaderboard(String username) {
         try {
+
             ArrayList<String> usernames = new ArrayList<>();
             ArrayList<Integer> total_points = new ArrayList<>();
             String query = "SELECT * From account order BY total_points DESC";
@@ -45,6 +40,7 @@ public class LeaderboardDao extends Dao {
             }
             Leaderboard newleaderboard = new Leaderboard(usernames, total_points);
             return newleaderboard;
+
         } catch(Exception e) {
             System.out.println(e);
             return null;

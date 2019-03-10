@@ -13,16 +13,16 @@ public class SessionService {
         activesessions = new HashMap<>();
     }
 
-    public static boolean sessionExists(String key) {
-        return SessionService.getAllSessions().containsKey(key);
+    public boolean sessionExists(String key) {
+        return getAllSessions().containsKey(key);
     }
 
-    public static void putSession(String sessionId, Session newsession) {
+    public void putSession(String sessionId, Session newsession) {
         activesessions.put(sessionId, newsession);
     }
 
 
-    public  static HashMap<String,Session> getAllSessions() {
+    public HashMap<String,Session> getAllSessions() {
         return activesessions;
     }
 

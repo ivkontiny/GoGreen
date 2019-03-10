@@ -21,10 +21,22 @@ public class FriendRequestController {
             defaultValue = "user") String receiver)
     {
         //return receiver;
+        if(!as.userExists(sender)) return false;
         if(!as.userExists(receiver)) return false;
         if(frs.friendshipExists(sender,receiver)) return false;
         //if(frs.friendshipExists(sender,receiver)) return false;
         return frs.sendRequest(sender,receiver);
+    }
+
+    @RequestMapping("/accept_request/{username}")
+    public boolean acceptRequest(@PathVariable("username") String receiver,@RequestParam(value = "username",
+            defaultValue = "user") String sender)
+    {
+        //return receiver;
+        if(!as.userExists(receiver)) return false;
+        if(!as.userExists(sender)) return false;
+        if(!frs.friendshipExists(sender,receiver)) return false;
+        return frs.acceptRequest(sender,receiver);
     }
 
     @RequestMapping("/friendships/{username}")

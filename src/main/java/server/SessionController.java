@@ -11,20 +11,25 @@ public class SessionController {
 
 
 
+    SessionService ss = new SessionService();
     /** Check whether the sessionID exists.
      * @param sessionId the sessionID to check for
      * @return the username of the holder of the sessionID
      */
     @GetMapping("/user/{sessionID}")
-    public static String getusers(@PathVariable("sessionID") String sessionId ) {
+    public String getUser(@PathVariable("sessionID") String sessionId ) {
 
         String username = null;
-        //return sessionID;
-        if (SessionService.sessionExists(sessionId)) {
-            username = SessionService.getAllSessions().get(sessionId).getUsername();
+        if (ss.sessionExists(sessionId)) {
+            username = ss.getAllSessions().get(sessionId).getUsername();
         }
 
-
         return username;
+    }
+
+    @GetMapping("logout/{sessionID}")
+    public void logOut(@PathVariable("sessionID") String sessionId) {
+        if(!ss.sessionExists(sessionId)) return;
+        ss.getAllSessions().remove(sessionId);
     }
 }
