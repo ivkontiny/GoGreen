@@ -15,6 +15,21 @@ public class LeaderboardDao extends Dao {
     private FriendshipDao fd = new FriendshipDao();
     private AccountDao ad = new AccountDao();
 
+    public void resetPoints(String username)
+    {
+        try {
+            if(!ad.exists(username)) return;
+            String query = "UPDATE account SET total_points = 0 WHERE username = ? ";
+            PreparedStatement st = this.conn.prepareStatement(query);
+            st.setString(1,username);
+            st.execute();
+            st.close();
+            return;
+        } catch(Exception e)
+        {
+
+        }
+    }
     public int getPoints(String username)
     {
         try {
