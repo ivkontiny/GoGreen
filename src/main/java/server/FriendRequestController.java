@@ -13,8 +13,8 @@ import java.util.ArrayList;
 @RestController
 public class FriendRequestController {
 
-    FriendRequestService frs = new FriendRequestService();
-    AccountService as = new AccountService();
+    private FriendRequestService frs = new FriendRequestService();
+    private AccountService as = new AccountService();
 
     /**
      * Sends a friend request.
@@ -77,6 +77,16 @@ public class FriendRequestController {
     @RequestMapping("/friendships/{username}")
     public ArrayList<Friendship> getFriendships(@PathVariable("username") String user) {
         return frs.getFriendships(user);
+    }
+
+    public void setFrs(FriendRequestService frs)
+    {
+        this.frs = frs;
+    }
+
+    public void setAs(AccountService as)
+    {
+        this.as = as;
     }
 
 }

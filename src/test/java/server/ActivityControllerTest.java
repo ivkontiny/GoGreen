@@ -9,7 +9,7 @@ import static junit.framework.TestCase.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class ActivityTest {
+public class ActivityControllerTest {
 
 
     @Test
@@ -21,7 +21,5 @@ public class ActivityTest {
         ac.as  = test;
         when(test.getActivity("ate lunch")).thenReturn(testactivity);
         assertEquals(ac.getActivity("ate lunch"), testactivity);
-
-
     }
 }

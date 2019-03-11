@@ -18,9 +18,9 @@ import java.time.LocalDateTime;
 @RestController
 public class AccountController {
 
-    AccountService ls = new AccountService();
-    AccountDao db = new AccountDao();
-    SessionService ss = new SessionService();
+    private AccountService ls = new AccountService();
+    private AccountDao db = new AccountDao();
+    private SessionService ss = new SessionService();
 
     /**
      * Trying to log a user in.
@@ -54,4 +54,13 @@ public class AccountController {
             defaultValue = "user") String username, @RequestBody Account newuser) {
         return ls.createAccount(newuser);
     }
+
+    public void setLs(AccountService ls) {
+        this.ls = ls;
+    }
+
+    public void setDb(AccountDao db) {
+        this.db = db;
+    }
+
 }
