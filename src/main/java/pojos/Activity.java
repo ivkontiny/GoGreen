@@ -2,7 +2,6 @@ package pojos;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class Activity {
 
@@ -12,8 +11,16 @@ public class Activity {
     Date date = Date.valueOf(LocalDate.now());
     String username = "test";
 
-    public Activity(){};
+    public Activity(){}
 
+    /**
+     * Constructs an activity using already known parameters.
+     * @param description the description of the activity
+     * @param category the category of the activity
+     * @param points the points gained from the activity
+     * @param date the date of the activity
+     * @param username the user who did the activity
+     */
     public Activity(String description, Category category, int points, Date date, String username) {
         this.description = description;
         this.category = category;
@@ -67,12 +74,13 @@ public class Activity {
         if (obj instanceof Activity) {
             Activity that = (Activity) obj;
 
-            if (this.description.equals(that.description) &&
-                this.category == that.category &&
-                this.points == that.points &&
-                this.date.equals(that.date) &&
-                this.username.equals(that.username))
+            if (this.description.equals(that.description)
+                    && this.category == that.category
+                    && this.points == that.points
+                    && this.date.equals(that.date)
+                    && this.username.equals(that.username)) {
                 return true;
+            }
         }
 
         return false;

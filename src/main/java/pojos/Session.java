@@ -40,9 +40,10 @@ public class Session {
         if (obj instanceof Session) {
             Session that = (Session) obj;
 
-            if (this.username.equals(that.username) &&
-                this.time.equals(that.time))
+            if (this.username.equals(that.username)
+                    && this.time.equals(that.time)) {
                 return true;
+            }
         }
 
         return false;

@@ -4,7 +4,11 @@ import GUI.Main;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -62,13 +66,16 @@ public class Login extends Application {
         GridPane.setConstraints(logIn, 0, 2);
         logIn.setOnAction(e -> {
             //String response;
-            if (Connect.serverLogin(nameField.getText(), String.valueOf(passField.getText().hashCode()))) {
+            if (Connect.serverLogin(
+                    nameField.getText(), String.valueOf(passField.getText().hashCode()))) {
+
                 Main ma = new Main();
                 try {
                     ma.start(window);
                 } catch (IOException ioe) {
                     System.out.println(ioe);
                 }
+
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Login Failed!");

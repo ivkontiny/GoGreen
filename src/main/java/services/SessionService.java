@@ -8,8 +8,7 @@ public class SessionService {
 
     private static HashMap<String, Session> activesessions;
 
-    static
-    {
+    static {
         activesessions = new HashMap<>();
     }
 

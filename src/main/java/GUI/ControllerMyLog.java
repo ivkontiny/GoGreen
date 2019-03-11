@@ -18,13 +18,26 @@ public class ControllerMyLog implements Initializable {
 
     }
 
+
+    /** Loads the home page.
+     *
+     * @param actionEvent the event needed to be made to go to the home page
+     * @throws IOException when there is an error in the action
+     */
     public void loadHome(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Home.fxml"));
         ControllerHome.welcomeMessage(pane);
         rootPane.getChildren().setAll(pane);
     }
+
+    /**
+     * Loads the activity page on action.
+     * @param actionEvent the action on which the activity page is loaded
+     * @throws IOException when there is an error in the action
+     */
     public void loadActivities(javafx.event.ActionEvent actionEvent) throws IOException {
-        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Activities.fxml"));
+        BorderPane pane =
+                FXMLLoader.load(getClass().getClassLoader().getResource("Activities.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 }

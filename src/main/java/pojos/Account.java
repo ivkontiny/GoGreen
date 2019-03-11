@@ -15,12 +15,14 @@ public class Account {
     }
 
 
-    /** Making a new user.
+    /**
+     * Making a new user.
+     *
      * @param username the username of the user
-     * @param mail the email of the user
+     * @param mail     the email of the user
      * @param password the password of the user
-     * @param name first name of the user
-     * @param surname last name of the user
+     * @param name     first name of the user
+     * @param surname  last name of the user
      */
     public Account(String username, String mail, String password, String name, String surname) {
         this.username = username;
@@ -72,19 +74,23 @@ public class Account {
         this.lastname = surname;
     }
 
-    public int getPoints() { return this.points; }
+    public int getPoints() {
+        return this.points;
+    }
 
-    public void setPoints(int points) { this.points = points; }
+    public void setPoints(int points) {
+        this.points = points;
+    }
 
 
-	public int getId() {
-		return count;
-	}
+    public int getId() {
+        return count;
+    }
 
 
-	public void setId(int id) {
-		this.count = id;
-	}
+    public void setId(int id) {
+        this.count = id;
+    }
 
 
     @Override
@@ -92,12 +98,13 @@ public class Account {
         if (obj instanceof Account) {
             Account that = (Account) obj;
 
-            if (this.username.equals(that.username) &&
-                this.mail.equals(that.mail) &&
-                this.password.equals(that.password) &&
-                this.firstname.equals(that.firstname) &&
-                this.lastname.equals(that.lastname))
+            if (this.username.equals(that.username)
+                    && this.mail.equals(that.mail)
+                    && this.password.equals(that.password)
+                    && this.firstname.equals(that.firstname)
+                    && this.lastname.equals(that.lastname)) {
                 return true;
+            }
         }
 
         return false;

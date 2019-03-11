@@ -2,7 +2,9 @@ package database;
 
 import pojos.Account;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class AccountDao extends Dao {
 
@@ -10,6 +12,12 @@ public class AccountDao extends Dao {
         super();
     }
 
+
+    /** Checks whether a user exists in the database.
+     *
+     * @param username the user to check for
+     * @return true if the user exists, false otherwise
+     */
     public boolean exists(String username) {
         if (this.getAccount(username) == null) {
             return false;
@@ -17,6 +25,11 @@ public class AccountDao extends Dao {
         return true;
     }
 
+    /**
+     * Makes a query to the database for a certain account.
+     * @param username the user whose account we want to know
+     * @return the details of the account if it exists, null otherwise
+     */
     public Account getAccount(String username) {
         try {
             String query = "SELECT * FROM account WHERE username=?";
@@ -25,36 +38,43 @@ public class AccountDao extends Dao {
             st.setString(1, username);
             ResultSet rs = st.executeQuery();
 
-            Account a = null;
-            if(rs.next()) {
+            Account account = null;
+            if (rs.next()) {
                 String name = rs.getString("username");
                 String email = rs.getString("email");
                 String password = rs.getString("password");
                 String firstname = rs.getString("first_name");
                 String lastname = rs.getString("last_name");
                 int points = rs.getInt("total_points");
-                a = new Account(name, email, password, firstname, lastname);
-                a.setPoints(points);
+                account = new Account(name, email, password, firstname, lastname);
+                account.setPoints(points);
             }
             rs.close();
             st.close();
-            return a;
+            return account;
 
-        } catch(Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
             return null;
         }
 
     }
 
+    /**
+     * Creates an account in the database.
+     * @param acc the account to be added to the database
+     * @return true if the adding was successful, false otherwise
+     */
     public boolean createAccount(Account acc) {
         try {
 
-            if(exists(acc.getUsername())) return false;
+            if (exists(acc.getUsername())) {
+                return false;
+            }
 
-            String query = "INSERT INTO account (username, email, password," +
-                    " total_points, first_name, last_name)" +
-                    " VALUES  (?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO account (username, email, password,"
+                    + " total_points, first_name, last_name)"
+                    + " VALUES  (?, ?, ?, ?, ?, ?)";
 
             PreparedStatement st = this.conn.prepareStatement(query);
             st.setString(1, acc.getUsername());
@@ -68,7 +88,7 @@ public class AccountDao extends Dao {
             st.close();
             return true;
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
 
             System.out.println("we got into dao");
             System.out.println(e);
@@ -77,11 +97,18 @@ public class AccountDao extends Dao {
 
     }
 
+    /**
+     * Deletes an account if it exists.
+     * @param account the acount to be deleted from the database
+     */
     public void deleteAccount(Account account) {
         try {
             String query = "DELETE FROM account WHERE username = ?";
 
-            if(!exists(account.getUsername())) return;
+            if (!exists(account.getUsername())) {
+                return;
+            }
+
             PreparedStatement st = this.conn.prepareStatement(query);
             st.setString(1, account.getUsername());
             st.execute();

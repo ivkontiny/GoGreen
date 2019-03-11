@@ -16,32 +16,66 @@ public class FriendRequestController {
     FriendRequestService frs = new FriendRequestService();
     AccountService as = new AccountService();
 
+    /**
+     * Sends a friend request.
+     * @param sender the user sending the friend request
+     * @param receiver the user receiving the friend request
+     * @return true if the request was sent successfully, false otherwise
+     */
     @RequestMapping("/request/{username}")
-    public boolean sendRequest(@PathVariable("username") String sender,@RequestParam(value = "username",
-            defaultValue = "user") String receiver)
-    {
+    public boolean sendRequest(@PathVariable("username") String sender,
+                               @RequestParam(value = "username", defaultValue = "user")
+                                       String receiver) {
         //return receiver;
-        if(!as.userExists(sender)) return false;
-        if(!as.userExists(receiver)) return false;
-        if(frs.friendshipExists(new Friendship(sender,receiver))) return false;
+        if (!as.userExists(sender)) {
+            return false;
+        }
+
+        if (!as.userExists(receiver)) {
+            return false;
+        }
+
+        if (frs.friendshipExists(new Friendship(sender,receiver))) {
+            return false;
+        }
         //if(frs.friendshipExists(sender,receiver)) return false;
         return frs.sendRequest(new Friendship(sender,receiver));
     }
 
+
+    /**
+     * User accepts a friend request.
+     * @param receiver the receiver of the friend request
+     * @param sender the sender of the friend request
+     * @return true if the friend request was successfully accepted, false otherwise
+     */
     @RequestMapping("/accept_request/{username}")
-    public boolean acceptRequest(@PathVariable("username") String receiver,@RequestParam(value = "username",
-            defaultValue = "user") String sender)
-    {
+    public boolean acceptRequest(@PathVariable("username") String receiver,
+                                 @RequestParam(value = "username", defaultValue = "user")
+                                         String sender) {
         //return receiver;
-        if(!as.userExists(receiver)) return false;
-        if(!as.userExists(sender)) return false;
-        if(!frs.friendshipExists(new Friendship(sender,receiver))) return false;
+        if (!as.userExists(receiver)) {
+            return false;
+        }
+
+        if (!as.userExists(sender)) {
+            return false;
+        }
+
+        if (!frs.friendshipExists(new Friendship(sender,receiver))) {
+            return false;
+        }
+
         return frs.acceptRequest(new Friendship(sender,receiver));
     }
 
+    /**
+     * Returns the friendships of the user.
+     * @param user the user whose friendships we are interested in
+     * @return an array list containing all friendships of the current user
+     */
     @RequestMapping("/friendships/{username}")
-    public ArrayList<Friendship> getFriendships(@PathVariable("username") String user)
-    {
+    public ArrayList<Friendship> getFriendships(@PathVariable("username") String user) {
         return frs.getFriendships(user);
     }
 
