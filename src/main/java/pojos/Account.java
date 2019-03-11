@@ -7,7 +7,6 @@ public class Account {
     private String firstname;
     private String lastname;
     private int points;
-    private int count;
 
 
     public Account() {
@@ -80,16 +79,6 @@ public class Account {
 
     public void setPoints(int points) {
         this.points = points;
-    }
-
-
-    public int getId() {
-        return count;
-    }
-
-
-    public void setId(int id) {
-        this.count = id;
     }
 
 
