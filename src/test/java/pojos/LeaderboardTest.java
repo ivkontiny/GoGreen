@@ -1,14 +1,13 @@
 package pojos;
 
 import org.junit.Test;
-import pojos.Leaderboard;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 public class LeaderboardTest {
 
     @Test
-    public void TestConstrucrtor() {
+    public void TestConstructor() {
         ArrayList<String> usernames = new ArrayList<String>();
         ArrayList<Integer> points = new ArrayList<Integer>();
         String user1 = "Meepo";
@@ -27,6 +26,7 @@ public class LeaderboardTest {
         assertTrue(leaderboard.getPoints() == points);
         assertTrue(leaderboard.getUsernames() == usernames);
     }
+
     @Test
     public void TestConstructorNullLists() {
         ArrayList<String> usernames = null;
@@ -35,6 +35,7 @@ public class LeaderboardTest {
         assertTrue(leaderboard.getPoints() == points);
         assertTrue(leaderboard.getUsernames() == usernames);
     }
+
     @Test
     public void TestEqualsTrue() {
         ArrayList<String> usernames1 = new ArrayList<String>();
@@ -69,6 +70,7 @@ public class LeaderboardTest {
         Leaderboard leaderboard2 = new Leaderboard(usernames2, points2);
         assertTrue(leaderboard1.equals(leaderboard2) == true);
     }
+
     @Test
     public void TestEqualsFalse() {
         ArrayList<String> usernames1 = new ArrayList<String>();
@@ -103,6 +105,7 @@ public class LeaderboardTest {
         Leaderboard leaderboard2 = new Leaderboard(usernames2, points2);
         assertFalse(leaderboard1.equals(leaderboard2) == true);
     }
+
     @Test
     public void TestSetUsers() {
         ArrayList<String> usernames1 = new ArrayList<String>();
@@ -118,6 +121,7 @@ public class LeaderboardTest {
         leaderboard1.setUsernames(usernames2);
         assertTrue(leaderboard1.getUsernames() == usernames2);
     }
+
     @Test
     public void TestSetPoints() {
         ArrayList<String> usernames1 = new ArrayList<String>();
@@ -133,5 +137,48 @@ public class LeaderboardTest {
         Leaderboard leaderboard1 = new Leaderboard(usernames1, points1);
         leaderboard1.setPoints(points2);
         assertTrue(leaderboard1.getPoints() == points2);
+    }
+
+    @Test
+    public void testEqualsFalse1() {
+        ArrayList<String> usernames = new ArrayList<>();
+        usernames.add("user1");
+        usernames.add("user2");
+
+        ArrayList<Integer> points = new ArrayList<>();
+        points.add(100);
+        points.add(150);
+
+        Leaderboard leaderboard = new Leaderboard(usernames, points);
+
+        int var = 42;
+
+        assertNotEquals(leaderboard, var);
+    }
+
+    @Test
+    public void testEqualsFalse2() {
+        ArrayList<String> usernames = new ArrayList<>();
+        usernames.add("user1");
+        usernames.add("user2");
+
+        ArrayList<Integer> points = new ArrayList<>();
+        points.add(100);
+        points.add(150);
+
+        Leaderboard leaderboard = new Leaderboard(usernames, points);
+
+
+        ArrayList<String> usernames1 = new ArrayList<>();
+        usernames1.add("user1");
+        usernames1.add("user2");
+
+        ArrayList<Integer> points1 = new ArrayList<>();
+        points1.add(100);
+        points1.add(125);
+
+        Leaderboard leaderboard1 = new Leaderboard(usernames1, points1);
+
+        assertNotEquals(leaderboard, leaderboard1);
     }
 }
