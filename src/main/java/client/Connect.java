@@ -17,7 +17,7 @@ public class Connect {
     /** Get the email of a user with a concrete sessionID.
      */
     public static String getUsername() {
-        String url = "http://localhost:8080/user/";
+        String url = "http://142.93.230.132:8080/user/";
         url += Login.getSessionId();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -35,7 +35,7 @@ public class Connect {
      * @return true if the account is registered successfully, false otherwise
      */
     public static Boolean serverRegister(Account account) {
-        String url = "http://localhost:8080/register";
+        String url = "http://142.93.230.132:8080/register";
         url += "?username=" + account.getUsername();
         HttpHeaders headers = new HttpHeaders();
         // headers.add("Accept", MediaType.APPLICATION_JSON_VALUE);
@@ -58,7 +58,7 @@ public class Connect {
      */
     public static boolean serverLogin(String name, String pass) {
 
-        String url = "http://localhost:8080/login";
+        String url = "http://142.93.230.132:8080/login";
         String logincredentials = name + ":" + pass;
 
         HttpHeaders headers = new HttpHeaders();
