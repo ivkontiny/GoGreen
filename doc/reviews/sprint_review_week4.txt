@@ -5,7 +5,8 @@ On server side:
 -We succesfully created a database that is running remotely
 all data sent by the client is persistent
 Further improvement: we are still making research on the
-most efficient way to test the database.
+most efficient way to test the database. We are also focusing on figuring it out
+on how to use the Web API for the carbon footprint data.
 
 -We succesfully organised the code in Dao-Service-Controller structure
 Our code looks cleaner. We also used Mockito to test Service and Controller
