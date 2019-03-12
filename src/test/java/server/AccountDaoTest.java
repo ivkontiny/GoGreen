@@ -32,7 +32,7 @@ public class AccountDaoTest {
     }
 
     @Test
-    public void createExistsAccount()
+    public void testCreateExistsAccount()
     {
         accountDao = new AccountDao();
         accountDao.deleteAccount(newaccount);
@@ -45,7 +45,7 @@ public class AccountDaoTest {
     }
 
     @Test
-    public void getAccount()
+    public void testGetAccount()
     {
         accountDao = new AccountDao();
         accountDao.deleteAccount(newaccount);

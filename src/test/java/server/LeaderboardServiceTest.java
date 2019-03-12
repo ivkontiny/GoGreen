@@ -26,7 +26,7 @@ public class LeaderboardServiceTest {
         ls.setDb(ld);
     }
     @Test
-    public void GetLeaderboard()
+    public void testGetLeaderboard()
     {
         ls.setDb(ld);
         Leaderboard test_leaderboard = new Leaderboard(new ArrayList<String>(), new ArrayList<Integer>());

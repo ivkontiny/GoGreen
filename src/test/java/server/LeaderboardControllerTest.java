@@ -24,7 +24,7 @@ public class LeaderboardControllerTest {
     }
 
     @Test
-    public void getAdd()
+    public void testGetAdd()
     {
         Leaderboard testleaderboard = new Leaderboard(new ArrayList<String>(), new ArrayList<Integer>());
         when(ls.getLeaderboard(anyString())).thenReturn(testleaderboard);

@@ -32,7 +32,7 @@ public class FriendshipsConstrollerTest {
     }
 
     @Test
-    public void sendRequestFailed()
+    public void testSendRequestFailed()
     {
         when(test2.userExists("from")).thenReturn(false);
         assertFalse(frc.sendRequest("from","to"));
@@ -45,7 +45,7 @@ public class FriendshipsConstrollerTest {
     }
 
     @Test
-    public void sendRequestOK()
+    public void testSendRequestOK()
     {
         when(test1.friendshipExists(any(Friendship.class))).thenReturn(false);
         when(test2.userExists("from")).thenReturn(true);
@@ -55,7 +55,7 @@ public class FriendshipsConstrollerTest {
     }
 
     @Test
-    public void acceptRequestFailed()
+    public void testAcceptRequestFailed()
     {
         when(test2.userExists("from")).thenReturn(false);
         assertFalse(frc.acceptRequest("from","to"));
@@ -70,7 +70,7 @@ public class FriendshipsConstrollerTest {
     }
 
     @Test
-    public void acceptRequestOk()
+    public void testAcceptRequestOk()
     {
         when(test1.friendshipExists(any(Friendship.class))).thenReturn(true);
         when(test2.userExists("from")).thenReturn(true);
@@ -80,7 +80,7 @@ public class FriendshipsConstrollerTest {
     }
 
     @Test
-    public void getFriendships()
+    public void testGetFriendships()
     {
         when(test1.getFriendships(any(String.class))).thenReturn(new ArrayList<Friendship>());
         assertTrue(frc.getFriendships("user").size() == 0);

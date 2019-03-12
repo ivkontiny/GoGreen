@@ -21,7 +21,7 @@ public class AccountServiceTest {
     }
 
     @Test
-    public void existsAccount()
+    public void testExistsAccount()
     {
         when(db.exists("username")).thenReturn(true);
         assertTrue(as.userExists("username"));

@@ -11,7 +11,7 @@ import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class FriendshipsTest {
+public class FriendshipServiceTest {
 
     private FriendRequestService frs = new FriendRequestService();
     @Test

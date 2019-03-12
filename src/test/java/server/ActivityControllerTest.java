@@ -13,7 +13,7 @@ public class ActivityControllerTest {
 
 
     @Test
-    public void GetActivity()
+    public void testGetActivity()
     {
         Activity testactivity = new Activity();
         ActivityService test = mock(ActivityService.class);

@@ -18,7 +18,7 @@ public class ActivityServiceTest {
     Activity testactivity = new Activity();
 
     @Test
-    public void createActivity()
+    public void testCreateActivity()
     {
         as.setDb(ad);
         when(ad.createActivity(any(Activity.class))).thenReturn(true);
