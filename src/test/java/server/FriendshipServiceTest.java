@@ -15,7 +15,7 @@ public class FriendshipsTest {
 
     private FriendRequestService frs = new FriendRequestService();
     @Test
-    public void friendshipExists()
+    public void testFriendshipExists()
     {
         FriendshipDao test = mock(FriendshipDao.class);
         Friendship testfriendship = new Friendship("from","to");
@@ -30,7 +30,7 @@ public class FriendshipsTest {
         assertFalse(frs.acceptRequest(testfriendship));
     }
     @Test
-    public void friendshipSend()
+    public void testFriendshipSend()
     {
         FriendshipDao test = mock(FriendshipDao.class);
         Friendship testfriendship = new Friendship("from","to");
