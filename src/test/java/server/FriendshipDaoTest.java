@@ -19,7 +19,7 @@ public class FriendshipDaoTest {
         fd.removeFriendship(testfriendships);
     }
     @Test
-    public void existsFriendship()
+    public void testExistsFriendship()
     {
         fd.sendRequest(testfriendships);
         assertTrue(fd.friendshipExists(testfriendships));
@@ -29,7 +29,7 @@ public class FriendshipDaoTest {
     }
 
     @Test
-    public void sendAcceptFriendship()
+    public void testSendAcceptFriendship()
     {
         Friendship testfriendships = new Friendship("test", "bob");
         assertTrue(fd.sendRequest(testfriendships));

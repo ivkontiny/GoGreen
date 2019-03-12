@@ -8,9 +8,9 @@ import static junit.framework.TestCase.assertEquals;
 public class LeaderboardDaoTest {
 
     private LeaderboardDao ld = new LeaderboardDao();
+
     @Test
-    public void getPoints()
-    {
+    public void testGetPoints() {
         ld.resetPoints("test");
         assertEquals(ld.getPoints("test"), 0);
         ld.addPoints(1,"test");
@@ -18,8 +18,7 @@ public class LeaderboardDaoTest {
     }
 
     @Test
-    public void getLeaderboard()
-    {
+    public void testGetLeaderboardTest() {
         assertEquals(0,ld.getLeaderboard("not_existing_user").getUsernames().size());
     }
 }

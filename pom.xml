@@ -138,6 +138,7 @@
                     <excludes>
                         <exclude>**/client/*</exclude>
                         <exclude>**/GUI/*</exclude>
+                        <exclude>**/server/Application.class</exclude>
                     </excludes>
                     <rules>
                     </rules>
