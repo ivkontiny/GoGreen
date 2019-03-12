@@ -2,6 +2,7 @@ package server;
 
 import database.ActivityDao;
 import org.junit.Test;
+import org.mockito.Matchers;
 import pojos.Activity;
 import services.ActivityService;
 
@@ -21,9 +22,9 @@ public class ActivityServiceTest {
     public void testCreateActivity()
     {
         as.setDb(ad);
-        when(ad.createActivity(any(Activity.class))).thenReturn(true);
+        when(ad.createActivity(Matchers.any(Activity.class))).thenReturn(true);
         assertTrue(as.createActivity(testactivity));
-        when(ad.createActivity(any(Activity.class))).thenReturn(false);
+        when(ad.createActivity(Matchers.any(Activity.class))).thenReturn(false);
         assertFalse(as.createActivity(testactivity));
     }
 

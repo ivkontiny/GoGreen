@@ -2,6 +2,7 @@ package server;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Matchers;
 import pojos.Leaderboard;
 import services.LeaderboardService;
 
@@ -27,9 +28,9 @@ public class LeaderboardControllerTest {
     public void testGetAdd()
     {
         Leaderboard testleaderboard = new Leaderboard(new ArrayList<String>(), new ArrayList<Integer>());
-        when(ls.getLeaderboard(anyString())).thenReturn(testleaderboard);
+        when(ls.getLeaderboard(Matchers.anyString())).thenReturn(testleaderboard);
         assertEquals(testleaderboard,lc.getLeaderboard("username"));
-        doNothing().when(ls).addPoints(anyInt(),anyString());
+        doNothing().when(ls).addPoints(anyInt(),Matchers.anyString());
         assertTrue(lc.addPoints("username"));
 
     }

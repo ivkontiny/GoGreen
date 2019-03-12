@@ -2,6 +2,7 @@ package server;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Matchers;
 import pojos.Friendship;
 import services.AccountService;
 import services.FriendRequestService;
@@ -40,17 +41,17 @@ public class FriendshipsConstrollerTest {
         when(test2.userExists("to")).thenReturn(false);
         assertFalse(frc.sendRequest("from","to"));
         when(test2.userExists("to")).thenReturn(true);
-        when(test1.friendshipExists(any(Friendship.class))).thenReturn(true);
+        when(test1.friendshipExists(Matchers.any(Friendship.class))).thenReturn(true);
         assertFalse(frc.sendRequest("from","to"));
     }
 
     @Test
     public void testSendRequestOK()
     {
-        when(test1.friendshipExists(any(Friendship.class))).thenReturn(false);
+        when(test1.friendshipExists(Matchers.any(Friendship.class))).thenReturn(false);
         when(test2.userExists("from")).thenReturn(true);
         when(test2.userExists("to")).thenReturn(true);
-        when(test1.sendRequest(any(Friendship.class))).thenReturn(true);
+        when(test1.sendRequest(Matchers.any(Friendship.class))).thenReturn(true);
         assertTrue(frc.sendRequest("from","to"));
     }
 
@@ -62,27 +63,27 @@ public class FriendshipsConstrollerTest {
         when(test2.userExists("from")).thenReturn(true);
         when(test2.userExists("to")).thenReturn(false);
         assertFalse(frc.acceptRequest("from","to"));
-        when(test1.friendshipExists(any(Friendship.class))).thenReturn(false);
+        when(test1.friendshipExists(Matchers.any(Friendship.class))).thenReturn(false);
         when(test2.userExists("from")).thenReturn(true);
         when(test2.userExists("to")).thenReturn(true);
-        when(test1.acceptRequest(any(Friendship.class))).thenReturn(false);
+        when(test1.acceptRequest(Matchers.any(Friendship.class))).thenReturn(false);
         assertFalse(frc.acceptRequest("from","to"));
     }
 
     @Test
     public void testAcceptRequestOk()
     {
-        when(test1.friendshipExists(any(Friendship.class))).thenReturn(true);
+        when(test1.friendshipExists(Matchers.any(Friendship.class))).thenReturn(true);
         when(test2.userExists("from")).thenReturn(true);
         when(test2.userExists("to")).thenReturn(true);
-        when(test1.acceptRequest(any(Friendship.class))).thenReturn(true);
+        when(test1.acceptRequest(Matchers.any(Friendship.class))).thenReturn(true);
         assertTrue(frc.acceptRequest("from","to"));
     }
 
     @Test
     public void testGetFriendships()
     {
-        when(test1.getFriendships(any(String.class))).thenReturn(new ArrayList<Friendship>());
+        when(test1.getFriendships(Matchers.any(String.class))).thenReturn(new ArrayList<Friendship>());
         assertTrue(frc.getFriendships("user").size() == 0);
     }
 }

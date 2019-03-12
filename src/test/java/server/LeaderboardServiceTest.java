@@ -3,6 +3,7 @@ package server;
 import database.LeaderboardDao;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Matchers;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import pojos.Leaderboard;
 import services.LeaderboardService;
@@ -25,6 +26,7 @@ public class LeaderboardServiceTest {
     {
         ls.setDb(ld);
     }
+
     @Test
     public void testGetLeaderboard()
     {
@@ -33,7 +35,7 @@ public class LeaderboardServiceTest {
         when(ld.getLeaderboard("username")).thenReturn(test_leaderboard);
         assertEquals(ls.getDb(),ld);
         assertTrue(ls.getLeaderboard("username").getUsernames().size() == 0);
-        doNothing().when(ld).addPoints(anyInt(),anyString());
+        doNothing().when(ld).addPoints(Matchers.anyInt(),Matchers.anyString());
         ls.addPoints(10000,"username");
         assertTrue(ls.getLeaderboard("username").getUsernames().size() == 0);
 

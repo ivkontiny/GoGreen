@@ -58,7 +58,7 @@ public class AccountControllerTest {
     @Test
     public void testRegisterUserOk()
     {
-        Account accounttoadd = new Account();
+        Account accounttoadd = new Account("user","user","user","user","user");
         AccountService test = mock(AccountService.class);
         AccountController ac = new AccountController();
         ac.setLs(test);
@@ -68,7 +68,7 @@ public class AccountControllerTest {
     @Test
     public void testRegisterUserFailed()
     {
-        Account accounttoadd = new Account();
+        Account accounttoadd = new Account("user","user","user","user","user");
         AccountService test = mock(AccountService.class);
         AccountController ac = new AccountController();
         ac.setLs(test);
