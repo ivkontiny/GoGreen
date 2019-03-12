@@ -11,7 +11,7 @@ import services.LeaderboardService;
 @RestController
 public class LeaderboardController {
 
-    LeaderboardService ls = new LeaderboardService();
+    private LeaderboardService ls = new LeaderboardService();
 
     /**
      * Gets the leader board of the user.
@@ -32,8 +32,14 @@ public class LeaderboardController {
      * @return a string saying that we succeeded in adding points, an exception otherwise
      */
     @RequestMapping("/addpoints/{username}")
-    public String addPoints(@PathVariable("username") String username) {
+    public boolean addPoints(@PathVariable("username") String username) {
         ls.addPoints(1000, username);
-        return "Succesfully added points to" + username;
+        return true;
     }
+
+    public void setLs(LeaderboardService ls)
+    {
+        this.ls = ls;
+    }
+
 }

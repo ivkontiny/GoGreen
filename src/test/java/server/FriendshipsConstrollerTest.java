@@ -21,6 +21,7 @@ public class FriendshipsConstrollerTest {
     FriendRequestService test1 = mock(FriendRequestService.class);
     AccountService test2 = mock(AccountService.class);
     Friendship test3 = mock(Friendship.class);
+
     @Before
     public void configure()
     {
@@ -29,6 +30,7 @@ public class FriendshipsConstrollerTest {
         frc.setFrs(test1);
         frc.setAs(test2);
     }
+
     @Test
     public void sendRequestFailed()
     {
@@ -41,6 +43,7 @@ public class FriendshipsConstrollerTest {
         when(test1.friendshipExists(any(Friendship.class))).thenReturn(true);
         assertFalse(frc.sendRequest("from","to"));
     }
+
     @Test
     public void sendRequestOK()
     {
@@ -50,6 +53,7 @@ public class FriendshipsConstrollerTest {
         when(test1.sendRequest(any(Friendship.class))).thenReturn(true);
         assertTrue(frc.sendRequest("from","to"));
     }
+
     @Test
     public void acceptRequestFailed()
     {

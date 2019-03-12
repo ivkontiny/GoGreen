@@ -16,6 +16,7 @@ public class ActivityServiceTest {
     private ActivityService as = new ActivityService();
     private ActivityDao ad = mock(ActivityDao.class);
     Activity testactivity = new Activity();
+
     @Test
     public void createActivity()
     {
