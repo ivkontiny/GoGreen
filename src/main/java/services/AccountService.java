@@ -16,12 +16,16 @@ public class AccountService {
      * @param password the inputted password
      * @return true if the log in was successful, false otherwise
      */
-    public boolean checkLogin(String username, String password) throws SQLException {
-        if (db.exists(username)) {
-            String expPass = db.getAccount(username).getPassword();
-            return password.equals(expPass);
+    public boolean checkLogin(String username, String password) {
+        try {
+            if (db.exists(username)) {
+                String expPass = db.getAccount(username).getPassword();
+                return password.equals(expPass);
+            }
+            return false;
+        } catch (SQLException e) {
+            return false;
         }
-        return false;
     }
 
 
@@ -30,11 +34,15 @@ public class AccountService {
      * @param acc the account to be created
      * @return true if the account was successfully created, false otherwise
      */
-    public boolean createAccount(Account acc) throws SQLException {
-        if (db.exists(acc.getUsername())) {
+    public boolean createAccount(Account acc) {
+        try {
+            if (db.exists(acc.getUsername())) {
+                return false;
+            }
+            return db.createAccount(acc);
+        } catch (SQLException e) {
             return false;
         }
-        return db.createAccount(acc);
     }
 
 
@@ -43,13 +51,25 @@ public class AccountService {
      * @param user the user who is checked to exist
      * @return true if the user exists, false otherwise
      */
-    public boolean userExists(String user) throws SQLException {
-        return db.exists(user);
+    public boolean userExists(String user) {
+        try {
+            return db.exists(user);
+        } catch (SQLException e) {
+            return false;
+        }
     }
 
 
     public void setDb(AccountDao db) {
         this.db = db;
+    }
+
+    public Account getAccount(String account) {
+        try {
+            return db.getAccount(account);
+        } catch (SQLException e) {
+            return null;
+        }
     }
 }
 

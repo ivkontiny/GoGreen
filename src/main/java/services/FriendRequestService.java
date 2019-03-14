@@ -3,6 +3,7 @@ package services;
 import database.FriendshipDao;
 import pojos.Friendship;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class FriendRequestService {
@@ -10,18 +11,27 @@ public class FriendRequestService {
     FriendshipDao db = new FriendshipDao();
 
     public boolean friendshipExists(Friendship friendship) {
-        //Friendship friendship = new Friendship(sender,receiver);
-        return db.friendshipExists(friendship);
+        try {
+            return db.friendshipExists(friendship);
+        } catch (SQLException e) {
+            return false;
+        }
     }
 
     public boolean sendRequest(Friendship friendship) {
-        //Friendship friendship = new Friendship(sender,receiver);
-        return db.sendRequest(friendship);
+        try {
+            return db.sendRequest(friendship);
+        } catch (SQLException e) {
+            return false;
+        }
     }
 
     public boolean acceptRequest(Friendship friendship) {
-        //Friendship friendship = new Friendship(sender, receiver);
-        return db.acceptRequest(friendship);
+        try {
+            return db.acceptRequest(friendship);
+        } catch (SQLException e) {
+            return false;
+        }
     }
 
     public void setDb(FriendshipDao fd) {
@@ -29,6 +39,10 @@ public class FriendRequestService {
     }
 
     public ArrayList<Friendship> getFriendships(String user) {
-        return db.getFriendships(user);
+        try {
+            return db.getFriendships(user);
+        } catch (SQLException e) {
+            return null;
+        }
     }
 }
