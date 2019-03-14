@@ -7,6 +7,7 @@ import pojos.Friendship;
 import services.AccountService;
 import services.FriendRequestService;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertFalse;
@@ -33,8 +34,7 @@ public class FriendshipsConstrollerTest {
     }
 
     @Test
-    public void testSendRequestFailed()
-    {
+    public void testSendRequestFailed() throws SQLException {
         when(test2.userExists("from")).thenReturn(false);
         assertFalse(frc.sendRequest("from","to"));
         when(test2.userExists("from")).thenReturn(true);
@@ -46,7 +46,7 @@ public class FriendshipsConstrollerTest {
     }
 
     @Test
-    public void testSendRequestOK()
+    public void testSendRequestOK() throws SQLException
     {
         when(test1.friendshipExists(Matchers.any(Friendship.class))).thenReturn(false);
         when(test2.userExists("from")).thenReturn(true);
@@ -56,7 +56,7 @@ public class FriendshipsConstrollerTest {
     }
 
     @Test
-    public void testAcceptRequestFailed()
+    public void testAcceptRequestFailed() throws SQLException
     {
         when(test2.userExists("from")).thenReturn(false);
         assertFalse(frc.acceptRequest("from","to"));
@@ -71,8 +71,7 @@ public class FriendshipsConstrollerTest {
     }
 
     @Test
-    public void testAcceptRequestOk()
-    {
+    public void testAcceptRequestOk () throws SQLException {
         when(test1.friendshipExists(Matchers.any(Friendship.class))).thenReturn(true);
         when(test2.userExists("from")).thenReturn(true);
         when(test2.userExists("to")).thenReturn(true);
@@ -81,8 +80,7 @@ public class FriendshipsConstrollerTest {
     }
 
     @Test
-    public void testGetFriendships()
-    {
+    public void testGetFriendships() {
         when(test1.getFriendships(Matchers.any(String.class))).thenReturn(new ArrayList<Friendship>());
         assertTrue(frc.getFriendships("user").size() == 0);
     }

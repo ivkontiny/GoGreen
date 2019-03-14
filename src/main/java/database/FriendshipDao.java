@@ -15,6 +15,11 @@ public class FriendshipDao extends Dao {
 
     private AccountDao ad = new AccountDao();
 
+    public void setAd(AccountDao ad)
+    {
+        this.ad = ad;
+    }
+
     /**
      * Adds information to the database when a user accepts a friend request.
      * @param friendship the friendship which will be accepted
@@ -163,7 +168,6 @@ public class FriendshipDao extends Dao {
             return true;
 
         } catch (SQLException e) {
-            System.out.println("we got into dao");
             System.out.println(e);
             return false;
         }

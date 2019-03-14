@@ -15,27 +15,28 @@ import pojos.Friendship;
 
 import javax.validation.constraints.AssertTrue;
 
+import java.sql.SQLException;
+
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
 
 public class AccountDaoTest {
 
 
-    private AccountDao accountDao;
+    private AccountDao accountDao = new AccountDao();
     private FriendshipDao friendshipDao;
     private Account newaccount;
     private ActivityDao activityDao;
 
     @Before
     public void configure() {
+        accountDao.changeDatabase("test");
         newaccount = new Account("user_test", "user", "user", "user", "user");
     }
 
     @Test
-    public void testCreateExistsAccount()
+    public void testCreateExistsAccount ()throws SQLException
     {
-        accountDao = new AccountDao();
-        accountDao.deleteAccount(newaccount);
         assertFalse(accountDao.exists("user_test"));
         assertTrue(accountDao.createAccount(newaccount));
         assertFalse(accountDao.createAccount(newaccount));
@@ -45,10 +46,8 @@ public class AccountDaoTest {
     }
 
     @Test
-    public void testGetAccount()
+    public void testGetAccount() throws SQLException
     {
-        accountDao = new AccountDao();
-        accountDao.deleteAccount(newaccount);
         assertNull(accountDao.getAccount("user_test"));
         accountDao.createAccount(newaccount);
         assertNotNull(accountDao.getAccount("user_test"));

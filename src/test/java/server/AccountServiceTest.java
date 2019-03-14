@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 import services.AccountService;
 
+import java.sql.SQLException;
+
 import static junit.framework.TestCase.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -21,7 +23,7 @@ public class AccountServiceTest {
     }
 
     @Test
-    public void testExistsAccount()
+    public void testExistsAccount() throws SQLException
     {
         when(db.exists("username")).thenReturn(true);
         assertTrue(as.userExists("username"));

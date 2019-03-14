@@ -5,6 +5,9 @@ import pojos.Activity;
 import services.AccountService;
 import services.ActivityService;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import static junit.framework.TestCase.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -13,13 +16,14 @@ public class ActivityControllerTest {
 
 
     @Test
-    public void testGetActivity()
+    public void testGetActivity() throws SQLException
     {
-        Activity testactivity = new Activity();
+
+        ArrayList<Activity> testactivity = new ArrayList<>();
         ActivityService test = mock(ActivityService.class);
         ActivityController ac = new ActivityController();
         ac.as  = test;
-        when(test.getActivity("ate lunch")).thenReturn(testactivity);
-        assertEquals(ac.getActivity("ate lunch"), testactivity);
+        when(test.getActivities("test")).thenReturn(testactivity);
+        assertEquals(ac.getActivities("test"), testactivity);
     }
 }

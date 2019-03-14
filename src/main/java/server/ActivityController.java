@@ -5,14 +5,16 @@ import org.springframework.web.bind.annotation.*;
 import pojos.Activity;
 import services.ActivityService;
 
+import java.util.ArrayList;
+
 @RestController
 public class ActivityController {
 
     ActivityService as = new ActivityService();
 
-    @RequestMapping("/get_activity/{description}")
-    public Activity getActivity(@PathVariable("description") String description ) {
-        return as.getActivity(description);
+    @RequestMapping("/get_activity/{username}")
+    public ArrayList<Activity> getActivities(@PathVariable("username") String username) {
+        return as.getActivities(username);
     }
 
     @PostMapping("/add_activity")

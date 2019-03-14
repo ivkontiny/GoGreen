@@ -18,7 +18,7 @@ public class AccountDao extends Dao {
      * @param username the user to check for
      * @return true if the user exists, false otherwise
      */
-    public boolean exists(String username) {
+    public boolean exists(String username) throws SQLException{
         if (this.getAccount(username) == null) {
             return false;
         }
@@ -30,9 +30,9 @@ public class AccountDao extends Dao {
      * @param username the user whose account we want to know
      * @return the details of the account if it exists, null otherwise
      */
-    public Account getAccount(String username) {
-        try {
-            String query = "SELECT * FROM account WHERE username=?";
+    public Account getAccount(String username) throws SQLException {
+
+        String query = "SELECT * FROM account WHERE username=?";
 
             PreparedStatement st = this.conn.prepareStatement(query);
             st.setString(1, username);
@@ -53,11 +53,6 @@ public class AccountDao extends Dao {
             st.close();
             return account;
 
-        } catch (SQLException e) {
-            System.out.println(e);
-            return null;
-        }
-
     }
 
     /**
@@ -65,8 +60,7 @@ public class AccountDao extends Dao {
      * @param acc the account to be added to the database
      * @return true if the adding was successful, false otherwise
      */
-    public boolean createAccount(Account acc) {
-        try {
+    public boolean createAccount(Account acc) throws SQLException {
 
             if (exists(acc.getUsername())) {
                 return false;
@@ -88,21 +82,14 @@ public class AccountDao extends Dao {
             st.close();
             return true;
 
-        } catch (SQLException e) {
-
-            System.out.println("we got into dao");
-            System.out.println(e);
-            return false;
-        }
-
     }
 
     /**
      * Deletes an account if it exists.
      * @param account the acount to be deleted from the database
      */
-    public void deleteAccount(Account account) {
-        try {
+    public void deleteAccount(Account account) throws SQLException {
+
             String query = "DELETE FROM account WHERE username = ?";
 
             if (!exists(account.getUsername())) {
@@ -113,10 +100,5 @@ public class AccountDao extends Dao {
             st.setString(1, account.getUsername());
             st.execute();
             st.close();
-
-        } catch (SQLException sqlE) {
-            System.out.println("HERE");
-            System.out.println(sqlE);
-        }
     }
 }
