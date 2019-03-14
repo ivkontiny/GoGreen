@@ -9,18 +9,19 @@ public abstract class Dao {
 
     public Connection conn;
 
+    String url = "jdbc:postgresql://142.93.230.132/gogreen";
+
     /**
      * Makes the connection to the database.
      */
     public Dao() {
         try {
-            String url = "jdbc:postgresql://142.93.230.132/gogreen";
 
             Properties props = new Properties();
             props.setProperty("user", "gogreen");
             props.setProperty("password", "gogreen123");
 
-            this.conn = DriverManager.getConnection(url, props);
+            this.conn = DriverManager.getConnection(this.url, props);
 
         } catch (SQLException e) {
 
@@ -28,5 +29,12 @@ public abstract class Dao {
         }
     }
 
-
+    /**
+     *changes the database the Dao connects to
+     * @param url
+     */
+    public void changeDatabase(String url) {
+        url = "jdbc:postgresql://142.93.230.132/" + url;
+        this.url = url;
+    }
 }

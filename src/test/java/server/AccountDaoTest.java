@@ -27,14 +27,13 @@ public class AccountDaoTest {
     private ActivityDao activityDao;
 
     @Before
-    public void configure()
-    {
-        newaccount = new Account("user_test","user","user","user","user");
+    public void configure() {
+        newaccount = new Account("user_test", "user", "user", "user", "user");
     }
-    @Test
-    public void createExistsAccount()
-    {
 
+    @Test
+    public void testCreateExistsAccount()
+    {
         accountDao = new AccountDao();
         accountDao.deleteAccount(newaccount);
         assertFalse(accountDao.exists("user_test"));
@@ -46,7 +45,7 @@ public class AccountDaoTest {
     }
 
     @Test
-    public void getAccount()
+    public void testGetAccount()
     {
         accountDao = new AccountDao();
         accountDao.deleteAccount(newaccount);

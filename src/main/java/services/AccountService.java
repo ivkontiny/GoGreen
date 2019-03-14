@@ -5,7 +5,7 @@ import pojos.Account;
 
 public class AccountService {
 
-    public AccountDao db = new AccountDao();
+    private AccountDao db = new AccountDao();
 
 
     /**

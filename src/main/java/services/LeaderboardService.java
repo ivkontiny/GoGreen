@@ -5,18 +5,23 @@ import pojos.Leaderboard;
 
 public class LeaderboardService {
 
-    LeaderboardDao db = new LeaderboardDao();
+    private LeaderboardDao ld = new LeaderboardDao();
 
     public Leaderboard getLeaderboard(String username) {
-        return db.getLeaderboard(username);
+        return ld.getLeaderboard(username);
     }
 
     public void addPoints(int toadd,String username) {
-        db.addPoints(toadd,username);
+        ld.addPoints(toadd,username);
+    }
+
+    public void setDb(LeaderboardDao db)
+    {
+        this.ld = db;
     }
 
     public LeaderboardDao getDb() {
-        return this.db;
+        return this.ld;
     }
 
 }

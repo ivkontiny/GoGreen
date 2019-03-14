@@ -23,7 +23,7 @@ public class SessionTest {
         testuser = new Account("1","1","1","1","1");
     }
     @Test
-    public void SessionConstructor()
+    public void testSessionConstructor()
     {
         LocalDateTime testtime = LocalDateTime.now();
         Session testsession = new Session("1",testtime);
@@ -32,7 +32,7 @@ public class SessionTest {
     }
 
     @Test
-    public void SessiongetUsername()
+    public void testSessionGetUsernameTest()
     {
         LocalDateTime testtime = LocalDateTime.now();
         Session testsession = new Session("1",testtime);
@@ -40,7 +40,7 @@ public class SessionTest {
     }
 
     @Test
-    public void SessiongetTime()
+    public void testSessionGetTime()
     {
         LocalDateTime testtime = LocalDateTime.now();
         Session testsession = new Session("1",testtime);
@@ -48,7 +48,7 @@ public class SessionTest {
     }
 
     @Test
-    public void SessionsetTime()
+    public void testSessionSetTime()
     {
         LocalDateTime testtime = LocalDateTime.now();
         Session testsession = new Session("1",testtime);
@@ -58,7 +58,7 @@ public class SessionTest {
     }
 
     @Test
-    public void SessionsetUsername()
+    public void testSessionSetUsername()
     {
         LocalDateTime testtime = LocalDateTime.now();
         Session testsession = new Session("1",testtime);
@@ -67,13 +67,16 @@ public class SessionTest {
     }
 
     @Test
-    public void SessionControl()
+    public void testSessionControl()
     {
         SessionService ss = new SessionService();
         SessionController sc = new SessionController();
+        assertNull(sc.getUser("1"));
         ss.putSession("1", testsession);
         assertTrue(sc.getUser("1").equals("user1"));
-        SessionService.removeSession("1");
+        sc.logOut("0");
+        sc.logOut("1");
         assertNull(sc.getUser("1"));
     }
+
 }

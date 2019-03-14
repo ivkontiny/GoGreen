@@ -2,6 +2,7 @@ package server;
 
 import database.AccountDao;
 import database.ActivityDao;
+import org.junit.Before;
 import org.junit.Test;
 import pojos.Account;
 import pojos.Activity;
@@ -13,33 +14,36 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class LogInTest {
+public class AccountControllerTest {
+
+    private AccountController ac = new AccountController();
+    @Before
+    public void configure() {}
 
     @Test
-    public void LogInOk()
+    public void testLogInOk()
     {
         AccountService test = mock(AccountService.class);
-        AccountController ac = new AccountController();
         when(test.checkLogin("user", "password")).thenReturn(true);
-        ac.ls = test;
+        ac.setLs(test);
         assertNotNull(ac.logIn("user:password"));
     }
     @Test
-    public void LogInFailed()
+    public void testLogInFailed()
     {
         AccountService test = mock(AccountService.class);
         AccountController ac = new AccountController();
         when(test.checkLogin("user", "password")).thenReturn(false);
-        ac.ls = test;
+        ac.setLs(test);
         assertNull(ac.logIn("user:password"));
     }
     @Test
-    public void GetAccountNotFound()
+    public void testGetAccountNotFound()
     {
         AccountDao test = mock(AccountDao.class);
         AccountController ac = new AccountController();
         when(test.getAccount("user")).thenReturn(null);
-        ac.db = test;
+        ac.setDb(test);
         assertNull(ac.getAccounts("user"));
     }
     @Test
@@ -48,32 +52,32 @@ public class LogInTest {
         AccountDao test = mock(AccountDao.class);
         AccountController ac = new AccountController();
         when(test.getAccount("user")).thenReturn(new Account());
-        ac.db = test;
+        ac.setDb(test);
         assertNotNull(ac.getAccounts("user"));
     }
     @Test
-    public void RegisterUserOk()
+    public void testRegisterUserOk()
     {
-        Account accounttoadd = new Account();
+        Account accounttoadd = new Account("user","user","user","user","user");
         AccountService test = mock(AccountService.class);
         AccountController ac = new AccountController();
-        ac.ls = test;
+        ac.setLs(test);
         when(test.createAccount(accounttoadd)).thenReturn(true);
         assertTrue(ac.registerUser("username",accounttoadd));
     }
     @Test
-    public void RegisterUserFailed()
+    public void testRegisterUserFailed()
     {
-        Account accounttoadd = new Account();
+        Account accounttoadd = new Account("user","user","user","user","user");
         AccountService test = mock(AccountService.class);
         AccountController ac = new AccountController();
-        ac.ls = test;
+        ac.setLs(test);
         when(test.createAccount(accounttoadd)).thenReturn(false);
         assertFalse(ac.registerUser("username",accounttoadd));
     }
 
     @Test
-    public void AccountServiceOk()
+    public void testAccountServiceOk()
     {
         Account testaccount = new Account("user", "user", "password", "user", "user");
         AccountDao test = mock(AccountDao.class);
@@ -85,7 +89,7 @@ public class LogInTest {
     }
 
     @Test
-    public void AccountServiceFailed()
+    public void testAccountServiceFailed()
     {
         //Account testaccount = new Account("user", "user", "password", "user", "user");
         AccountDao test = mock(AccountDao.class);
@@ -97,7 +101,7 @@ public class LogInTest {
     }
 
     @Test
-    public void AccountServiceCreateFailed()
+    public void testAccountServiceCreateFailed()
     {
         Account testaccount = new Account("user", "user", "password", "user", "user");
         AccountDao test = mock(AccountDao.class);
@@ -109,7 +113,7 @@ public class LogInTest {
     }
 
     @Test
-    public void AccountServiceCreateOk()
+    public void testAccountServiceCreateOk()
     {
         Account testaccount = new Account("user", "user", "password", "user", "user");
         AccountDao test = mock(AccountDao.class);
@@ -121,7 +125,7 @@ public class LogInTest {
     }
 
     @Test
-    public void ActivityServiceOk()
+    public void testActivityServiceOk()
     {
         ActivityDao test = mock(ActivityDao.class);
         ActivityService acts = new ActivityService();
@@ -133,7 +137,7 @@ public class LogInTest {
     }
 
     @Test
-    public void ActivityServiceFailed()
+    public void testActivityServiceFailed()
     {
         ActivityDao test = mock(ActivityDao.class);
         ActivityService acts = new ActivityService();

@@ -1,6 +1,7 @@
 package server;
 
 import database.FriendshipDao;
+import org.junit.Before;
 import org.junit.Test;
 import pojos.Friendship;
 
@@ -11,10 +12,15 @@ import static org.junit.Assert.assertNotNull;
 public class FriendshipDaoTest {
 
     private FriendshipDao fd = new FriendshipDao();
-    @Test
-    public void existsFriendship()
+    private Friendship testfriendships = new Friendship("test", "bob");
+    @Before
+    public void configure()
     {
-        Friendship testfriendships = new Friendship("test", "bob");
+        fd.removeFriendship(testfriendships);
+    }
+    @Test
+    public void testExistsFriendship()
+    {
         fd.sendRequest(testfriendships);
         assertTrue(fd.friendshipExists(testfriendships));
         fd.removeFriendship(testfriendships);
@@ -23,7 +29,7 @@ public class FriendshipDaoTest {
     }
 
     @Test
-    public void sendAcceptFriendship()
+    public void testSendAcceptFriendship()
     {
         Friendship testfriendships = new Friendship("test", "bob");
         assertTrue(fd.sendRequest(testfriendships));
