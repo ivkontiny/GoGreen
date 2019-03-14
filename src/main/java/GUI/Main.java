@@ -16,11 +16,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+        ActivityDB.initialize();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Home.fxml"));
         ControllerHome.welcomeMessage(root);
         primaryStage.setTitle("GO GREEN");
         primaryStage.setScene(new Scene(root));
-
         primaryStage.show();
     }
 }

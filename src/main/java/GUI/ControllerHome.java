@@ -51,8 +51,7 @@ public class ControllerHome implements Initializable {
      * @throws IOException when there is a problem in the action event
      */
     public void loadActivities(javafx.event.ActionEvent actionEvent) throws IOException {
-        BorderPane pane =
-                FXMLLoader.load(getClass().getClassLoader().getResource("Activities.fxml"));
+        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Activities.fxml"));
 
         rootPane.getChildren().setAll(pane);
     }
