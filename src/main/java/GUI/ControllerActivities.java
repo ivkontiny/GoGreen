@@ -65,9 +65,31 @@ public class ControllerActivities implements Initializable {
         }
     }
 
+    public void addActivity(javafx.event.ActionEvent actionEvent) {
+        String actDesc = (String) activityBox.getValue();
+        int points;
 
-    public void loadStatistics(javafx.event.ActionEvent actionEvent) throws IOException {
-        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Statistics.fxml"));
-        rootPane.getChildren().setAll(pane);
+        if(actDesc.equals("Vegetarian meal")) {
+            points = 150;
+        } else {
+            points = 100;
+        }
+
+        Activity activity = new Activity(actDesc, Category.food, points,
+                Date.valueOf(LocalDate.now()), Connect.getUsername());
+
+        if (Connect.addActivity(activity)) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setHeaderText("Activity added successfully!");
+            alert.setContentText(actDesc + " added successfully!");
+            alert.showAndWait();
+        }
+
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Something went wrong!");
+            alert.setContentText("Your " + actDesc + " couldn't be added!");
+            alert.showAndWait();
+        }
     }
 }
