@@ -1,16 +1,22 @@
 package GUI;
 
+import client.Connect;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import pojos.Activity;
+import pojos.Category;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ControllerActivities implements Initializable {
@@ -60,6 +66,30 @@ public class ControllerActivities implements Initializable {
     }
 
     public void addActivity(javafx.event.ActionEvent actionEvent) {
-        
+        String actDesc = (String) activityBox.getValue();
+        int points;
+
+        if(actDesc.equals("Vegetarian meal")) {
+            points = 150;
+        } else {
+            points = 100;
+        }
+
+        Activity activity = new Activity(actDesc, Category.food, points,
+                Date.valueOf(LocalDate.now()), Connect.getUsername());
+
+        if (Connect.addActivity(activity)) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setHeaderText("Activity added successfully!");
+            alert.setContentText(actDesc + " added successfully!");
+            alert.showAndWait();
+        }
+
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Something went wrong!");
+            alert.setContentText("Your " + actDesc + " couldn't be added!");
+            alert.showAndWait();
+        }
     }
 }

@@ -8,8 +8,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import pojos.Account;
+import pojos.Activity;
 
 //import server.Application;
+//142.93.230.132:8080
 
 public class Connect {
 
@@ -84,5 +86,18 @@ public class Connect {
         return resp;**/
 
         return response != null;
+    }
+
+    public static boolean addActivity(Activity activity) {
+        //System.out.println("HERE!!");
+        String url = "http://142.93.230.132:8080/add_activity";
+        HttpHeaders httpHeaders = new HttpHeaders();
+
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<Activity> requestBody = new HttpEntity<>(activity, httpHeaders);
+
+        boolean response = restTemplate.postForObject(url, requestBody, Boolean.class);
+        return response;
     }
 }
