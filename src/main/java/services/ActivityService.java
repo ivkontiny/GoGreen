@@ -1,5 +1,6 @@
 package services;
 
+import database.AccountDao;
 import database.ActivityDao;
 import pojos.Activity;
 
@@ -21,7 +22,9 @@ public class ActivityService {
 
     public boolean createActivity(Activity act) {
         try {
-            return db.createActivity(act);
+            AccountService as = new AccountService();
+            return db.createActivity(act)
+                    && as.updatePoints(act.getUsername(), act.getPoints());
         } catch (SQLException e) {
             return false;
         }
