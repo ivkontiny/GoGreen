@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerMyLog implements Initializable {
+public class ControllerStatistics implements Initializable {
     @FXML
     private BorderPane rootPane;
 
@@ -17,7 +17,6 @@ public class ControllerMyLog implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-
 
     /** Loads the home page.
      *
@@ -27,6 +26,16 @@ public class ControllerMyLog implements Initializable {
     public void loadHome(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Home.fxml"));
         ControllerHome.welcomeMessage(pane);
+        rootPane.getChildren().setAll(pane);
+    }
+
+    /**
+     * Loads the my log page on action
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void loadMyLog(javafx.event.ActionEvent actionEvent) throws IOException {
+        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("MyLog.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 
@@ -41,8 +50,5 @@ public class ControllerMyLog implements Initializable {
         rootPane.getChildren().setAll(pane);
     }
 
-    public void loadStatistics(javafx.event.ActionEvent actionEvent) throws IOException {
-        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Statistics.fxml"));
-        rootPane.getChildren().setAll(pane);
-    }
 }
+

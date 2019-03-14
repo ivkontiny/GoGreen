@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
@@ -15,11 +17,19 @@
     <left>
         <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9bc782" height="84.0" stroke="#9bc782" strokeType="INSIDE" style="-fx-background-radius: 0;" width="129.0" />
+            <AnchorPane prefHeight="82.0" prefWidth="100.0" style="-fx-background-color: #9bc782;">
+               <children>
+                  <ImageView fitHeight="85.0" fitWidth="85.0" layoutX="8.0" layoutY="-2.0">
+                     <image>
+                        <Image url="@logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
                 <Button mnemonicParsing="false" onAction="#loadHome" prefHeight="64.0" prefWidth="129.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Home" textFill="WHITE" />
                 <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="129.0" style="-fx-background-color: #6BC782; -fx-background-radius: 0;" text="My Log" textFill="WHITE" />
                 <Button mnemonicParsing="false" onAction="#loadActivities" prefHeight="64.0" prefWidth="129.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Activities" textFill="WHITE" />
-                <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="129.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Button" textFill="WHITE" />
+                <Button mnemonicParsing="false" onAction="#loadStatistics" prefHeight="64.0" prefWidth="129.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Statistics" textFill="WHITE" />
                 <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="129.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Button" textFill="WHITE" />
             </children>
         </VBox>
@@ -37,11 +47,11 @@
     <center>
         <Pane prefHeight="327.0" prefWidth="354.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView layoutX="52.0" layoutY="78.0" prefHeight="236.0" prefWidth="236.0">
+            <TableView layoutX="37.0" layoutY="78.0" prefHeight="236.0" prefWidth="313.0">
               <columns>
-                <TableColumn prefWidth="70.0" text="C2" />
-                  <TableColumn prefWidth="75.0" text="Column X" />
-                <TableColumn text="C1" />
+                <TableColumn prefWidth="191.0" text="Description" />
+                  <TableColumn prefWidth="56.0" text="Date" />
+                <TableColumn prefWidth="65.0" text="Points" />
               </columns>
             </TableView>
          </children>
