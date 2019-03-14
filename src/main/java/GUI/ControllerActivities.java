@@ -62,7 +62,4 @@ public class ControllerActivities implements Initializable {
     public void addActivity(javafx.event.ActionEvent actionEvent) {
         
     }
-
-
-
 }
