@@ -33,8 +33,16 @@ public abstract class Dao {
      *changes the database the Dao connects to
      * @param url
      */
-    public void changeDatabase(String url) {
-        url = "jdbc:postgresql://142.93.230.132/" + url;
-        this.url = url;
+    public void changeDatabase(String URL) {
+        try {
+            this.url = "jdbc:postgresql://142.93.230.132/" + URL;
+            //this.url = URL;
+            Properties props = new Properties();
+            props.setProperty("user", "gogreen");
+            props.setProperty("password", "gogreen123");
+            this.conn = DriverManager.getConnection(this.url, props);
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 }
