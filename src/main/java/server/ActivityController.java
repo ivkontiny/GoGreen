@@ -1,9 +1,7 @@
 package server;
 
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pojos.Activity;
 import services.ActivityService;
 
@@ -15,5 +13,10 @@ public class ActivityController {
     @RequestMapping("/get_activity/{description}")
     public Activity getActivity(@PathVariable("description") String description ) {
         return as.getActivity(description);
+    }
+
+    @PostMapping("/add_activity")
+    public boolean addActivity(@RequestBody Activity activity) {
+        return as.createActivity(activity);
     }
 }
