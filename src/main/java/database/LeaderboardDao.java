@@ -122,8 +122,6 @@ public class LeaderboardDao extends Dao {
                 				totalPoints.add(j - 1, totalPoints.get(j));
                 			}
                 		}
-                    usernames.add(search.getSender());
-                    totalPoints.add(getPoints(search.getSender()));
                 	}
                 } else {
                 	if(totalPoints.get(i -1) != null && totalPoints.get(i - 1) > getPoints(search.getReceiver())) {
