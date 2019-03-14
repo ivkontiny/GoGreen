@@ -8,6 +8,7 @@ import pojos.Friendship;
 import services.AccountService;
 import services.FriendRequestService;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 @RestController
@@ -25,7 +26,7 @@ public class FriendRequestController {
     @RequestMapping("/request/{username}")
     public boolean sendRequest(@PathVariable("username") String sender,
                                @RequestParam(value = "username", defaultValue = "user")
-                                       String receiver) {
+                                       String receiver) throws SQLException {
         //return receiver;
         if (!as.userExists(sender)) {
             return false;
@@ -52,7 +53,7 @@ public class FriendRequestController {
     @RequestMapping("/accept_request/{username}")
     public boolean acceptRequest(@PathVariable("username") String receiver,
                                  @RequestParam(value = "username", defaultValue = "user")
-                                         String sender) {
+                                         String sender) throws SQLException {
         //return receiver;
         if (!as.userExists(receiver)) {
             return false;

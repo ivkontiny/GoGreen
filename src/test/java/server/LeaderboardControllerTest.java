@@ -6,6 +6,7 @@ import org.mockito.Matchers;
 import pojos.Leaderboard;
 import services.LeaderboardService;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static junit.framework.TestCase.assertEquals;
@@ -25,8 +26,7 @@ public class LeaderboardControllerTest {
     }
 
     @Test
-    public void testGetAdd()
-    {
+    public void testGetAdd() throws SQLException {
         Leaderboard testleaderboard = new Leaderboard(new ArrayList<String>(), new ArrayList<Integer>());
         when(ls.getLeaderboard(Matchers.anyString())).thenReturn(testleaderboard);
         assertEquals(testleaderboard,lc.getLeaderboard("username"));

@@ -3,10 +3,8 @@ package database;
 import pojos.Activity;
 import pojos.Category;
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class ActivityDao extends Dao {
 
@@ -17,30 +15,30 @@ public class ActivityDao extends Dao {
 
     /**
      * Makes a query to the database for the activity described.
-     * @param description the description of the activity
+     * @para username the description of the activity
      * @return the activity details if it exists, null otherwise
      */
-    public Activity getActivity(String description) {
+    public ArrayList<Activity> getActivities(String username) {
         try {
-            String query = "SELECT * FROM activity WHERE description = ?";
+            String query = "SELECT * FROM activity WHERE username = ?";
             PreparedStatement ps = this.conn.prepareStatement(query);
-            ps.setString(1, description);
+            ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
 
-            Activity activity = null;
-            if (rs.next()) {
+            ArrayList<Activity> activities = new ArrayList<Activity>();
+            while (rs.next()) {
+                String description = rs.getString(2);
                 Category cat = Category.valueOf(rs.getString(3));
                 int points = rs.getInt(4);
                 Date date = rs.getDate(5);
-                String username = rs.getString(6);
-                activity = new Activity(description, cat, points, date, username);
+                activities.add(new Activity(description, cat, points, date, username));
             }
-            return activity;
+            return activities;
 
         } catch (SQLException e) {
 
             System.out.println(e);
-            return null;
+            return new ArrayList<Activity>();
         }
     }
 
@@ -77,15 +75,14 @@ public class ActivityDao extends Dao {
      */
     public void removeActivity(Activity act) {
         try {
-            String query = "DELETE FROM activity WHERE username = ? AND description = ?";
+            String query = "DELETE FROM activity WHERE username = ? AND date = ?";
 
-            if (getActivity(act.getDescription()) == null) {
+            if (getActivities(act.getUsername()) == null) {
                 return;
             }
-
             PreparedStatement st = this.conn.prepareStatement(query);
             st.setString(1, act.getUsername());
-            st.setString(2, act.getDescription());
+            st.setDate(2, act.getDate());
             st.execute();
             st.close();
 

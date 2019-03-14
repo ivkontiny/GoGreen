@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import pojos.Leaderboard;
 import services.LeaderboardService;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static junit.framework.TestCase.assertEquals;
@@ -28,8 +29,7 @@ public class LeaderboardServiceTest {
     }
 
     @Test
-    public void testGetLeaderboard()
-    {
+    public void testGetLeaderboard() throws SQLException {
         ls.setDb(ld);
         Leaderboard test_leaderboard = new Leaderboard(new ArrayList<String>(), new ArrayList<Integer>());
         when(ld.getLeaderboard("username")).thenReturn(test_leaderboard);

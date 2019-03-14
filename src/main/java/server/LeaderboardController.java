@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 import pojos.Leaderboard;
 import services.LeaderboardService;
 
+import java.sql.SQLException;
+
 
 @RestController
 public class LeaderboardController {
@@ -20,7 +22,7 @@ public class LeaderboardController {
      * @return a leader board object containing the user and his friends
      */
     @RequestMapping("/leaderboard/{username}")
-    public Leaderboard getLeaderboard(@PathVariable("username") String username) {
+    public Leaderboard getLeaderboard(@PathVariable("username") String username) throws SQLException {
         Leaderboard myleaderboard = ls.getLeaderboard(username);
         return myleaderboard;
     }

@@ -3,6 +3,8 @@ package services;
 import database.AccountDao;
 import pojos.Account;
 
+import java.sql.SQLException;
+
 public class AccountService {
 
     private AccountDao db = new AccountDao();
@@ -14,7 +16,7 @@ public class AccountService {
      * @param password the inputted password
      * @return true if the log in was successful, false otherwise
      */
-    public boolean checkLogin(String username, String password) {
+    public boolean checkLogin(String username, String password) throws SQLException {
         if (db.exists(username)) {
             String expPass = db.getAccount(username).getPassword();
             return password.equals(expPass);
@@ -28,7 +30,7 @@ public class AccountService {
      * @param acc the account to be created
      * @return true if the account was successfully created, false otherwise
      */
-    public boolean createAccount(Account acc) {
+    public boolean createAccount(Account acc) throws SQLException {
         if (db.exists(acc.getUsername())) {
             return false;
         }
@@ -41,7 +43,7 @@ public class AccountService {
      * @param user the user who is checked to exist
      * @return true if the user exists, false otherwise
      */
-    public boolean userExists(String user) {
+    public boolean userExists(String user) throws SQLException {
         return db.exists(user);
     }
 

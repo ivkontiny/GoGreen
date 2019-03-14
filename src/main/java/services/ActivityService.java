@@ -3,12 +3,14 @@ package services;
 import database.ActivityDao;
 import pojos.Activity;
 
+import java.util.ArrayList;
+
 public class ActivityService {
 
     ActivityDao db = new ActivityDao();
 
-    public Activity getActivity(String description) {
-        return db.getActivity(description);
+    public ArrayList<Activity> getActivities(String description) {
+        return db.getActivities(description);
     }
 
 

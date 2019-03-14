@@ -3,11 +3,13 @@ package services;
 import database.LeaderboardDao;
 import pojos.Leaderboard;
 
+import java.sql.SQLException;
+
 public class LeaderboardService {
 
     private LeaderboardDao ld = new LeaderboardDao();
 
-    public Leaderboard getLeaderboard(String username) {
+    public Leaderboard getLeaderboard(String username) throws SQLException {
         return ld.getLeaderboard(username);
     }
 

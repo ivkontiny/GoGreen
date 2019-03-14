@@ -9,6 +9,9 @@ import pojos.Activity;
 import services.AccountService;
 import services.ActivityService;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
@@ -21,15 +24,14 @@ public class AccountControllerTest {
     public void configure() {}
 
     @Test
-    public void testLogInOk()
-    {
+    public void testLogInOk() throws SQLException {
         AccountService test = mock(AccountService.class);
         when(test.checkLogin("user", "password")).thenReturn(true);
         ac.setLs(test);
         assertNotNull(ac.logIn("user:password"));
     }
     @Test
-    public void testLogInFailed()
+    public void testLogInFailed() throws SQLException
     {
         AccountService test = mock(AccountService.class);
         AccountController ac = new AccountController();
@@ -38,7 +40,7 @@ public class AccountControllerTest {
         assertNull(ac.logIn("user:password"));
     }
     @Test
-    public void testGetAccountNotFound()
+    public void testGetAccountNotFound () throws SQLException
     {
         AccountDao test = mock(AccountDao.class);
         AccountController ac = new AccountController();
@@ -47,7 +49,7 @@ public class AccountControllerTest {
         assertNull(ac.getAccounts("user"));
     }
     @Test
-    public void GetAccountFound()
+    public void GetAccountFound() throws SQLException
     {
         AccountDao test = mock(AccountDao.class);
         AccountController ac = new AccountController();
@@ -56,7 +58,7 @@ public class AccountControllerTest {
         assertNotNull(ac.getAccounts("user"));
     }
     @Test
-    public void testRegisterUserOk()
+    public void testRegisterUserOk() throws SQLException
     {
         Account accounttoadd = new Account("user","user","user","user","user");
         AccountService test = mock(AccountService.class);
@@ -66,7 +68,7 @@ public class AccountControllerTest {
         assertTrue(ac.registerUser("username",accounttoadd));
     }
     @Test
-    public void testRegisterUserFailed()
+    public void testRegisterUserFailed() throws SQLException
     {
         Account accounttoadd = new Account("user","user","user","user","user");
         AccountService test = mock(AccountService.class);
@@ -77,7 +79,7 @@ public class AccountControllerTest {
     }
 
     @Test
-    public void testAccountServiceOk()
+    public void testAccountServiceOk() throws SQLException
     {
         Account testaccount = new Account("user", "user", "password", "user", "user");
         AccountDao test = mock(AccountDao.class);
@@ -89,7 +91,7 @@ public class AccountControllerTest {
     }
 
     @Test
-    public void testAccountServiceFailed()
+    public void testAccountServiceFailed() throws SQLException
     {
         //Account testaccount = new Account("user", "user", "password", "user", "user");
         AccountDao test = mock(AccountDao.class);
@@ -101,7 +103,7 @@ public class AccountControllerTest {
     }
 
     @Test
-    public void testAccountServiceCreateFailed()
+    public void testAccountServiceCreateFailed() throws SQLException
     {
         Account testaccount = new Account("user", "user", "password", "user", "user");
         AccountDao test = mock(AccountDao.class);
@@ -113,7 +115,7 @@ public class AccountControllerTest {
     }
 
     @Test
-    public void testAccountServiceCreateOk()
+    public void testAccountServiceCreateOk() throws SQLException
     {
         Account testaccount = new Account("user", "user", "password", "user", "user");
         AccountDao test = mock(AccountDao.class);
@@ -130,9 +132,10 @@ public class AccountControllerTest {
         ActivityDao test = mock(ActivityDao.class);
         ActivityService acts = new ActivityService();
         acts.setDb(test);
-        Activity testactivity = new Activity();
-        when(test.getActivity("lunch")).thenReturn(testactivity);
-        assertEquals(testactivity,acts.getActivity("lunch"));
+        ArrayList<Activity> testactivity = new ArrayList<Activity>();
+        testactivity.add(new Activity());
+        when(test.getActivities("user")).thenReturn(testactivity);
+        assertEquals(1,acts.getActivities("user").size());
 
     }
 
@@ -143,8 +146,8 @@ public class AccountControllerTest {
         ActivityService acts = new ActivityService();
         acts.setDb(test);
         //Activity testactivity = new Activity();
-        when(test.getActivity("lunch")).thenReturn(null);
-        assertNull(acts.getActivity("lunch"));
+        when(test.getActivities("test")).thenReturn(null);
+        assertNull(acts.getActivities("test"));
 
     }
 

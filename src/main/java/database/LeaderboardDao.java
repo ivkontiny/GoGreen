@@ -18,6 +18,14 @@ public class LeaderboardDao extends Dao {
     private FriendshipDao fd = new FriendshipDao();
     private AccountDao ad = new AccountDao();
 
+    public void setAd(AccountDao ad) {
+        this.ad = ad;
+    }
+
+    public void setFd(FriendshipDao fd) {
+        this.fd = fd;
+    }
+
     /**
      * Reset the points of a user.
      * @param username the user whose points are going to be reset
@@ -91,7 +99,7 @@ public class LeaderboardDao extends Dao {
      * @param username the user we want to create a leader board for
      * @return the leader board of the user
      */
-    public Leaderboard getLeaderboard(String username) {
+    public Leaderboard getLeaderboard(String username) throws SQLException {
         ArrayList<String> usernames = new ArrayList<>();
         ArrayList<Integer> totalPoints = new ArrayList<>();
         ArrayList<Friendship> friendships = fd.getFriendships(username);
