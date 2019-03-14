@@ -5,6 +5,8 @@ import org.junit.Test;
 import pojos.Friendship;
 import services.FriendRequestService;
 
+import java.sql.SQLException;
+
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
@@ -15,7 +17,7 @@ public class FriendshipServiceTest {
 
     private FriendRequestService frs = new FriendRequestService();
     @Test
-    public void testFriendshipExists()
+    public void testFriendshipExists() throws SQLException
     {
         FriendshipDao test = mock(FriendshipDao.class);
         Friendship testfriendship = new Friendship("from","to");
@@ -30,7 +32,7 @@ public class FriendshipServiceTest {
         assertFalse(frs.acceptRequest(testfriendship));
     }
     @Test
-    public void testFriendshipSend()
+    public void testFriendshipSend() throws SQLException
     {
         FriendshipDao test = mock(FriendshipDao.class);
         Friendship testfriendship = new Friendship("from","to");

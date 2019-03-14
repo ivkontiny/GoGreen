@@ -9,12 +9,20 @@ public class LeaderboardService {
 
     private LeaderboardDao ld = new LeaderboardDao();
 
-    public Leaderboard getLeaderboard(String username) throws SQLException {
-        return ld.getLeaderboard(username);
+    public Leaderboard getLeaderboard(String username) {
+        try {
+            return ld.getLeaderboard(username);
+        } catch (SQLException e) {
+            return null;
+        }
     }
 
     public void addPoints(int toadd,String username) {
-        ld.addPoints(toadd,username);
+        try {
+            ld.addPoints(toadd,username);
+        } catch (SQLException e) {
+            return;
+        }
     }
 
     public void setDb(LeaderboardDao db)

@@ -59,13 +59,4 @@ public class FriendshipDaoTest {
         ad.deleteAccount(testaccount1);
         ad.deleteAccount(testaccount2);
     }
-
-    @Test
-    public void testException () throws SQLException
-    {
-        AccountDao test = mock(AccountDao.class);
-        fd.setAd(test);
-        when(test.exists("from")).thenThrow(new SQLException());
-        assertFalse(fd.sendRequest(testfriendships));
-    }
 }

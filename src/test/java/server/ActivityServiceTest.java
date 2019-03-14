@@ -6,6 +6,8 @@ import org.mockito.Matchers;
 import pojos.Activity;
 import services.ActivityService;
 
+import java.sql.SQLException;
+
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
 import static org.mockito.ArgumentMatchers.any;
@@ -19,7 +21,7 @@ public class ActivityServiceTest {
     Activity testactivity = new Activity();
 
     @Test
-    public void testCreateActivity()
+    public void testCreateActivity() throws SQLException
     {
         as.setDb(ad);
         when(ad.createActivity(Matchers.any(Activity.class))).thenReturn(true);

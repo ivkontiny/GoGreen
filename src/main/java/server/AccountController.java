@@ -30,7 +30,7 @@ public class AccountController {
      * @return the sessionID of the user if the logging in was successful, null otherwise
      */
     @PostMapping("/login")
-    public String logIn(@RequestBody String credentials) throws SQLException {
+    public String logIn(@RequestBody String credentials) {
 
         String sessionId = null;
         String[] userlogin = credentials.split(":");
@@ -45,14 +45,14 @@ public class AccountController {
 
 
     @RequestMapping("/get_account/{username}")
-    public Account getAccounts(@PathVariable("username") String username) throws SQLException {
-        return db.getAccount(username);
+    public Account getAccounts(@PathVariable("username") String username) {
+        return ls.getAccount(username);
     }
 
 
     @PostMapping("/register")
     public boolean registerUser(@RequestParam(value = "username",
-            defaultValue = "user") String username, @RequestBody Account newuser) throws SQLException {
+            defaultValue = "user") String username, @RequestBody Account newuser) {
         return ls.createAccount(newuser);
     }
 
