@@ -97,58 +97,28 @@ public class LeaderboardDao extends Dao {
         ArrayList<String> usernames = new ArrayList<>();
         ArrayList<Integer> totalPoints = new ArrayList<>();
         ArrayList<Friendship> friendships = fd.getFriendships(username);
-        int i = 1;
         if (!ad.exists(username)) {
-            return new Leaderboard(usernames, totalPoints);
+            return new Leaderboard(usernames,totalPoints);
         }
-
         usernames.add(username);
         totalPoints.add(getPoints(username));
-        for (Friendship search : friendships) {
-            if (search.getStatus()) {
-                if (username.equals(search.getReceiver())) {
-                	if(totalPoints.get(i -1) != null && totalPoints.get(i - 1) > getPoints(search.getSender())) {
-                        usernames.add(search.getSender());
-                        totalPoints.add(getPoints(search.getSender()));
-                        i++;
-                	}
-                	else {
-                		for(int j = i - 1; j > 0; j--) {
-                			if(totalPoints.get(j - 1) >= getPoints(search.getSender())) {
-                                usernames.add(j, search.getSender());
-                                totalPoints.add(j, getPoints(search.getSender()));;
-                                j = 0;
-                			}
-                			else {
-                				usernames.add(j - 1, usernames.get(j));
-                				totalPoints.add(j - 1, totalPoints.get(j));
-                			}
-                		}
-                	}
-                } else {
-                	if(totalPoints.get(i -1) != null && totalPoints.get(i - 1) > getPoints(search.getReceiver())) {
-                        usernames.add(search.getReceiver());
-                        totalPoints.add(getPoints(search.getReceiver()));
-                        i++;
-                	}
-                	else {
-                		for(int j = i - 1; j > 0; j--) {
-                			if(totalPoints.get(j - 1) >= getPoints(search.getReceiver())) {
-                                usernames.add(j, search.getReceiver());
-                                totalPoints.add(j, getPoints(search.getReceiver()));;
-                                j = 0;
-                			}
-                			else {
-                				usernames.add(j - 1, usernames.get(j));
-                				totalPoints.add(j - 1, totalPoints.get(j));
-                			}
-                		}
+        for(Friendship search : friendships)
+        {
+            if(search.getStatus())
+            {
+                if(search.getSender().equals(username))
+                {
+                    usernames.add(search.getReceiver());
+                    totalPoints.add(getPoints(search.getReceiver()));
+                }
+                else
+                {
+                    usernames.add(search.getSender());
+                    totalPoints.add(getPoints(search.getSender()));
                 }
             }
         }
-        }
-        Leaderboard newleaderboard = new Leaderboard(usernames, totalPoints);
-        return newleaderboard;
+        return new Leaderboard(usernames,totalPoints);
     }
 }
 
