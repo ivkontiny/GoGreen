@@ -71,10 +71,9 @@ public class ControllerActivities implements Initializable {
     public void addActivity(javafx.event.ActionEvent actionEvent) {
         String actDesc = null;
         int points = 0;
-        for(int i = 0; i< ActivityDB.Food.descriptions.size(); i++)
-        {
-            if(activityBox.equals(ActivityDB.Food.descriptions.get(i)))
-            {
+
+        for (int i = 0; i< ActivityDB.Food.descriptions.size(); i++) {
+            if (ActivityDB.Food.descriptions.get(i).equals(activityBox.getValue())) {
                 actDesc = ActivityDB.Food.descriptions.get(i);
                 points = ActivityDB.Food.points.get(i);
             }

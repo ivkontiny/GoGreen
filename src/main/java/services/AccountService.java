@@ -12,6 +12,7 @@ public class AccountService {
 
     /**
      * Checks whether the inputted username and password are valid.
+     *
      * @param username the inputted username
      * @param password the inputted password
      * @return true if the log in was successful, false otherwise
@@ -31,6 +32,7 @@ public class AccountService {
 
     /**
      * Creates an account.
+     *
      * @param acc the account to be created
      * @return true if the account was successfully created, false otherwise
      */
@@ -48,6 +50,7 @@ public class AccountService {
 
     /**
      * Checks whether a user exists.
+     *
      * @param user the user who is checked to exist
      * @return true if the user exists, false otherwise
      */
@@ -69,6 +72,14 @@ public class AccountService {
             return db.getAccount(account);
         } catch (SQLException e) {
             return null;
+        }
+    }
+
+    public boolean updatePoints(String user, int points) {
+        try {
+            return db.updatePoints(user, points);
+        } catch (SQLException e) {
+            return false;
         }
     }
 }
