@@ -92,4 +92,9 @@ public class ControllerActivities implements Initializable {
             alert.showAndWait();
         }
     }
+
+    public void loadStatistics(javafx.event.ActionEvent actionEvent) throws IOException {
+        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Statistics.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
 }
