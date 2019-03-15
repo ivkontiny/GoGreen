@@ -16,3 +16,11 @@
 .tab-pane .tab-header-area .tab-header-background {
     -fx-background-color: white;
 }
+.table-view *.increment-button,
+.table-view *.decrement-button,
+.table-view *.increment-arrow,
+.table-view *.decrement-arrow
+{
+    -fx-padding: 0;
+    -fx-shape: "";
+}
