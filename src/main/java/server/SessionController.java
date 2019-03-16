@@ -35,10 +35,6 @@ public class SessionController {
      */
     @GetMapping("logout/{sessionID}")
     public void logOut(@PathVariable("sessionID") String sessionId) {
-        if (!ss.sessionExists(sessionId)) {
-            return;
-        }
-
-        ss.getAllSessions().remove(sessionId);
+        if(ss.getAllSessions().containsKey(sessionId)) ss.getAllSessions().remove(sessionId);
     }
 }

@@ -1,6 +1,7 @@
 package client;
 
 //import org.springframework.http.*;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -9,6 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import pojos.Account;
 import pojos.Activity;
+import server.SessionController;
+import services.SessionService;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 //import server.Application;
 //142.93.230.132:8080
@@ -29,6 +36,18 @@ public class Connect {
         ResponseEntity<String> response;
         response = restTemplate.exchange(url, HttpMethod.GET, requestBody,String.class);
         return response.getBody();
+    }
+
+    /** Logs out the user with a sessionID.
+     */
+    public static void logOut() {
+        String url = "http://localhost:8080/logout/";
+        url += Login.getSessionId();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<String> requestBody = new HttpEntity<>(headers);
+        restTemplate.exchange(url, HttpMethod.GET, requestBody,String.class);
     }
 
 
@@ -74,23 +93,16 @@ public class Connect {
 
         // Send request with POST method.
         String response = restTemplate.postForObject(url, requestBody, String.class);
+        System.out.println(response);
         Login.setSessionId(response);
-
-        /**String resp;
-        if (response == null) {
-            resp = "Login Failed";
-        } else {
-            resp = "Logged in as " + name; //" with Session ID: " + response;
-        }
-
-        return resp;**/
 
         return response != null;
     }
 
     public static boolean addActivity(Activity activity) {
         //System.out.println("HERE!!");
-        String url = "http://localhost:8080/add_activity";
+        String url = "http://localhost:8080/add_activity/";
+        url += Login.getSessionId();
         HttpHeaders httpHeaders = new HttpHeaders();
 
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
@@ -98,6 +110,23 @@ public class Connect {
         HttpEntity<Activity> requestBody = new HttpEntity<>(activity, httpHeaders);
 
         boolean response = restTemplate.postForObject(url, requestBody, Boolean.class);
+        System.out.println(response);
         return response;
     }
+
+    public static ArrayList<Activity> getActivities() {
+        String url = "http://localhost:8080/get_activity/";
+        url += Login.getSessionId();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        RestTemplate restTemplate = new RestTemplate();
+
+        //HttpEntity<String> requestBody = new HttpEntity<>(headers);
+
+
+        ResponseEntity<ArrayList<Activity>> response = restTemplate.exchange(url,HttpMethod.GET,null,
+                new ParameterizedTypeReference<ArrayList<Activity>>(){});
+        return response.getBody();
+    }
+
 }

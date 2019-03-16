@@ -66,10 +66,6 @@ public class ActivityDao extends Dao {
      */
     public void removeActivity(Activity act) throws SQLException {
         String query = "DELETE FROM activity WHERE username = ? AND date = ?";
-
-        if (getActivities(act.getUsername()) == null) {
-            return;
-        }
         PreparedStatement st = this.conn.prepareStatement(query);
         st.setString(1, act.getUsername());
         st.setDate(2, act.getDate());

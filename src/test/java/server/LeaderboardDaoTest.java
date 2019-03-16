@@ -28,21 +28,32 @@ public class LeaderboardDaoTest {
         ld.setFd(fd);
         fd.setAd(ad);
     }
-    /*@Test
-    public void testGetPoints() throws SQLException{
-        ld.resetPoints("test");
-        assertEquals(0,ld.getPoints("test"));
+
+    @Test
+    public void testGetResetPoints() throws SQLException{
+
         ad.createAccount(test_account);
         ld.resetPoints("test");
-        assertEquals(ld.getPoints("test"), 0);
+        assertEquals(0,ld.getPoints("test"));
         ld.addPoints(1,"test");
         assertEquals(ld.getPoints("test"), 1);
+        ld.resetPoints("test");
+        assertEquals(ld.getPoints("test"),0);
         ad.deleteAccount(test_account);
 
-    }*/
+    }
+
+    @Test
+    public void testGetResetUserNotExisting() throws SQLException
+    {
+        ld.resetPoints("test");
+        ld.addPoints(100,"test");
+        assertEquals(0,ld.getPoints("test"));
+    }
 
     @Test
     public void testGetLeaderboardTest() throws SQLException {
+
         assertEquals(0,ld.getLeaderboard("not_existing_user").getUsernames().size());
         Account testaccount1 = new Account("test1","test1","test1","test1","test1");
         Account testaccount2 = new Account("test2","test2","test2","test2","test2");
@@ -60,4 +71,6 @@ public class LeaderboardDaoTest {
         ad.deleteAccount(testaccount1);
         ad.deleteAccount(testaccount2);
     }
+
+
 }

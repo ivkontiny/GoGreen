@@ -37,7 +37,9 @@ public class AccountDaoTest {
     @Test
     public void testCreateExistsAccount ()throws SQLException
     {
+        accountDao.deleteAccount(newaccount);
         assertFalse(accountDao.exists("user_test"));
+        assertFalse(accountDao.updatePoints("user_test",100));
         assertTrue(accountDao.createAccount(newaccount));
         assertFalse(accountDao.createAccount(newaccount));
         assertTrue(accountDao.exists("user_test"));

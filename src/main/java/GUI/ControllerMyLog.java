@@ -1,5 +1,6 @@
 package GUI;
 
+import client.Connect;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static pojos.Category.food;
@@ -73,7 +75,14 @@ public class ControllerMyLog implements Initializable {
 
     public ObservableList<Activity> getActivity(){
         ObservableList<pojos.Activity> activities = FXCollections.observableArrayList();
-        activities.add(new Activity("Vegetarian Meal", food, 100, Date.valueOf(LocalDate.now()), "test"));
+        ArrayList<Activity> my_activities = Connect.getActivities();
+        for(Activity activity: my_activities) activities.add(activity);
         return activities;
+    }
+
+    public void logOut(javafx.event.ActionEvent actionEvent) throws IOException {
+        Connect.logOut();
+        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
+        rootPane.getChildren().setAll(pane);
     }
 }

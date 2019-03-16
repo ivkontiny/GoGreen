@@ -88,7 +88,6 @@ public class ControllerActivities implements Initializable {
             alert.setContentText(actDesc + " added successfully!");
             alert.showAndWait();
         }
-
         else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Something went wrong!");
@@ -99,6 +98,12 @@ public class ControllerActivities implements Initializable {
 
     public void loadStatistics(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Statistics.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
+    public void logOut(javafx.event.ActionEvent actionEvent) throws IOException {
+        Connect.logOut();
+        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 }

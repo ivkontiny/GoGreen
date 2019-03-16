@@ -29,7 +29,7 @@
                 <Button mnemonicParsing="false" onAction="#loadMyLog" prefHeight="64.0" prefWidth="129.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="My Log" textFill="WHITE" />
                 <Button mnemonicParsing="false" onAction="#loadActivities" prefHeight="64.0" prefWidth="129.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Activities" textFill="WHITE" />
                 <Button mnemonicParsing="false" onAction="#loadStatistics" prefHeight="64.0" prefWidth="129.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Statistics" textFill="WHITE" />
-                <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="129.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Button" textFill="WHITE" />
+                <Button mnemonicParsing="false" onAction="#logOut" prefHeight="64.0" prefWidth="129.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Log Out" textFill="WHITE" />
             </children>
         </VBox>
     </left>

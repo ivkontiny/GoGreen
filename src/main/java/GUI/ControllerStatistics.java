@@ -1,5 +1,6 @@
 package GUI;
 
+import client.Connect;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -50,6 +51,12 @@ public class ControllerStatistics implements Initializable {
     public void loadActivities(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane =
                 FXMLLoader.load(getClass().getClassLoader().getResource("Activities.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
+    public void logOut(javafx.event.ActionEvent actionEvent) throws IOException {
+        Connect.logOut();
+        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 }
