@@ -47,11 +47,11 @@
     <center>
         <Pane prefHeight="327.0" prefWidth="354.0" BorderPane.alignment="CENTER">
             <children>
-                <TableView layoutX="37.0" layoutY="78.0" prefHeight="236.0" prefWidth="313.0">
+                <TableView fx:id="logTable" layoutX="37.0" layoutY="78.0" prefHeight="236.0" prefWidth="313.0">
                     <columns>
-                        <TableColumn prefWidth="191.0" text="Description" />
-                        <TableColumn prefWidth="56.0" text="Date" />
-                        <TableColumn prefWidth="65.0" text="Points" />
+                  <TableColumn fx:id="categoryColumn" prefWidth="85.0" text="Category" />
+                        <TableColumn fx:id="descriptionColumn" editable="false" minWidth="0.0" prefWidth="165.0" sortable="false" text="Description" />
+                        <TableColumn fx:id="pointsColumn" prefWidth="62.0" text="Points" />
                     </columns>
                 </TableView>
             </children>

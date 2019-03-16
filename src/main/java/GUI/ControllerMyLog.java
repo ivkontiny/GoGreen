@@ -1,21 +1,46 @@
 package GUI;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import pojos.Activity;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
+
+import static pojos.Category.food;
 
 public class ControllerMyLog implements Initializable {
     @FXML
     private BorderPane rootPane;
 
+    @FXML
+    private TableView logTable;
+    @FXML
+    private TableColumn<Activity, String> categoryColumn;
+    @FXML
+    private TableColumn<Activity, String> descriptionColumn;
+    @FXML
+    private TableColumn<Activity, Integer> pointsColumn;
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+        pointsColumn.setCellValueFactory(new PropertyValueFactory<>("points"));
 
+        logTable.setItems(getActivity());
     }
 
 
@@ -44,5 +69,11 @@ public class ControllerMyLog implements Initializable {
     public void loadStatistics(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Statistics.fxml"));
         rootPane.getChildren().setAll(pane);
+    }
+
+    public ObservableList<Activity> getActivity(){
+        ObservableList<pojos.Activity> activities = FXCollections.observableArrayList();
+        activities.add(new Activity("Vegetarian Meal", food, 100, Date.valueOf(LocalDate.now()), "test"));
+        return activities;
     }
 }
