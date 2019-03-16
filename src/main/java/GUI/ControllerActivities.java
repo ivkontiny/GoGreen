@@ -88,7 +88,6 @@ public class ControllerActivities implements Initializable {
             alert.setContentText(actDesc + " added successfully!");
             alert.showAndWait();
         }
-
         else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Something went wrong!");

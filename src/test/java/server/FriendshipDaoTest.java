@@ -35,7 +35,7 @@ public class FriendshipDaoTest {
     @Test
     public void testExistsFriendship() throws SQLException
     {
-        fd.removeFriendship(testfriendships);
+        assertFalse(fd.sendRequest(testfriendships));
         assertFalse(fd.friendshipExists(testfriendships));
         ad.createAccount(testaccount1);
         ad.createAccount(testaccount2);

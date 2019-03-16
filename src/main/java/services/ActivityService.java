@@ -9,7 +9,8 @@ import java.util.ArrayList;
 
 public class ActivityService {
 
-    ActivityDao db = new ActivityDao();
+   private ActivityDao db = new ActivityDao();
+   private AccountService as = new AccountService();
 
     public ArrayList<Activity> getActivities(String description) {
         try {
@@ -22,9 +23,8 @@ public class ActivityService {
 
     public boolean createActivity(Activity act) {
         try {
-            AccountService as = new AccountService();
-            return db.createActivity(act)
-                    && as.updatePoints(act.getUsername(), act.getPoints());
+            as.updatePoints(act.getUsername(), act.getPoints());
+            return db.createActivity(act);
         } catch (SQLException e) {
             return false;
         }

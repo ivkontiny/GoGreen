@@ -31,9 +31,9 @@ public class LeaderboardDao extends Dao {
      *
      * @param username the user whose points are going to be reset
      */
-    public void resetPoints(String username) {
-        try {
-            if (!ad.exists(username)) {
+    public void resetPoints(String username) throws SQLException{
+
+        if (!ad.exists(username)) {
                 return;
             }
 
@@ -43,9 +43,6 @@ public class LeaderboardDao extends Dao {
             st.execute();
             st.close();
             return;
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
     }
 
     /**
@@ -79,11 +76,15 @@ public class LeaderboardDao extends Dao {
      * @param username the user we want to add points to
      */
     public void addPoints(int toadd, String username) throws SQLException {
-        String query = "UPDATE account SET total_points= total_points + ? WHERE username= ? ";
+
+        if (!ad.exists(username)) {
+            return;
+        }
+        String query = "UPDATE account SET total_points = ? WHERE username = ? ";
         PreparedStatement st = this.conn.prepareStatement(query);
         st.setInt(1, toadd);
         st.setString(2, username);
-        st.executeQuery();
+        st.execute();
         st.close();
     }
 
