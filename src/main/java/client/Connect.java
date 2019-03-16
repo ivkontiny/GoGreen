@@ -38,6 +38,18 @@ public class Connect {
         return response.getBody();
     }
 
+    /** Logs out the user with a sessionID.
+     */
+    public static void logOut() {
+        String url = "http://localhost:8080/logout/";
+        url += Login.getSessionId();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<String> requestBody = new HttpEntity<>(headers);
+        restTemplate.exchange(url, HttpMethod.GET, requestBody,String.class);
+    }
+
 
     /** Registers a account.
      * @param account the account to register

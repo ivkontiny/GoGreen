@@ -79,4 +79,10 @@ public class ControllerMyLog implements Initializable {
         for(Activity activity: my_activities) activities.add(activity);
         return activities;
     }
+
+    public void logOut(javafx.event.ActionEvent actionEvent) throws IOException {
+        Connect.logOut();
+        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
 }

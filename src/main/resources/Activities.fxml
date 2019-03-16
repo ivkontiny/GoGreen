@@ -23,7 +23,7 @@
             <children>
                 <AnchorPane prefHeight="82.0" prefWidth="100.0" style="-fx-background-color: #9bc782;">
                     <children>
-                        <ImageView fitHeight="85.0" fitWidth="85.0" layoutX="9.0" layoutY="4.0">
+                        <ImageView fitHeight="85.0" fitWidth="85.0" layoutX="9.0">
                             <image>
                                 <Image url="@logo.png" />
                             </image>
@@ -34,7 +34,7 @@
                 <Button mnemonicParsing="false" onAction="#loadMyLog" prefHeight="64.0" prefWidth="129.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="My Log" textFill="WHITE" />
                 <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="129.0" style="-fx-background-color: #6BC782; -fx-background-radius: 0;" text="Activities" textFill="WHITE" />
                 <Button mnemonicParsing="false" onAction="#loadStatistics" prefHeight="64.0" prefWidth="129.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Statistics" textFill="WHITE" />
-                <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="129.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Button" textFill="WHITE" />
+                <Button mnemonicParsing="false" onAction="#logOut" prefHeight="64.0" prefWidth="129.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Log Out" textFill="WHITE" />
             </children>
         </VBox>
     </left>

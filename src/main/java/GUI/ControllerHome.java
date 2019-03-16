@@ -41,10 +41,6 @@ public class ControllerHome implements Initializable {
         }
     }
 
-    public void testing(ActionEvent actionEvent) {
-        System.out.println("Button is working!");
-    }
-
     /**
      * Loads the activities window.
      * @param actionEvent the action on which the activity window needs to open
@@ -58,6 +54,12 @@ public class ControllerHome implements Initializable {
 
     public void loadStatistics(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Statistics.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
+    public void logOut(javafx.event.ActionEvent actionEvent) throws IOException {
+        Connect.logOut();
+        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 }
