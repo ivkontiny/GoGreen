@@ -19,11 +19,19 @@ import java.util.ArrayList;
 public class Connect {
 
 
+    private static String SESSION_ID = "";
+
+    /** Get the sessionId of the local user
+     */
+    public static String getSessionId() {
+        return SESSION_ID;
+    }
+
     /** Get the email of a user with a concrete sessionID.
      */
     public static String getUsername() {
-        String url = "http://localhost:8080/user/";
-        url += Login.getSessionId();
+        String url = "http://142.93.230.132:8080/user/";
+        url += SESSION_ID;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         RestTemplate restTemplate = new RestTemplate();
@@ -37,8 +45,8 @@ public class Connect {
     /** Logs out the user with a sessionID.
      */
     public static void logOut() {
-        String url = "http://localhost:8080/logout/";
-        url += Login.getSessionId();
+        String url = "http://142.93.230.132:8080/logout/";
+        url += SESSION_ID;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         RestTemplate restTemplate = new RestTemplate();
@@ -52,7 +60,7 @@ public class Connect {
      * @return true if the account is registered successfully, false otherwise
      */
     public static Boolean serverRegister(Account account) {
-        String url = "http://localhost:8080/register";
+        String url = "http://142.93.230.132:8080/register";
         url += "?username=" + account.getUsername();
         HttpHeaders headers = new HttpHeaders();
         // headers.add("Accept", MediaType.APPLICATION_JSON_VALUE);
@@ -75,8 +83,8 @@ public class Connect {
      */
     public static boolean serverLogin(String name, String pass) {
 
-        String url = "http://localhost:8080/login";
-        String logincredentials = name + ":" + pass;
+        String url = "http://142.93.230.132:8080/login";
+        String credentials = name + ":" + pass;
 
         HttpHeaders headers = new HttpHeaders();
         //  headers.add("Accept", MediaType.APPLICATION_JSON_VALUE);
@@ -85,12 +93,12 @@ public class Connect {
         RestTemplate restTemplate = new RestTemplate();
 
         // Data attached to the request.
-        HttpEntity<String> requestBody = new HttpEntity<>(logincredentials, headers);
+        HttpEntity<String> requestBody = new HttpEntity<>(credentials, headers);
 
         // Send request with POST method.
         String response = restTemplate.postForObject(url, requestBody, String.class);
         if (response != null) {
-            Login.setSessionId(response);
+            SESSION_ID = response;
         }
 
         return response != null;
@@ -103,8 +111,8 @@ public class Connect {
      */
     public static boolean addActivity(Activity activity) {
         //System.out.println("HERE!!");
-        String url = "http://localhost:8080/add_activity/";
-        url += Login.getSessionId();
+        String url = "http://142.93.230.132:8080/add_activity/";
+        url += SESSION_ID;
         HttpHeaders httpHeaders = new HttpHeaders();
 
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
@@ -121,8 +129,8 @@ public class Connect {
      * @return a list containing all the activities of a particular user
      */
     public static ArrayList<Activity> getActivities() {
-        String url = "http://localhost:8080/get_activity/";
-        url += Login.getSessionId();
+        String url = "http://142.93.230.132:8080/get_activity/";
+        url += SESSION_ID;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         RestTemplate restTemplate = new RestTemplate();
