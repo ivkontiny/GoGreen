@@ -40,6 +40,11 @@ public class ControllerActivities implements Initializable {
         activityBox.setItems(foodActivitieList);
     }
 
+    /**
+     * Loads the home page.
+     * @param actionEvent the action event on which the home page should be loaded
+     * @throws IOException when the event isn't properly handled
+     */
     public void loadHome(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Home.fxml"));
         ControllerHome.welcomeMessage(pane);
@@ -55,24 +60,26 @@ public class ControllerActivities implements Initializable {
 
     /** Gets an activity and calculates its points.
      *
-     * @param actionEvent the action that was made
+     * @param actionEvent the action event on which points should be calculated
      */
     public void inputActivity(javafx.event.ActionEvent actionEvent) {
 
-        for(int i = 0; i< ActivityDB.Food.descriptions.size(); i++)
-        {
-            if(ActivityDB.Food.descriptions.get(i).equals(activityBox.getValue()))
-            {
+        for (int i = 0; i < ActivityDB.Food.descriptions.size(); i++) {
+            if (ActivityDB.Food.descriptions.get(i).equals(activityBox.getValue())) {
                 pointsText.setText("Points: " + ActivityDB.Food.points.get(i));
             }
         }
     }
 
+    /**
+     * Adds an activity to the current user.
+     * @param actionEvent the action event on which a new activity should be added
+     */
     public void addActivity(javafx.event.ActionEvent actionEvent) {
         String actDesc = null;
         int points = 0;
 
-        for (int i = 0; i< ActivityDB.Food.descriptions.size(); i++) {
+        for (int i = 0; i < ActivityDB.Food.descriptions.size(); i++) {
             if (ActivityDB.Food.descriptions.get(i).equals(activityBox.getValue())) {
                 actDesc = ActivityDB.Food.descriptions.get(i);
                 points = ActivityDB.Food.points.get(i);
@@ -87,8 +94,7 @@ public class ControllerActivities implements Initializable {
             alert.setHeaderText("Activity added successfully!");
             alert.setContentText(actDesc + " added successfully!");
             alert.showAndWait();
-        }
-        else {
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Something went wrong!");
             alert.setContentText("Your " + actDesc + " couldn't be added!");
@@ -96,11 +102,22 @@ public class ControllerActivities implements Initializable {
         }
     }
 
+    /**
+     * Loads the statistics page.
+     * @param actionEvent the action event on which the statistics page should be opened
+     * @throws IOException when something with the action event goes wrong
+     */
     public void loadStatistics(javafx.event.ActionEvent actionEvent) throws IOException {
-        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Statistics.fxml"));
+        BorderPane pane = FXMLLoader.load(
+                getClass().getClassLoader().getResource("Statistics.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 
+    /**
+     * Logs the user out.
+     * @param actionEvent the action event on which the user should be logged out
+     * @throws IOException when something in the action went wrong
+     */
     public void logOut(javafx.event.ActionEvent actionEvent) throws IOException {
         Connect.logOut();
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));

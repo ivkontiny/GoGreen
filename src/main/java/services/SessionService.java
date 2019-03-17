@@ -1,6 +1,5 @@
 package services;
 
-import org.apache.tomcat.jni.Local;
 import pojos.Session;
 
 import java.time.LocalDateTime;
@@ -14,13 +13,16 @@ public class SessionService {
         activesessions = new HashMap<>();
     }
 
+    /**
+     * Returns whether a session exists.
+     * @param key the key of the session we would like to know if it exists
+     * @return true if the session exists, false otherwise
+     */
     public boolean sessionExists(String key) {
-        if(getAllSessions().containsKey(key))
-        {
+        if (getAllSessions().containsKey(key)) {
             LocalDateTime time1 = getAllSessions().get(key).getTime();
             LocalDateTime time2 = LocalDateTime.now();
-            if(time1.isBefore(time2.minusHours(1)))
-            {
+            if (time1.isBefore(time2.minusHours(1))) {
                 activesessions.remove(key);
                 return false;
             }

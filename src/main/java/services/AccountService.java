@@ -67,6 +67,11 @@ public class AccountService {
         this.db = db;
     }
 
+    /**
+     * Returns the account information of a user.
+     * @param account the account we are looking for
+     * @return an Account object containing the necessary information
+     */
     public Account getAccount(String account) {
         try {
             return db.getAccount(account);
@@ -75,6 +80,12 @@ public class AccountService {
         }
     }
 
+    /**
+     * Update the points of a user.
+     * @param user the user whose points need to be updated
+     * @param points the number of points to be added
+     * @return true if the process was successful, false otherwise
+     */
     public boolean updatePoints(String user, int points) {
         try {
             return db.updatePoints(user, points);

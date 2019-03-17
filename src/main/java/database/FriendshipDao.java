@@ -9,11 +9,12 @@ import java.util.ArrayList;
 
 public class FriendshipDao extends Dao {
 
+    private AccountDao ad = new AccountDao();
+
     public FriendshipDao() {
         super();
     }
 
-    private AccountDao ad = new AccountDao();
 
     public void setAd(AccountDao ad) {
         this.ad = ad;

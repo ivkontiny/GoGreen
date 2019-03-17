@@ -22,7 +22,8 @@ public class LeaderboardController {
      * @return a leader board object containing the user and his friends
      */
     @RequestMapping("/leaderboard/{username}")
-    public Leaderboard getLeaderboard(@PathVariable("username") String username) throws SQLException {
+    public Leaderboard getLeaderboard(@PathVariable("username") String username)
+            throws SQLException {
         Leaderboard myleaderboard = ls.getLeaderboard(username);
         return myleaderboard;
     }
@@ -39,8 +40,7 @@ public class LeaderboardController {
         return true;
     }
 
-    public void setLs(LeaderboardService ls)
-    {
+    public void setLs(LeaderboardService ls) {
         this.ls = ls;
     }
 

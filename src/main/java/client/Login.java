@@ -16,12 +16,12 @@ import java.io.IOException;
 
 public class Login extends Application {
 
+    private static String SESSION_ID = "";
     Stage window;
     Scene scene;
     Button register;
     Button logIn;
 
-    private static String SESSION_ID = "";
 
     public static void main(String[] args) {
         launch(args);
