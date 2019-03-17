@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import client.Connect;
 import javafx.collections.FXCollections;
@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 public class ControllerActivities implements Initializable {
 
     ObservableList<String> foodActivitieList =
-            FXCollections.observableArrayList(ActivityDB.Food.descriptions);
+            FXCollections.observableArrayList(ActivityDb.Food.descriptions);
 
     ObservableList<String> transportationActivitieList = FXCollections.observableArrayList("Bike");
 
@@ -64,9 +64,9 @@ public class ControllerActivities implements Initializable {
      */
     public void inputActivity(javafx.event.ActionEvent actionEvent) {
 
-        for (int i = 0; i < ActivityDB.Food.descriptions.size(); i++) {
-            if (ActivityDB.Food.descriptions.get(i).equals(activityBox.getValue())) {
-                pointsText.setText("Points: " + ActivityDB.Food.points.get(i));
+        for (int i = 0; i < ActivityDb.Food.descriptions.size(); i++) {
+            if (ActivityDb.Food.descriptions.get(i).equals(activityBox.getValue())) {
+                pointsText.setText("Points: " + ActivityDb.Food.points.get(i));
             }
         }
     }
@@ -79,10 +79,10 @@ public class ControllerActivities implements Initializable {
         String actDesc = null;
         int points = 0;
 
-        for (int i = 0; i < ActivityDB.Food.descriptions.size(); i++) {
-            if (ActivityDB.Food.descriptions.get(i).equals(activityBox.getValue())) {
-                actDesc = ActivityDB.Food.descriptions.get(i);
-                points = ActivityDB.Food.points.get(i);
+        for (int i = 0; i < ActivityDb.Food.descriptions.size(); i++) {
+            if (ActivityDb.Food.descriptions.get(i).equals(activityBox.getValue())) {
+                actDesc = ActivityDb.Food.descriptions.get(i);
+                points = ActivityDb.Food.points.get(i);
             }
         }
 
