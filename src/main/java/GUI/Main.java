@@ -29,6 +29,7 @@ public class Main extends Application {
 
     @Override
     public void stop() {
+        if(Login.getSessionId() == null) return;
         if (!Login.getSessionId().equals("")) {
             Connect.logOut();
         }

@@ -89,8 +89,7 @@ public class Connect {
 
         // Send request with POST method.
         String response = restTemplate.postForObject(url, requestBody, String.class);
-        System.out.println(response);
-        Login.setSessionId(response);
+        if(response != null) Login.setSessionId(response);
 
         return response != null;
     }

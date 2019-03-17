@@ -20,8 +20,8 @@
         </AnchorPane>
         <Label layoutX="207.0" layoutY="137.0" prefHeight="25.0" prefWidth="71.0" text="Username" textFill="#298c22" />
         <Label layoutX="207.0" layoutY="203.0" text="Password" textFill="#298c22" />
-        <TextField id="Username" fx:id="Username" layoutX="207.0" layoutY="164.0" />
-        <TextField id="Password" fx:id="Password" layoutX="207.0" layoutY="224.0" />
+        <TextField id="username" fx:id="username" layoutX="225.0" layoutY="164.0" />
+        <TextField id="password" fx:id="password" layoutX="225.0" layoutY="224.0" />
         <Button layoutX="207.0" onAction="#loadHome" layoutY="276.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="187.0" style="-fx-background-radius: 25px; -fx-background-color: #9bc782;" text="Login" />
         <Button layoutX="206.0" layoutY="332.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="187.0" style="-fx-background-radius: 25px; -fx-background-color: #9bc782;" text="Sign up" />
     </children>
