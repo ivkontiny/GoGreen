@@ -32,4 +32,11 @@ public class ActivityController {
         }
         return false;
     }
+
+    public void setup(SessionController sc, SessionService ss, ActivityService as)
+    {
+        this.sc = sc;
+        this.ss = ss;
+        this.as = as;
+    }
 }
