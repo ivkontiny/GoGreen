@@ -9,6 +9,7 @@ import pojos.Session;
 import java.time.LocalDateTime;
 
 import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 
 public class SessionTest {
@@ -72,7 +73,13 @@ public class SessionTest {
         SessionService ss = new SessionService();
         SessionController sc = new SessionController();
         assertNull(sc.getUser("1"));
+        ss.putSession("1",testsession);
+        testsession.setTime(LocalDateTime.now().minusHours(100));
+        assertFalse(ss.sessionExists("1"));
+        SessionService.removeSession("1");
+        assertNull(sc.getUser("1"));
         ss.putSession("1", testsession);
+        testsession.setTime(LocalDateTime.now());
         assertTrue(sc.getUser("1").equals("user1"));
         sc.logOut("0");
         sc.logOut("1");
