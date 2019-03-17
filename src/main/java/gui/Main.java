@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import client.Connect;
 import client.Login;
@@ -18,7 +18,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        ActivityDB.initialize();
+        ActivityDb.initialize();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         //Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Home.fxml"));
         //ControllerHome.welcomeMessage(root);
@@ -29,7 +29,9 @@ public class Main extends Application {
 
     @Override
     public void stop() {
-        if(Login.getSessionId() == null) return;
+        if (Login.getSessionId() == null) {
+            return;
+        }
         if (!Login.getSessionId().equals("")) {
             Connect.logOut();
         }

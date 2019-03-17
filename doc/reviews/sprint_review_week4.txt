@@ -14,7 +14,7 @@ by mocking Dao.
 
 On client side:
 
--The first version of simple GUI came to light. It looks the way we designed it
+-The first version of simple gui came to light. It looks the way we designed it
 There is not yet much interaction between it and the server. 
 
 Further improvement: make it communicate with the sever 

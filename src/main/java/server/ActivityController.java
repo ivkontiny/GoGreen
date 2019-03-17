@@ -48,8 +48,13 @@ public class ActivityController {
         return false;
     }
 
-    public void setup(SessionController sc, SessionService ss, ActivityService as)
-    {
+    /**
+     * Setup the connections of a current controller.
+     * @param sc the session controller to be set
+     * @param ss the session service to be set
+     * @param as the activity service to be set
+     */
+    public void setup(SessionController sc, SessionService ss, ActivityService as) {
         this.sc = sc;
         this.ss = ss;
         this.as = as;

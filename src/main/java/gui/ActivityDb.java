@@ -1,10 +1,10 @@
-package GUI;
+package gui;
 
 import pojos.Category;
 
 import java.util.ArrayList;
 
-public class ActivityDB {
+public class ActivityDb {
 
     public static class Food {
         static ArrayList<String> descriptions = new ArrayList<>();

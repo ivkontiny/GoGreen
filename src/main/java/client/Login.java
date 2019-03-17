@@ -1,6 +1,6 @@
 package client;
 
-import GUI.Main;
+import gui.Main;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
