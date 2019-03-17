@@ -10,12 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import pojos.Account;
 import pojos.Activity;
-import server.SessionController;
-import services.SessionService;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 //import server.Application;
 //142.93.230.132:8080
@@ -99,6 +95,11 @@ public class Connect {
         return response != null;
     }
 
+    /**
+     * Adds an activity to the user.
+     * @param activity the activity to be added
+     * @return true if the adding was successful, false otherwise
+     */
     public static boolean addActivity(Activity activity) {
         //System.out.println("HERE!!");
         String url = "http://localhost:8080/add_activity/";
@@ -114,6 +115,10 @@ public class Connect {
         return response;
     }
 
+    /**
+     * Gets all the activities of the user.
+     * @return a list containing all the activities of a particular user
+     */
     public static ArrayList<Activity> getActivities() {
         String url = "http://localhost:8080/get_activity/";
         url += Login.getSessionId();
@@ -124,7 +129,8 @@ public class Connect {
         //HttpEntity<String> requestBody = new HttpEntity<>(headers);
 
 
-        ResponseEntity<ArrayList<Activity>> response = restTemplate.exchange(url,HttpMethod.GET,null,
+        ResponseEntity<ArrayList<Activity>> response =
+                restTemplate.exchange(url,HttpMethod.GET,null,
                 new ParameterizedTypeReference<ArrayList<Activity>>(){});
         return response.getBody();
     }

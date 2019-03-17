@@ -1,7 +1,6 @@
 package GUI;
 
 import client.Connect;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -47,16 +46,28 @@ public class ControllerHome implements Initializable {
      * @throws IOException when there is a problem in the action event
      */
     public void loadActivities(javafx.event.ActionEvent actionEvent) throws IOException {
-        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Activities.fxml"));
+        BorderPane pane = FXMLLoader.load(
+                getClass().getClassLoader().getResource("Activities.fxml"));
 
         rootPane.getChildren().setAll(pane);
     }
 
+    /**
+     * Loads the statistics page.
+     * @param actionEvent the action event on which the statistics page should be displayed
+     * @throws IOException when something with the action event goes wrong
+     */
     public void loadStatistics(javafx.event.ActionEvent actionEvent) throws IOException {
-        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Statistics.fxml"));
+        BorderPane pane = FXMLLoader.load(
+                getClass().getClassLoader().getResource("Statistics.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 
+    /**
+     * Logs the user out.
+     * @param actionEvent the event on which the user should be logged out
+     * @throws IOException when something with the event went wrong
+     */
     public void logOut(javafx.event.ActionEvent actionEvent) throws IOException {
         Connect.logOut();
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));

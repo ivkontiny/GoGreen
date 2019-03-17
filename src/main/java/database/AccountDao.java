@@ -106,6 +106,13 @@ public class AccountDao extends Dao {
         st.close();
     }
 
+    /**
+     * Updates the total points of a user.
+     * @param user the user whose points should be updated
+     * @param points the points to be added
+     * @return true if the addition went well, false otherwise
+     * @throws SQLException if there was a problem with adding points to the database
+     */
     public boolean updatePoints(String user, int points) throws SQLException {
         if (!exists(user)) {
             return false;

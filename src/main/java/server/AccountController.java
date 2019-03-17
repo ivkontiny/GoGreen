@@ -13,7 +13,6 @@ import services.AccountService;
 import services.SessionService;
 import util.SessionIdGenerator;
 
-import java.sql.SQLException;
 import java.time.LocalDateTime;
 
 @RestController

@@ -11,12 +11,14 @@ import java.util.ArrayList;
 public class LeaderboardDao extends Dao {
 
 
+    private FriendshipDao fd = new FriendshipDao();
+    private AccountDao ad = new AccountDao();
+
+
     public LeaderboardDao() {
         super();
     }
 
-    private FriendshipDao fd = new FriendshipDao();
-    private AccountDao ad = new AccountDao();
 
     public void setAd(AccountDao ad) {
         this.ad = ad;
@@ -31,18 +33,18 @@ public class LeaderboardDao extends Dao {
      *
      * @param username the user whose points are going to be reset
      */
-    public void resetPoints(String username) throws SQLException{
+    public void resetPoints(String username) throws SQLException {
 
         if (!ad.exists(username)) {
-                return;
-            }
-
-            String query = "UPDATE account SET total_points = 0 WHERE username = ? ";
-            PreparedStatement st = this.conn.prepareStatement(query);
-            st.setString(1, username);
-            st.execute();
-            st.close();
             return;
+        }
+
+        String query = "UPDATE account SET total_points = 0 WHERE username = ? ";
+        PreparedStatement st = this.conn.prepareStatement(query);
+        st.setString(1, username);
+        st.execute();
+        st.close();
+        return;
     }
 
     /**
@@ -97,29 +99,24 @@ public class LeaderboardDao extends Dao {
     public Leaderboard getLeaderboard(String username) throws SQLException {
         ArrayList<String> usernames = new ArrayList<>();
         ArrayList<Integer> totalPoints = new ArrayList<>();
-        ArrayList<Friendship> friendships = fd.getFriendships(username);
         if (!ad.exists(username)) {
-            return new Leaderboard(usernames,totalPoints);
+            return new Leaderboard(usernames, totalPoints);
         }
         usernames.add(username);
         totalPoints.add(getPoints(username));
-        for(Friendship search : friendships)
-        {
-            if(search.getStatus())
-            {
-                if(search.getSender().equals(username))
-                {
+        ArrayList<Friendship> friendships = fd.getFriendships(username);
+        for (Friendship search : friendships) {
+            if (search.getStatus()) {
+                if (search.getSender().equals(username)) {
                     usernames.add(search.getReceiver());
                     totalPoints.add(getPoints(search.getReceiver()));
-                }
-                else
-                {
+                } else {
                     usernames.add(search.getSender());
                     totalPoints.add(getPoints(search.getSender()));
                 }
             }
         }
-        return new Leaderboard(usernames,totalPoints);
+        return new Leaderboard(usernames, totalPoints);
     }
 }
 

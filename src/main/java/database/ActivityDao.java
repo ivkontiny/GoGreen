@@ -3,7 +3,10 @@ package database;
 import pojos.Activity;
 import pojos.Category;
 
-import java.sql.*;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ActivityDao extends Dao {
@@ -15,9 +18,8 @@ public class ActivityDao extends Dao {
 
     /**
      * Makes a query to the database for the activity described.
-     *
-     * @return the activity details if it exists, null otherwise
      * @param username the description of the activity
+     * @return the activity details if it exists, null otherwise
      */
     public ArrayList<Activity> getActivities(String username) throws SQLException {
         String query = "SELECT * FROM activity WHERE username = ?";

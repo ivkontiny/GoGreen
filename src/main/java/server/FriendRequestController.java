@@ -80,13 +80,11 @@ public class FriendRequestController {
         return frs.getFriendships(user);
     }
 
-    public void setFrs(FriendRequestService frs)
-    {
+    public void setFrs(FriendRequestService frs) {
         this.frs = frs;
     }
 
-    public void setAs(AccountService as)
-    {
+    public void setAs(AccountService as) {
         this.as = as;
     }
 

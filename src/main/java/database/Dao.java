@@ -30,12 +30,12 @@ public abstract class Dao {
     }
 
     /**
-     *changes the database the Dao connects to
-     * @param url
+     * Changes the database the Dao connects to.
+     * @param urL the path to the database
      */
-    public void changeDatabase(String URL) {
+    public void changeDatabase(String urL) {
         try {
-            this.url = "jdbc:postgresql://142.93.230.132/" + URL;
+            this.url = "jdbc:postgresql://142.93.230.132/" + urL;
             //this.url = URL;
             Properties props = new Properties();
             props.setProperty("user", "gogreen");

@@ -32,10 +32,10 @@ public class ControllerStatistics implements Initializable {
     }
 
     /**
-     * Loads the my log page on action
+     * Loads the my log page on action.
      *
-     * @param actionEvent
-     * @throws IOException
+     * @param actionEvent the action on which the my log page should be loaded
+     * @throws IOException when something with the action event goes wrong
      */
     public void loadMyLog(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("MyLog.fxml"));
@@ -54,6 +54,11 @@ public class ControllerStatistics implements Initializable {
         rootPane.getChildren().setAll(pane);
     }
 
+    /**
+     * Logs the user out.
+     * @param actionEvent the event on which the user should be logged out
+     * @throws IOException when something with the action event goes wrong
+     */
     public void logOut(javafx.event.ActionEvent actionEvent) throws IOException {
         Connect.logOut();
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
