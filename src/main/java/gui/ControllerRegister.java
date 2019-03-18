@@ -8,8 +8,10 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import org.apache.commons.validator.routines.EmailValidator;
 import pojos.Account;
+import util.HashPassword;
 
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 
 
@@ -114,10 +116,12 @@ public class ControllerRegister implements Initializable {
      * Creates an account and then closes window when user click button.
      * @param actionEvent the action event
      */
-    public void createAccount(javafx.event.ActionEvent actionEvent) {
+    public void createAccount(javafx.event.ActionEvent actionEvent) throws NoSuchAlgorithmException {
+
+        String pass = HashPassword.HashPassword(password.getText());
 
         Account user = new Account(username.getText(),email.getText(),
-                String.valueOf(password.getText().hashCode()),name.getText(),
+                pass, name.getText(),
                 surname.getText());
 
         if (!checkFields().equals("OK")) {

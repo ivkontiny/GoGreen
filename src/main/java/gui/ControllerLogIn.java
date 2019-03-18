@@ -7,14 +7,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import util.HashPassword;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 
 public class ControllerLogIn implements Initializable {
@@ -42,10 +43,13 @@ public class ControllerLogIn implements Initializable {
      * @param actionEvent the action event on which the user should be logged in
      * @throws IOException when something with the action event goes wrong
      */
-    public void loadHome(ActionEvent actionEvent) throws IOException {
+    public void loadHome(ActionEvent actionEvent) throws NoSuchAlgorithmException, IOException {
 
         System.out.println(username.getText());
-        if (Connect.serverLogin(username.getText(),String.valueOf(password.getText().hashCode()))) {
+
+        String pass = HashPassword.HashPassword(password.getText());
+
+        if (Connect.serverLogin(username.getText(), pass)) {
             BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Home.fxml"));
             ControllerHome.welcomeMessage(pane);
             rootPane.getChildren().setAll(pane);

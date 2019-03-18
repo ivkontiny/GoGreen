@@ -32,9 +32,10 @@ public class AccountController {
     public String logIn(@RequestBody String credentials) {
 
         String sessionId = null;
-        String[] userlogin = credentials.split(":");
+        String[] userlogin = credentials.split(":", 0);
         String username = userlogin[0];
         String password = userlogin[1];
+
         if (ls.checkLogin(username, password)) {
             sessionId = new SessionIdGenerator().getAlphaNumericString(42);
         }
@@ -52,6 +53,7 @@ public class AccountController {
     @PostMapping("/register")
     public boolean registerUser(@RequestParam(value = "username",
             defaultValue = "user") String username, @RequestBody Account newuser) {
+        System.out.println(newuser.getPassword());
         return ls.createAccount(newuser);
     }
 
