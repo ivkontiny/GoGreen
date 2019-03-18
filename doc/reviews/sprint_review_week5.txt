@@ -1,17 +1,17 @@
 Sprint review week 5
 
 GUI:
-During week 5 we mainly focus on having a minimal representation of
+During week 5 we mainly focused on having a minimal gui for
 adding activities and visualising them later.
 It took as we expected. However, for the next following weeks we are going
 to focus on creating a more enjoyable experience for the user.
 So this week: 
 
--we are going to switch from buttons to icons so that user can more easly
-orientate in out app.
+-we are going to switch from buttons to icons so that user can understand better
+the way our app works.
 -we are going to explore the way graphs can be plotted (for statistics)
--we should also create GUI parts for accpeting and sending friend requests
-create add activity screens perfectly crafted to the activities
+-we should also create GUI parts for accepting and sending friend requests
+-create add-activity screens perfectly crafted to particular activities
 
 Server:
 During week 5 we also focused on having everything set up for demo 2.
@@ -21,7 +21,8 @@ DAO,service and controller. Just few paths were added, while most of them
 just had to be set up to respond to the sessionId.
 This week we have to:
 -make sure all the three types of activities can be submitted
-correctly and focus on getting the most valuable data for statistics page and
+correctly
+-focus on getting the most valuable data for statistics page and
 for the tip function.
 -have a smooth connection between the data needed by client and the data server
 responses with.
