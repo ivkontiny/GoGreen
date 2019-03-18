@@ -41,13 +41,6 @@
     <top>
         <HBox prefHeight="9.0" prefWidth="600.0" style="-fx-background-color: #9BC782;" BorderPane.alignment="CENTER" />
     </top>
-    <right>
-        <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="391.0" prefWidth="117.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-            <children>
-                <ProgressBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="132.0" progress="0.0" rotate="-90.0" StackPane.alignment="CENTER" />
-            </children>
-        </StackPane>
-    </right>
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
             <children>

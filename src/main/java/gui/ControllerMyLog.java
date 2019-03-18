@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -30,7 +31,6 @@ public class ControllerMyLog implements Initializable {
     private TableColumn<Activity, String> descriptionColumn;
     @FXML
     private TableColumn<Activity, Integer> pointsColumn;
-
 
 
     @Override
