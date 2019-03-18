@@ -7,10 +7,10 @@ import pojos.Friendship;
 import services.FriendRequestService;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -43,9 +43,10 @@ public class FriendshipServiceTest {
     public void testFriendshipSend() throws SQLException
     {
         when(test.sendRequest(testfriendship)).thenReturn(true);
-        when(test.getFriendships("test")).thenReturn(null);
+        when(test.getFriendships("test")).thenReturn(new ArrayList<Friendship>());
         assertTrue(frs.sendRequest(testfriendship));
-        assertNull(frs.getFriendships("test"));
+        assertEquals(0,frs.getActiveFriendships("test").size());
+        assertEquals(0,frs.getInactiveFriendships("test").size());
         when(test.sendRequest(testfriendship)).thenReturn(false);
         assertFalse(frs.sendRequest(testfriendship));
     }
@@ -56,7 +57,8 @@ public class FriendshipServiceTest {
         when(test.getFriendships("test")).thenThrow(new SQLException());
         when(test.acceptRequest(testfriendship)).thenThrow(new SQLException());
         assertFalse(frs.sendRequest(testfriendship));
-        assertNull(frs.getFriendships("test"));
+        assertEquals(0,frs.getActiveFriendships("test").size());
+        assertEquals(0,frs.getInactiveFriendships("test").size());
         assertFalse(frs.acceptRequest(testfriendship));
     }
 }
