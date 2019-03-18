@@ -21,7 +21,7 @@ public class Connect {
 
     private static String SESSION_ID = "";
 
-    /** Get the sessionId of the local user
+    /** Get the sessionId of the local user.
      */
     public static String getSessionId() {
         return SESSION_ID;

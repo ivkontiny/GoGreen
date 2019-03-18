@@ -1,7 +1,6 @@
 package gui;
 
 import client.Connect;
-import client.Login;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,10 +28,10 @@ public class Main extends Application {
 
     @Override
     public void stop() {
-        if (Login.getSessionId() == null) {
+        if (Connect.getSessionId() == null) {
             return;
         }
-        if (!Login.getSessionId().equals("")) {
+        if (!Connect.getSessionId().equals("")) {
             Connect.logOut();
         }
     }
