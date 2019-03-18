@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 import pojos.Activity;
 import pojos.Category;
@@ -36,7 +37,6 @@ public class ControllerActivities implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         activityBox.setItems(foodActivitieList);
     }
 
