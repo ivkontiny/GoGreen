@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
@@ -17,10 +18,12 @@ public class ControllerHome implements Initializable {
     @FXML
     private BorderPane rootPane;
 
+    @FXML
+    private ProgressBar progressbar;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        progressbar.setProgress(0.6);
     }
 
 
