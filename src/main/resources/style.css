@@ -24,3 +24,7 @@
     -fx-padding: 0;
     -fx-shape: "";
 }
+
+#progressbar {
+    -fx-accent: green;
+}
