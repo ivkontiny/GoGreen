@@ -20,6 +20,7 @@ public class Connect {
 
 
     private static String SESSION_ID = "";
+    private static String url_default = "http://localhost:8080/";
 
     /** Get the sessionId of the local user.
      */
@@ -30,7 +31,7 @@ public class Connect {
     /** Get the email of a user with a concrete sessionID.
      */
     public static String getUsername() {
-        String url = "http://localhost:8080/user/";
+        String url = url_default + "user/";
         url += SESSION_ID;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -45,7 +46,7 @@ public class Connect {
     /** Logs out the user with a sessionID.
      */
     public static void logOut() {
-        String url = "http://localhost:8080/logout/";
+        String url = url_default + "logout/";
         url += SESSION_ID;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -60,7 +61,7 @@ public class Connect {
      * @return true if the account is registered successfully, false otherwise
      */
     public static Boolean serverRegister(Account account) {
-        String url = "http://localhost:8080/register";
+        String url = url_default + "register";
         url += "?username=" + account.getUsername();
         HttpHeaders headers = new HttpHeaders();
         // headers.add("Accept", MediaType.APPLICATION_JSON_VALUE);
@@ -83,7 +84,7 @@ public class Connect {
      */
     public static boolean serverLogin(String name, String pass) {
 
-        String url = "http://localhost:8080/login";
+        String url = url_default + "login";
         String credentials = name + ":" + pass;
 
         HttpHeaders headers = new HttpHeaders();
@@ -111,7 +112,7 @@ public class Connect {
      */
     public static boolean addActivity(Activity activity) {
         //System.out.println("HERE!!");
-        String url = "http://localhost:8080/add_activity/";
+        String url = url_default + "add_activity/";
         url += SESSION_ID;
         HttpHeaders httpHeaders = new HttpHeaders();
 
@@ -129,7 +130,7 @@ public class Connect {
      * @return a list containing all the activities of a particular user
      */
     public static ArrayList<Activity> getActivities() {
-        String url = "http://localhost:8080/get_activity/";
+        String url = url_default + "get_activity/";
         url += SESSION_ID;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
