@@ -157,4 +157,17 @@ public class FriendshipDao extends Dao {
         return true;
 
     }
+
+    public ArrayList<String> getFriends(String user) throws SQLException {
+        ArrayList<Friendship> friendships = getFriendships(user);
+        ArrayList<String> friends = new ArrayList<>();
+        for (Friendship friendship : friendships) {
+            if(friendship.getStatus()) {
+                friends.add(friendship.getSender().equals(user) ?
+                        friendship.getReceiver() : friendship.getSender());
+            }
+        }
+
+        return friends;
+    }
 }

@@ -107,6 +107,15 @@ public class FriendRequestController {
         return new ArrayList<Friendship>();
     }
 
+    @RequestMapping("/get_friends/{sessionId}")
+    public ArrayList<String> getFriends(@PathVariable("sessionId") String sessionId) {
+        if (ss.sessionExists(sessionId)) {
+            return frs.getFriends(ss.getAllSessions().get(sessionId).getUsername());
+        }
+
+        return new ArrayList<>();
+    }
+
 
     public void setFrs(FriendRequestService frs) {
         this.frs = frs;

@@ -92,4 +92,13 @@ public class FriendRequestService {
         }
         return new ArrayList<Friendship>();
     }
+
+
+    public ArrayList<String> getFriends (String user) {
+        try {
+            return db.getFriends(user);
+        } catch (SQLException e) {
+            return new ArrayList<>();
+        }
+    }
 }
