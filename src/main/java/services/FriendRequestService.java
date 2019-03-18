@@ -54,15 +54,42 @@ public class FriendRequestService {
     }
 
     /**
-     * Returns all friendships of a certain user.
+     * Returns all active friendships of a certain user.
      * @param user the user whose friendships we want to know
      * @return a list containing all the friendships of the user
      */
-    public ArrayList<Friendship> getFriendships(String user) {
+    public ArrayList<Friendship> getActiveFriendships(String user) {
         try {
-            return db.getFriendships(user);
+            ArrayList<Friendship> active = new ArrayList<>();
+            ArrayList<Friendship> all = db.getFriendships(user);
+            for (Friendship search : all) {
+                if (search.getStatus()) {
+                    active.add(search);
+                }
+            }
+            return active;
         } catch (SQLException e) {
-            return null;
+            return new ArrayList<Friendship>();
         }
+    }
+
+    /**
+     * Returns all inactive friendships of a certain user.
+     * @param user the user whose friendships we want to know
+     * @return a list containing all the friendships of the user
+     */
+    public ArrayList<Friendship> getInactiveFriendships(String user) {
+        try {
+            ArrayList<Friendship> inactive = new ArrayList<>();
+            ArrayList<Friendship> all = db.getFriendships(user);
+            for (Friendship search : all) {
+                if (search.getStatus()) {
+                    inactive.add(search);
+                }
+            }
+        } catch (SQLException e) {
+            return new ArrayList<Friendship>();
+        }
+        return new ArrayList<Friendship>();
     }
 }
