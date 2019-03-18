@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -27,8 +28,12 @@ public class ControllerLogIn implements Initializable {
     @FXML
     private BorderPane rootPane;
 
+    @FXML
+    private Label loginerror;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        loginerror.setVisible(false);
 
     }
 
@@ -45,10 +50,7 @@ public class ControllerLogIn implements Initializable {
             ControllerHome.welcomeMessage(pane);
             rootPane.getChildren().setAll(pane);
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setHeaderText("Invalid Credentials!");
-            alert.setContentText("Please check you password and username");
-            alert.showAndWait();
+            loginerror.setVisible(true);
         }
 
     }
