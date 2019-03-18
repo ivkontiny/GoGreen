@@ -53,6 +53,11 @@ public class ControllerLogIn implements Initializable {
 
     }
 
+    /**
+     * Loads the register page.
+     * @param actionEvent the action event on which the user should be registered
+     * @throws IOException when something with the action event goes wrong
+     */
     public void loadRegister(ActionEvent actionEvent) throws IOException {
         Parent register = FXMLLoader.load(getClass().getClassLoader().getResource("Register.fxml"));
         Stage registerStage = new Stage();
