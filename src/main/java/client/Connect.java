@@ -1,6 +1,7 @@
 package client;
 
 //import org.springframework.http.*;
+import javafx.util.Pair;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -11,7 +12,11 @@ import org.springframework.web.client.RestTemplate;
 import pojos.Account;
 import pojos.Activity;
 
+import java.lang.reflect.Type;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 //import server.Application;
 //142.93.230.132:8080
@@ -21,11 +26,17 @@ public class Connect {
 
     private static String SESSION_ID = "";
     private static String url_default = "http://localhost:8080/";
+    private static HashMap<String, ArrayList<Activity>> acts = new HashMap<>();
 
     /** Get the sessionId of the local user.
      */
     public static String getSessionId() {
         return SESSION_ID;
+    }
+
+
+    public static HashMap<String, ArrayList<Activity>> getActs() {
+        return acts;
     }
 
     /** Get the email of a user with a concrete sessionID.
@@ -145,4 +156,34 @@ public class Connect {
         return response.getBody();
     }
 
+
+    /**
+     * Adds the activities of the friends to the acts hash map.
+     * @param friends the friends we need to add
+     */
+    public static void addFriendActivities(ArrayList<String> friends) {
+        String url = url_default + "/get_friend_activities_from_date/";
+        url += SESSION_ID;
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        RestTemplate restTemplate = new RestTemplate();
+
+        for(String user : friends) {
+            if(acts.containsKey(user)) {
+                friends.remove(user);
+            }
+        }
+
+        Pair<ArrayList<String>, Date> entity = new Pair<>(friends, Date.valueOf(LocalDate.now().minusDays(7)));
+        HttpEntity<Pair<ArrayList<String>, Date>> requestBody = new HttpEntity<>(entity, headers);
+
+        ResponseEntity<HashMap<String, ArrayList<Activity>>> response =
+                restTemplate.exchange(url, HttpMethod.GET, requestBody,
+                        new ParameterizedTypeReference<HashMap<String, ArrayList<Activity>>>(){});
+
+        for (String user : response.getBody().keySet()) {
+            acts.put(user, response.getBody().get(user));
+        }
+    }
 }

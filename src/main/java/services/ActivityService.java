@@ -3,8 +3,11 @@ package services;
 import database.ActivityDao;
 import pojos.Activity;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class ActivityService {
 
@@ -36,6 +39,33 @@ public class ActivityService {
             return db.createActivity(act);
         } catch (SQLException e) {
             return false;
+        }
+    }
+
+
+    /**
+     * Returns activities of a user since a date.
+     * @param user the user whose activities we are interested in
+     * @param date the date since which we want all the activities
+     * @return an array list containing all activities
+     */
+    public ArrayList<Activity> getActivitiesOfUserSince(String user, Date date) {
+        try {
+            ArrayList<Activity> activities = db.getActivities(user);
+            ArrayList<Activity> sinceDate = new ArrayList<>();
+
+            for (Activity act : activities) {
+                Date dateOfActivity = act.getDate();
+                if (dateOfActivity.before(date)) {
+                    continue;
+                }
+
+                sinceDate.add(act);
+            }
+
+            return sinceDate;
+        } catch (SQLException e) {
+            return new ArrayList<>();
         }
     }
 
