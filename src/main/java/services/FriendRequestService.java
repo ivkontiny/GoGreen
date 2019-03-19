@@ -100,17 +100,13 @@ public class FriendRequestService {
 
 
     public ArrayList<String> getFriends(String user) {
-        try {
-            ArrayList<Friendship> friendships = getActiveFriendships(user);
-            ArrayList<String> friends = new ArrayList<>();
-            for (Friendship fr : friendships) {
-                friends.add(fr.getReceiver().equals(user) ? fr.getSender()
-                        : fr.getReceiver());
-            }
-
-            return friends;
-        } catch (SQLException e) {
-            return new ArrayList<>();
+        ArrayList<Friendship> friendships = getActiveFriendships(user);
+        ArrayList<String> friends = new ArrayList<>();
+        for (Friendship fr : friendships) {
+            friends.add(fr.getReceiver().equals(user) ? fr.getSender()
+                    : fr.getReceiver());
         }
+
+        return friends;
     }
 }

@@ -1,6 +1,7 @@
 package client;
 
 //import org.springframework.http.*;
+
 import javafx.util.Pair;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -28,7 +29,8 @@ public class Connect {
     private static String url_default = "http://localhost:8080/";
     private static HashMap<String, ArrayList<Activity>> acts = new HashMap<>();
 
-    /** Get the sessionId of the local user.
+    /**
+     * Get the sessionId of the local user.
      */
     public static String getSessionId() {
         return SESSION_ID;
@@ -39,7 +41,8 @@ public class Connect {
         return acts;
     }
 
-    /** Get the email of a user with a concrete sessionID.
+    /**
+     * Get the email of a user with a concrete sessionID.
      */
     public static String getUsername() {
         String url = url_default + "user/";
@@ -50,11 +53,12 @@ public class Connect {
 
         HttpEntity<String> requestBody = new HttpEntity<>(headers);
         ResponseEntity<String> response;
-        response = restTemplate.exchange(url, HttpMethod.GET, requestBody,String.class);
+        response = restTemplate.exchange(url, HttpMethod.GET, requestBody, String.class);
         return response.getBody();
     }
 
-    /** Logs out the user with a sessionID.
+    /**
+     * Logs out the user with a sessionID.
      */
     public static void logOut() {
         String url = url_default + "logout/";
@@ -63,11 +67,13 @@ public class Connect {
         headers.setContentType(MediaType.APPLICATION_JSON);
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<String> requestBody = new HttpEntity<>(headers);
-        restTemplate.exchange(url, HttpMethod.GET, requestBody,String.class);
+        restTemplate.exchange(url, HttpMethod.GET, requestBody, String.class);
     }
 
 
-    /** Registers a account.
+    /**
+     * Registers a account.
+     *
      * @param account the account to register
      * @return true if the account is registered successfully, false otherwise
      */
@@ -88,7 +94,9 @@ public class Connect {
         return response;
     }
 
-    /** Tries to log a user in.
+    /**
+     * Tries to log a user in.
+     *
      * @param name username of the user
      * @param pass password of the user
      * @return returns whether the log in was successful or not
@@ -118,6 +126,7 @@ public class Connect {
 
     /**
      * Adds an activity to the user.
+     *
      * @param activity the activity to be added
      * @return true if the adding was successful, false otherwise
      */
@@ -138,6 +147,7 @@ public class Connect {
 
     /**
      * Gets all the activities of the user.
+     *
      * @return a list containing all the activities of a particular user
      */
     public static ArrayList<Activity> getActivities() {
@@ -151,14 +161,16 @@ public class Connect {
 
 
         ResponseEntity<ArrayList<Activity>> response =
-                restTemplate.exchange(url,HttpMethod.GET,null,
-                new ParameterizedTypeReference<ArrayList<Activity>>(){});
+                restTemplate.exchange(url, HttpMethod.GET, null,
+                        new ParameterizedTypeReference<ArrayList<Activity>>() {
+                        });
         return response.getBody();
     }
 
 
     /**
      * Adds the activities of the friends to the acts hash map.
+     *
      * @param friends the friends we need to add
      */
     public static void getFriendActivities(ArrayList<String> friends) {
@@ -169,8 +181,8 @@ public class Connect {
         headers.setContentType(MediaType.APPLICATION_JSON);
         RestTemplate restTemplate = new RestTemplate();
 
-        for(String user : friends) {
-            if(acts.containsKey(user)) {
+        for (String user : friends) {
+            if (acts.containsKey(user)) {
                 friends.remove(user);
             }
         }
@@ -180,7 +192,8 @@ public class Connect {
 
         ResponseEntity<HashMap<String, ArrayList<Activity>>> response =
                 restTemplate.exchange(url, HttpMethod.GET, requestBody,
-                        new ParameterizedTypeReference<HashMap<String, ArrayList<Activity>>>(){});
+                        new ParameterizedTypeReference<HashMap<String, ArrayList<Activity>>>() {
+                        });
 
         for (String user : response.getBody().keySet()) {
             acts.put(user, response.getBody().get(user));
