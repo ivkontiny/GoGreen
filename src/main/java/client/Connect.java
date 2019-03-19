@@ -35,7 +35,7 @@ public class Connect {
     }
 
 
-    public static HashMap<String, ArrayList<Activity>> getActs() {
+    public static HashMap<String, ArrayList<Activity>> getUsersActivities() {
         return acts;
     }
 
@@ -161,7 +161,7 @@ public class Connect {
      * Adds the activities of the friends to the acts hash map.
      * @param friends the friends we need to add
      */
-    public static void addFriendActivities(ArrayList<String> friends) {
+    public static void getFriendActivities(ArrayList<String> friends) {
         String url = url_default + "/get_friend_activities_from_date/";
         url += SESSION_ID;
 
