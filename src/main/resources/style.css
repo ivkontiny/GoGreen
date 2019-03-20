@@ -28,3 +28,6 @@
 #progressbar {
     -fx-accent: #9bc782;
 }
+.table-view {
+    -fx-table-cell-border-color: transparent;
+}
