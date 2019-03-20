@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane id="rootPane" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ControllerLogIn" stylesheets="style.css">
+<BorderPane id="rootPane" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" stylesheets="style.css" fx:controller="gui.ControllerLogIn">
    <children>
    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
        <children>
@@ -15,7 +15,7 @@
                <children>
                    <ImageView fitHeight="120.0" fitWidth="120.0" layoutX="245.0" layoutY="4.0">
                        <image>
-                           <Image url="@logo.png" />
+                           <Image url="@Images/logo.png" />
                        </image>
                    </ImageView>
                </children>
@@ -23,7 +23,7 @@
            <Label layoutX="207.0" layoutY="137.0" prefHeight="25.0" prefWidth="71.0" text="Username" textFill="#298c22" />
            <Label layoutX="207.0" layoutY="203.0" text="Password" textFill="#298c22" />
            <TextField id="username" fx:id="username" layoutX="207.0" layoutY="164.0" />
-           <PasswordField id="password" fx:id="password" layoutX="207.0" layoutY="224.0" />
+           <PasswordField id="password" fx:id="password" onAction="#loadHome" layoutX="207.0" layoutY="224.0" />
            <Label fx:id="loginerror" layoutX="207.0" layoutY="260.0" text="Login credentials incorrect" style="-fx-text-fill: red" />
            <Button layoutX="206.0" layoutY="290.0" mnemonicParsing="false" onAction="#loadHome" prefHeight="31.0" prefWidth="187.0" style="-fx-background-radius: 25px; -fx-background-color: #9bc782;" text="Login" />
            <Button layoutX="206.0" layoutY="330.0" mnemonicParsing="false" onAction="#loadRegister" prefHeight="31.0" prefWidth="187.0" style="-fx-background-radius: 25px; -fx-background-color: #9bc782;" text="Sign up" />
