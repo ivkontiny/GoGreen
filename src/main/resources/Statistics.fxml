@@ -44,8 +44,9 @@
                <children>
                   <SplitMenuButton mnemonicParsing="false" text="Compare to a friend...">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                      <MenuItem mnemonicParsing="false" text="Action 2" />
+                      <MenuItem mnemonicParsing="false" text="Charlie" />
+                      <MenuItem mnemonicParsing="false" text="Frank" />
+                        <MenuItem mnemonicParsing="false" text="Frank" />
                     </items>
                   </SplitMenuButton>
                </children>
