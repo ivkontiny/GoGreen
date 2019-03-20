@@ -26,8 +26,8 @@ public class Connect {
 
 
     private static String SESSION_ID = "";
-    private static String url_default = "http://localhost:8080/";
     private static HashMap<String, ArrayList<Activity>> acts = new HashMap<>();
+    private static String url_default = "https://www.gogreen.space/";
 
     /**
      * Get the sessionId of the local user.
