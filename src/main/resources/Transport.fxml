@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="activityPane" prefHeight="315.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ControllerTransport">
+    <children>
+        <ComboBox fx:id="transportBox" layoutX="120.0" layoutY="89.0" onAction="#inputActivity" prefWidth="150.0" />
+        <Label layoutX="36.0" layoutY="94.0" text="Description" />
+        <Button layoutX="270.0" layoutY="251.0" mnemonicParsing="false" onAction="#addActivity" text="Add" />
+        <Label fx:id="pointsText" layoutX="57.0" layoutY="256.0" text="Points: 0" />
+    </children>
+</AnchorPane>
