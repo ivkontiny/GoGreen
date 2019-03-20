@@ -42,10 +42,11 @@
          <children>
             <StackPane prefHeight="82.0" prefWidth="368.0">
                <children>
-                  <SplitMenuButton mnemonicParsing="false" text="Pick a friend to compare with...">
+                  <SplitMenuButton mnemonicParsing="false" text="Compare to a friend...">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                      <MenuItem mnemonicParsing="false" text="Action 2" />
+                      <MenuItem mnemonicParsing="false" text="Charlie" />
+                      <MenuItem mnemonicParsing="false" text="Frank" />
+                        <MenuItem mnemonicParsing="false" text="Frank" />
                     </items>
                   </SplitMenuButton>
                </children>

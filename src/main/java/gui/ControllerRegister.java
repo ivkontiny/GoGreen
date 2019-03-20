@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.apache.commons.validator.routines.EmailValidator;
 import pojos.Account;
@@ -29,13 +30,13 @@ public class ControllerRegister implements Initializable {
     private javafx.scene.control.TextField password;
     @FXML
     private javafx.scene.control.TextField confirmPassword;
-
-
+    @FXML
+    private Label errormessage;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        errormessage.setVisible(false);
     }
 
     /**
@@ -54,6 +55,12 @@ public class ControllerRegister implements Initializable {
         if (!ev.isValid(mail)) {
             return "Email not valid";
         }
+        if (name.getText().length() == 0) {
+            return "Name field empty";
+        }
+        if (surname.getText().length() == 0) {
+            return "Surname field empty";
+        }
         if (user.length() <= 5) {
             return "Username too short (6 characters at least)";
         }
@@ -62,12 +69,6 @@ public class ControllerRegister implements Initializable {
         }
         if (user.charAt(0) >= '0' && user.charAt(0) <= '9') {
             return "Username cannot start with a digit";
-        }
-        if (surname.getText().length() == 0) {
-            return "Surname field empty";
-        }
-        if (name.getText().length() == 0) {
-            return "Name field empty";
         }
         if (pass.length() <= 6) {
             return "Password too short (7 characters at least)";
@@ -85,21 +86,16 @@ public class ControllerRegister implements Initializable {
      * Alerts user of username already in use.
      */
     public void alertSameUsername() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Warning");
-        alert.setHeaderText("Something went wrong");
-        alert.setContentText("Choose another username");
-        alert.showAndWait();
+        errormessage.setVisible(true);
+        errormessage.setText("Choose another username");
     }
 
     /**
      * Alerts users with custom alert message.
      */
     public void customAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Warning");
-        alert.setHeaderText(message);
-        alert.showAndWait();
+        errormessage.setVisible(true);
+        errormessage.setText(message);
     }
 
     /**
