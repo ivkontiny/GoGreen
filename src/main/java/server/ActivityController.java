@@ -1,6 +1,7 @@
 package server;
 
 
+import javafx.util.Pair;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,7 +12,9 @@ import pojos.Activity;
 import services.ActivityService;
 import services.SessionService;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @RestController
 public class ActivityController {
@@ -46,6 +49,28 @@ public class ActivityController {
             return as.createActivity(activity);
         }
         return false;
+    }
+
+
+    /**
+     * Gets the activities of friends of a user since date.
+     * @param entity the users and the date since which we want all the activities
+     * @param sessionId the sessionId of the current user
+     * @return a hash map containing all activities of a certain user
+     */
+    @RequestMapping("/get_friend_activities_from_date/{sessionId}")
+    public HashMap<String, ArrayList<Activity>> getActivitiesSince(@RequestBody Pair<ArrayList<String>, Date> entity,
+                                                                   @PathVariable("sessionId") String sessionId) {
+        if(ss.sessionExists(sessionId)) {
+            HashMap<String, ArrayList<Activity>> activities = new HashMap<>();
+            for(String user : entity.getKey()) {
+                activities.put(user, as.getActivitiesOfUserSince(user, entity.getValue()));
+            }
+
+            return activities;
+        }
+
+        return new HashMap<>();
     }
 
     /**
