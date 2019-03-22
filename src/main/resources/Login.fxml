@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,27 +8,49 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane id="rootPane" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" stylesheets="style.css" fx:controller="gui.ControllerLogIn">
+<BorderPane id="rootPane" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ControllerLogIn">
    <children>
    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
        <children>
-           <AnchorPane prefHeight="130.0" prefWidth="600.0" style="-fx-background-color: #9bc782;">
-               <children>
-                   <ImageView fitHeight="120.0" fitWidth="120.0" layoutX="245.0" layoutY="4.0">
-                       <image>
-                           <Image url="@Images/logo.png" />
-                       </image>
-                   </ImageView>
-               </children>
-           </AnchorPane>
-           <Label layoutX="207.0" layoutY="137.0" prefHeight="25.0" prefWidth="71.0" text="Username" textFill="#298c22" />
-           <Label layoutX="207.0" layoutY="203.0" text="Password" textFill="#298c22" />
-           <TextField id="username" fx:id="username" layoutX="207.0" layoutY="164.0" />
-           <PasswordField id="password" fx:id="password" onAction="#loadHome" layoutX="207.0" layoutY="224.0" />
-           <Label fx:id="loginerror" layoutX="207.0" layoutY="260.0" text="Login credentials incorrect" style="-fx-text-fill: red" />
-           <Button layoutX="206.0" layoutY="290.0" mnemonicParsing="false" onAction="#loadHome" prefHeight="31.0" prefWidth="187.0" style="-fx-background-radius: 25px; -fx-background-color: #9bc782;" text="Login" />
-           <Button layoutX="206.0" layoutY="330.0" mnemonicParsing="false" onAction="#loadRegister" prefHeight="31.0" prefWidth="187.0" style="-fx-background-radius: 25px; -fx-background-color: #9bc782;" text="Sign up" />
+
+            <AnchorPane layoutX="-150.0" layoutY="-126.0" prefHeight="200.0" prefWidth="200.0" />
        </children>
    </AnchorPane>
    </children>
+   <center>
+       
+   </center>
+   <top>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #9bc782;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="140.0" fitWidth="140.0" layoutX="380.0" layoutY="30.0">
+               <image>
+                  <Image url="@Images/logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+             <Label layoutX="311.0" layoutY="32.0" prefHeight="36.0" prefWidth="104.0" text="Username" textFill="#298c22">
+               <font>
+                  <Font size="21.0" />
+               </font></Label>
+             <Label layoutX="311.0" layoutY="123.0" text="Password" textFill="#298c22">
+               <font>
+                  <Font size="21.0" />
+               </font></Label>
+             <TextField id="username" fx:id="username" layoutX="311.0" layoutY="68.0" prefHeight="40.0" prefWidth="245.0" />
+             <PasswordField id="password" fx:id="password" layoutX="311.0" layoutY="154.0" onAction="#loadHome" prefHeight="40.0" prefWidth="245.0" />
+             <Label fx:id="loginerror" layoutX="311.0" layoutY="200.0" style="-fx-text-fill: red" text="Login credentials incorrect">
+               <font>
+                  <Font size="21.0" />
+               </font></Label>
+             <Button layoutX="311.0" layoutY="241.0" mnemonicParsing="false" onAction="#loadHome" prefHeight="40.0" prefWidth="245.0" style="-fx-background-radius: 25px; -fx-background-color: #9bc782;" text="Login" />
+             <Button layoutX="311.0" layoutY="311.0" mnemonicParsing="false" onAction="#loadRegister" prefHeight="40.0" prefWidth="245.0" style="-fx-background-radius: 25px; -fx-background-color: #9bc782;" text="Sign up" />
+         </children>
+      </AnchorPane>
+   </center>
 </BorderPane>

@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="activityPane" prefHeight="315.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ControllerEnergy">
+<AnchorPane fx:id="activityPane" prefHeight="468.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ControllerEnergy">
     <children>
-        <ComboBox fx:id="energyBox" layoutX="120.0" layoutY="89.0" onAction="#inputActivity" prefWidth="150.0" />
-        <Label layoutX="36.0" layoutY="94.0" text="Description" />
-        <Button layoutX="270.0" layoutY="251.0" mnemonicParsing="false" onAction="#addActivity" text="Add" />
-        <Label fx:id="pointsText" layoutX="57.0" layoutY="256.0" text="Points: 0" />
+        <ComboBox fx:id="energyBox" layoutX="234.0" layoutY="131.0" onAction="#inputActivity" prefHeight="48.0" prefWidth="244.0" />
+        <Label layoutX="113.0" layoutY="139.0" text="Description">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
+        <Button layoutX="396.0" layoutY="363.0" mnemonicParsing="false" onAction="#addActivity" prefHeight="59.0" prefWidth="150.0" text="Add">
+         <font>
+            <Font size="22.0" />
+         </font></Button>
+        <Label fx:id="pointsText" layoutX="71.0" layoutY="377.0" text="Points: 0">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
     </children>
 </AnchorPane>
