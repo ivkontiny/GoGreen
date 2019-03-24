@@ -53,12 +53,12 @@
             </StackPane>
             <StackPane prefHeight="283.0" prefWidth="368.0">
                <children>
-                  <LineChart>
+                  <LineChart fx:id="linechart">
                     <xAxis>
-                      <CategoryAxis side="BOTTOM" />
+                      <CategoryAxis fx:id="dateaxis" side="BOTTOM" label="Date"/>
                     </xAxis>
                     <yAxis>
-                      <NumberAxis side="LEFT" />
+                      <NumberAxis fx:id="pointsaxis" side="LEFT" label="Points" />
                     </yAxis>
                   </LineChart>
                </children>
