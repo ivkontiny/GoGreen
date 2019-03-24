@@ -18,6 +18,7 @@ public class DefaultValueDaoTest {
     @Before
     public void initialize() {
         db = new DefaultValueDao();
+        db.changeDatabase("test");
         defaultValue = new DefaultValue("tomato", Category.food, "kg", 25, 0.5);
     }
 
