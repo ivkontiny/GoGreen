@@ -47,6 +47,17 @@ public class FriendshipServiceTest {
         assertTrue(frs.sendRequest(testfriendship));
         assertEquals(0,frs.getActiveFriendships("test").size());
         assertEquals(0,frs.getInactiveFriendships("test").size());
+        ArrayList<Friendship> now = new ArrayList<>();
+        now.add(testfriendship);
+        when(test.getFriendships("from")).thenReturn(now);
+        assertEquals(new ArrayList<>(), frs.getActiveFriendships("from"));
+        assertEquals(now, frs.getInactiveFriendships("from"));
+        now.remove(testfriendship);
+        testfriendship.setStatus(true);
+        now.add(testfriendship);
+        when(test.getFriendships("from")).thenReturn(now);
+        assertEquals(new ArrayList<>(), frs.getInactiveFriendships("from"));
+        testfriendship.setStatus(false);
         when(test.sendRequest(testfriendship)).thenReturn(false);
         assertFalse(frs.sendRequest(testfriendship));
     }
@@ -60,5 +71,23 @@ public class FriendshipServiceTest {
         assertEquals(0,frs.getActiveFriendships("test").size());
         assertEquals(0,frs.getInactiveFriendships("test").size());
         assertFalse(frs.acceptRequest(testfriendship));
+    }
+
+    @Test
+    public void testGetFriends() throws SQLException {
+        ArrayList<String> exp = new ArrayList<>();
+        when(test.getFriendships("test")).thenReturn(new ArrayList<>());
+        assertEquals(new ArrayList<>(), frs.getFriends("test"));
+        exp.add("to");
+        ArrayList<Friendship> now = new ArrayList<>();
+        testfriendship.setStatus(true);
+        now.add(testfriendship);
+        when(test.getFriendships("from")).thenReturn(now);
+        when(test.getFriendships("to")).thenReturn(now);
+        assertEquals(exp, frs.getFriends("from"));
+        exp.remove("to");
+        exp.add("from");
+        assertEquals(exp, frs.getFriends("to"));
+        testfriendship.setStatus(false);
     }
 }

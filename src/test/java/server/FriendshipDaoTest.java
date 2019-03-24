@@ -43,6 +43,7 @@ public class FriendshipDaoTest {
         ad.createAccount(testaccount2);
         fd.sendRequest(testfriendships);
         assertTrue(fd.friendshipExists(new Friendship("to","from")));
+        assertTrue(fd.friendshipExists(new Friendship("from", "to")));
         assertFalse(fd.requestExists(new Friendship("to", "from")));
         assertTrue(fd.friendshipExists(testfriendships));
         fd.removeFriendship(testfriendships);

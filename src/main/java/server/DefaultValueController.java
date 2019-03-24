@@ -23,7 +23,7 @@ public class DefaultValueController {
     }
 
 
-    @DeleteMapping("/delete_default_value/{sessionId}")
+    @DeleteMapping("/delete_dv/{sessionId}")
     public void deleteDefaultValue(@RequestBody String desc,
                                    @PathVariable("sessionId") String sessionId) {
         if (ss.sessionExists(sessionId)) {
@@ -32,7 +32,7 @@ public class DefaultValueController {
     }
 
 
-    @RequestMapping("/get_default_value/{sessionId}")
+    @RequestMapping("/get_dv/{sessionId}")
     public DefaultValue getDefaultValue(@RequestBody String desc,
                                         @PathVariable("sessionId") String sessionId) {
         if (ss.sessionExists(sessionId)) {
@@ -43,7 +43,7 @@ public class DefaultValueController {
     }
 
 
-    @PostMapping("/add_default_value/{sessionId}")
+    @PostMapping("/add_dv/{sessionId}")
     public boolean addDefaultValue(@RequestBody DefaultValue dv,
                                    @PathVariable("sessionId") String sessionId) {
         if(ss.sessionExists(sessionId)) {

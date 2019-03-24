@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DefaultValueService {
-    private DefaultValueDao dvd = new DefaultValueDao();
+    private DefaultValueDao db = new DefaultValueDao();
 
     /**
      * Gets all the products from a certain category.
@@ -17,7 +17,7 @@ public class DefaultValueService {
      */
     public ArrayList<String> getValuesFromCategory(Category cat) {
         try {
-            ArrayList<DefaultValue> defs = dvd.getDefaultsByCategory(cat);
+            ArrayList<DefaultValue> defs = db.getDefaultsByCategory(cat);
             ArrayList<String> values = new ArrayList<>();
             for(DefaultValue dv : defs) {
                 values.add(dv.getDescription());
@@ -36,7 +36,7 @@ public class DefaultValueService {
      */
     public DefaultValue getDefaultValue(String desc) {
         try {
-            return dvd.getDefaultValue(desc);
+            return db.getDefaultValue(desc);
         } catch (SQLException e) {
             return null;
         }
@@ -48,7 +48,7 @@ public class DefaultValueService {
      */
     public void deleteDefaultValue(String dv) {
         try {
-            dvd.deleteDefaultValue(dv);
+            db.deleteDefaultValue(dv);
         } catch (SQLException e) {
             return;
         }
@@ -61,7 +61,7 @@ public class DefaultValueService {
      */
     public boolean createDefaultValue(DefaultValue dv) {
         try {
-            return dvd.createDefaultValue(dv);
+            return db.createDefaultValue(dv);
         } catch (SQLException e) {
             return false;
         }
