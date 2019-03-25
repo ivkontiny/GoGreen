@@ -4,19 +4,15 @@ import client.Connect;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.chart.XYChart;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.ResourceBundle;
-
-import static org.apache.commons.lang3.time.DateUtils.parseDate;
 
 public class ControllerStatistics implements Initializable {
     @FXML
@@ -24,9 +20,9 @@ public class ControllerStatistics implements Initializable {
     @FXML
     private LineChart<String, Number> linechart;
     @FXML
-    private CategoryAxis dateaxis;
+    private ChoiceBox<String> choiceBox;
     @FXML
-    private NumberAxis pointsaxis;
+    private Button addButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -44,18 +40,11 @@ public class ControllerStatistics implements Initializable {
         }
 
         // Friend's series
-        XYChart.Series friendSeries = new XYChart.Series();
-        friendSeries.setName("Friend");
-
-        int[] friendPoints = {100, 30, 200, 10, 30, 100, 100};
-
-        for(int i = 0; i <= 6; i++) {
-            friendSeries.getData().add(new XYChart.Data(dates[i], friendPoints[i]));
-        }
+        choiceBox.getItems().addAll("Frank", "Dik", "Jasper");
+        addButton.setOnAction(e -> addFriend(choiceBox, dates));
 
         // Plot series of points
         linechart.getData().add(userSeries);
-        linechart.getData().add(friendSeries);
     }
 
     /**
@@ -102,6 +91,26 @@ public class ControllerStatistics implements Initializable {
         Connect.logOut();
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         rootPane.getChildren().setAll(pane);
+    }
+
+    /**
+     * Get choice from choicebox
+     * @param ChoiceBox
+     * @return String
+     */
+    public void addFriend(ChoiceBox<String> choiceBox, String[] dates) {
+        String friend = choiceBox.getValue();
+
+        XYChart.Series friendSeries = new XYChart.Series();
+        friendSeries.setName(friend);
+
+        int[] friendPoints = {100, 30, 200, 10, 30, 100, 100};
+
+        for(int i = 0; i <= 6; i++) {
+            friendSeries.getData().add(new XYChart.Data(dates[i], friendPoints[i]));
+        }
+
+        linechart.getData().add(friendSeries);
     }
 }
 
