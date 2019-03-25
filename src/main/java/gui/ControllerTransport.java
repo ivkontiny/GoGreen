@@ -1,20 +1,20 @@
 package gui;
 
-        import client.Connect;
-        import javafx.collections.FXCollections;
-        import javafx.collections.ObservableList;
-        import javafx.fxml.FXML;
-        import javafx.fxml.Initializable;
-        import javafx.scene.control.Alert;
-        import javafx.scene.control.ComboBox;
-        import javafx.scene.control.Label;
-        import pojos.Activity;
-        import pojos.Category;
+import client.Connect;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import pojos.Activity;
+import pojos.Category;
 
-        import java.net.URL;
-        import java.sql.Date;
-        import java.time.LocalDate;
-        import java.util.ResourceBundle;
+import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.ResourceBundle;
 
 public class ControllerTransport implements Initializable {
 

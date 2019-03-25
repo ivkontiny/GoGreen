@@ -58,4 +58,10 @@ public class AccountDaoTest {
     }
 
 
+    @Test
+    public void testUpdatePoints() throws SQLException {
+        assertTrue(accountDao.createAccount(newaccount));
+        assertTrue(accountDao.updatePoints(newaccount.getUsername(), 100));
+        accountDao.deleteAccount(newaccount);
+    }
 }

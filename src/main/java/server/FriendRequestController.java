@@ -57,8 +57,10 @@ public class FriendRequestController {
      * @return true if the friend request was successfully accepted, false otherwise
      */
     @RequestMapping("/accept_request/{sessionId}")
-    public boolean acceptRequest(@PathVariable("sessionId") String sessionId,
-                                 @RequestParam(value = "username", defaultValue = "user") String sender) throws SQLException {
+    public boolean acceptRequest(
+        @PathVariable("sessionId") String sessionId,
+        @RequestParam(value = "username", defaultValue = "user") String sender) 
+        throws SQLException {
 
         if (!ss.sessionExists(sessionId)) {
             return false;
@@ -100,13 +102,19 @@ public class FriendRequestController {
      * @return an array list containing all friendships of the current user
      */
     @RequestMapping("/inactive_friendships/{sessionId}")
-    public ArrayList<Friendship> getInactiveFriendships(@PathVariable("sessionId") String sessionId) {
+    public ArrayList<Friendship> getInactiveFriendships(
+        @PathVariable("sessionId") String sessionId) {
         if (ss.sessionExists(sessionId)) {
             return frs.getInactiveFriendships(ss.getAllSessions().get(sessionId).getUsername());
         }
         return new ArrayList<Friendship>();
     }
-
+    
+    /**
+     * Gets the username's of a users friends.
+     * @param sessionId The sessionId belonging to the users current session
+     * @return all friends of the user provided
+     */
     @RequestMapping("/get_friends/{sessionId}")
     public ArrayList<String> getFriends(@PathVariable("sessionId") String sessionId) {
         if (ss.sessionExists(sessionId)) {

@@ -112,9 +112,10 @@ public class ControllerRegister implements Initializable {
      * Creates an account and then closes window when user click button.
      * @param actionEvent the action event
      */
-    public void createAccount(javafx.event.ActionEvent actionEvent) throws NoSuchAlgorithmException {
+    public void createAccount(javafx.event.ActionEvent actionEvent) 
+        throws NoSuchAlgorithmException {
 
-        String pass = HashPassword.HashPassword(password.getText());
+        String pass = HashPassword.HashPass(password.getText());
 
         Account user = new Account(username.getText(),email.getText(),
                 pass, name.getText(),

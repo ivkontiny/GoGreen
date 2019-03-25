@@ -17,24 +17,39 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 
-<BorderPane id="rootPane" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ControllerActivities">
+<BorderPane id="rootPane" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ControllerActivities">
     <left>
         <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
-                <AnchorPane prefHeight="82.0" prefWidth="100.0" style="-fx-background-color: #9bc782;">
+                <AnchorPane prefHeight="123.0" prefWidth="150.0" style="-fx-background-color: #9bc782;">
                     <children>
-                        <ImageView fitHeight="85.0" fitWidth="85.0" layoutX="9.0">
+                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="9.0">
                             <image>
                                 <Image url="@Images/logo.png" />
                             </image>
                         </ImageView>
                     </children>
                 </AnchorPane>
-                <Button mnemonicParsing="false" onAction="#loadHome" prefHeight="64.0" prefWidth="129.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Home" textFill="WHITE" />
-                <Button mnemonicParsing="false" onAction="#loadMyLog" prefHeight="64.0" prefWidth="129.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="My Log" textFill="WHITE" />
-                <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="129.0" style="-fx-background-color: #6BC782; -fx-background-radius: 0;" text="Activities" textFill="WHITE" />
-                <Button mnemonicParsing="false" onAction="#loadStatistics" prefHeight="64.0" prefWidth="129.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Statistics" textFill="WHITE" />
-                <Button mnemonicParsing="false" onAction="#logOut" prefHeight="64.0" prefWidth="129.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Log Out" textFill="WHITE" />
+                <Button mnemonicParsing="false" onAction="#loadHome" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Home" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font></Button>
+                <Button mnemonicParsing="false" onAction="#loadMyLog" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="My Log" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font></Button>
+                <Button mnemonicParsing="false" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #6BC782; -fx-background-radius: 0;" text="Activities" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font></Button>
+                <Button mnemonicParsing="false" onAction="#loadStatistics" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Statistics" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font></Button>
+                <Button mnemonicParsing="false" onAction="#logOut" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Log Out" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font></Button>
             </children>
         </VBox>
     </left>
@@ -42,35 +57,31 @@
         <HBox prefHeight="9.0" prefWidth="600.0" style="-fx-background-color: #9BC782;" BorderPane.alignment="CENTER" />
     </top>
     <right>
-        <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="391.0" prefWidth="117.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-            <children>
-                <ProgressBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="132.0" progress="0.0" rotate="-90.0" StackPane.alignment="CENTER" />
-            </children>
-        </StackPane>
+        <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="148.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER" />
     </right>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="300.0" prefWidth="150.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="80.0" prefWidth="368.0">
+            <AnchorPane prefHeight="120.0" prefWidth="618.0">
                <children>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="28.0" layoutY="37.0" onMouseClicked="#loadFoodActivity">
+                  <ImageView fx:id="foodIcon" fitHeight="80.0" fitWidth="80.0" layoutX="127.0" layoutY="33.0" onMouseClicked="#loadFoodActivity" opacity="0.4">
                      <image>
                         <Image url="@Images/restaurant.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="89.0" layoutY="32.0" onMouseClicked="#loadTransportActivity">
+                  <ImageView fx:id="transportIcon" fitHeight="100.0" fitWidth="100.0" layoutX="267.0" layoutY="23.0" onMouseClicked="#loadTransportActivity" opacity="0.4">
                      <image>
                         <Image url="@Images/car.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="159.0" layoutY="32.0" onMouseClicked="#loadEnergyActivity">
+                  <ImageView fx:id="energyIcon" fitHeight="100.0" fitWidth="100.0" layoutX="415.0" layoutY="23.0" onMouseClicked="#loadEnergyActivity" opacity="0.4">
                      <image>
                         <Image url="@Images/electricity.png" />
                      </image>
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="activityPane" prefHeight="315.0" prefWidth="368.0" />
+            <AnchorPane fx:id="activityPane" prefHeight="468.0" prefWidth="634.0" />
          </children>
       </VBox>
    </center>

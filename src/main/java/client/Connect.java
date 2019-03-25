@@ -187,7 +187,8 @@ public class Connect {
             }
         }
 
-        Pair<ArrayList<String>, Date> entity = new Pair<>(friends, Date.valueOf(LocalDate.now().minusDays(7)));
+        Pair<ArrayList<String>, Date> entity = new Pair<>(
+            friends, Date.valueOf(LocalDate.now().minusDays(7)));
         HttpEntity<Pair<ArrayList<String>, Date>> requestBody = new HttpEntity<>(entity, headers);
 
         ResponseEntity<HashMap<String, ArrayList<Activity>>> response =

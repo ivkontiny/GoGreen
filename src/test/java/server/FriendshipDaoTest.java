@@ -35,12 +35,16 @@ public class FriendshipDaoTest {
     @Test
     public void testExistsFriendship() throws SQLException
     {
+        fd.removeFriendship(testfriendships);
         assertFalse(fd.sendRequest(testfriendships));
         assertFalse(fd.friendshipExists(testfriendships));
         ad.createAccount(testaccount1);
+        assertFalse(fd.sendRequest(testfriendships));
         ad.createAccount(testaccount2);
         fd.sendRequest(testfriendships);
         assertTrue(fd.friendshipExists(new Friendship("to","from")));
+        assertTrue(fd.friendshipExists(new Friendship("from", "to")));
+        assertFalse(fd.requestExists(new Friendship("to", "from")));
         assertTrue(fd.friendshipExists(testfriendships));
         fd.removeFriendship(testfriendships);
         assertFalse(fd.friendshipExists(testfriendships));
@@ -59,4 +63,5 @@ public class FriendshipDaoTest {
         ad.deleteAccount(testaccount1);
         ad.deleteAccount(testaccount2);
     }
+
 }
