@@ -10,6 +10,10 @@ import java.util.ArrayList;
 public class DefaultValueService {
     private DefaultValueDao db = new DefaultValueDao();
 
+    public void setDb(DefaultValueDao db) {
+        this.db = db;
+    }
+
     /**
      * Gets all the products from a certain category.
      * @param cat the category to search for

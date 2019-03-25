@@ -5,6 +5,7 @@ import pojos.Account;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class AccountDao extends Dao {
 
@@ -42,19 +43,25 @@ public class AccountDao extends Dao {
 
         Account account = null;
         if (rs.next()) {
-            String name = rs.getString("username");
-            String email = rs.getString("email");
-            String password = rs.getString("password");
-            String firstname = rs.getString("first_name");
-            String lastname = rs.getString("last_name");
-            int points = rs.getInt("total_points");
-            account = new Account(name, email, password, firstname, lastname);
-            account.setPoints(points);
+            account = resultAccount(rs);
         }
         rs.close();
         st.close();
         return account;
 
+    }
+
+    public ArrayList<Account> getAccounts() throws SQLException {
+        ArrayList<Account> result = new ArrayList<Account>();
+
+        String query = "SELECT * FROM account";
+        ResultSet rs = this.conn.createStatement().executeQuery(query);
+
+        while (rs.next()) {
+            result.add(resultAccount(rs));
+        }
+        rs.close();
+        return result;
     }
 
     /**
@@ -131,5 +138,37 @@ public class AccountDao extends Dao {
         ps.close();
 
         return true;
+    }
+
+    public boolean setPanels(String user, int panels) throws SQLException {
+        if (!exists(user)) {
+            return false;
+        }
+
+        String query = "UPDATE account SET "
+                       + "num_panels = ?"
+                       + "WHERE username = ?";
+
+        PreparedStatement ps = this.conn.prepareStatement(query);
+        ps.setInt(1, panels);
+        ps.setString(2, user);
+        ps.execute();
+        ps.close();
+
+        return true;
+    }
+
+    public Account resultAccount(ResultSet rs) throws SQLException {
+        String name = rs.getString("username");
+        String email = rs.getString("email");
+        String password = rs.getString("password");
+        String firstname = rs.getString("first_name");
+        String lastname = rs.getString("last_name");
+        int points = rs.getInt("total_points");
+        int panels = rs.getInt("num_panels");
+        Account account = new Account(name, email, password, firstname, lastname);
+        account.setPoints(points);
+        account.setNum_panels(panels);
+        return account;
     }
 }
