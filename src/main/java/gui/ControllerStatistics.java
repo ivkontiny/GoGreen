@@ -4,16 +4,26 @@ import client.Connect;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class ControllerStatistics implements Initializable {
     @FXML
     private BorderPane rootPane;
+    @FXML
+    private LineChart<Date, Number> linechart;
+    @FXML
+    private CategoryAxis dateaxis;
+    @FXML
+    private NumberAxis pointsaxis;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
