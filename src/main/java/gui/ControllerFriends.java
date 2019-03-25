@@ -6,7 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,10 +19,19 @@ public class ControllerFriends implements Initializable {
 
     @FXML
     private BorderPane rootPane;
+    @FXML
+    private TextField friendsField;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        String[] possibleWords = { "Hai", "Hello", "Test"};
+
+        TextFields.bindAutoCompletion(friendsField, possibleWords);
+
+    }
+
+    public void getUsers() {
 
     }
 

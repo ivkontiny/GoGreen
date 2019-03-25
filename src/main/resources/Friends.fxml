@@ -19,14 +19,14 @@
             <children>
                 <AnchorPane prefHeight="123.0" prefWidth="100.0" style="-fx-background-color: #9bc782;">
                     <children>
-                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="17.0" layoutY="10.0">
+                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="13.0" layoutY="5.0">
                             <image>
                                 <Image url="@Images/logo.png" />
                             </image>
                         </ImageView>
                     </children>
                 </AnchorPane>
-                <Button mnemonicParsing="false" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #6BC782; -fx-background-radius: 0;" text="Home" textFill="WHITE">
+                <Button mnemonicParsing="false" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Home" textFill="WHITE">
                     <font>
                         <Font size="22.0" />
                     </font></Button>
@@ -42,7 +42,7 @@
                     <font>
                         <Font size="22.0" />
                     </font></Button>
-                <Button mnemonicParsing="false" onAction="#logOut" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Log Out" textFill="WHITE">
+                <Button mnemonicParsing="false" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #6BC782; -fx-background-radius: 0;" text="Friends" textFill="WHITE">
                     <font>
                         <Font size="22.0" />
                     </font></Button>
@@ -50,12 +50,12 @@
         </VBox>
     </left>
     <top>
-        <HBox prefHeight="15.0" prefWidth="600.0" style="-fx-background-color: #9BC782;" BorderPane.alignment="CENTER" />
+        <HBox prefHeight="9.0" prefWidth="600.0" style="-fx-background-color: #9BC782;" BorderPane.alignment="CENTER" />
     </top>
     <center>
         <AnchorPane prefHeight="391.0" prefWidth="368.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField layoutX="58.0" layoutY="109.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="244.0" />
+            <TextField fx:id="friendsField" layoutX="58.0" layoutY="109.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#getUsers" prefHeight="48.0" prefWidth="244.0" />
             <Button layoutX="350.0" layoutY="109.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="131.0" text="Send">
                <font>
                   <Font size="22.0" />
