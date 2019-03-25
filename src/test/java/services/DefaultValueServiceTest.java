@@ -1,6 +1,7 @@
 package services;
 
 import database.DefaultValueDao;
+import org.junit.Before;
 import org.junit.Test;
 import pojos.Category;
 import pojos.DefaultValue;
@@ -11,8 +12,16 @@ import static org.junit.Assert.*;
 
 public class DefaultValueServiceTest {
 
-    DefaultValueService dvs = new DefaultValueService();
-    DefaultValueDao db = new DefaultValueDao();
+    DefaultValueService dvs;
+    DefaultValueDao db;
+
+    @Before
+    public void initialize() {
+        dvs = new DefaultValueService();
+        db = new DefaultValueDao();
+        db.changeDatabase("test");
+        dvs.setDb(db);
+    }
 
     @Test
     public void testGetValuesFromCategory() {
