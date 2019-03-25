@@ -70,8 +70,4 @@ public class DefaultValueService {
             return false;
         }
     }
-
-    public void setDb(DefaultValueDao db) {
-        this.db = db;
-    }
 }
