@@ -27,24 +27,19 @@ public class ControllerStatistics implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // X-axis: dates array
+        // >> RETRIEVE DATES FROM DATABASE
         String[] dates = {"2-3-19", "3-3-19", "4-3-19", "5-3-19", "6-3-19", "7-3-19", "8-3-19"};
 
-        // User's own series
-        XYChart.Series userSeries = new XYChart.Series();
-        userSeries.setName("You");
-
+        // User's graph
+        // >> RETRIEVE POINTS FROM DATABASE
         int[] userPoints = {10, 50, 100, 25, 50, 30, 100};
+        addGraph("You", dates, userPoints);
 
-        for(int i = 0; i <= 6; i++) {
-            userSeries.getData().add(new XYChart.Data(dates[i], userPoints[i]));
-        }
-
-        // Friend's series
+        // Friend's graph
         choiceBox.getItems().addAll("Frank", "Dik", "Jasper");
-        addButton.setOnAction(e -> addFriend(choiceBox, dates));
-
-        // Plot series of points
-        linechart.getData().add(userSeries);
+        // >> RETRIEVE POINTS FROM DATABASE
+        int[] friendPoints = {100, 30, 200, 10, 30, 100, 100};
+        addButton.setOnAction(e -> addGraph(choiceBox.getValue(), dates, friendPoints));
     }
 
     /**
@@ -98,19 +93,15 @@ public class ControllerStatistics implements Initializable {
      * @param ChoiceBox
      * @return String
      */
-    public void addFriend(ChoiceBox<String> choiceBox, String[] dates) {
-        String friend = choiceBox.getValue();
-
-        XYChart.Series friendSeries = new XYChart.Series();
-        friendSeries.setName(friend);
-
-        int[] friendPoints = {100, 30, 200, 10, 30, 100, 100};
+    public void addGraph(String name, String[] dates, int[] points) {
+        XYChart.Series series = new XYChart.Series();
+        series.setName(name);
 
         for(int i = 0; i <= 6; i++) {
-            friendSeries.getData().add(new XYChart.Data(dates[i], friendPoints[i]));
+            series.getData().add(new XYChart.Data(dates[i], points[i]));
         }
 
-        linechart.getData().add(friendSeries);
+        linechart.getData().add(series);
     }
 }
 
