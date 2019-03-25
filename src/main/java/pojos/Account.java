@@ -7,6 +7,7 @@ public class Account {
     private String firstname;
     private String lastname;
     private int points;
+    private int num_panels;
 
 
     public Account() {
@@ -30,6 +31,7 @@ public class Account {
         this.firstname = name;
         this.lastname = surname;
         this.points = 0;
+        this.num_panels = 0;
     }
 
 
@@ -81,6 +83,13 @@ public class Account {
         this.points = points;
     }
 
+    public int getNum_panels() {
+        return num_panels;
+    }
+
+    public void setNum_panels(int num_panels) {
+        this.num_panels = num_panels;
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -91,7 +100,8 @@ public class Account {
                     && this.mail.equals(that.mail)
                     && this.password.equals(that.password)
                     && this.firstname.equals(that.firstname)
-                    && this.lastname.equals(that.lastname)) {
+                    && this.lastname.equals(that.lastname)
+                    && this.num_panels == that.num_panels) {
                 return true;
             }
         }

@@ -1,0 +1,23 @@
+package util;
+
+import pojos.Account;
+import pojos.DefaultValue;
+import services.AccountService;
+import services.DefaultValueService;
+
+import java.util.ArrayList;
+
+public class AddSolarPoints {
+
+    public static void addPoints() {
+        AccountService as = new AccountService();
+        DefaultValueService dvs = new DefaultValueService();
+
+        ArrayList<Account> all = as.getAccounts();
+        DefaultValue value = dvs.getDefaultValue("Power saved by solar panels");
+
+        for (Account acc : all) {
+            as.updatePoints(acc.getUsername(), acc.getNum_panels() * value.getPoints());
+        }
+    }
+}

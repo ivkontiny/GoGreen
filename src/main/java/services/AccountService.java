@@ -4,6 +4,7 @@ import database.AccountDao;
 import pojos.Account;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class AccountService {
 
@@ -91,6 +92,14 @@ public class AccountService {
             return db.updatePoints(user, points);
         } catch (SQLException e) {
             return false;
+        }
+    }
+
+    public ArrayList<Account> getAccounts() {
+        try {
+            return db.getAccounts();
+        } catch (SQLException e) {
+            return null;
         }
     }
 }
