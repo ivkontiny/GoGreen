@@ -6,26 +6,34 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerHome implements Initializable {
+public class ControllerFriends implements Initializable {
+
 
     @FXML
     private BorderPane rootPane;
-
     @FXML
-    private ProgressBar progressbar;
+    private TextField friendsField;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        progressbar.setProgress(0.6);
+        String[] possibleWords = { "Hai", "Hello", "Test"};
+
+        TextFields.bindAutoCompletion(friendsField, possibleWords);
+
     }
 
+    public void getUsers() {
+
+    }
 
     public void loadMyLog(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("MyLog.fxml"));
@@ -63,16 +71,6 @@ public class ControllerHome implements Initializable {
     public void loadStatistics(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(
                 getClass().getClassLoader().getResource("Statistics.fxml"));
-        rootPane.getChildren().setAll(pane);
-    }
-
-    /**
-     * Loads the friends page.
-     * @param actionEvent the action event on which the friends page should be displayed
-     * @throws IOException
-     */
-    public void loadFriends(javafx.event.ActionEvent actionEvent) throws IOException {
-        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Friends.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 

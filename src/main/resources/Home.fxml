@@ -17,9 +17,9 @@
     <left>
         <VBox prefHeight="300.0" prefWidth="150.0" BorderPane.alignment="CENTER">
             <children>
-                <AnchorPane prefHeight="123.0" prefWidth="100.0" style="-fx-background-color: #9bc782;">
+                <AnchorPane prefHeight="123.0" prefWidth="150.0" style="-fx-background-color: #9bc782;">
                     <children>
-                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="17.0" layoutY="10.0">
+                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="13.0" layoutY="3.0">
                             <image>
                                 <Image url="@Images/logo.png" />
                             </image>
@@ -42,7 +42,7 @@
                <font>
                   <Font size="22.0" />
                </font></Button>
-                <Button mnemonicParsing="false" onAction="#logOut" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Log Out" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadFriends" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Friends" textFill="WHITE">
                <font>
                   <Font size="22.0" />
                </font></Button>
@@ -50,7 +50,7 @@
         </VBox>
     </left>
     <top>
-        <HBox prefHeight="15.0" prefWidth="600.0" style="-fx-background-color: #9BC782;" BorderPane.alignment="CENTER" />
+        <HBox prefHeight="9.0" prefWidth="600.0" style="-fx-background-color: #9BC782;" BorderPane.alignment="CENTER" />
     </top>
     <center>
         <AnchorPane prefHeight="391.0" prefWidth="368.0" BorderPane.alignment="CENTER">

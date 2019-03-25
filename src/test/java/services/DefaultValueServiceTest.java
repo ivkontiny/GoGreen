@@ -8,7 +8,8 @@ import pojos.DefaultValue;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class DefaultValueServiceTest {
 
@@ -27,6 +28,7 @@ public class DefaultValueServiceTest {
     public void testGetValuesFromCategory() {
         db.changeDatabase("test");
         ArrayList<String> exp = new ArrayList<>();
+        db.changeDatabase("test");
         DefaultValue dv = new DefaultValue("tomato", Category.food, "kg", 25, 0.5);
         assertEquals(exp, dvs.getValuesFromCategory(Category.energy));
         assertTrue(dvs.createDefaultValue(dv));
