@@ -1,6 +1,6 @@
 package gui;
 
-import client.Connect;
+import client.ConnectAccount;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -91,7 +91,7 @@ public class ControllerMyLog implements Initializable {
      */
     public ObservableList<Activity> getActivity() {
         ObservableList<pojos.Activity> activities = FXCollections.observableArrayList();
-        ArrayList<Activity> myActivities = Connect.getActivities();
+        ArrayList<Activity> myActivities = ConnectAccount.getActivities();
         for (Activity activity: myActivities) {
             activities.add(activity);
         }
@@ -103,8 +103,8 @@ public class ControllerMyLog implements Initializable {
      * @param actionEvent the event on which the user should be logged out
      * @throws IOException when something with the action event goes wrong
      */
-    public void logOut(javafx.event.ActionEvent actionEvent) throws IOException {
-        Connect.logOut();
+    public void logOut(javafx.scene.input.MouseEvent actionEvent) throws IOException {
+        ConnectAccount.logOut();
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         rootPane.getChildren().setAll(pane);
     }

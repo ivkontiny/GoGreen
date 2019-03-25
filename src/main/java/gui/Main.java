@@ -1,6 +1,6 @@
 package gui;
 
-import client.Connect;
+import client.ConnectAccount;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,8 +19,6 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
         ActivityDb.initialize();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Home.fxml"));
-        //ControllerHome.welcomeMessage(root);
         primaryStage.setTitle("GO GREEN");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
@@ -28,11 +26,11 @@ public class Main extends Application {
 
     @Override
     public void stop() {
-        if (Connect.getSessionId() == null) {
+        if (ConnectAccount.getSessionId() == null) {
             return;
         }
-        if (!Connect.getSessionId().equals("")) {
-            Connect.logOut();
+        if (!ConnectAccount.getSessionId().equals("")) {
+            ConnectAccount.logOut();
         }
     }
 }

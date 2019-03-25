@@ -1,6 +1,6 @@
 package gui;
 
-import client.Connect;
+import client.ConnectAccount;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -39,7 +39,7 @@ public class ControllerFriends implements Initializable {
     public void getUsers() {
         if (friendsField.getText().length() == 1) {
             String match = friendsField.getText();
-            usernames = Connect.getMatchingUsers(match);
+            usernames = ConnectAccount.getMatchingUsers(match);
             TextFields.bindAutoCompletion(friendsField, usernames);
         } else if(friendsField.getText().length() < 1){
             usernames = new ArrayList<>();
@@ -59,7 +59,7 @@ public class ControllerFriends implements Initializable {
     public static void welcomeMessage(Parent root) {
         javafx.scene.control.Label welcome = (Label) root.lookup("#Welcome");
         if (welcome != null) {
-            welcome.setText("Welcome " + Connect.getUsername());
+            welcome.setText("Welcome " + ConnectAccount.getUsername());
         }
     }
 
@@ -91,7 +91,7 @@ public class ControllerFriends implements Initializable {
      * @throws IOException when something with the event went wrong
      */
     public void logOut() throws IOException {
-        Connect.logOut();
+        ConnectAccount.logOut();
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         rootPane.getChildren().setAll(pane);
     }

@@ -13,8 +13,10 @@ import services.ActivityService;
 import services.SessionService;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class ActivityController {
@@ -58,20 +60,20 @@ public class ActivityController {
      * @param sessionId the sessionId of the current user
      * @return a hash map containing all activities of a certain user
      */
-    @RequestMapping("/get_friend_activities_from_date/{sessionId}")
+    @PostMapping("/friend_activities/{sessionId}")
     public HashMap<String, ArrayList<Activity>> getActivitiesSince(
-        @RequestBody Pair<ArrayList<String>, Date> entity,
+        @RequestBody ArrayList<String> entity,
         @PathVariable("sessionId") String sessionId) {
-        if (ss.sessionExists(sessionId)) {
-            HashMap<String, ArrayList<Activity>> activities = new HashMap<>();
-            for (String user : entity.getKey()) {
-                activities.put(user, as.getActivitiesOfUserSince(user, entity.getValue()));
+            if (ss.sessionExists(sessionId)) {
+                HashMap<String, ArrayList<Activity>> activities = new HashMap<>();
+                for (String user : entity) {
+                    activities.put(user, as.getActivitiesOfUserSince(user, Date.valueOf(LocalDate.now().minusDays(7))));
+                }
+
+                return activities;
             }
 
-            return activities;
-        }
-
-        return new HashMap<>();
+            return new HashMap<>();
     }
 
     /**
