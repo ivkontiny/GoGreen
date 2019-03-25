@@ -68,12 +68,12 @@
             </StackPane>
             <StackPane prefHeight="283.0" prefWidth="368.0">
                <children>
-                  <LineChart fx:id="linechart">
+                  <LineChart fx:id="linechart" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="750.0">
                     <xAxis>
-                      <CategoryAxis fx:id="dateaxis" side="BOTTOM" label="Date"/>
+                      <CategoryAxis fx:id="dateaxis" label="Date" side="BOTTOM" />
                     </xAxis>
                     <yAxis>
-                      <NumberAxis fx:id="pointsaxis" side="LEFT" label="Points" />
+                      <NumberAxis fx:id="pointsaxis" label="Points" side="LEFT" />
                     </yAxis>
                   </LineChart>
                </children>
