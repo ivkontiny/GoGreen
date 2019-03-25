@@ -57,6 +57,8 @@ public class Connect {
         return response.getBody();
     }
 
+
+
     /**
      * Logs out the user with a sessionID.
      */
@@ -167,6 +169,22 @@ public class Connect {
         return response.getBody();
     }
 
+    public static ArrayList<String> getMatchingUsers(String match) {
+        url_default = "http://localhost:8080/";
+        String url = url_default + "get_match/";
+        //url += SESSION_ID;
+        //url += "/";
+        url += match;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        RestTemplate restTemplate = new RestTemplate();
+
+        //HttpEntity<String> requestBody = new HttpEntity<>(headers);
+        ResponseEntity<ArrayList<String>> response = restTemplate.exchange(url, HttpMethod.GET, null,
+                        new ParameterizedTypeReference<ArrayList<String>>() {
+                        });
+        return response.getBody();
+    }
 
     /**
      * Adds the activities of the friends to the acts hash map.

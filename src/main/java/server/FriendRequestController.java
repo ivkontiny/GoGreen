@@ -1,9 +1,6 @@
 package server;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pojos.Friendship;
 import services.AccountService;
 import services.FriendRequestService;
@@ -122,6 +119,11 @@ public class FriendRequestController {
         }
 
         return new ArrayList<>();
+    }
+
+    @RequestMapping("/get_match/{matching}")
+    public ArrayList<String> getMatchings(@PathVariable("matching") String match) {
+        return frs.getMatchings(match);
     }
 
 

@@ -157,4 +157,17 @@ public class FriendshipDao extends Dao {
         return true;
 
     }
+
+    public ArrayList<String> getMatchings(String match) throws SQLException {
+            String query = "SELECT username FROM account WHERE username LIKE ? ";
+            match += "%";
+            PreparedStatement request = this.conn.prepareStatement(query);
+            request.setString(1,match);
+            ResultSet rs = request.executeQuery();
+            ArrayList<String> matchings = new ArrayList<>();
+            while (rs.next()) {
+                matchings.add(rs.getString("username"));
+            }
+            return matchings;
+    }
 }

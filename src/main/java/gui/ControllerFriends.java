@@ -12,6 +12,7 @@ import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ControllerFriends implements Initializable {
@@ -22,17 +23,28 @@ public class ControllerFriends implements Initializable {
     @FXML
     private TextField friendsField;
 
+    private ArrayList<String> usernames;
+
+    boolean ok = false;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String[] possibleWords = { "Hai", "Hello", "Test"};
 
-        TextFields.bindAutoCompletion(friendsField, possibleWords);
+        //usernames = new ArrayList<>();
+        //TextFields.bindAutoCompletion(friendsField, usernames);
 
     }
 
     public void getUsers() {
-
+        if (friendsField.getText().length() == 1) {
+            String match = friendsField.getText();
+            usernames = Connect.getMatchingUsers(match);
+            TextFields.bindAutoCompletion(friendsField, usernames);
+        } else if(friendsField.getText().length() < 1){
+            usernames = new ArrayList<>();
+            TextFields.bindAutoCompletion(friendsField, usernames);
+        }
     }
 
     public void loadMyLog(javafx.event.ActionEvent actionEvent) throws IOException {
