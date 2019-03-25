@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.paint.*?>
@@ -51,13 +52,6 @@
     <top>
         <HBox prefHeight="15.0" prefWidth="600.0" style="-fx-background-color: #9BC782;" BorderPane.alignment="CENTER" />
     </top>
-    <right>
-        <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="148.0" BorderPane.alignment="CENTER">
-            <children>
-                <ProgressBar id="progressbar" fx:id="progressbar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="300.0" progress="0.0" rotate="-90.0" StackPane.alignment="CENTER" />
-            </children>
-        </StackPane>
-    </right>
     <center>
         <AnchorPane prefHeight="391.0" prefWidth="368.0" BorderPane.alignment="CENTER">
             <children>
@@ -69,4 +63,16 @@
             </children>
         </AnchorPane>
     </center>
+   <right>
+      <Pane prefHeight="585.0" prefWidth="186.0" BorderPane.alignment="CENTER">
+         <children>
+                <ProgressBar id="progressbar" fx:id="progressbar" layoutX="-57.0" layoutY="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="300.0" progress="0.0" rotate="-90.0" />
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="132.0" layoutY="14.0" onMouseClicked="#logOut">
+               <image>
+                  <Image url="@Images/logout.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </right>
 </BorderPane>

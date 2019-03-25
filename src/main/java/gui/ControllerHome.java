@@ -68,10 +68,9 @@ public class ControllerHome implements Initializable {
 
     /**
      * Logs the user out.
-     * @param actionEvent the event on which the user should be logged out
      * @throws IOException when something with the event went wrong
      */
-    public void logOut(javafx.event.ActionEvent actionEvent) throws IOException {
+    public void logOut() throws IOException {
         Connect.logOut();
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         rootPane.getChildren().setAll(pane);
