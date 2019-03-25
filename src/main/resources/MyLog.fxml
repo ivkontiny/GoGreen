@@ -19,7 +19,7 @@
             <children>
                 <AnchorPane prefHeight="123.0" prefWidth="150.0" style="-fx-background-color: #9bc782;">
                     <children>
-                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="9.0">
+                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="13.0">
                             <image>
                                 <Image url="@Images/logo.png" />
                             </image>
@@ -42,7 +42,7 @@
                <font>
                   <Font size="22.0" />
                </font></Button>
-                <Button mnemonicParsing="false" onAction="#logOut" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Log Out" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadFriends" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Friends" textFill="WHITE">
                <font>
                   <Font size="22.0" />
                </font></Button>

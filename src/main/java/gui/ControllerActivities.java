@@ -84,6 +84,16 @@ public class ControllerActivities implements Initializable {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         rootPane.getChildren().setAll(pane);
     }
+
+    /**
+     * Loads the friends page.
+     * @param actionEvent the action event on which the friends page should be displayed
+     * @throws IOException
+     */
+    public void loadFriends(javafx.event.ActionEvent actionEvent) throws IOException {
+        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Friends.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
     
     /**
      * Loads the food activity selection screen.

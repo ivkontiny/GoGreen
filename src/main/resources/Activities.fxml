@@ -19,11 +19,11 @@
 
 <BorderPane id="rootPane" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ControllerActivities">
     <left>
-        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+        <VBox prefHeight="200.0" prefWidth="150.0" BorderPane.alignment="CENTER">
             <children>
                 <AnchorPane prefHeight="123.0" prefWidth="150.0" style="-fx-background-color: #9bc782;">
                     <children>
-                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="9.0">
+                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="13.0">
                             <image>
                                 <Image url="@Images/logo.png" />
                             </image>
@@ -46,7 +46,7 @@
                <font>
                   <Font size="22.0" />
                </font></Button>
-                <Button mnemonicParsing="false" onAction="#logOut" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Log Out" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadFriends" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Friends" textFill="WHITE">
                <font>
                   <Font size="22.0" />
                </font></Button>
@@ -76,7 +76,7 @@
                         <Image url="@Images/electricity.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="712.0" layoutY="13.0" onMouseClicked="#logOut">
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="698.0" layoutY="13.0" onMouseClicked="#logOut">
                      <image>
                         <Image url="@Images/logout.png" />
                      </image>
