@@ -7,8 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.chart.XYChart;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,7 +19,7 @@ public class ControllerStatistics implements Initializable {
     @FXML
     private BorderPane rootPane;
     @FXML
-    private LineChart<Date, Number> linechart;
+    private LineChart<String, Number> linechart;
     @FXML
     private CategoryAxis dateaxis;
     @FXML
@@ -27,7 +27,22 @@ public class ControllerStatistics implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        XYChart.Series userSeries = new XYChart.Series();
 
+        userSeries.getData().add(new XYChart.Data("Jan", 23));
+        userSeries.getData().add(new XYChart.Data("Feb", 14));
+        userSeries.getData().add(new XYChart.Data("Mar", 15));
+        userSeries.getData().add(new XYChart.Data("Apr", 24));
+        userSeries.getData().add(new XYChart.Data("May", 34));
+        userSeries.getData().add(new XYChart.Data("Jun", 36));
+        userSeries.getData().add(new XYChart.Data("Jul", 22));
+        userSeries.getData().add(new XYChart.Data("Aug", 45));
+        userSeries.getData().add(new XYChart.Data("Sep", 43));
+        userSeries.getData().add(new XYChart.Data("Oct", 17));
+        userSeries.getData().add(new XYChart.Data("Nov", 29));
+        userSeries.getData().add(new XYChart.Data("Dec", 25));
+
+        linechart.getData().add(userSeries);
     }
 
     /**

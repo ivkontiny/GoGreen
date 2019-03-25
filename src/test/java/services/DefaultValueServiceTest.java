@@ -13,7 +13,6 @@ import static org.junit.Assert.assertTrue;
 
 public class DefaultValueServiceTest {
 
-
     DefaultValueService dvs;
     DefaultValueDao db;
 
@@ -27,6 +26,7 @@ public class DefaultValueServiceTest {
 
     @Test
     public void testGetValuesFromCategory() {
+        db.changeDatabase("test");
         ArrayList<String> exp = new ArrayList<>();
         db.changeDatabase("test");
         DefaultValue dv = new DefaultValue("tomato", Category.food, "kg", 25, 0.5);
