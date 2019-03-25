@@ -12,8 +12,11 @@ import javafx.scene.chart.XYChart;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
+
+import static org.apache.commons.lang3.time.DateUtils.parseDate;
 
 public class ControllerStatistics implements Initializable {
     @FXML
@@ -27,22 +30,32 @@ public class ControllerStatistics implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // X-axis: dates array
+        String[] dates = {"2-3-19", "3-3-19", "4-3-19", "5-3-19", "6-3-19", "7-3-19", "8-3-19"};
+
+        // User's own series
         XYChart.Series userSeries = new XYChart.Series();
+        userSeries.setName("You");
 
-        userSeries.getData().add(new XYChart.Data("Jan", 23));
-        userSeries.getData().add(new XYChart.Data("Feb", 14));
-        userSeries.getData().add(new XYChart.Data("Mar", 15));
-        userSeries.getData().add(new XYChart.Data("Apr", 24));
-        userSeries.getData().add(new XYChart.Data("May", 34));
-        userSeries.getData().add(new XYChart.Data("Jun", 36));
-        userSeries.getData().add(new XYChart.Data("Jul", 22));
-        userSeries.getData().add(new XYChart.Data("Aug", 45));
-        userSeries.getData().add(new XYChart.Data("Sep", 43));
-        userSeries.getData().add(new XYChart.Data("Oct", 17));
-        userSeries.getData().add(new XYChart.Data("Nov", 29));
-        userSeries.getData().add(new XYChart.Data("Dec", 25));
+        int[] userPoints = {10, 50, 100, 25, 50, 30, 100};
 
+        for(int i = 0; i <= 6; i++) {
+            userSeries.getData().add(new XYChart.Data(dates[i], userPoints[i]));
+        }
+
+        // Friend's series
+        XYChart.Series friendSeries = new XYChart.Series();
+        friendSeries.setName("Friend");
+
+        int[] friendPoints = {100, 30, 200, 10, 30, 100, 100};
+
+        for(int i = 0; i <= 6; i++) {
+            friendSeries.getData().add(new XYChart.Data(dates[i], friendPoints[i]));
+        }
+
+        // Plot series of points
         linechart.getData().add(userSeries);
+        linechart.getData().add(friendSeries);
     }
 
     /**
