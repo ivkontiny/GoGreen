@@ -5,9 +5,7 @@ import pojos.Activity;
 
 import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
 public class ActivityService {
 

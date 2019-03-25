@@ -19,7 +19,7 @@ public class DefaultValueService {
         try {
             ArrayList<DefaultValue> defs = db.getDefaultsByCategory(cat);
             ArrayList<String> values = new ArrayList<>();
-            for(DefaultValue dv : defs) {
+            for (DefaultValue dv : defs) {
                 values.add(dv.getDescription());
             }
 

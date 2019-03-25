@@ -98,7 +98,11 @@ public class FriendRequestService {
         }
     }
 
-
+    /**
+     * Gets the friends of a specified user.
+     * @param user The user whose friends are requested
+     * @return an arraylist of all the usernames of the users friends
+     */
     public ArrayList<String> getFriends(String user) {
         ArrayList<Friendship> friendships = getActiveFriendships(user);
         ArrayList<String> friends = new ArrayList<>();

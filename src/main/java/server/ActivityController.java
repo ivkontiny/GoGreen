@@ -59,11 +59,12 @@ public class ActivityController {
      * @return a hash map containing all activities of a certain user
      */
     @RequestMapping("/get_friend_activities_from_date/{sessionId}")
-    public HashMap<String, ArrayList<Activity>> getActivitiesSince(@RequestBody Pair<ArrayList<String>, Date> entity,
-                                                                   @PathVariable("sessionId") String sessionId) {
-        if(ss.sessionExists(sessionId)) {
+    public HashMap<String, ArrayList<Activity>> getActivitiesSince(
+        @RequestBody Pair<ArrayList<String>, Date> entity,
+        @PathVariable("sessionId") String sessionId) {
+        if (ss.sessionExists(sessionId)) {
             HashMap<String, ArrayList<Activity>> activities = new HashMap<>();
-            for(String user : entity.getKey()) {
+            for (String user : entity.getKey()) {
                 activities.put(user, as.getActivitiesOfUserSince(user, entity.getValue()));
             }
 

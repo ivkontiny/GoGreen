@@ -84,7 +84,11 @@ public class ControllerActivities implements Initializable {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         rootPane.getChildren().setAll(pane);
     }
-
+    
+    /**
+     * Loads the food activity selection screen.
+     * @throws IOException when something in the action went wrong
+     */
     public void loadFoodActivity() throws IOException {
         foodIcon.setOpacity(1);
         transportIcon.setOpacity(0.4);
@@ -93,22 +97,32 @@ public class ControllerActivities implements Initializable {
         AnchorPane foodPane = FXMLLoader.load(getClass().getClassLoader().getResource("Food.fxml"));
         activityPane.getChildren().setAll(foodPane);
     }
-
+    
+    /**
+     * Loads the transport activity selection screen.
+     * @param mouseEvent mouseEvent that triggers event.
+     * @throws IOException when something in the action went wrong
+     */
     public void loadTransportActivity(MouseEvent mouseEvent) throws IOException {
         foodIcon.setOpacity(0.4);
         transportIcon.setOpacity(1);
         energyIcon.setOpacity(0.4);
-
-        AnchorPane transportPane = FXMLLoader.load(getClass().getClassLoader().getResource("Transport.fxml"));
+        AnchorPane transportPane = 
+            FXMLLoader.load(getClass().getClassLoader().getResource("Transport.fxml"));
         activityPane.getChildren().setAll(transportPane);
     }
-
+    
+    /**
+     * Loads the energy activity selection screen.
+     * @param mouseEvent mouseEvent that triggers event
+     * @throws IOException when something in the action went wrong
+     */
     public void loadEnergyActivity(MouseEvent mouseEvent) throws IOException {
         foodIcon.setOpacity(0.4);
         transportIcon.setOpacity(0.4);
         energyIcon.setOpacity(1);
-
-        AnchorPane energyPane = FXMLLoader.load(getClass().getClassLoader().getResource("Energy.fxml"));
+        AnchorPane energyPane = 
+            FXMLLoader.load(getClass().getClassLoader().getResource("Energy.fxml"));
         activityPane.getChildren().setAll(energyPane);
     }
 }

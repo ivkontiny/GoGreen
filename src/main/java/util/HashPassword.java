@@ -6,7 +6,13 @@ import java.util.Base64;
 
 public class HashPassword {
 
-    public static String HashPassword(String password) throws NoSuchAlgorithmException {
+    /**
+     * Creates a hashed version of a password.
+     * @param password the password to be hashed
+     * @return the hashed password
+     * @throws NoSuchAlgorithmException when something went wrong
+     */
+    public static String HashPass(String password) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         digest.update(password.getBytes());
         String pass = new String(Base64.getEncoder().encode(digest.digest()));

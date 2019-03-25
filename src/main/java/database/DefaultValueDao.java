@@ -67,8 +67,9 @@ public class DefaultValueDao extends Dao {
         }
 
 
-        String query = "INSERT INTO default_values (description, category, unit, point_value, consumption) "
-                + "VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO default_values "
+            + "(description, category, unit, point_value, consumption)"
+            + "VALUES (?, ?, ?, ?, ?)";
 
         PreparedStatement ps = this.conn.prepareStatement(query);
         ps.setString(1, defaultValue.getDescription());
@@ -89,7 +90,7 @@ public class DefaultValueDao extends Dao {
      * @throws SQLException when connecting to the database failed
      */
     public void deleteDefaultValue(String defaultValue) throws SQLException {
-        if(!exists(defaultValue)) {
+        if (!exists(defaultValue)) {
             return;
         }
 

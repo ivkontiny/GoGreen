@@ -47,7 +47,7 @@ public class ControllerLogIn implements Initializable {
 
         System.out.println(username.getText());
 
-        String pass = HashPassword.HashPassword(password.getText());
+        String pass = HashPassword.HashPass(password.getText());
 
         if (Connect.serverLogin(username.getText(), pass)) {
             BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Home.fxml"));
