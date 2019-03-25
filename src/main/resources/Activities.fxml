@@ -76,7 +76,7 @@
                         <Image url="@Images/electricity.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="712.0" layoutY="13.0">
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="712.0" layoutY="13.0" onMouseClicked="#logOut">
                      <image>
                         <Image url="@Images/logout.png" />
                      </image>
