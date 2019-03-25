@@ -1,22 +1,34 @@
 package services;
 
 import database.DefaultValueDao;
+import org.junit.Before;
 import org.junit.Test;
 import pojos.Category;
 import pojos.DefaultValue;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class DefaultValueServiceTest {
 
-    DefaultValueService dvs = new DefaultValueService();
-    DefaultValueDao db = new DefaultValueDao();
+
+    DefaultValueService dvs;
+    DefaultValueDao db;
+
+    @Before
+    public void initialize() {
+        dvs = new DefaultValueService();
+        db = new DefaultValueDao();
+        db.changeDatabase("test");
+        dvs.setDb(db);
+    }
 
     @Test
     public void testGetValuesFromCategory() {
         ArrayList<String> exp = new ArrayList<>();
+        db.changeDatabase("test");
         DefaultValue dv = new DefaultValue("tomato", Category.food, "kg", 25, 0.5);
         assertEquals(exp, dvs.getValuesFromCategory(Category.energy));
         assertTrue(dvs.createDefaultValue(dv));
