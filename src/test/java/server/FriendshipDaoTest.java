@@ -10,10 +10,10 @@ import pojos.Friendship;
 import javax.validation.constraints.AssertTrue;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -44,6 +44,7 @@ public class FriendshipDaoTest {
         fd.sendRequest(testfriendships);
         assertTrue(fd.friendshipExists(new Friendship("to","from")));
         assertTrue(fd.friendshipExists(new Friendship("from", "to")));
+        assertFalse(fd.friendshipExists(new Friendship("from", "to1")));
         assertFalse(fd.requestExists(new Friendship("to", "from")));
         assertTrue(fd.friendshipExists(testfriendships));
         fd.removeFriendship(testfriendships);
@@ -62,6 +63,16 @@ public class FriendshipDaoTest {
         assertFalse(fd.acceptRequest(testfriendships));
         ad.deleteAccount(testaccount1);
         ad.deleteAccount(testaccount2);
+    }
+
+    @Test
+    public void testGetMatching() throws SQLException {
+        assertTrue(ad.createAccount(testaccount1));
+        ArrayList<String> exp = new ArrayList<>();
+        assertEquals(exp, fd.getMatchings("t"));
+        exp.add("from");
+        assertEquals(exp, fd.getMatchings("f"));
+        ad.deleteAccount(testaccount1);
     }
 
 }

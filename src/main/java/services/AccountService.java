@@ -102,6 +102,14 @@ public class AccountService {
             return null;
         }
     }
+
+    public void deleteAccount(Account account) {
+        try {
+            db.deleteAccount(account);
+        } catch (SQLException e) {
+            return;
+        }
+    }
 }
 
 

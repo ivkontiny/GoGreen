@@ -5,9 +5,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Matchers;
 import pojos.Activity;
+import pojos.Category;
 import services.ActivityService;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static junit.framework.TestCase.assertTrue;
@@ -62,4 +65,20 @@ public class ActivityServiceTest {
         assertNull(as.getActivities("username"));
     }
 
+    @Test
+    public void testGetActivitiesOfUserSince() throws SQLException {
+        when(ad.getActivities("user")).thenReturn(new ArrayList<>());
+        ArrayList<Activity> exp = new ArrayList<>();
+        assertEquals(exp, as.getActivitiesOfUserSince("user", Date.valueOf(LocalDate.now())));
+        Activity acc = new Activity("desc", Category.food,
+                200, Date.valueOf(LocalDate.now()), "user");
+        Activity acc1 = new Activity("desc", Category.food,
+                200, Date.valueOf(LocalDate.now().minusDays(7)), "user");
+        ArrayList<Activity> activities = new ArrayList<>();
+        activities.add(acc);
+        activities.add(acc1);
+        when(ad.getActivities("user")).thenReturn(activities);
+        exp.add(acc);
+        assertEquals(exp, as.getActivitiesOfUserSince("user", Date.valueOf(LocalDate.now().minusDays(1))));
+    }
 }

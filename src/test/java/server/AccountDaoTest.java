@@ -16,6 +16,7 @@ import pojos.Friendship;
 import javax.validation.constraints.AssertTrue;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
@@ -62,6 +63,25 @@ public class AccountDaoTest {
     public void testUpdatePoints() throws SQLException {
         assertTrue(accountDao.createAccount(newaccount));
         assertTrue(accountDao.updatePoints(newaccount.getUsername(), 100));
+        accountDao.deleteAccount(newaccount);
+    }
+
+
+    @Test
+    public void testSetPanels() throws SQLException {
+        assertFalse(accountDao.setPanels(newaccount.getUsername(), 2));
+        assertTrue(accountDao.createAccount(newaccount));
+        assertTrue(accountDao.setPanels(newaccount.getUsername(), 2));
+        accountDao.deleteAccount(newaccount);
+    }
+
+    @Test
+    public void testGetAccounts() throws SQLException {
+        ArrayList<Account> exp = new ArrayList<>();
+        assertEquals(exp, accountDao.getAccounts());
+        assertTrue(accountDao.createAccount(newaccount));
+        exp.add(newaccount);
+        assertEquals(exp, accountDao.getAccounts());
         accountDao.deleteAccount(newaccount);
     }
 }

@@ -2,7 +2,6 @@ package client;
 
 //import org.springframework.http.*;
 
-import javafx.util.Pair;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -13,11 +12,7 @@ import org.springframework.web.client.RestTemplate;
 import pojos.Account;
 import pojos.Activity;
 
-import java.lang.reflect.Type;
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 //import server.Application;
 //142.93.230.132:8080
@@ -36,8 +31,9 @@ public class ConnectAccount {
         return SESSION_ID;
     }
 
-    public static String getUsername() { return USERNAME; }
-
+    public static String getUsername() {
+        return USERNAME;
+    }
 
 
     /**
@@ -151,20 +147,26 @@ public class ConnectAccount {
         return response.getBody();
     }
 
+    /**
+     * Returns all users whose username matches a certain pattern.
+     *
+     * @param match the matching pattern
+     * @return an array list containing all the users that match it
+     */
     public static ArrayList<String> getMatchingUsers(String match) {
         url_default = "http://localhost:8080/";
         String url = url_default + "get_match/";
         url += SESSION_ID;
-        url +="/";
+        url += "/";
         url += match;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         RestTemplate restTemplate = new RestTemplate();
 
         //HttpEntity<String> requestBody = new HttpEntity<>(headers);
-        ResponseEntity<ArrayList<String>> response = restTemplate.exchange(url, HttpMethod.GET, null,
-                        new ParameterizedTypeReference<ArrayList<String>>() {
-                        });
+        ResponseEntity<ArrayList<String>> response = restTemplate.exchange(url, HttpMethod.GET,
+                null, new ParameterizedTypeReference<ArrayList<String>>() {
+                });
         return response.getBody();
     }
 
