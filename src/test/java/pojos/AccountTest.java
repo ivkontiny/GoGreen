@@ -119,4 +119,11 @@ public class AccountTest {
         Account account1 = new Account("user", "user@mail.com", "123", "User", "User1");
         assertNotEquals(account, account1);
     }
+
+    @Test
+    public void testEqualsFalse7() {
+        Account account1 = new Account("user", "user@mail.com", "123", "User", "User");
+        account1.setNum_panels(2);
+        assertNotEquals(account, account1);
+    }
 }

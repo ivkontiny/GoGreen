@@ -1,7 +1,13 @@
 package client;
 
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.*;
+//import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.client.RestTemplate;
 import pojos.Activity;
 import pojos.Friendship;
@@ -55,6 +61,10 @@ public class ConnectFriends {
         }
     }
 
+    /**
+     * Get all the friends of the current user.
+     * @return an array list containing all friends of the user
+     */
     public static ArrayList<String> getFriends() {
         String url = url_default + "active_friendships/";
         url += ConnectAccount.getSessionId();
@@ -63,8 +73,8 @@ public class ConnectFriends {
         RestTemplate restTemplate = new RestTemplate();
 
         //HttpEntity<String> requestBody = new HttpEntity<>(headers);
-        ResponseEntity<ArrayList<Friendship>> response = restTemplate.exchange(url, HttpMethod.GET, null,
-                new ParameterizedTypeReference<ArrayList<Friendship>>() {
+        ResponseEntity<ArrayList<Friendship>> response = restTemplate.exchange(url, HttpMethod.GET,
+                null, new ParameterizedTypeReference<ArrayList<Friendship>>() {
                 });
 
         ArrayList usernames = new ArrayList<>();

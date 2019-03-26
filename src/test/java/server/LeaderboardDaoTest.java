@@ -11,6 +11,8 @@ import pojos.Friendship;
 import java.sql.SQLException;
 
 import static junit.framework.TestCase.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class LeaderboardDaoTest {
 
@@ -18,6 +20,7 @@ public class LeaderboardDaoTest {
     private AccountDao ad = new AccountDao();
     private FriendshipDao fd = new FriendshipDao();
     private Account test_account = new Account("test","test","test","test","test");
+    private AccountDao ad1 = mock(AccountDao.class);
 
     @Before
     public void configure() {
@@ -70,7 +73,14 @@ public class LeaderboardDaoTest {
         fd.removeFriendship(new Friendship("test1","test2"));
         ad.deleteAccount(testaccount1);
         ad.deleteAccount(testaccount2);
+        ad.deleteAccount(testaccount3);
     }
 
-
+    @Test
+    public void testGetPoints() throws SQLException {
+        ld.setAd(ad1);
+        when(ad1.exists(test_account.getUsername())).thenReturn(true);
+        assertEquals(0, ld.getPoints(test_account.getUsername()));
+        ld.setAd(ad);
+    }
 }
