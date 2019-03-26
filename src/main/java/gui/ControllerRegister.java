@@ -1,6 +1,6 @@
 package gui;
 
-import client.Connect;
+import client.ConnectAccount;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -126,7 +126,7 @@ public class ControllerRegister implements Initializable {
             return;
         }
 
-        if (Connect.serverRegister(user)) {
+        if (ConnectAccount.serverRegister(user)) {
             alertUserCreated();
             final Node source = (Node) actionEvent.getSource();
             final Stage stage = (Stage) source.getScene().getWindow();

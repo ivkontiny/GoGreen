@@ -1,6 +1,7 @@
 package gui;
 
-import client.Connect;
+import client.ConnectAccount;
+import client.ConnectFriends;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,9 +10,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.chart.XYChart;
+import pojos.Activity;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class ControllerStatistics implements Initializable {
@@ -24,22 +30,51 @@ public class ControllerStatistics implements Initializable {
     @FXML
     private Button addButton;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // X-axis: dates array
-        // >> RETRIEVE DATES FROM DATABASE
-        String[] dates = {"2-3-19", "3-3-19", "4-3-19", "5-3-19", "6-3-19", "7-3-19", "8-3-19"};
 
-        // User's graph
-        // >> RETRIEVE POINTS FROM DATABASE
-        int[] userPoints = {10, 50, 100, 25, 50, 30, 100};
-        addGraph("You", dates, userPoints);
+        //we load all the friends' activities
+        ConnectFriends.getFriendActivities(ConnectFriends.getFriends());
+        ArrayList<Activity> myActivities = ConnectFriends.getUsersActivities().get(ConnectAccount.getUsername());
 
-        // Friend's graph
-        choiceBox.getItems().addAll("Frank", "Dik", "Jasper");
-        // >> RETRIEVE POINTS FROM DATABASE
-        int[] friendPoints = {100, 30, 200, 10, 30, 100, 100};
-        addButton.setOnAction(e -> addGraph(choiceBox.getValue(), dates, friendPoints));
+        LocalDate date = LocalDate.now();
+        String[] dates = new String[7];
+        int[] userPoints = new int[7];
+
+        for(int i=0;i<=6;i++)
+        {
+            dates[i] = date.minusDays(6-i).toString();
+        }
+
+        for(Activity search : myActivities)
+        {
+            System.out.println(search.getDate().toLocalDate().toString());
+            for(int i=0;i<=6;i++)
+            {
+                if(search.getDate().toLocalDate().toString().equals(dates[i]))
+                {
+                    userPoints[i]+=search.getPoints();
+                }
+            }
+        }
+
+        // User's own series
+        XYChart.Series userSeries = new XYChart.Series();
+        userSeries.setName("You");
+
+        for(int i = 0; i <= 6; i++) {
+            userSeries.getData().add(new XYChart.Data(dates[i], userPoints[i]));
+        }
+
+        // Friend's series
+        ArrayList<String> users = ConnectFriends.getFriends();
+        choiceBox.getItems().addAll(users);
+        addButton.setOnAction(e -> addFriend(choiceBox, dates));
+
+        // Plot series of points
+        linechart.getData().add(userSeries);
     }
 
     /**
@@ -78,30 +113,55 @@ public class ControllerStatistics implements Initializable {
     }
 
     /**
-     * Logs the user out.
+     * Loads the friends page.
+     * @param actionEvent the action event on which the friends page should be displayed
+     * @throws IOException
+     */
+    public void loadFriends(javafx.event.ActionEvent actionEvent) throws IOException {
+        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Friends.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
+    /**
+     * Logs a user out.
      * @param actionEvent the event on which the user should be logged out
      * @throws IOException when something with the action event goes wrong
      */
-    public void logOut(javafx.event.ActionEvent actionEvent) throws IOException {
-        Connect.logOut();
+    public void logOut(javafx.scene.input.MouseEvent actionEvent) throws IOException {
+        ConnectAccount.logOut();
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 
     /**
-     * Get choice from choicebox
-     * @param ChoiceBox
+     * Get choice from choice box.
+     * @param choiceBox
+     * @param dates
      * @return String
      */
-    public void addGraph(String name, String[] dates, int[] points) {
-        XYChart.Series series = new XYChart.Series();
-        series.setName(name);
+    public void addFriend(ChoiceBox<String> choiceBox, String[] dates) {
 
-        for(int i = 0; i <= 6; i++) {
-            series.getData().add(new XYChart.Data(dates[i], points[i]));
+        String friend = choiceBox.getValue();
+
+        XYChart.Series friendSeries = new XYChart.Series();
+        friendSeries.setName(friend);
+
+        int[] friendPoints = new int[7];
+        ArrayList<Activity> friendActivities = ConnectFriends.getUsersActivities().get(friend);
+
+        for (Activity search : friendActivities) {
+            for (int i=0; i<=6; i++) {
+                if (search.getDate().toLocalDate().toString().equals(dates[i])) {
+                    friendPoints[i]+=search.getPoints();
+                }
+            }
         }
 
-        linechart.getData().add(series);
+        for (int i = 0; i <= 6; i++) {
+            friendSeries.getData().add(new XYChart.Data(dates[i], friendPoints[i]));
+        }
+
+        linechart.getData().add(friendSeries);
     }
 }
 

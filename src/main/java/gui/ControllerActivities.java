@@ -1,6 +1,6 @@
 package gui;
 
-import client.Connect;
+import client.ConnectAccount;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,7 +25,6 @@ public class ControllerActivities implements Initializable {
     private BorderPane rootPane;
     @FXML
     private AnchorPane activityPane;
-
     @FXML
     private ImageView foodIcon;
     @FXML
@@ -75,12 +74,12 @@ public class ControllerActivities implements Initializable {
     }
 
     /**
-     * Logs the user out.
-     * @param actionEvent the action event on which the user should be logged out
-     * @throws IOException when something in the action went wrong
+     * Logs a user out.
+     * @param actionEvent the event on which the user should be logged out
+     * @throws IOException when something with the action event goes wrong
      */
-    public void logOut(javafx.event.ActionEvent actionEvent) throws IOException {
-        Connect.logOut();
+    public void logOut(javafx.scene.input.MouseEvent actionEvent) throws IOException {
+        ConnectAccount.logOut();
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         rootPane.getChildren().setAll(pane);
     }

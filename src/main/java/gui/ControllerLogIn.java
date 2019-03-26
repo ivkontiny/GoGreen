@@ -1,6 +1,6 @@
 package gui;
 
-import client.Connect;
+import client.ConnectAccount;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -49,7 +49,7 @@ public class ControllerLogIn implements Initializable {
 
         String pass = HashPassword.HashPass(password.getText());
 
-        if (Connect.serverLogin(username.getText(), pass)) {
+        if (ConnectAccount.serverLogin(username.getText(), pass)) {
             BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Home.fxml"));
             ControllerHome.welcomeMessage(pane);
             rootPane.getChildren().setAll(pane);

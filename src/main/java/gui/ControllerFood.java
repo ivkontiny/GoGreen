@@ -1,6 +1,6 @@
 package gui;
 
-import client.Connect;
+import client.ConnectAccount;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -63,9 +63,9 @@ public class ControllerFood implements Initializable {
         }
 
         Activity activity = new Activity(actDesc, Category.food, points,
-                Date.valueOf(LocalDate.now()), Connect.getUsername());
+                Date.valueOf(LocalDate.now()), ConnectAccount.getUsername());
 
-        if (Connect.addActivity(activity)) {
+        if (ConnectAccount.addActivity(activity)) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setHeaderText("Activity added successfully!");
             alert.setContentText(actDesc + " added successfully!");

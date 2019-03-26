@@ -90,7 +90,7 @@ public class FriendRequestController {
         if (ss.sessionExists(sessionId)) {
             return frs.getActiveFriendships(ss.getAllSessions().get(sessionId).getUsername());
         }
-        return new ArrayList<Friendship>();
+        return new ArrayList<>();
     }
 
     /**
@@ -104,7 +104,7 @@ public class FriendRequestController {
         if (ss.sessionExists(sessionId)) {
             return frs.getInactiveFriendships(ss.getAllSessions().get(sessionId).getUsername());
         }
-        return new ArrayList<Friendship>();
+        return new ArrayList<>();
     }
     
     /**
@@ -121,9 +121,12 @@ public class FriendRequestController {
         return new ArrayList<>();
     }
 
-    @RequestMapping("/get_match/{matching}")
-    public ArrayList<String> getMatchings(@PathVariable("matching") String match) {
-        return frs.getMatchings(match);
+    @RequestMapping("/get_match/{sessionId}/{matching}")
+    public ArrayList<String> getMatchings(@PathVariable("sessionId") String sessionId ,@PathVariable("matching") String match) {
+        if(ss.sessionExists(sessionId)) {
+            return frs.getMatchings(match);
+        }
+        return new ArrayList<>();
     }
 
 

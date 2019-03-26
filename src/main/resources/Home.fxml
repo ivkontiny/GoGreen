@@ -19,7 +19,7 @@
             <children>
                 <AnchorPane prefHeight="123.0" prefWidth="150.0" style="-fx-background-color: #9bc782;">
                     <children>
-                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="13.0" layoutY="3.0">
+                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="13.0">
                             <image>
                                 <Image url="@Images/logo.png" />
                             </image>
