@@ -1,14 +1,11 @@
 package client;
 
-import javafx.util.Pair;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 import pojos.Activity;
 import pojos.Friendship;
 
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
