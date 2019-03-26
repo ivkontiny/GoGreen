@@ -161,7 +161,7 @@ public class ControllerStatistics implements Initializable {
             friendSeries.getData().add(new XYChart.Data(dates[i], friendPoints[i]));
         }
 
-        linechart.getData().add(series);
+        linechart.getData().add(friendSeries);
     }
 }
 
