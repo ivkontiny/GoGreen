@@ -1,5 +1,10 @@
 image: maven:latest
 
+stages:
+  - build
+  - test
+  - coverage
+
 build:
   stage: build
   script:
@@ -11,7 +16,7 @@ test:
     mvn test
 
 coverage:
-  stage: test
+  stage: coverage
   script:
     - mvn install
     - MISSED="$(cat target/site/jacoco/jacoco.csv | awk -F ',' '{if (NR!=1) {sum += $6}} END {print sum}')"
