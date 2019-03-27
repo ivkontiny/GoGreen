@@ -24,5 +24,6 @@ coverage:
     - TOTAL=$(($COVERED+$MISSED))
     - calc(){ awk "BEGIN { print "$*" }"; }
     - RESULT=$(calc $COVERED/$TOTAL*100)
-    - if $RESULT<85.0 exit 1 
+    - RESULT=$(echo $RESULT | awk '{print int($RESULT)}')
+    - if [$RESULT -lt 85]; then exit 1; fi 
 
