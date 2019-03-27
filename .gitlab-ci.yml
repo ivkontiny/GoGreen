@@ -11,7 +11,7 @@ test:
     mvn test
 
 coverage:
-  stage: coverage
+  stage: test
   script:
     - MISSED="$(cat target/site/jacoco/jacoco.csv | awk -F ',' '{if (NR!=1) {sum += $6}} END {print sum}')"
     - COVERED="$(cat target/site/jacoco/jacoco.csv | awk -F ',' '{if (NR!=1) {sum += $7}} END {print sum}')"
