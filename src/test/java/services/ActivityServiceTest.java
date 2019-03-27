@@ -1,4 +1,4 @@
-package server;
+package services;
 
 import database.ActivityDao;
 import org.junit.Before;
