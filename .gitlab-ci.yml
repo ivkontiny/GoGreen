@@ -9,3 +9,14 @@ test:
   stage: test
   script:
     mvn test
+
+coverage:
+  stage: coverage
+  script:
+    - MISSED="$(cat target/site/jacoco/jacoco.csv | awk -F ',' '{if (NR!=1) {sum += $6}} END {print sum}')"
+    - COVERED="$(cat target/site/jacoco/jacoco.csv | awk -F ',' '{if (NR!=1) {sum += $7}} END {print sum}')"
+    - TOTAL=$(($COVERED+$MISSED))
+    - calc(){ awk "BEGIN { print "$*" }"; }
+    - RESULT=$(calc $COVERED/$TOTAL*100)
+    - if $RESULT<85.0 exit 1 
+
