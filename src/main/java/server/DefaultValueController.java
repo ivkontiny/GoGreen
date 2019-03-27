@@ -72,4 +72,12 @@ public class DefaultValueController {
 
         return false;
     }
+
+    public void setDvs(DefaultValueService dvs) {
+        this.dvs = dvs;
+    }
+
+    public void setSs(SessionService ss) {
+        this.ss = ss;
+    }
 }
