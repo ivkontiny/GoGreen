@@ -25,5 +25,5 @@ coverage:
     - calc(){ awk "BEGIN { print "$*" }"; }
     - RESULT=$(calc $COVERED/$TOTAL*100)
     - RESULT=$(echo $RESULT | awk '{print int($RESULT)}')
-    - if [$RESULT -lt 200]; then exit 1; fi 
+    - if [ $RESULT -lt 200 ]; then exit 1; fi 
 
