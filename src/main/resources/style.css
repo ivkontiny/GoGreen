@@ -31,3 +31,8 @@
 .table-view {
     -fx-table-cell-border-color: transparent;
 }
+
+#logo:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
