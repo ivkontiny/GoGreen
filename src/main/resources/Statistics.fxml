@@ -68,7 +68,7 @@
                       <CategoryAxis fx:id="dateaxis" label="Date" side="BOTTOM" />
                     </xAxis>
                     <yAxis>
-                      <NumberAxis fx:id="pointsaxis" label="Points" side="LEFT" />
+                      <NumberAxis fx:id="pointsaxis" label="CO2 emissions" side="LEFT" />
                     </yAxis>
                   </LineChart>
                </children>
