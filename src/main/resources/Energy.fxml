@@ -22,5 +22,11 @@
          <font>
             <Font size="22.0" />
          </font></Label>
+      <Label layoutX="113.0" layoutY="211.0" text="Amount">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="energyAmount" layoutX="234.0" layoutY="203.0" prefHeight="48.0" prefWidth="244.0" />
     </children>
 </AnchorPane>
