@@ -23,9 +23,9 @@
    <top>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #9bc782;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="140.0" fitWidth="140.0" layoutX="380.0" layoutY="30.0">
+            <ImageView id="logo" fitHeight="140.0" fitWidth="140.0" layoutX="380.0" layoutY="30.0">
                <image>
-                  <Image url="@Images/logo.png"  />
+                  <Image url="@Images/logo.png" />
                </image>
             </ImageView>
          </children>
@@ -34,22 +34,22 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-             <Label layoutX="311.0" layoutY="32.0" prefHeight="36.0" prefWidth="104.0" text="Username" textFill="#298c22">
+             <Label layoutX="328.0" layoutY="32.0" prefHeight="36.0" prefWidth="104.0" text="Username" textFill="#298c22">
                <font>
                   <Font size="21.0" />
                </font></Label>
-             <Label layoutX="311.0" layoutY="123.0" text="Password" textFill="#298c22">
+             <Label layoutX="328.0" layoutY="123.0" text="Password" textFill="#298c22">
                <font>
                   <Font size="21.0" />
                </font></Label>
-             <TextField id="username" fx:id="username" layoutX="311.0" layoutY="68.0" prefHeight="40.0" prefWidth="245.0" />
-             <PasswordField id="password" fx:id="password" layoutX="311.0" layoutY="154.0" onAction="#loadHome" prefHeight="40.0" prefWidth="245.0" />
-             <Label fx:id="loginerror" layoutX="311.0" layoutY="200.0" style="-fx-text-fill: red" text="Login credentials incorrect">
+             <TextField id="username" fx:id="username" layoutX="328.0" layoutY="68.0" prefHeight="40.0" prefWidth="245.0" />
+             <PasswordField id="password" fx:id="password" layoutX="328.0" layoutY="154.0" onAction="#loadHome" prefHeight="40.0" prefWidth="245.0" />
+             <Label fx:id="loginerror" layoutX="328.0" layoutY="200.0" style="-fx-text-fill: red" text="Login credentials incorrect">
                <font>
                   <Font size="21.0" />
                </font></Label>
-             <Button layoutX="311.0" layoutY="241.0" mnemonicParsing="false" onAction="#loadHome" prefHeight="40.0" prefWidth="245.0" style="-fx-background-radius: 25px; -fx-background-color: #9bc782;" text="Login" />
-             <Button layoutX="311.0" layoutY="311.0" mnemonicParsing="false" onAction="#loadRegister" prefHeight="40.0" prefWidth="245.0" style="-fx-background-radius: 25px; -fx-background-color: #9bc782;" text="Sign up" />
+             <Button layoutX="328.0" layoutY="241.0" mnemonicParsing="false" onAction="#loadHome" prefHeight="40.0" prefWidth="245.0" style="-fx-background-radius: 25px; -fx-background-color: #9bc782;" text="Login" />
+             <Button layoutX="328.0" layoutY="311.0" mnemonicParsing="false" onAction="#loadRegister" prefHeight="40.0" prefWidth="245.0" style="-fx-background-radius: 25px; -fx-background-color: #9bc782;" text="Sign up" />
          </children>
       </AnchorPane>
    </center>
