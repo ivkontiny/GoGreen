@@ -6,7 +6,10 @@ public class DefaultValue {
     private String unit;
     private int points;
     private double consumption;
-    
+
+    public DefaultValue() {
+
+    }
     /**
      * Constructs a DefaultValue.
      * @param desc Description of the activity
@@ -84,5 +87,10 @@ public class DefaultValue {
         }
 
         return false;
+    }
+
+    public static double converter(int points) {
+        System.out.println(((double)points*0.0001)/5.0);
+        return ((double)points*0.0001)/5.0;
     }
 }

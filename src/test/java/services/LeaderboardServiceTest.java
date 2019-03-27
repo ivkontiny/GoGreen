@@ -1,4 +1,4 @@
-package server;
+package services;
 
 import database.LeaderboardDao;
 import org.junit.Before;

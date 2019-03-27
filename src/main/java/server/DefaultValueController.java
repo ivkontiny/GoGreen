@@ -8,6 +8,7 @@ import services.SessionService;
 
 import java.util.ArrayList;
 
+@RestController
 public class DefaultValueController {
     private DefaultValueService dvs = new DefaultValueService();
     private SessionService ss = new SessionService();
@@ -15,17 +16,12 @@ public class DefaultValueController {
     /**
      * Gets the all defaultvalues by category.
      * @param category The category of the activity
-     * @param sessionId The sessionId belonging to the current session of the user
      * @return An arraylist of all the defaultvalues
      */
-    @RequestMapping("/get_dv_by_category/{sessionId}")
-    public ArrayList<String> getDefaultValuesFor(@RequestBody Category category,
-                                                 @PathVariable("sessionId") String sessionId) {
-        if (ss.sessionExists(sessionId)) {
-            return dvs.getValuesFromCategory(category);
-        }
+    @PostMapping("/get_descriptions_by_category")
+    public ArrayList<String> getDefaultValuesFor(@RequestBody Category category) {
+        return dvs.getValuesFromCategory(category);
 
-        return new ArrayList<>();
     }
 
     /**
@@ -44,17 +40,12 @@ public class DefaultValueController {
     /**
      * Gets a default value matching the given description.
      * @param desc The description of the activity
-     * @param sessionId The sessionId of the user
      * @return the default value that was requested
      */
-    @RequestMapping("/get_dv/{sessionId}")
-    public DefaultValue getDefaultValue(@RequestBody String desc,
-                                        @PathVariable("sessionId") String sessionId) {
-        if (ss.sessionExists(sessionId)) {
-            return dvs.getDefaultValue(desc);
-        }
+    @PostMapping("/get_consumption_by_description")
+    public DefaultValue getDefaultValue(@RequestBody String desc) {
 
-        return null;
+        return dvs.getDefaultValue(desc);
     }
 
     /**
@@ -71,5 +62,13 @@ public class DefaultValueController {
         }
 
         return false;
+    }
+
+    public void setDvs(DefaultValueService dvs) {
+        this.dvs = dvs;
+    }
+
+    public void setSs(SessionService ss) {
+        this.ss = ss;
     }
 }

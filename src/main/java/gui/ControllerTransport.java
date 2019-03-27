@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 public class ControllerTransport implements Initializable {
 
     ObservableList<String> transportActivitieList =
-            FXCollections.observableArrayList("Bike", "Train");
+            FXCollections.observableArrayList(ActivityDb.Transportation.descriptions);
 
     @FXML
     private ComboBox transportBox;
@@ -41,8 +41,8 @@ public class ControllerTransport implements Initializable {
     public void inputActivity(javafx.event.ActionEvent actionEvent) {
 
         for (int i = 0; i < transportActivitieList.size(); i++) {
-            if (ActivityDb.Food.descriptions.get(i).equals(transportBox.getValue())) {
-                pointsText.setText("Points: " + ActivityDb.Food.points.get(i));
+            if (ActivityDb.Transportation.descriptions.get(i).equals(transportBox.getValue())) {
+                pointsText.setText("Points: " + ActivityDb.Transportation.points.get(i));
             }
         }
     }
@@ -55,14 +55,14 @@ public class ControllerTransport implements Initializable {
         String actDesc = null;
         int points = 0;
 
-        for (int i = 0; i < ActivityDb.Food.descriptions.size(); i++) {
-            if (ActivityDb.Food.descriptions.get(i).equals(transportBox.getValue())) {
-                actDesc = ActivityDb.Food.descriptions.get(i);
-                points = ActivityDb.Food.points.get(i);
+        for (int i = 0; i < ActivityDb.Transportation.descriptions.size(); i++) {
+            if (ActivityDb.Transportation.descriptions.get(i).equals(transportBox.getValue())) {
+                actDesc = ActivityDb.Transportation.descriptions.get(i);
+                points = ActivityDb.Transportation.points.get(i);
             }
         }
 
-        Activity activity = new Activity(actDesc, Category.food, points,
+        Activity activity = new Activity(actDesc, Category.transportation, points,
                 Date.valueOf(LocalDate.now()), ConnectAccount.getUsername());
 
         if (ConnectAccount.addActivity(activity)) {
