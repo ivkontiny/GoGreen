@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import pojos.Activity;
 import pojos.Category;
 
+import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -19,7 +20,7 @@ import java.util.ResourceBundle;
 public class ControllerEnergy implements Initializable {
 
     ObservableList<String> energyActivitieList =
-            FXCollections.observableArrayList("Solar panels", "Lowering temperature");
+            FXCollections.observableArrayList(ActivityDb.Energy.descriptions);
 
     @FXML
     private ComboBox energyBox;
@@ -41,8 +42,8 @@ public class ControllerEnergy implements Initializable {
     public void inputActivity(javafx.event.ActionEvent actionEvent) {
 
         for (int i = 0; i < energyActivitieList.size(); i++) {
-            if (ActivityDb.Food.descriptions.get(i).equals(energyBox.getValue())) {
-                pointsText.setText("Points: " + ActivityDb.Food.points.get(i));
+            if (ActivityDb.Energy.descriptions.get(i).equals(energyBox.getValue())) {
+                pointsText.setText("Points: " + ActivityDb.Energy.points.get(i));
             }
         }
     }
@@ -55,14 +56,14 @@ public class ControllerEnergy implements Initializable {
         String actDesc = null;
         int points = 0;
 
-        for (int i = 0; i < ActivityDb.Food.descriptions.size(); i++) {
-            if (ActivityDb.Food.descriptions.get(i).equals(energyBox.getValue())) {
-                actDesc = ActivityDb.Food.descriptions.get(i);
-                points = ActivityDb.Food.points.get(i);
+        for (int i = 0; i < ActivityDb.Energy.descriptions.size(); i++) {
+            if (ActivityDb.Energy.descriptions.get(i).equals(energyBox.getValue())) {
+                actDesc = ActivityDb.Energy.descriptions.get(i);
+                points = ActivityDb.Energy.points.get(i);
             }
         }
 
-        Activity activity = new Activity(actDesc, Category.food, points,
+        Activity activity = new Activity(actDesc, Category.energy, points,
                 Date.valueOf(LocalDate.now()), ConnectAccount.getUsername());
 
         if (ConnectAccount.addActivity(activity)) {

@@ -11,13 +11,12 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.chart.XYChart;
 import pojos.Activity;
+import pojos.DefaultValue;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class ControllerStatistics implements Initializable {
@@ -41,7 +40,7 @@ public class ControllerStatistics implements Initializable {
 
         LocalDate date = LocalDate.now();
         String[] dates = new String[7];
-        int[] userPoints = new int[7];
+        double[] userCo2 = new double[7];
 
         for(int i=0;i<=6;i++)
         {
@@ -55,7 +54,7 @@ public class ControllerStatistics implements Initializable {
             {
                 if(search.getDate().toLocalDate().toString().equals(dates[i]))
                 {
-                    userPoints[i]+=search.getPoints();
+                    userCo2[i]+= DefaultValue.converter(search.getPoints());
                 }
             }
         }
@@ -65,7 +64,7 @@ public class ControllerStatistics implements Initializable {
         userSeries.setName("You");
 
         for(int i = 0; i <= 6; i++) {
-            userSeries.getData().add(new XYChart.Data(dates[i], userPoints[i]));
+            userSeries.getData().add(new XYChart.Data(dates[i], userCo2[i]));
         }
 
         // Friend's series
@@ -146,19 +145,19 @@ public class ControllerStatistics implements Initializable {
         XYChart.Series friendSeries = new XYChart.Series();
         friendSeries.setName(friend);
 
-        int[] friendPoints = new int[7];
+        double[] friendCo2 = new double[7];
         ArrayList<Activity> friendActivities = ConnectFriends.getUsersActivities().get(friend);
 
         for (Activity search : friendActivities) {
             for (int i=0; i<=6; i++) {
                 if (search.getDate().toLocalDate().toString().equals(dates[i])) {
-                    friendPoints[i]+=search.getPoints();
+                    friendCo2[i]+=DefaultValue.converter(search.getPoints());
                 }
             }
         }
 
         for (int i = 0; i <= 6; i++) {
-            friendSeries.getData().add(new XYChart.Data(dates[i], friendPoints[i]));
+            friendSeries.getData().add(new XYChart.Data(dates[i], friendCo2[i]));
         }
 
         linechart.getData().add(friendSeries);
