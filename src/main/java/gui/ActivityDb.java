@@ -27,6 +27,7 @@ public class ActivityDb implements Runnable {
      */
     public static void initialize() {
         ArrayList<DefaultValue> desc = ConnectActivity.getFood(Category.food);
+        DefaultValue.initPts();
         for (DefaultValue description : desc)
         {
             Food.descriptions.add(description.getDescription());

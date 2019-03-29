@@ -14,10 +14,11 @@ public class AddSolarPoints {
         DefaultValueService dvs = new DefaultValueService();
 
         ArrayList<Account> all = as.getAccounts();
-        DefaultValue value = dvs.getDefaultValue("Power saved by solar panels");
+        //DefaultValue value = dvs.getDefaultValue("Power saved by solar panels");
+        DefaultValue.initPts();
 
         for (Account acc : all) {
-            as.updatePoints(acc.getUsername(), acc.getNum_panels() * value.getPoints());
+            as.updatePoints(acc.getUsername(), DefaultValue.kwhToPoints(acc.getSavedEnergy()));
         }
     }
 }

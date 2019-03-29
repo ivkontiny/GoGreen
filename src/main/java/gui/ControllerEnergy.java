@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import pojos.Account;
 import pojos.Activity;
 import pojos.Category;
 import pojos.DefaultValue;
@@ -90,12 +91,16 @@ public class ControllerEnergy implements Initializable {
         for (int i = 0; i < ActivityDb.Energy.descriptions.size(); i++) {
             if (ActivityDb.Energy.descriptions.get(i).equals(energyBox.getValue())) {
                 actDesc = ActivityDb.Energy.descriptions.get(i);
-                points = ActivityDb.Energy.points.get(i);
+                points = DefaultValue.kwhToPoints(Integer.parseInt(energyAmount.getText()));
             }
         }
 
         Activity activity = new Activity(actDesc, Category.energy, points,
                 Date.valueOf(LocalDate.now()), ConnectAccount.getUsername());
+
+        if(actDesc.equals("Power saved by solar panels")) {
+            ConnectAccount.setEnergy(Integer.parseInt(energyAmount.getText()));
+        }
 
         if (ConnectAccount.addActivity(activity)) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

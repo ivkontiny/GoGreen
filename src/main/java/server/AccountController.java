@@ -61,6 +61,18 @@ public class AccountController {
         return ls.createAccount(newuser);
     }
 
+
+    @RequestMapping("/set_energy/{sessionId}")
+    public boolean setEnergy(@RequestBody int energy,
+                             @PathVariable("sessionId") String sessionId) {
+        if (ss.sessionExists(sessionId)) {
+            String user = ss.getAllSessions().get(sessionId).getUsername();
+            return ls.setEnergy(user, energy);
+        }
+
+        return false;
+    }
+
     public void setLs(AccountService ls) {
         this.ls = ls;
     }

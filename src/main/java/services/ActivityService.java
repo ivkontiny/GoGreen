@@ -2,6 +2,7 @@ package services;
 
 import database.ActivityDao;
 import pojos.Activity;
+import pojos.Category;
 
 import java.sql.Date;
 import java.sql.SQLException;
