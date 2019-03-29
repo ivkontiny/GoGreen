@@ -74,7 +74,7 @@ public class AccountDaoTest {
         assertTrue(accountDao.setPanels(newaccount.getUsername(), 2));
         accountDao.deleteAccount(newaccount);
     }
-
+    /*
     @Test
     public void testGetAccounts() throws SQLException {
         ArrayList<Account> exp = new ArrayList<>();
@@ -84,4 +84,5 @@ public class AccountDaoTest {
         assertEquals(exp, accountDao.getAccounts());
         accountDao.deleteAccount(newaccount);
     }
+    */
 }
