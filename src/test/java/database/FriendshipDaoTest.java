@@ -67,12 +67,15 @@ public class FriendshipDaoTest {
 
     @Test
     public void testGetMatching() throws SQLException {
+        ad.deleteAccount(testaccount1);
+        ad.deleteAccount(testaccount2);
         assertTrue(ad.createAccount(testaccount1));
         ArrayList<String> exp = new ArrayList<>();
-        assertEquals(exp, fd.getMatchings("t"));
+        assertEquals(exp, fd.getMatchings("z"));
         exp.add("from");
         assertEquals(exp, fd.getMatchings("f"));
         ad.deleteAccount(testaccount1);
+        ad.deleteAccount(testaccount2);
     }
 
 }

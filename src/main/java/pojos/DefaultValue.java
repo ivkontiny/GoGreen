@@ -1,5 +1,7 @@
 package pojos;
 
+import client.ConnectActivity;
+
 public class DefaultValue {
     private String description;
     private Category category;
@@ -95,7 +97,8 @@ public class DefaultValue {
     }
 
 
-    public static int kwhToPoints(int kwh, int pts250Kwh) {
+    public static int kwhToPoints(int kwh) {
+        int pts250Kwh = ConnectActivity.getConsumption("Power saved by solar panels").getPoints();
         double points = ((double) kwh / 250.0) * pts250Kwh;
         int realPoints = (int) points;
 

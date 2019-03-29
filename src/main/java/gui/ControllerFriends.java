@@ -37,8 +37,6 @@ public class ControllerFriends implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         errorLabel.setVisible(false);
-        //usernames = new ArrayList<>();
-        //TextFields.bindAutoCompletion(friendsField, usernames);
 
     }
 
