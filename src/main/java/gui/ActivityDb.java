@@ -26,31 +26,31 @@ public class ActivityDb implements Runnable {
      * Initializing sample points for meals.
      */
     public static void initialize() {
-        ArrayList<String> desc = ConnectActivity.getFood(Category.food);
-        for(String description : desc)
+        ArrayList<DefaultValue> desc = ConnectActivity.getFood(Category.food);
+        for (DefaultValue description : desc)
         {
-            Food.descriptions.add(description);
-            DefaultValue dv = ConnectActivity.getConsumption(description);
-            Food.points.add(dv.getPoints());
+            Food.descriptions.add(description.getDescription());
+            //DefaultValue dv = ConnectActivity.getConsumption(description);
+            Food.points.add(description.getPoints());
         }
         Thread energy = new Thread(new ActivityDb());
         energy.start();
         desc = ConnectActivity.getFood(Category.energy);
-        for(String description : desc)
+        for(DefaultValue description : desc)
         {
-            Energy.descriptions.add(description);
-            DefaultValue dv = ConnectActivity.getConsumption(description);
-            Energy.points.add(dv.getPoints());
+            Energy.descriptions.add(description.getDescription());
+            //DefaultValue dv = ConnectActivity.getConsumption(description.getConsumption());
+            Energy.points.add(description.getPoints());
         }
     }
     public void run()
     {
-        ArrayList<String> desc = ConnectActivity.getFood(Category.transportation);
-        for(String description : desc)
+        ArrayList<DefaultValue> desc = ConnectActivity.getFood(Category.transportation);
+        for(DefaultValue description : desc)
         {
-            Transportation.descriptions.add(description);
-            DefaultValue dv = ConnectActivity.getConsumption(description);
-            Transportation.points.add(dv.getPoints());
+            Transportation.descriptions.add(description.getDescription());
+            //DefaultValue dv = ConnectActivity.getConsumption(description);
+            Transportation.points.add(description.getPoints());
         }
     }
 }
