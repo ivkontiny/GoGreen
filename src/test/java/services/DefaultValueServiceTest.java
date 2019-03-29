@@ -27,12 +27,12 @@ public class DefaultValueServiceTest {
     @Test
     public void testGetValuesFromCategory() {
         db.changeDatabase("test");
-        ArrayList<String> exp = new ArrayList<>();
+        ArrayList<DefaultValue> exp = new ArrayList<>();
         db.changeDatabase("test");
         DefaultValue dv = new DefaultValue("tomato", Category.food, "kg", 25, 0.5);
         assertEquals(exp, dvs.getValuesFromCategory(Category.energy));
         assertTrue(dvs.createDefaultValue(dv));
-        exp.add("tomato");
+        exp.add(dv);
         assertEquals(exp, dvs.getValuesFromCategory(Category.food));
         dvs.deleteDefaultValue(dv.getDescription());
     }
