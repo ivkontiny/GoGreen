@@ -56,16 +56,21 @@
         <AnchorPane prefHeight="391.0" prefWidth="368.0" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="friendsField" layoutX="58.0" layoutY="109.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#getUsers" prefHeight="48.0" prefWidth="244.0" />
-            <Button layoutX="350.0" layoutY="109.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="131.0" text="Send">
+            <Button onAction="#sendRequest" layoutX="350.0" layoutY="109.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="131.0" text="Send">
                <font>
                   <Font size="22.0" />
                </font>
             </Button>
-            <Label layoutX="58.0" layoutY="77.0" text="Send Friend Request">
+            <Label layoutX="58.0" layoutY="70.0" text="Friend Request">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
+             <Label fx:id="errorLabel" layoutX="58" layoutY="160" text="ERROR">
+                 <font>
+                     <Font size="16"/>
+                 </font>
+             </Label>
             <TableView layoutX="42.0" layoutY="219.0" prefHeight="349.0" prefWidth="442.0">
               <columns>
                 <TableColumn prefWidth="288.0" text="Friend requests" />

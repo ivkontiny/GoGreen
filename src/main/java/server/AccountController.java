@@ -44,9 +44,13 @@ public class AccountController {
     }
 
 
-    @RequestMapping("/get_account/{username}")
-    public Account getAccounts(@PathVariable("username") String username) {
-        return ls.getAccount(username);
+    @RequestMapping("/get_account/{sessionId}")
+    public Account getAccounts(@PathVariable("sessionId") String sessionId) {
+        if(ss.sessionExists(sessionId)){
+            String username = ss.getAllSessions().get(sessionId).getUsername();
+            return ls.getAccount(username);
+        }
+        return new Account();
     }
 
 

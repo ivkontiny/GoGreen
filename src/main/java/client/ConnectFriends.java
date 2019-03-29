@@ -33,6 +33,24 @@ public class ConnectFriends extends Connect {
         return acts;
     }
 
+    /** sends request to a user.
+     * *
+     * @param receiver
+     * @return if the request was sent successfully
+     */
+    public static boolean sendRequest(String receiver) {
+        String url = url_default + "request/";
+        url += ConnectAccount.getSessionId();
+        url += "?username=";
+        url += receiver;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Boolean> response = restTemplate.exchange(url,
+                HttpMethod.GET,null,Boolean.class);
+        return response.getBody();
+
+    }
     /**
      * Adds the activities of the friends to the acts hash map.
      *
