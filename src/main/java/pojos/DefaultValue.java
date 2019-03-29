@@ -93,4 +93,16 @@ public class DefaultValue {
         System.out.println(((double)points*0.0001)/5.0);
         return ((double)points*0.0001)/5.0;
     }
+
+
+    public static int kwhToPoints(int kwh, int pts250Kwh) {
+        double points = ((double) kwh / 250.0) * pts250Kwh;
+        int realPoints = (int) points;
+
+        if (points - (double) realPoints >= 0.5) {
+            ++ realPoints;
+        }
+
+        return realPoints;
+    }
 }
