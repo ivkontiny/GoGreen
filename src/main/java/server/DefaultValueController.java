@@ -19,7 +19,7 @@ public class DefaultValueController {
      * @return An arraylist of all the defaultvalues
      */
     @PostMapping("/get_descriptions_by_category")
-    public ArrayList<String> getDefaultValuesFor(@RequestBody Category category) {
+    public ArrayList<DefaultValue> getDefaultValuesFor(@RequestBody Category category) {
         return dvs.getValuesFromCategory(category);
 
     }
