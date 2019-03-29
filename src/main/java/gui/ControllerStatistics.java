@@ -30,15 +30,15 @@ public class ControllerStatistics implements Initializable {
     @FXML
     private Button addButton;
 
-    private static Hashtable<String,Integer> UsersOnGraph;
+    private static Hashtable<String,Integer> usersOnGraph;
 
-    private int ADDED = 1;
+    private static int ADDED = 1;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // X-axis: dates array
-        UsersOnGraph = new Hashtable<>();
+        usersOnGraph = new Hashtable<>();
         ADDED = 1;
         //we load all the friends' activities
         ConnectFriends.getFriendActivities(ConnectFriends.getFriends());
@@ -148,7 +148,7 @@ public class ControllerStatistics implements Initializable {
     public void addFriend(ChoiceBox<String> choiceBox, String[] dates) {
 
         String friend = choiceBox.getValue();
-        if(ControllerStatistics.UsersOnGraph.containsKey(friend))
+        if(ControllerStatistics.usersOnGraph.containsKey(friend))
         {
             int counter = 0;
             for(XYChart.Series<String,Number> search : linechart.getData()){
@@ -159,11 +159,11 @@ public class ControllerStatistics implements Initializable {
                 }
                 counter++;
             }
-            ControllerStatistics.UsersOnGraph.remove(friend);
+            ControllerStatistics.usersOnGraph.remove(friend);
             addButton.setText("Add to chart");
             return;
         }
-        UsersOnGraph.put(friend,ADDED);
+        usersOnGraph.put(friend,ADDED);
         XYChart.Series friendSeries = new XYChart.Series();
         friendSeries.setName(friend);
 
@@ -187,7 +187,7 @@ public class ControllerStatistics implements Initializable {
     }
 
     public void changeText(javafx.event.ActionEvent actionEvent) throws IOException {
-            if(UsersOnGraph.containsKey(choiceBox.getValue())) addButton.setText("Remove from chart");
+            if(usersOnGraph.containsKey(choiceBox.getValue())) addButton.setText("Remove from chart");
             else addButton.setText("Add to chart");
     }
 }
