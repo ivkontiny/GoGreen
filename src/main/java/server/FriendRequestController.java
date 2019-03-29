@@ -25,7 +25,7 @@ public class FriendRequestController {
     @RequestMapping("/request/{sessionId}")
     public boolean sendRequest(@PathVariable("sessionId") String sessionId,
                                @RequestParam(value = "username", defaultValue = "user")
-                                       String receiver) throws SQLException {
+                                       String receiver) {
         if (!ss.sessionExists(sessionId)) {
             return false;
         }

@@ -1,11 +1,16 @@
 package pojos;
 
+import javafx.scene.control.Button;
+
 public class Friendship {
 
 
     private String sender;
     private String receiver;
     private Boolean accepted;
+    private Button accept;
+    private Button decline;
+
 
     public Friendship() {
         this.accepted = false;
@@ -20,8 +25,8 @@ public class Friendship {
         this.sender = requester;
         this.receiver = receiver;
         this.accepted = false;
-    }
 
+    }
 
     public String getSender() {
         return sender;

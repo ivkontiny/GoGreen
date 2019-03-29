@@ -10,9 +10,9 @@
 <AnchorPane fx:id="activityPane" prefHeight="468.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ControllerEnergy">
     <children>
         <ComboBox fx:id="energyBox" layoutX="234.0" layoutY="131.0" onAction="#inputActivity" prefHeight="48.0" prefWidth="244.0" />
-        <Label layoutX="113.0" layoutY="139.0" text="Description">
+        <Label layoutX="113.0" layoutY="141.0" text="Description">
          <font>
-            <Font size="22.0" />
+            <Font size="19.0" />
          </font></Label>
         <Button layoutX="396.0" layoutY="363.0" mnemonicParsing="false" onAction="#addActivity" prefHeight="59.0" prefWidth="150.0" text="Add">
          <font>
@@ -22,9 +22,9 @@
          <font>
             <Font size="22.0" />
          </font></Label>
-      <Label layoutX="113.0" layoutY="211.0" text="Amount">
+        <Label fx:id="amountLabel" layoutX="9.0" layoutY="203.0" prefHeight="48.0" prefWidth="208.0" text=" ">
          <font>
-            <Font size="22.0" />
+            <Font size="19.0" />
          </font>
       </Label>
       <TextField fx:id="energyAmount" layoutX="234.0" layoutY="203.0" prefHeight="48.0" prefWidth="244.0" />
