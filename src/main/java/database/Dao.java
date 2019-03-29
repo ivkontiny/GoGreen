@@ -3,24 +3,25 @@ package database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Properties;
+import util.ConfigReader;
 
 public abstract class Dao {
 
     public Connection conn;
 
-    String url = "jdbc:postgresql://142.93.230.132/gogreen";
+    public static String url;
 
     /**
      * Makes the connection to the database.
      */
     public Dao() {
+        ConfigReader reader = new ConfigReader("src/main/java/config.xml");
+        this.url = reader.getUrl();
         try {
-
             Properties props = new Properties();
-            props.setProperty("user", "gogreen");
-            props.setProperty("password", "gogreen123");
+            props.setProperty("user", reader.getUsername());
+            props.setProperty("password", reader.getPassword());
 
             this.conn = DriverManager.getConnection(this.url, props);
 
@@ -32,11 +33,11 @@ public abstract class Dao {
 
     /**
      * Changes the database the Dao connects to.
-     * @param urL the path to the database
+     * @param url the path to the database
      */
-    public void changeDatabase(String urL) {
+    public void changeDatabase(String url) {
         try {
-            this.url = "jdbc:postgresql://142.93.230.132/" + urL;
+            this.url = "jdbc:postgresql://142.93.230.132/" + url;
             //this.url = URL;
             Properties props = new Properties();
             props.setProperty("user", "gogreen");
