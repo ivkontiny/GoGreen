@@ -4,6 +4,7 @@ stages:
   - build
   - test
   - coverage
+  - checkstyle
 
 build:
   stage: build
@@ -27,3 +28,7 @@ coverage:
     - RESULT=$(echo $RESULT | awk '{print int($RESULT)}')
     - if [ $RESULT -lt 85 ]; then exit 1; fi 
 
+checkstyle:
+  stage: checkstyle
+  script:
+    - mvn clean checkstyle:check -B
