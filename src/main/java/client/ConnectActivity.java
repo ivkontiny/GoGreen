@@ -10,9 +10,7 @@ import pojos.DefaultValue;
 
 import java.util.ArrayList;
 
-public class ConnectActivity {
-
-    private static String url_default = "http://localhost:8080/";
+public class ConnectActivity extends Connect {
 
     public static ArrayList<DefaultValue> getFood(Category category) {
         String url = url_default + "get_descriptions_by_category";
