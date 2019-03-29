@@ -21,12 +21,12 @@ public class AddSolarPointsTest {
         account = new Account("test", "test", "test", "test", "test");
     }
 
-    @Test
+    /*@Test
     public void testAddPoints() {
         AddSolarPoints.addPoints();
         as.createAccount(account);
         AddSolarPoints.addPoints();
         as.deleteAccount(account);
-    }
+    }*/
 
 }
