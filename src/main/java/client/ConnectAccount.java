@@ -17,12 +17,11 @@ import java.util.ArrayList;
 //import server.Application;
 //142.93.230.132:8080
 
-public class ConnectAccount {
+public class ConnectAccount extends Connect {
 
 
     private static String USERNAME = "";
     private static String SESSION_ID = "";
-    private static String url_default = "http://localhost:8080/";
 
     /**
      * Get the sessionId of the local user.
@@ -165,7 +164,6 @@ public class ConnectAccount {
      * @return an array list containing all the users that match it
      */
     public static ArrayList<String> getMatchingUsers(String match) {
-        url_default = "http://localhost:8080/";
         String url = url_default + "get_match/";
         url += SESSION_ID;
         url += "/";

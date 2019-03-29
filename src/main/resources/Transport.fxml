@@ -22,5 +22,11 @@
             <font>
                 <Font size="22.0" />
             </font></Label>
+      <Label layoutX="71.0" layoutY="234.0" text="Distance (in km)">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="distanceField" layoutX="234.0" layoutY="226.0" onInputMethodTextChanged="#inputActivity" prefHeight="48.0" prefWidth="244.0" />
     </children>
 </AnchorPane>

@@ -1,19 +1,18 @@
 package client;
 
+//import org.graalvm.compiler.lir.LIRInstruction;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
-import pojos.Activity;
+//import pojos.Activity;
 import pojos.Category;
 import pojos.DefaultValue;
 
 import java.util.ArrayList;
 
-public class ConnectActivity {
+public class ConnectActivity extends Connect {
 
-    private static String url_default = "http://localhost:8080/";
-
-    public static ArrayList<String> getFood(Category category) {
+    public static ArrayList<DefaultValue> getFood(Category category) {
         String url = url_default + "get_descriptions_by_category";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -22,9 +21,9 @@ public class ConnectActivity {
         HttpEntity<Category> requestEntity = new HttpEntity<>(category);
 
 
-        ResponseEntity<ArrayList<String>> response =
+        ResponseEntity<ArrayList<DefaultValue>> response =
                 restTemplate.exchange(url, HttpMethod.POST, requestEntity,
-                        new ParameterizedTypeReference<ArrayList<String>>() {
+                        new ParameterizedTypeReference<ArrayList<DefaultValue>>() {
                         });
         return response.getBody();
     }

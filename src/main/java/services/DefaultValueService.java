@@ -19,15 +19,9 @@ public class DefaultValueService {
      * @param cat the category to search for
      * @return an array list containing all default values from this category
      */
-    public ArrayList<String> getValuesFromCategory(Category cat) {
+    public ArrayList<DefaultValue> getValuesFromCategory(Category cat) {
         try {
-            ArrayList<DefaultValue> defs = db.getDefaultsByCategory(cat);
-            ArrayList<String> values = new ArrayList<>();
-            for (DefaultValue dv : defs) {
-                values.add(dv.getDescription());
-            }
-
-            return values;
+            return db.getDefaultsByCategory(cat);
         } catch (SQLException e) {
             return new ArrayList<>();
         }

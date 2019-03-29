@@ -19,9 +19,9 @@
             <children>
                 <AnchorPane prefHeight="123.0" prefWidth="150.0" style="-fx-background-color: #9bc782;">
                     <children>
-                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="13.0">
+                        <ImageView id="logo" fitHeight="100.0" fitWidth="100.0" layoutX="25.0" layoutY="11.0">
                             <image>
-                                <Image  url="@Images/logo.png" />
+                                <Image url="@Images/logo.png" />
                             </image>
                         </ImageView>
                     </children>
@@ -64,7 +64,7 @@
                 </TableView>
             <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="696.0" layoutY="14.0" onMouseClicked="#logOut">
                <image>
-                  <Image url="@Images/logout.png"/>
+                  <Image url="@Images/logout.png" />
                </image>
             </ImageView>
             </children>

@@ -15,9 +15,8 @@ import pojos.Friendship;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ConnectFriends {
+public class ConnectFriends extends Connect {
 
-    private static String url_default = "http://localhost:8080/";
     private static HashMap<String, ArrayList<Activity>> acts = new HashMap<>();
     private static ArrayList<String> friends = new ArrayList<>();
 
