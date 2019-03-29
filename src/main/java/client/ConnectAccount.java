@@ -50,6 +50,17 @@ public class ConnectAccount {
     }
 
 
+    public static Account getAccount() {
+        String url = url_default + "get_account/";
+        url += SESSION_ID;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<String> requestBody = new HttpEntity<>(headers);
+        ResponseEntity<Account> response = restTemplate.exchange(url, HttpMethod.GET, requestBody,
+                Account.class);
+        return response.getBody();
+    }
     /**
      * Registers a account.
      *

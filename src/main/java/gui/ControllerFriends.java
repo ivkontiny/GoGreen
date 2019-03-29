@@ -1,10 +1,12 @@
 package gui;
 
 import client.ConnectAccount;
+import client.ConnectFriends;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -22,21 +24,26 @@ public class ControllerFriends implements Initializable {
     private BorderPane rootPane;
     @FXML
     private TextField friendsField;
+    @FXML
+    private Label errorLabel;
 
     private ArrayList<String> usernames;
 
-    boolean ok = false;
+
+
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        errorLabel.setVisible(false);
         //usernames = new ArrayList<>();
         //TextFields.bindAutoCompletion(friendsField, usernames);
 
     }
 
     public void getUsers() {
+        errorLabel.setVisible(false);
         if (friendsField.getText().length() == 1) {
             String match = friendsField.getText();
             usernames = ConnectAccount.getMatchingUsers(match);
@@ -50,6 +57,18 @@ public class ControllerFriends implements Initializable {
     public void loadMyLog(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("MyLog.fxml"));
         rootPane.getChildren().setAll(pane);
+    }
+
+    public void sendRequest(javafx.event.ActionEvent actionEvent) {
+        if (ConnectFriends.sendRequest(friendsField.getText())) {
+            errorLabel.setStyle("-fx-text-fill: green");
+            errorLabel.setText("Friend request sent SUCCESS");
+        } else {
+            errorLabel.setStyle("-fx-text-fill: red");
+            errorLabel.setText("Friend request sent FAILED");
+            if(usernames.contains(friendsField.getText())) errorLabel.setText("Friend request already sent");
+        }
+        errorLabel.setVisible(true);
     }
 
     /**
