@@ -1,5 +1,7 @@
 package pojos;
 
+import java.io.File;
+
 public class Account {
     private String username;
     private String mail;
@@ -8,11 +10,14 @@ public class Account {
     private String lastname;
     private int points;
     private int num_panels;
+    private File picture;
 
 
     public Account() {
 
     }
+
+
 
 
     /**
@@ -32,8 +37,13 @@ public class Account {
         this.lastname = surname;
         this.points = 0;
         this.num_panels = 0;
+        this.picture = new File("ivaylo.jpg");;
     }
 
+
+    public File getPicture() { return picture; }
+
+    public void setPicture(File picture) { this.picture = picture; }
 
     public String getMail() {
         return mail;
