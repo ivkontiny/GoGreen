@@ -123,7 +123,7 @@ public class AccountTest {
     @Test
     public void testEqualsFalse7() {
         Account account1 = new Account("user", "user@mail.com", "123", "User", "User");
-        account1.setNum_panels(2);
+        account1.setSavedEnergy(305);
         assertNotEquals(account, account1);
     }
 }

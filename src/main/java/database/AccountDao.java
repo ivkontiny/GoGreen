@@ -52,7 +52,7 @@ public class AccountDao extends Dao {
     }
 
     public ArrayList<Account> getAccounts() throws SQLException {
-        ArrayList<Account> result = new ArrayList<Account>();
+        ArrayList<Account> result = new ArrayList<>();
 
         String query = "SELECT * FROM account";
         ResultSet rs = this.conn.createStatement().executeQuery(query);
@@ -140,17 +140,17 @@ public class AccountDao extends Dao {
         return true;
     }
 
-    public boolean setPanels(String user, int panels) throws SQLException {
+    public boolean setEnergy(String user, int energy) throws SQLException {
         if (!exists(user)) {
             return false;
         }
 
         String query = "UPDATE account SET "
-                       + "num_panels = ?"
+                       + "saved_energy = ? "
                        + "WHERE username = ?";
 
         PreparedStatement ps = this.conn.prepareStatement(query);
-        ps.setInt(1, panels);
+        ps.setInt(1, energy);
         ps.setString(2, user);
         ps.execute();
         ps.close();
@@ -165,10 +165,10 @@ public class AccountDao extends Dao {
         String firstname = rs.getString("first_name");
         String lastname = rs.getString("last_name");
         int points = rs.getInt("total_points");
-        int panels = rs.getInt("num_panels");
+        int energy = rs.getInt("saved_energy");
         Account account = new Account(name, email, password, firstname, lastname);
         account.setPoints(points);
-        account.setNum_panels(panels);
+        account.setSavedEnergy(energy);
         return account;
     }
 }

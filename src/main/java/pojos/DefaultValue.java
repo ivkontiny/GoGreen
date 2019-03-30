@@ -8,6 +8,7 @@ public class DefaultValue {
     private String unit;
     private int points;
     private double consumption;
+    private static int pts250Kwh;
 
     public DefaultValue() {
 
@@ -74,6 +75,11 @@ public class DefaultValue {
     }
 
 
+    public static void initPts() {
+        pts250Kwh = ConnectActivity.getConsumption("Power saved by solar panels").getPoints();
+    }
+
+
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof DefaultValue) {
@@ -98,7 +104,6 @@ public class DefaultValue {
 
 
     public static int kwhToPoints(int kwh) {
-        int pts250Kwh = ConnectActivity.getConsumption("Power saved by solar panels").getPoints();
         double points = ((double) kwh / 250.0) * pts250Kwh;
         int realPoints = (int) points;
 

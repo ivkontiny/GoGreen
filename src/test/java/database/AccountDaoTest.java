@@ -68,10 +68,10 @@ public class AccountDaoTest {
 
 
     @Test
-    public void testSetPanels() throws SQLException {
-        assertFalse(accountDao.setPanels(newaccount.getUsername(), 2));
+    public void testSetEnergy() throws SQLException {
+        assertFalse(accountDao.setEnergy(newaccount.getUsername(), 350));
         assertTrue(accountDao.createAccount(newaccount));
-        assertTrue(accountDao.setPanels(newaccount.getUsername(), 2));
+        assertTrue(accountDao.setEnergy(newaccount.getUsername(), 350));
         accountDao.deleteAccount(newaccount);
     }
     /*

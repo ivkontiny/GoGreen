@@ -179,4 +179,17 @@ public class ConnectAccount extends Connect {
         return response.getBody();
     }
 
+
+    public static boolean setEnergy(int saved) {
+        String url = url_default + "set_energy/";
+        url += SESSION_ID;
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<Integer> requestEntity = new HttpEntity<>(saved, headers);
+
+        boolean response = restTemplate.postForObject(url, requestEntity, Boolean.class);
+        return response;
+    }
 }

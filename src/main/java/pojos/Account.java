@@ -9,7 +9,7 @@ public class Account {
     private String firstname;
     private String lastname;
     private int points;
-    private int num_panels;
+    private int savedEnergy;
     private File picture;
 
 
@@ -36,8 +36,8 @@ public class Account {
         this.firstname = name;
         this.lastname = surname;
         this.points = 0;
-        this.num_panels = 0;
-        this.picture = new File("ivaylo.jpg");;
+        this.savedEnergy = 0;
+        this.picture = new File("ivaylo.jpg");
     }
 
 
@@ -93,12 +93,12 @@ public class Account {
         this.points = points;
     }
 
-    public int getNum_panels() {
-        return num_panels;
+    public int getSavedEnergy() {
+        return savedEnergy;
     }
 
-    public void setNum_panels(int num_panels) {
-        this.num_panels = num_panels;
+    public void setSavedEnergy(int savedEnergy) {
+        this.savedEnergy = savedEnergy;
     }
 
     @Override
@@ -111,7 +111,7 @@ public class Account {
                     && this.password.equals(that.password)
                     && this.firstname.equals(that.firstname)
                     && this.lastname.equals(that.lastname)
-                    && this.num_panels == that.num_panels) {
+                    && this.savedEnergy == that.savedEnergy) {
                 return true;
             }
         }

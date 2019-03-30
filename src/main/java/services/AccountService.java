@@ -110,6 +110,15 @@ public class AccountService {
             return;
         }
     }
+
+
+    public boolean setEnergy(String account, int energy) {
+        try {
+            return db.setEnergy(account, energy);
+        } catch (SQLException e) {
+            return false;
+        }
+    }
 }
 
 
