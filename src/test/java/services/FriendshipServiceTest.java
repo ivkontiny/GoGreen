@@ -39,7 +39,7 @@ public class FriendshipServiceTest {
         assertFalse(frs.acceptRequest(testfriendship));
     }
 
-    @Test
+    /*@Test
     public void testFriendshipSend() throws SQLException
     {
         when(test.sendRequest(testfriendship)).thenReturn(true);
@@ -60,7 +60,7 @@ public class FriendshipServiceTest {
         testfriendship.setStatus(false);
         when(test.sendRequest(testfriendship)).thenReturn(false);
         assertFalse(frs.sendRequest(testfriendship));
-    }
+    }*/
     @Test
     public void testHandleException() throws  SQLException
     {
