@@ -158,16 +158,22 @@ public class FriendshipDao extends Dao {
 
     }
 
+    /**
+     * Gets usernames matching the given string
+     * @param match The string to be matched to
+     * @return an arraylist of all usernames matching the string
+     * @throws SQLException when something goes wrong while getting the usernames from the database.
+     */
     public ArrayList<String> getMatchings(String match) throws SQLException {
-            String query = "SELECT username FROM account WHERE username LIKE ? ";
-            match += "%";
-            PreparedStatement request = this.conn.prepareStatement(query);
-            request.setString(1,match);
-            ResultSet rs = request.executeQuery();
-            ArrayList<String> matchings = new ArrayList<>();
-            while (rs.next()) {
-                matchings.add(rs.getString("username"));
-            }
-            return matchings;
+        String query = "SELECT username FROM account WHERE username LIKE ? ";
+        match += "%";
+        PreparedStatement request = this.conn.prepareStatement(query);
+        request.setString(1,match);
+        ResultSet rs = request.executeQuery();
+        ArrayList<String> matchings = new ArrayList<>();
+        while (rs.next()) {
+            matchings.add(rs.getString("username"));
+        }
+        return matchings;
     }
 }
