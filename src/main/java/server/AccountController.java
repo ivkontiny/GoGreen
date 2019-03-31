@@ -43,17 +43,26 @@ public class AccountController {
         return sessionId;
     }
 
-
+    /**
+     * Gets account based on the sessionId.
+     * @param sessionId The sessionId coupled to the account.
+     * @return the account to be returned
+     */
     @RequestMapping("/get_account/{sessionId}")
     public Account getAccounts(@PathVariable("sessionId") String sessionId) {
-        if(ss.sessionExists(sessionId)){
+        if (ss.sessionExists(sessionId)) {
             String username = ss.getAllSessions().get(sessionId).getUsername();
             return ls.getAccount(username);
         }
         return new Account();
     }
 
-
+    /**
+     * Registers a user.
+     * @param username the username
+     * @param newuser the account to be registered.
+     * @return true or false depending on whether the method was successful.
+     */
     @PostMapping("/register")
     public boolean registerUser(@RequestParam(value = "username",
             defaultValue = "user") String username, @RequestBody Account newuser) {
@@ -61,7 +70,12 @@ public class AccountController {
         return ls.createAccount(newuser);
     }
 
-
+    /**
+     * Sets saved energy of a user.
+     * @param energy amount for energy to be set to
+     * @param sessionId SessionId coupled to the account having their energy set
+     * @return true or false depending on whether the method was successful.
+     */
     @RequestMapping("/set_energy/{sessionId}")
     public boolean setEnergy(@RequestBody int energy,
                              @PathVariable("sessionId") String sessionId) {

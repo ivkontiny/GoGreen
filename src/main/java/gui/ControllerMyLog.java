@@ -78,7 +78,7 @@ public class ControllerMyLog implements Initializable {
     /**
      * Loads the friends page.
      * @param actionEvent the action event on which the friends page should be displayed
-     * @throws IOException
+     * @throws IOException when something with the action event goes wrong
      */
     public void loadFriends(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Friends.fxml"));

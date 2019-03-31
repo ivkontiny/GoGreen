@@ -12,7 +12,7 @@ public class HashPassword {
      * @return the hashed password
      * @throws NoSuchAlgorithmException when something went wrong
      */
-    public static String HashPass(String password) throws NoSuchAlgorithmException {
+    public static String hashPass(String password) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         digest.update(password.getBytes());
         String pass = new String(Base64.getEncoder().encode(digest.digest()));

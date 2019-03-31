@@ -8,7 +8,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import org.controlsfx.control.textfield.TextFields;
@@ -52,6 +56,7 @@ public class ControllerFriends implements Initializable {
         errorLabel.setVisible(false);
 
     }
+    
     /**
      * Displays the pending requests of the current user.
      * @return an observable list containing all activities
@@ -101,7 +106,7 @@ public class ControllerFriends implements Initializable {
             String match = friendsField.getText();
             usernames = ConnectAccount.getMatchingUsers(match);
             TextFields.bindAutoCompletion(friendsField, usernames);
-        } else if(friendsField.getText().length() < 1){
+        } else if (friendsField.getText().length() < 1) {
             usernames = new ArrayList<>();
             TextFields.bindAutoCompletion(friendsField, usernames);
         }
@@ -120,7 +125,7 @@ public class ControllerFriends implements Initializable {
 
 
     /**
-     * Sends a request
+     * Sends a request.
      *
      * @param actionEvent the event needed to send a request
      * @throws IOException when there is an error in the action
@@ -132,7 +137,9 @@ public class ControllerFriends implements Initializable {
         } else {
             errorLabel.setStyle("-fx-text-fill: red");
             errorLabel.setText("Friend request sent FAILED");
-            if(usernames.contains(friendsField.getText())) errorLabel.setText("Friend request already sent");
+            if (usernames.contains(friendsField.getText())) {
+                errorLabel.setText("Friend request already sent");
+            }
         }
         errorLabel.setVisible(true);
     }

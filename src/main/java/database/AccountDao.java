@@ -51,6 +51,11 @@ public class AccountDao extends Dao {
 
     }
 
+    /**
+     * Gets all accounts.
+     * @return an arraylist of all accounts
+     * @throws SQLException if ther is a problem getting the accounts from the database
+     */
     public ArrayList<Account> getAccounts() throws SQLException {
         ArrayList<Account> result = new ArrayList<>();
 
@@ -140,6 +145,13 @@ public class AccountDao extends Dao {
         return true;
     }
 
+    /**
+     * Sets the energy of a user.
+     * @param user The user to have their energy set
+     * @param energy The amount the energy will be set to.
+     * @return true or false depending on whether the method was successful
+     * @throws SQLException When something goes wrong while setting the energy.
+     */
     public boolean setEnergy(String user, int energy) throws SQLException {
         if (!exists(user)) {
             return false;
@@ -158,6 +170,12 @@ public class AccountDao extends Dao {
         return true;
     }
 
+    /**
+     * Returns an account by parsing through a Resultset.
+     * @param rs The resultset to be read
+     * @return The account
+     * @throws SQLException when something goes wrong while reading the resutlset
+     */
     public Account resultAccount(ResultSet rs) throws SQLException {
         String name = rs.getString("username");
         String email = rs.getString("email");

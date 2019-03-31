@@ -3,16 +3,17 @@ package pojos;
 import client.ConnectActivity;
 
 public class DefaultValue {
+    private static int pts250Kwh;
     private String description;
     private Category category;
     private String unit;
     private int points;
     private double consumption;
-    private static int pts250Kwh;
 
     public DefaultValue() {
 
     }
+    
     /**
      * Constructs a DefaultValue.
      * @param desc Description of the activity
@@ -98,11 +99,15 @@ public class DefaultValue {
     }
 
     public static double converter(int points) {
-        System.out.println(((double)points*0.0001)/5.0);
-        return ((double)points*0.0001)/5.0;
+        System.out.println(((double)points * 0.0001) / 5.0);
+        return ((double)points * 0.0001) / 5.0;
     }
 
-
+    /**
+     * Converts Kwh to points.
+     * @param kwh the amount of kwh to be converted
+     * @return the amount of points.
+     */
     public static int kwhToPoints(int kwh) {
         double points = ((double) kwh / 250.0) * pts250Kwh;
         int realPoints = (int) points;

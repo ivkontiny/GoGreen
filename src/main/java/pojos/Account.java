@@ -12,7 +12,9 @@ public class Account {
     private int savedEnergy;
     private File picture;
 
-
+    /**
+     * Creates an empty account.
+     */
     public Account() {
         this.username = "";
         this.mail = "";
@@ -48,9 +50,13 @@ public class Account {
     }
 
 
-    public File getPicture() { return picture; }
+    public File getPicture() { 
+        return picture; 
+    }
 
-    public void setPicture(File picture) { this.picture = picture; }
+    public void setPicture(File picture) {
+        this.picture = picture;
+    }
 
     public String getMail() {
         return mail;

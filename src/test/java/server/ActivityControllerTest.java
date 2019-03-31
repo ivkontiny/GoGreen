@@ -37,7 +37,7 @@ public class ActivityControllerTest {
         ac.setup(sc,ss,as);
         test_activity = new Activity("description",food,0, Date.valueOf(LocalDate.now()),"test");
     }
-
+    
     @Test
     public void testGetActivityOK() throws SQLException
     {

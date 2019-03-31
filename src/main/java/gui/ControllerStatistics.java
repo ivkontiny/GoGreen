@@ -6,10 +6,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.chart.XYChart;
 import pojos.Activity;
 import pojos.DefaultValue;
 
@@ -21,6 +21,10 @@ import java.util.Hashtable;
 import java.util.ResourceBundle;
 
 public class ControllerStatistics implements Initializable {
+
+    private static Hashtable<String,Integer> usersOnGraph;
+
+    private static int ADDED = 1;
     @FXML
     private BorderPane rootPane;
     @FXML
@@ -30,10 +34,6 @@ public class ControllerStatistics implements Initializable {
     @FXML
     private Button addButton;
 
-    private static Hashtable<String,Integer> usersOnGraph;
-
-    private static int ADDED = 1;
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -42,25 +42,22 @@ public class ControllerStatistics implements Initializable {
         ADDED = 1;
         //we load all the friends' activities
         ConnectFriends.getFriendActivities(ConnectFriends.getFriends());
-        ArrayList<Activity> myActivities = ConnectFriends.getUsersActivities().get(ConnectAccount.getUsername());
+        ArrayList<Activity> myActivities =
+                ConnectFriends.getUsersActivities().get(ConnectAccount.getUsername());
 
         LocalDate date = LocalDate.now();
         String[] dates = new String[7];
         double[] userCo2 = new double[7];
 
-        for(int i=0;i<=6;i++)
-        {
-            dates[i] = date.minusDays(6-i).toString();
+        for (int i = 0; i <= 6; i++) {
+            dates[i] = date.minusDays(6 - i).toString();
         }
 
-        for(Activity search : myActivities)
-        {
+        for (Activity search : myActivities) {
             System.out.println(search.getDate().toLocalDate().toString());
-            for(int i=0;i<=6;i++)
-            {
-                if(search.getDate().toLocalDate().toString().equals(dates[i]))
-                {
-                    userCo2[i]+= DefaultValue.converter(search.getPoints());
+            for (int i = 0; i <= 6; i++) {
+                if (search.getDate().toLocalDate().toString().equals(dates[i])) {
+                    userCo2[i] += DefaultValue.converter(search.getPoints());
                 }
             }
         }
@@ -69,7 +66,7 @@ public class ControllerStatistics implements Initializable {
         XYChart.Series userSeries = new XYChart.Series();
         userSeries.setName("You");
 
-        for(int i = 0; i <= 6; i++) {
+        for (int i = 0; i <= 6; i++) {
             userSeries.getData().add(new XYChart.Data(dates[i], userCo2[i]));
         }
 
@@ -121,7 +118,7 @@ public class ControllerStatistics implements Initializable {
     /**
      * Loads the friends page.
      * @param actionEvent the action event on which the friends page should be displayed
-     * @throws IOException
+     * @throws IOException when there is an error in the action
      */
     public void loadFriends(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Friends.fxml"));
@@ -141,19 +138,16 @@ public class ControllerStatistics implements Initializable {
 
     /**
      * Get choice from choice box.
-     * @param choiceBox
-     * @param dates
-     * @return String
+     * @param choiceBox The choicebox
+     * @param dates The dates
      */
     public void addFriend(ChoiceBox<String> choiceBox, String[] dates) {
 
         String friend = choiceBox.getValue();
-        if(ControllerStatistics.usersOnGraph.containsKey(friend))
-        {
+        if (ControllerStatistics.usersOnGraph.containsKey(friend)) {
             int counter = 0;
-            for(XYChart.Series<String,Number> search : linechart.getData()){
-                if(search.getName().equals(friend))
-                {
+            for (XYChart.Series<String,Number> search : linechart.getData()) {
+                if (search.getName().equals(friend)) {
                     linechart.getData().remove(counter);
                     break;
                 }
@@ -171,9 +165,9 @@ public class ControllerStatistics implements Initializable {
         ArrayList<Activity> friendActivities = ConnectFriends.getUsersActivities().get(friend);
 
         for (Activity search : friendActivities) {
-            for (int i=0; i<=6; i++) {
+            for (int i = 0; i <= 6; i++) {
                 if (search.getDate().toLocalDate().toString().equals(dates[i])) {
-                    friendCo2[i]+=DefaultValue.converter(search.getPoints());
+                    friendCo2[i] += DefaultValue.converter(search.getPoints());
                 }
             }
         }
@@ -186,9 +180,17 @@ public class ControllerStatistics implements Initializable {
         addButton.setText("Remove from chart");
     }
 
+    /**
+     * Changes the text of the choicebox.
+     * @param actionEvent the action which triggers the event
+     * @throws IOException when there is an error in the action
+     */
     public void changeText(javafx.event.ActionEvent actionEvent) throws IOException {
-            if(usersOnGraph.containsKey(choiceBox.getValue())) addButton.setText("Remove from chart");
-            else addButton.setText("Add to chart");
+        if (usersOnGraph.containsKey(choiceBox.getValue())) {
+            addButton.setText("Remove from chart");
+        } else {
+            addButton.setText("Add to chart");
+        }
     }
 }
 

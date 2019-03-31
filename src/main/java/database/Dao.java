@@ -1,16 +1,18 @@
 package database;
 
+import util.ConfigReader;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
-import util.ConfigReader;
 
 public abstract class Dao {
 
+    public static String url;
+
     public Connection conn;
 
-    public static String url;
 
     /**
      * Makes the connection to the database.
