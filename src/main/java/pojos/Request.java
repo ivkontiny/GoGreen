@@ -1,6 +1,5 @@
 package pojos;
 
-import client.ConnectFriends;
 import javafx.scene.control.Button;
 
 public class Request {
@@ -8,6 +7,12 @@ public class Request {
     Button accept;
     Button reject;
 
+    /**
+     * constructor for a request
+     * @param user user getting the request
+     * @param accept the button to accept the request
+     * @param reject the button to reject the request
+     */
     public Request(String user, Button accept, Button reject) {
         this.username = user;
         this.accept = accept;
