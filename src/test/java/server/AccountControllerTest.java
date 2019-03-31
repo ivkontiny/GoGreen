@@ -1,17 +1,20 @@
 package server;
 
 import database.AccountDao;
-import database.ActivityDao;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Matchers;
 import pojos.Account;
 import pojos.Activity;
+import pojos.Session;
 import services.AccountService;
 import services.ActivityService;
+import services.SessionService;
 
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
@@ -82,6 +85,41 @@ public class AccountControllerTest {
     }
 
 
+    @Test
+    public void testSetEnergy() {
+        SessionService ss = mock(SessionService.class);
+        ac.setSs(ss);
+        when(ss.sessionExists("test")).thenReturn(false);
+        assertFalse(ac.setEnergy(25, "test"));
+
+        when(ss.sessionExists("test")).thenReturn(true);
+        HashMap<String, Session> hs = new HashMap<>();
+        hs.put("test", new Session("user", LocalDateTime.now()));
+        when(ss.getAllSessions()).thenReturn(hs);
+        //when(ss.getAllSessions().get("test").getUsername()).thenReturn("user");
+        AccountService acc = mock(AccountService.class);
+        ac.setLs(acc);
+        when(acc.setEnergy("user", 25)).thenReturn(true);
+        assertTrue(ac.setEnergy(25, "test"));
+    }
+
+
+    @Test
+    public void testGetAccounts() {
+        SessionService ss = mock(SessionService.class);
+        ac.setSs(ss);
+        when(ss.sessionExists("test")).thenReturn(false);
+        assertEquals(new Account(), ac.getAccounts("test"));
+
+        AccountService acc = mock(AccountService.class);
+        ac.setLs(acc);
+        when(ss.sessionExists("test")).thenReturn(true);
+        HashMap<String, Session> hs = new HashMap<>();
+        hs.put("test", new Session("user", LocalDateTime.now()));
+        when(ss.getAllSessions()).thenReturn(hs);
+        when(acc.getAccount("user")).thenReturn(testaccount);
+        assertEquals(testaccount, ac.getAccounts("test"));
+    }
 }
 
 
