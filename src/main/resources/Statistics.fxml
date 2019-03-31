@@ -30,7 +30,7 @@
                <font>
                   <Font size="22.0" />
                </font></Button>
-                <Button mnemonicParsing="false" onAction="#loadMyLog" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="My Log" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadMyLog" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Feed" textFill="WHITE">
                <font>
                   <Font size="22.0" />
                </font></Button>
@@ -57,9 +57,9 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ChoiceBox fx:id="choiceBox" layoutX="174.0" layoutY="25.0" prefHeight="39.0" prefWidth="245.0" onAction="#changeText" />
+                  <ChoiceBox fx:id="choiceBox" layoutX="174.0" layoutY="25.0" onAction="#changeText" prefHeight="39.0" prefWidth="245.0" />
                   <Button fx:id="addButton" layoutX="445.0" layoutY="25.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="111.0" text="Add to chart" />
-                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="696.0" layoutY="14.0">
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="696.0" layoutY="14.0" onMouseClicked="#logOut">
                      <image>
                         <Image url="@Images/logout.png" />
                      </image>

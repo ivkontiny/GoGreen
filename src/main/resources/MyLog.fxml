@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -22,7 +23,7 @@
                <font>
                   <Font size="22.0" />
                </font></Button>
-                <Button mnemonicParsing="false" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #6BC782; -fx-background-radius: 0;" text="My Log" textFill="WHITE">
+                <Button mnemonicParsing="false" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #6BC782; -fx-background-radius: 0;" text="Feed" textFill="WHITE">
                <font>
                   <Font size="22.0" />
                </font></Button>

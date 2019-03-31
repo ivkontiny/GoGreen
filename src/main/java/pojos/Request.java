@@ -16,7 +16,9 @@ public class Request {
     public Request(String user, Button accept, Button reject) {
         this.username = user;
         this.accept = accept;
+        accept.setText("Accept");
         this.reject = reject;
+        reject.setText("Decline");
     }
 
     public String getUsername() {
