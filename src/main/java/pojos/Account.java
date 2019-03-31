@@ -14,7 +14,14 @@ public class Account {
 
 
     public Account() {
-
+        this.username = "";
+        this.mail = "";
+        this.password = "";
+        this.firstname = "";
+        this.lastname = "";
+        this.points = 0;
+        this.savedEnergy = 0;
+        this.picture = null;
     }
 
 
