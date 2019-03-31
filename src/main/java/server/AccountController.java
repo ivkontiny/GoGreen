@@ -81,4 +81,8 @@ public class AccountController {
         this.db = db;
     }
 
+    public void setSs(SessionService ss) {
+        this.ss = ss;
+    }
+
 }

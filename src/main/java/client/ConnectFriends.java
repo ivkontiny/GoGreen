@@ -152,4 +152,17 @@ public class ConnectFriends extends Connect {
     }
 
 
+    public static boolean removeFriend(Friendship friendship) {
+        String url = url_default + "delete_friendship/";
+        url += ConnectAccount.getSessionId();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<Friendship> httpEntity = new HttpEntity<>(friendship, headers);
+        RestTemplate restTemplate = new RestTemplate();
+
+        ResponseEntity<Boolean> response = restTemplate.exchange(url, HttpMethod.POST, httpEntity, Boolean.class);
+        return response.getBody();
+    }
 }

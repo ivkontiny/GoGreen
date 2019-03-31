@@ -128,6 +128,16 @@ public class FriendRequestController {
         return new ArrayList<>();
     }
 
+    @PostMapping("/delete_friendship/{sessionId}")
+    public boolean deleteFriendship(@RequestBody Friendship friendship,
+                                 @PathVariable("sessionId") String sessionId) {
+        if (ss.sessionExists(sessionId)) {
+             return frs.removeFriendship(friendship);
+        }
+
+        return false;
+    }
+
 
     public void setFrs(FriendRequestService frs) {
         this.frs = frs;

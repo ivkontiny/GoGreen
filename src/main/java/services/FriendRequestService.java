@@ -52,6 +52,16 @@ public class FriendRequestService {
         }
     }
 
+
+    public boolean removeFriendship(Friendship friendship) {
+        try {
+            db.removeFriendship(friendship);
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
     public void setDb(FriendshipDao fd) {
         this.db = fd;
     }

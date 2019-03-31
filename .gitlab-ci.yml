@@ -4,7 +4,7 @@ stages:
   - build
   - test
   - coverage
-  # - checkstyle
+  - checkstyle
 
 build:
   stage: build
@@ -28,7 +28,10 @@ coverage:
     - RESULT=$(echo $RESULT | awk '{print int($RESULT)}')
     - if [ $RESULT -lt 85 ]; then exit 1; fi 
 
-# checkstyle:
-  # stage: checkstyle
-  # script:
-  #   - mvn clean checkstyle:check -B
+checkstyle:
+  stage: checkstyle
+  script:
+    - mvn site
+    - CHECKSTYLE=$(wc -l target/checkstyle-result.xml)
+    - RESULT=$(echo $CHECKSTYLE | awk -F ' ' '{print $1}')
+    - if [ $RESULT -gt 400 ]; then exit 1; fi

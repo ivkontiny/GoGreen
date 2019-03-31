@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
@@ -63,5 +64,25 @@ public class ActivityControllerTest {
         when(as.createActivity(test_activity)).thenReturn(true);
         when(ss.sessionExists("test")).thenReturn(true);
         assertTrue(ac.addActivity(test_activity,"test"));
+    }
+
+
+    @Test
+    public void testGetActivitiesSince() {
+        ArrayList<String> arr = new ArrayList<>();
+        when(ss.sessionExists("test")).thenReturn(false);
+        assertEquals(new HashMap<>(), ac.getActivitiesSince(arr, "test"));
+
+        when(ss.sessionExists("test")).thenReturn(true);
+        assertEquals(new HashMap<>(), ac.getActivitiesSince(arr, "test"));
+
+        arr.add("user");
+        ArrayList<Activity> act = new ArrayList<>();
+        act.add(test_activity);
+        when(as.getActivitiesOfUserSince("user", Date.valueOf(LocalDate.now().minusDays(7)))).thenReturn(act);
+        HashMap<String, ArrayList<Activity>> exp = new HashMap<>();
+        exp.put("user", act);
+        assertEquals(exp, ac.getActivitiesSince(arr, "test"));
+
     }
 }
