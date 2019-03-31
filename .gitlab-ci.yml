@@ -34,4 +34,4 @@ checkstyle:
     - mvn site
     - CHECKSTYLE=$(wc -l target/checkstyle-result.xml)
     - RESULT=$(echo $CHECKSTYLE | awk -F ' ' '{print $1}')
-    - if [ $RESULT -gt 400]; then exit 1; fi
+    - if [ $RESULT -gt 400 ]; then exit 1; fi
