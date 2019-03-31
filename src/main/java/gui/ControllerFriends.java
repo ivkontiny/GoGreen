@@ -8,14 +8,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import org.controlsfx.control.textfield.TextFields;
+import pojos.Friendship;
 import pojos.Request;
 
 import java.io.IOException;
@@ -55,7 +52,6 @@ public class ControllerFriends implements Initializable {
         errorLabel.setVisible(false);
 
     }
-    
     /**
      * Displays the pending requests of the current user.
      * @return an observable list containing all activities
@@ -67,6 +63,7 @@ public class ControllerFriends implements Initializable {
             Button accept = new Button();
             Button reject = new Button();
             reject.setOnAction(e -> {
+                ConnectFriends.removeFriend(new Friendship(user,ConnectAccount.getUsername()));
                 removeRequest(user);
             });
             accept.setOnAction(e -> {
@@ -80,8 +77,8 @@ public class ControllerFriends implements Initializable {
     }
 
     /**
-     * Removes a friend request.
-     * @param user The user whose friend request is removed
+     * Removes a request from a user.
+     * @param user the user to be removed from the pending requests list
      */
     public void removeRequest(String user) {
         int counter = 0;
@@ -94,9 +91,9 @@ public class ControllerFriends implements Initializable {
         }
 
     }
-    
+
     /**
-     * Gets the all usernames matching the string.
+     * Makes a request to get matching users (user suggestions).
      */
     public void getUsers() {
         errorLabel.setVisible(false);
@@ -104,25 +101,29 @@ public class ControllerFriends implements Initializable {
             String match = friendsField.getText();
             usernames = ConnectAccount.getMatchingUsers(match);
             TextFields.bindAutoCompletion(friendsField, usernames);
-        } else if (friendsField.getText().length() < 1) {
+        } else if(friendsField.getText().length() < 1){
             usernames = new ArrayList<>();
             TextFields.bindAutoCompletion(friendsField, usernames);
         }
     }
-    
+
     /**
-     * Loads the log.
-     * @param actionEvent The event which triggers the loading of a load
-     * @throws IOException When something in the action goes wrong.
+     * Loads the feed.
+     *
+     * @param actionEvent the event needed to be made to go to the feed
+     * @throws IOException when there is an error in the action
      */
     public void loadMyLog(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("MyLog.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 
+
     /**
-     * Sends a friend request.
-     * @param actionEvent the event which triggers the sending of the request
+     * Sends a request
+     *
+     * @param actionEvent the event needed to send a request
+     * @throws IOException when there is an error in the action
      */
     public void sendRequest(javafx.event.ActionEvent actionEvent) {
         if (ConnectFriends.sendRequest(friendsField.getText())) {
@@ -131,9 +132,7 @@ public class ControllerFriends implements Initializable {
         } else {
             errorLabel.setStyle("-fx-text-fill: red");
             errorLabel.setText("Friend request sent FAILED");
-            if (usernames.contains(friendsField.getText())) {
-                errorLabel.setText("Friend request already sent");
-            }
+            if(usernames.contains(friendsField.getText())) errorLabel.setText("Friend request already sent");
         }
         errorLabel.setVisible(true);
     }
@@ -179,6 +178,19 @@ public class ControllerFriends implements Initializable {
     public void logOut() throws IOException {
         ConnectAccount.logOut();
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
+
+    /**
+     * Loads the home page.
+     *
+     * @param actionEvent the event needed to be made to go to the home page
+     * @throws IOException when there is an error in the action
+     */
+    public void loadHome(javafx.event.ActionEvent actionEvent) throws IOException {
+        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Home.fxml"));
+        ControllerHome.welcomeMessage(pane);
         rootPane.getChildren().setAll(pane);
     }
 }
