@@ -183,7 +183,11 @@ public class ConnectAccount extends Connect {
         return response.getBody();
     }
 
-
+    /**
+     * Sets energy of the user.
+     * @param saved The number to have set
+     * @return response.
+     */
     public static boolean setEnergy(int saved) {
         String url = url_default + "set_energy/";
         url += SESSION_ID;

@@ -11,12 +11,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import pojos.Account;
 import pojos.Activity;
 import pojos.Category;
 import pojos.DefaultValue;
 
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -47,7 +45,8 @@ public class ControllerEnergy implements Initializable {
         energyBox.setItems(energyActivitieList);
         energyAmount.textProperty().addListener(new ChangeListener<String>() {
             @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            public void changed(ObservableValue<? extends String> observable,
+                    String oldValue, String newValue) {
                 if (!newValue.matches("\\d{0,7}([\\.]\\d{0,4})?")) {
                     energyAmount.setText(oldValue);
                 }
@@ -72,7 +71,8 @@ public class ControllerEnergy implements Initializable {
                     if (energyAmount.getText().equals("")) {
                         pointsText.setText("Points: 0");
                     } else {
-                        pointsText.setText("Points: " + DefaultValue.kwhToPoints(Integer.parseInt(energyAmount.getText())));
+                        pointsText.setText("Points: " + DefaultValue.kwhToPoints(
+                                Integer.parseInt(energyAmount.getText())));
                     }
                 }
             }
@@ -103,7 +103,7 @@ public class ControllerEnergy implements Initializable {
         Activity activity = new Activity(actDesc, Category.energy, points,
                 Date.valueOf(LocalDate.now()), ConnectAccount.getUsername());
 
-        if(actDesc.equals("Power saved by solar panels")) {
+        if (actDesc.equals("Power saved by solar panels")) {
             ConnectAccount.setEnergy(Integer.parseInt(energyAmount.getText()));
         }
 

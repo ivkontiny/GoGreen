@@ -8,7 +8,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import org.controlsfx.control.textfield.TextFields;
@@ -51,6 +55,7 @@ public class ControllerFriends implements Initializable {
         errorLabel.setVisible(false);
 
     }
+    
     /**
      * Displays the pending requests of the current user.
      * @return an observable list containing all activities
@@ -74,6 +79,10 @@ public class ControllerFriends implements Initializable {
         return requests;
     }
 
+    /**
+     * Removes a friend request.
+     * @param user The user whose friend request is removed
+     */
     public void removeRequest(String user) {
         int counter = 0;
         for (Request search : requestTable.getItems()) {
@@ -85,23 +94,36 @@ public class ControllerFriends implements Initializable {
         }
 
     }
+    
+    /**
+     * Gets the all usernames matching the string.
+     */
     public void getUsers() {
         errorLabel.setVisible(false);
         if (friendsField.getText().length() == 1) {
             String match = friendsField.getText();
             usernames = ConnectAccount.getMatchingUsers(match);
             TextFields.bindAutoCompletion(friendsField, usernames);
-        } else if(friendsField.getText().length() < 1){
+        } else if (friendsField.getText().length() < 1) {
             usernames = new ArrayList<>();
             TextFields.bindAutoCompletion(friendsField, usernames);
         }
     }
-
+    
+    /**
+     * Loads the log.
+     * @param actionEvent The event which triggers the loading of a load
+     * @throws IOException When something in the action goes wrong.
+     */
     public void loadMyLog(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("MyLog.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 
+    /**
+     * Sends a friend request
+     * @param actionEvent the event which triggers the sending of the request
+     */
     public void sendRequest(javafx.event.ActionEvent actionEvent) {
         if (ConnectFriends.sendRequest(friendsField.getText())) {
             errorLabel.setStyle("-fx-text-fill: green");
@@ -109,7 +131,9 @@ public class ControllerFriends implements Initializable {
         } else {
             errorLabel.setStyle("-fx-text-fill: red");
             errorLabel.setText("Friend request sent FAILED");
-            if(usernames.contains(friendsField.getText())) errorLabel.setText("Friend request already sent");
+            if(usernames.contains(friendsField.getText())) {
+                errorLabel.setText("Friend request already sent");
+            }
         }
         errorLabel.setVisible(true);
     }
