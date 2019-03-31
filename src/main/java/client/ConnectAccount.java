@@ -48,7 +48,10 @@ public class ConnectAccount extends Connect {
         restTemplate.exchange(url, HttpMethod.GET, requestBody, String.class);
     }
 
-
+    /**
+     * Gets the account to display.
+     * @return The account.
+     */
     public static Account getAccount() {
         String url = url_default + "get_account/";
         url += SESSION_ID;
@@ -60,6 +63,7 @@ public class ConnectAccount extends Connect {
                 Account.class);
         return response.getBody();
     }
+    
     /**
      * Registers a account.
      *

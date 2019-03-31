@@ -24,8 +24,7 @@ public class ConnectFriends extends Connect {
 
     public static ArrayList<String> getLocalFriends() { return friends; }
 
-    public static void setFriends(ArrayList<String> friends)
-    {
+    public static void setFriends(ArrayList<String> friends) {
         ConnectFriends.friends = friends;
     }
 
@@ -33,9 +32,9 @@ public class ConnectFriends extends Connect {
         return acts;
     }
 
-    /** sends request to a user.
-     * *
-     * @param receiver
+    /** 
+     * sends request to a user.
+     * @param receiver The receiver of the request
      * @return if the request was sent successfully
      */
     public static boolean sendRequest(String receiver) {
@@ -52,9 +51,9 @@ public class ConnectFriends extends Connect {
 
     }
 
-    /** sends request to a user.
-     * *
-     * @param sender
+    /** 
+     * sends request to a user.
+     * @param sender The sender of the request
      * @return if the request was sent successfully
      */
     public static boolean acceptRequest(String sender) {
@@ -70,6 +69,7 @@ public class ConnectFriends extends Connect {
         return response.getBody();
 
     }
+    
     /**
      * Adds the activities of the friends to the acts hash map.
      *
@@ -151,7 +151,11 @@ public class ConnectFriends extends Connect {
         return usernames;
     }
 
-
+    /**
+     * Removes a friend.
+     * @param friendship The friendship to be removed
+     * @return The body to be displayed
+     */
     public static boolean removeFriend(Friendship friendship) {
         String url = url_default + "delete_friendship/";
         url += ConnectAccount.getSessionId();
