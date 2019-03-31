@@ -51,6 +51,25 @@ public class ConnectFriends extends Connect {
         return response.getBody();
 
     }
+
+    /** sends request to a user.
+     * *
+     * @param sender
+     * @return if the request was sent successfully
+     */
+    public static boolean acceptRequest(String sender) {
+        String url = url_default + "accept_request/";
+        url += ConnectAccount.getSessionId();
+        url += "?username=";
+        url += sender;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Boolean> response = restTemplate.exchange(url,
+                HttpMethod.GET,null,Boolean.class);
+        return response.getBody();
+
+    }
     /**
      * Adds the activities of the friends to the acts hash map.
      *
@@ -106,4 +125,31 @@ public class ConnectFriends extends Connect {
         return usernames;
 
     }
+
+    /**
+     * Get all the pending friendships of the current user.
+     * @return an array list containing all pending friends of the user
+     */
+    public static ArrayList<String> getPendingFriends() {
+        String url = url_default + "inactive_friendships/";
+        url += ConnectAccount.getSessionId();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        RestTemplate restTemplate = new RestTemplate();
+
+        //HttpEntity<String> requestBody = new HttpEntity<>(headers);
+        ResponseEntity<ArrayList<Friendship>> response = restTemplate.exchange(url, HttpMethod.GET,
+                null, new ParameterizedTypeReference<ArrayList<Friendship>>() {
+                });
+
+        ArrayList usernames = new ArrayList<>();
+        for (Friendship search : response.getBody()) {
+            if (search.getReceiver().equals(ConnectAccount.getUsername())) {
+                usernames.add(search.getSender());
+            }
+        }
+        return usernames;
+    }
+
+
 }

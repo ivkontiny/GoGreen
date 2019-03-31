@@ -2,15 +2,17 @@ package gui;
 
 import client.ConnectAccount;
 import client.ConnectFriends;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import org.controlsfx.control.textfield.TextFields;
+import pojos.Request;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,17 +31,60 @@ public class ControllerFriends implements Initializable {
 
     private ArrayList<String> usernames;
 
-
+    @FXML
+    private TableView<Request> requestTable;
+    @FXML
+    private TableColumn<Request, String> userColumn;
+    @FXML
+    private TableColumn<Request, Button> acceptColumn;
+    @FXML
+    private TableColumn<Request, Button> rejectColumn;
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        userColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
+        acceptColumn.setCellValueFactory(new PropertyValueFactory<>("accept"));
+        rejectColumn.setCellValueFactory(new PropertyValueFactory<>("reject"));
+        requestTable.setItems(getPendings());
         errorLabel.setVisible(false);
 
     }
+    /**
+     * Displays the pending requests of the current user.
+     * @return an observable list containing all activities
+     */
+    public ObservableList<Request> getPendings() {
+        ObservableList<Request> requests = FXCollections.observableArrayList();
+        ArrayList<String> pendings = ConnectFriends.getPendingFriends();
+        for (String user: pendings) {
+            Button accept = new Button();
+            Button reject = new Button();
+            reject.setOnAction(e -> {
+                removeRequest(user);
+            });
+            accept.setOnAction(e -> {
+                ConnectFriends.acceptRequest(user);
+                removeRequest(user);
+            });
 
+            requests.add(new Request(user,accept,reject));
+        }
+        return requests;
+    }
+
+    public void removeRequest(String user) {
+        int counter = 0;
+        for (Request search : requestTable.getItems()) {
+            if (search.getUsername().equals(user)) {
+                requestTable.getItems().remove(counter);
+                break;
+            }
+            counter++;
+        }
+
+    }
     public void getUsers() {
         errorLabel.setVisible(false);
         if (friendsField.getText().length() == 1) {

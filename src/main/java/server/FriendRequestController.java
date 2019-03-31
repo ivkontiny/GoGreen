@@ -56,8 +56,7 @@ public class FriendRequestController {
     @RequestMapping("/accept_request/{sessionId}")
     public boolean acceptRequest(
         @PathVariable("sessionId") String sessionId,
-        @RequestParam(value = "username", defaultValue = "user") String sender) 
-        throws SQLException {
+        @RequestParam(value = "username", defaultValue = "user") String sender) {
 
         if (!ss.sessionExists(sessionId)) {
             return false;
