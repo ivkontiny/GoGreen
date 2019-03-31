@@ -40,14 +40,30 @@ public class ControllerRegister implements Initializable {
     }
 
     /**
+     * Checks whether the password field is valid.
+     * @return message to be displayed to the user
+     */
+    public String checkPassField() {
+        String pass = password.getText();
+        if (pass.length() <= 6) {
+            return "Password too short (7 characters at least)";
+        }
+        if (!pass.matches("[a-zA-Z0-9]*")) {
+            return "Password contains a forbidden character!";
+        }
+        if (!pass.equals(confirmPassword.getText())) {
+            return "The passwords do not match";
+        }
+        return "OK";
+    }
+
+    /**
      * Checks fields.
      * @return alert message
      */
     public String checkFields() {
         EmailValidator ev = EmailValidator.getInstance();
         String mail = email.getText();
-        String user = username.getText();
-        String pass = password.getText();
 
         if (mail.length() == 0) {
             return "Email field empty";
@@ -61,6 +77,8 @@ public class ControllerRegister implements Initializable {
         if (surname.getText().length() == 0) {
             return "Surname field empty";
         }
+
+        String user = username.getText();
         if (user.length() <= 5) {
             return "Username too short (6 characters at least)";
         }
@@ -70,16 +88,8 @@ public class ControllerRegister implements Initializable {
         if (user.charAt(0) >= '0' && user.charAt(0) <= '9') {
             return "Username cannot start with a digit";
         }
-        if (pass.length() <= 6) {
-            return "Password too short (7 characters at least)";
-        }
-        if (!pass.matches("[a-zA-Z0-9]*")) {
-            return "Password contains a forbidden character!";
-        }
-        if (!pass.equals(confirmPassword.getText())) {
-            return "The passwords do not match";
-        }
-        return "OK";
+
+        return checkPassField();
     }
 
     /**
