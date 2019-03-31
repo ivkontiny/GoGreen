@@ -32,4 +32,6 @@ checkstyle:
   stage: checkstyle
   script:
     - mvn site
-    - if [ wc -l target/checkstyle-result.xml -gt 400 ]; then exit 1; fi
+    - CHECKSTYLE=$(wc -l target/checkstyle-result.xml)
+    - RESULT=$(echo $CHECKSTYLE | awk -F ' ' '{print $1}')
+    - if [ $RESULT -gt 400]; then exit 1; fi
