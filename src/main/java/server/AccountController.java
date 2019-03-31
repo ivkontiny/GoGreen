@@ -43,17 +43,26 @@ public class AccountController {
         return sessionId;
     }
 
-
+    /**
+     * Gets account based on the sessionId.
+     * @param sessionId The sessionId coupled to the account.
+     * @return the account to be returned
+     */
     @RequestMapping("/get_account/{sessionId}")
     public Account getAccounts(@PathVariable("sessionId") String sessionId) {
-        if(ss.sessionExists(sessionId)){
+        if (ss.sessionExists(sessionId)) {
             String username = ss.getAllSessions().get(sessionId).getUsername();
             return ls.getAccount(username);
         }
         return new Account();
     }
 
-
+    /**
+     * Registers a user.
+     * @param username the username
+     * @param newuser the account to be registered.
+     * @return true or false depending on whether the method was successful.
+     */
     @PostMapping("/register")
     public boolean registerUser(@RequestParam(value = "username",
             defaultValue = "user") String username, @RequestBody Account newuser) {

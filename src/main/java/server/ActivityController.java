@@ -1,7 +1,6 @@
 package server;
 
 
-import javafx.util.Pair;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +15,6 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 public class ActivityController {
@@ -64,16 +62,16 @@ public class ActivityController {
     public HashMap<String, ArrayList<Activity>> getActivitiesSince(
         @RequestBody ArrayList<String> entity,
         @PathVariable("sessionId") String sessionId) {
-            if (ss.sessionExists(sessionId)) {
-                HashMap<String, ArrayList<Activity>> activities = new HashMap<>();
-                for (String user : entity) {
-                    activities.put(user, as.getActivitiesOfUserSince(user, Date.valueOf(LocalDate.now().minusDays(7))));
-                }
-
-                return activities;
+        if (ss.sessionExists(sessionId)) {
+            HashMap<String, ArrayList<Activity>> activities = new HashMap<>();
+            for (String user : entity) {
+                activities.put(user, as.getActivitiesOfUserSince(user, Date.valueOf(LocalDate.now().minusDays(7))));
             }
 
-            return new HashMap<>();
+            return activities;
+        }
+
+        return new HashMap<>();
     }
 
     /**

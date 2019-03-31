@@ -1,12 +1,16 @@
 package server;
 
-import org.springframework.web.bind.annotation.*;
 import pojos.Friendship;
 import services.AccountService;
 import services.FriendRequestService;
 import services.SessionService;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 @RestController
@@ -120,6 +124,12 @@ public class FriendRequestController {
         return new ArrayList<>();
     }
 
+    /**
+     * Gets a matching username based on the string input.
+     * @param sessionId the sessionId coupled to the user
+     * @param match the string to be matched
+     * @return an arraylist of all usernames matching the string
+     */
     @RequestMapping("/get_match/{sessionId}/{matching}")
     public ArrayList<String> getMatchings(@PathVariable("sessionId") String sessionId ,@PathVariable("matching") String match) {
         if(ss.sessionExists(sessionId)) {
