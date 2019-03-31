@@ -115,7 +115,7 @@ public class ControllerRegister implements Initializable {
     public void createAccount(javafx.event.ActionEvent actionEvent) 
         throws NoSuchAlgorithmException {
 
-        String pass = HashPassword.HashPass(password.getText());
+        String pass = HashPassword.hashPass(password.getText());
 
         Account user = new Account(username.getText(),email.getText(),
                 pass, name.getText(),

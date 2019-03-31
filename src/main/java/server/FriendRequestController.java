@@ -132,12 +132,18 @@ public class FriendRequestController {
      */
     @RequestMapping("/get_match/{sessionId}/{matching}")
     public ArrayList<String> getMatchings(@PathVariable("sessionId") String sessionId ,@PathVariable("matching") String match) {
-        if(ss.sessionExists(sessionId)) {
+        if (ss.sessionExists(sessionId)) {
             return frs.getMatchings(match);
         }
         return new ArrayList<>();
     }
 
+    /**
+     * Deletes a specified friendship.
+     * @param friendship friendship to be deleted
+     * @param sessionId The sessionId coupled to the logged in user
+     * @return true or false depending on whether the method was successful
+     */
     @PostMapping("/delete_friendship/{sessionId}")
     public boolean deleteFriendship(@RequestBody Friendship friendship,
                                  @PathVariable("sessionId") String sessionId) {
