@@ -52,7 +52,11 @@ public class FriendRequestService {
         }
     }
 
-
+    /**
+     * Removes specified friendship.
+     * @param friendship to be removed
+     * @return true if the friendship was successfully removed, false otherwise
+     */
     public boolean removeFriendship(Friendship friendship) {
         try {
             db.removeFriendship(friendship);
@@ -124,6 +128,11 @@ public class FriendRequestService {
         return friends;
     }
 
+    /**
+     * Gets matching usernames from the provided string.
+     * @param match string to match usenames to
+     * @return an arraylist of all the usernames matching the string
+     */
     public ArrayList<String> getMatchings(String match) {
         try {
             return db.getMatchings(match);

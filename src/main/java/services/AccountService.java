@@ -95,6 +95,10 @@ public class AccountService {
         }
     }
 
+    /**
+     * Gets an arraylist of all accounts.
+     * @return an arraylist of all accounts
+     */
     public ArrayList<Account> getAccounts() {
         try {
             return db.getAccounts();
@@ -103,6 +107,10 @@ public class AccountService {
         }
     }
 
+    /**
+     * Deletes specified account.
+     * @param account account to be deleted
+     */
     public void deleteAccount(Account account) {
         try {
             db.deleteAccount(account);
@@ -111,7 +119,12 @@ public class AccountService {
         }
     }
 
-
+    /**
+     * Sets energy of specified account.
+     * @param account account to have their energy set
+     * @param energy energy value to be set
+     * @return true or false depending on whether the method was successful
+     */
     public boolean setEnergy(String account, int energy) {
         try {
             return db.setEnergy(account, energy);
