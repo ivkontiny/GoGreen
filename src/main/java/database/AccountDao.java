@@ -52,7 +52,7 @@ public class AccountDao extends Dao {
     }
 
     /**
-     * Gets all accounts
+     * Gets all accounts.
      * @return an arraylist of all accounts
      * @throws SQLException if ther is a problem getting the accounts from the database
      */
@@ -171,7 +171,7 @@ public class AccountDao extends Dao {
     }
 
     /**
-     * Returns an account by parsing through a Resultset
+     * Returns an account by parsing through a Resultset.
      * @param rs The resultset to be read
      * @return The account
      * @throws SQLException when something goes wrong while reading the resutlset

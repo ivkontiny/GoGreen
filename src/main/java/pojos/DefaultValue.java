@@ -3,7 +3,7 @@ package pojos;
 import client.ConnectActivity;
 
 public class DefaultValue {
-	private static int pts250Kwh;
+    private static int pts250Kwh;
     private String description;
     private Category category;
     private String unit;

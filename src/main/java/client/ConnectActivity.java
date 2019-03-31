@@ -16,11 +16,11 @@ import java.util.ArrayList;
 
 public class ConnectActivity extends Connect {
 
-	/**
-	 * Gets all the food related activities.
-	 * @param category The category
-	 * @return The arraylist of the activities
-	 */
+    /**
+    * Gets all the food related activities.
+    * @param category The category
+    * @return The arraylist of the activities
+    */
     public static ArrayList<DefaultValue> getFood(Category category) {
         String url = url_default + "get_descriptions_by_category";
         HttpHeaders headers = new HttpHeaders();
@@ -38,7 +38,7 @@ public class ConnectActivity extends Connect {
     }
 
     /**
-     * Gets the consumption of a defaultvalue
+     * Gets the consumption of a defaultvalue.
      * @param description The description of the Defaultvalue
      * @return The defaultvalue
      */

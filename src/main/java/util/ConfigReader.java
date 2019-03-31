@@ -26,9 +26,9 @@ public class ConfigReader {
         try {
             builder = factory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         Document doc = null;
         try {
             doc = builder.parse(xml);

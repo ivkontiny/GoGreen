@@ -13,7 +13,7 @@ public class Account {
     private File picture;
 
     /**
-     * Creates an empty account
+     * Creates an empty account.
      */
     public Account() {
         this.username = "";

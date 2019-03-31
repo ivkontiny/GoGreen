@@ -22,7 +22,9 @@ public class ConnectFriends extends Connect {
 
 
 
-    public static ArrayList<String> getLocalFriends() { return friends; }
+    public static ArrayList<String> getLocalFriends() {
+        return friends; 
+    }
 
     public static void setFriends(ArrayList<String> friends) {
         ConnectFriends.friends = friends;
@@ -166,7 +168,8 @@ public class ConnectFriends extends Connect {
         HttpEntity<Friendship> httpEntity = new HttpEntity<>(friendship, headers);
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<Boolean> response = restTemplate.exchange(url, HttpMethod.POST, httpEntity, Boolean.class);
+        ResponseEntity<Boolean> response = restTemplate.exchange(url,
+                HttpMethod.POST, httpEntity, Boolean.class);
         return response.getBody();
     }
 }

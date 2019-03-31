@@ -121,7 +121,7 @@ public class ControllerFriends implements Initializable {
     }
 
     /**
-     * Sends a friend request
+     * Sends a friend request.
      * @param actionEvent the event which triggers the sending of the request
      */
     public void sendRequest(javafx.event.ActionEvent actionEvent) {
@@ -131,7 +131,7 @@ public class ControllerFriends implements Initializable {
         } else {
             errorLabel.setStyle("-fx-text-fill: red");
             errorLabel.setText("Friend request sent FAILED");
-            if(usernames.contains(friendsField.getText())) {
+            if (usernames.contains(friendsField.getText())) {
                 errorLabel.setText("Friend request already sent");
             }
         }

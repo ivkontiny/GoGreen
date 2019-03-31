@@ -1,15 +1,15 @@
 package server;
 
-import pojos.Friendship;
-import services.AccountService;
-import services.FriendRequestService;
-import services.SessionService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import pojos.Friendship;
+import services.AccountService;
+import services.FriendRequestService;
+import services.SessionService;
 
 import java.util.ArrayList;
 
@@ -131,7 +131,8 @@ public class FriendRequestController {
      * @return an arraylist of all usernames matching the string
      */
     @RequestMapping("/get_match/{sessionId}/{matching}")
-    public ArrayList<String> getMatchings(@PathVariable("sessionId") String sessionId ,@PathVariable("matching") String match) {
+    public ArrayList<String> getMatchings(@PathVariable("sessionId") String sessionId ,
+            @PathVariable("matching") String match) {
         if (ss.sessionExists(sessionId)) {
             return frs.getMatchings(match);
         }
@@ -148,7 +149,7 @@ public class FriendRequestController {
     public boolean deleteFriendship(@RequestBody Friendship friendship,
                                  @PathVariable("sessionId") String sessionId) {
         if (ss.sessionExists(sessionId)) {
-             return frs.removeFriendship(friendship);
+            return frs.removeFriendship(friendship);
         }
 
         return false;

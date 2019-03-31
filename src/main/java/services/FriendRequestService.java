@@ -136,8 +136,7 @@ public class FriendRequestService {
     public ArrayList<String> getMatchings(String match) {
         try {
             return db.getMatchings(match);
-        } catch (SQLException e)
-        {
+        } catch (SQLException e) {
             return new ArrayList<>();
         }
     }

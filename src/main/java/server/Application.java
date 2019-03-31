@@ -8,9 +8,9 @@ import util.AddSolarPoints;
 public class Application {
 
     /**
-	 * Executes the arguments and starts the application.
-	 * @param args the arguments to be executed.
-	 */
+    * Executes the arguments and starts the application.
+    * @param args the arguments to be executed.
+    */
     public static void main(String[] args) {
 
         SpringApplication.run(Application.class, args);

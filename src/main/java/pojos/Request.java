@@ -8,7 +8,7 @@ public class Request {
     Button reject;
 
     /**
-     * constructor for a request
+     * constructor for a request.
      * @param user user getting the request
      * @param accept the button to accept the request
      * @param reject the button to reject the request

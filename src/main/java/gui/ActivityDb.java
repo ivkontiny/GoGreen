@@ -48,8 +48,7 @@ public class ActivityDb implements Runnable {
     /**
      * Runs threads.
      */
-    public void run()
-    {
+    public void run() {
         ArrayList<DefaultValue> desc = ConnectActivity.getFood(Category.transportation);
         for (DefaultValue description : desc) {
             Transportation.descriptions.add(description.getDescription());

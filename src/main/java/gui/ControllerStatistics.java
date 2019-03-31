@@ -21,7 +21,7 @@ import java.util.Hashtable;
 import java.util.ResourceBundle;
 
 public class ControllerStatistics implements Initializable {
-	
+
     private static Hashtable<String,Integer> usersOnGraph;
 
     private static int ADDED = 1;
@@ -66,7 +66,7 @@ public class ControllerStatistics implements Initializable {
         XYChart.Series userSeries = new XYChart.Series();
         userSeries.setName("You");
 
-        for(int i = 0; i <= 6; i++) {
+        for (int i = 0; i <= 6; i++) {
             userSeries.getData().add(new XYChart.Data(dates[i], userCo2[i]));
         }
 
@@ -140,7 +140,6 @@ public class ControllerStatistics implements Initializable {
      * Get choice from choice box.
      * @param choiceBox The choicebox
      * @param dates The dates
-     * @return String The string to be put in the choicebox
      */
     public void addFriend(ChoiceBox<String> choiceBox, String[] dates) {
 
@@ -187,8 +186,11 @@ public class ControllerStatistics implements Initializable {
      * @throws IOException when there is an error in the action
      */
     public void changeText(javafx.event.ActionEvent actionEvent) throws IOException {
-            if(usersOnGraph.containsKey(choiceBox.getValue())) addButton.setText("Remove from chart");
-            else addButton.setText("Add to chart");
+        if (usersOnGraph.containsKey(choiceBox.getValue())) {
+            addButton.setText("Remove from chart");
+        } else {
+            addButton.setText("Add to chart");
+        }
     }
 }
 

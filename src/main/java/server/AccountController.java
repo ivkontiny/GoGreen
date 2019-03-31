@@ -70,7 +70,12 @@ public class AccountController {
         return ls.createAccount(newuser);
     }
 
-
+    /**
+     * Sets saved energy of a user.
+     * @param energy amount for energy to be set to
+     * @param sessionId SessionId coupled to the account having their energy set
+     * @return true or false depending on whether the method was successful.
+     */
     @RequestMapping("/set_energy/{sessionId}")
     public boolean setEnergy(@RequestBody int energy,
                              @PathVariable("sessionId") String sessionId) {

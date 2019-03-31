@@ -65,7 +65,8 @@ public class ActivityController {
         if (ss.sessionExists(sessionId)) {
             HashMap<String, ArrayList<Activity>> activities = new HashMap<>();
             for (String user : entity) {
-                activities.put(user, as.getActivitiesOfUserSince(user, Date.valueOf(LocalDate.now().minusDays(7))));
+                activities.put(user, as.getActivitiesOfUserSince(
+                        user, Date.valueOf(LocalDate.now().minusDays(7))));
             }
 
             return activities;
