@@ -130,7 +130,7 @@ Will
 -	To achieve my goal I just have to do it. It might be hard in the beginning but I will get used to it and it will get easier.
 
 ## Ali Sinan Cetingoz
-![](https://imgur.com/MDB2iee)
+![](https://i.imgur.com/MDB2iee.jpg)
 
 netID: scetingoz
 
