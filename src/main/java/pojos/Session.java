@@ -7,7 +7,7 @@ public class Session {
     private String username;
     private LocalDateTime time;
 
-    /** Creatiing a new sessionID.
+    /** Creating a new sessionID.
      * @param username the user for which the sessionID is created
      * @param now the time of the creation of the sessionID
      */
