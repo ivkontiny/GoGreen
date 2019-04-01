@@ -61,9 +61,9 @@ public class ControllerTransport implements Initializable {
         for (int i = 0; i < transportActivitieList.size(); i++) {
             if (ActivityDb.Transportation.descriptions.get(i).equals(transportBox.getValue())) {
                 if (distanceField.getText().equals("")) {
-                    pointsText.setText("Points: 0");
+                    pointsText.setText("POINTS 0");
                 } else {
-                    pointsText.setText("Points: " + ActivityDb.Transportation.points.get(i) 
+                    pointsText.setText("POINTS " + ActivityDb.Transportation.points.get(i)
                         * Integer.parseInt(distanceField.getText()));
                 }
             }

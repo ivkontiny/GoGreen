@@ -67,11 +67,11 @@ public class ControllerEnergy implements Initializable {
         for (int i = 0; i < energyActivitieList.size(); i++) {
             if (ActivityDb.Energy.descriptions.get(i).equals(energyBox.getValue())) {
                 if (energyBox.getValue().equals("Power saved by solar panels")) {
-                    amountLabel.setText("Energy saved (in kWh)");
+                    amountLabel.setText("kWh");
                     if (energyAmount.getText().equals("")) {
-                        pointsText.setText("Points: 0");
+                        pointsText.setText("POINTS 0");
                     } else {
-                        pointsText.setText("Points: " + DefaultValue.kwhToPoints(
+                        pointsText.setText("POINTS " + DefaultValue.kwhToPoints(
                                 Integer.parseInt(energyAmount.getText())));
                     }
                 }

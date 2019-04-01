@@ -7,26 +7,32 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="activityPane" prefHeight="468.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ControllerEnergy">
-    <children>
-        <ComboBox fx:id="energyBox" layoutX="234.0" layoutY="131.0" onAction="#inputActivity" prefHeight="48.0" prefWidth="244.0" />
-        <Label layoutX="113.0" layoutY="141.0" text="Description">
+<AnchorPane fx:id="activityPane" prefHeight="331.0" prefWidth="587.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ControllerEnergy">
+   <children>
+      <Label fx:id="amountLabel" layoutX="383.0" layoutY="178.0" prefHeight="32.0" prefWidth="104.0" text="kWh">
          <font>
-            <Font size="19.0" />
-         </font></Label>
-        <Button layoutX="396.0" layoutY="363.0" mnemonicParsing="false" onAction="#addActivity" prefHeight="59.0" prefWidth="150.0" text="Add">
-         <font>
-            <Font size="22.0" />
-         </font></Button>
-        <Label fx:id="pointsText" layoutX="71.0" layoutY="377.0" text="Points: 0">
-         <font>
-            <Font size="22.0" />
-         </font></Label>
-        <Label fx:id="amountLabel" layoutX="9.0" layoutY="203.0" prefHeight="48.0" prefWidth="208.0" text=" ">
-         <font>
-            <Font size="19.0" />
+            <Font name="Arial Rounded MT Bold" size="27.0" />
          </font>
       </Label>
-      <TextField fx:id="energyAmount" layoutX="234.0" layoutY="203.0" prefHeight="48.0" prefWidth="244.0" />
-    </children>
+      <TextField fx:id="energyAmount" layoutX="284.0" layoutY="170.0" prefHeight="48.0" prefWidth="83.0">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="21.0" />
+         </font></TextField>
+      <ComboBox fx:id="energyBox" layoutX="245.0" layoutY="102.0" onAction="#inputActivity" prefHeight="48.0" prefWidth="244.0" style="-fx-background-color: #9bc782; -fx-background-radius: 20px;" />
+      <Label alignment="CENTER" layoutX="252.0" layoutY="14.0" prefHeight="72.0" prefWidth="235.0" style="-fx-background-color: #9bc782; -fx-background-radius: 20px;" text="ENERGY" textFill="WHITE">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="44.0" />
+         </font>
+      </Label>
+       <Button layoutX="519.0" layoutY="240.0" mnemonicParsing="false" onAction="#addActivity" prefHeight="72.0" prefWidth="163.0" style="-fx-background-color: #9bc782; -fx-background-radius: 20px;" text="ADD" textFill="WHITE">
+           <font>
+               <Font name="Arial Rounded MT Bold" size="30.0" />
+           </font>
+       </Button>
+       <Label fx:id="pointsText" alignment="CENTER" layoutX="23.0" layoutY="240.0" prefHeight="72.0" prefWidth="200.0" style="-fx-background-color: #9bc782; -fx-background-radius: 20px; -fx-text-alignment: center;" text="POINTS 0" textFill="WHITE">
+           <font>
+               <Font name="Arial Rounded MT Bold" size="30.0" />
+           </font>
+       </Label>
+   </children>
 </AnchorPane>

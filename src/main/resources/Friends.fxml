@@ -19,25 +19,25 @@
                         </ImageView>
                     </children>
                 </AnchorPane>
-                <Button mnemonicParsing="false" onAction="#loadHome" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Home" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadHome" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="HOME" textFill="WHITE">
                     <font>
-                        <Font size="22.0" />
+                        <Font name="Arial Rounded MT Bold" size="22.0" />
                     </font></Button>
-                <Button mnemonicParsing="false" onAction="#loadMyLog" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Feed" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadMyLog" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="FEED" textFill="WHITE">
                     <font>
-                        <Font size="22.0" />
+                        <Font name="Arial Rounded MT Bold" size="22.0" />
                     </font></Button>
-                <Button mnemonicParsing="false" onAction="#loadActivities" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Activities" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadActivities" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="ACTIVITIES" textFill="WHITE">
                     <font>
-                        <Font size="22.0" />
+                        <Font name="Arial Rounded MT Bold" size="20.0" />
                     </font></Button>
-                <Button mnemonicParsing="false" onAction="#loadStatistics" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Statistics" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadStatistics" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="STATS" textFill="WHITE">
                     <font>
-                        <Font size="22.0" />
+                        <Font name="Arial Rounded MT Bold" size="22.0" />
                     </font></Button>
-                <Button mnemonicParsing="false" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #6BC782; -fx-background-radius: 0;" text="Friends" textFill="WHITE">
+                <Button mnemonicParsing="false" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #6BC782; -fx-background-radius: 0;" text="FRIENDS" textFill="WHITE">
                     <font>
-                        <Font size="22.0" />
+                        <Font name="Arial Rounded MT Bold" size="22.0" />
                     </font></Button>
             </children>
         </VBox>
@@ -48,44 +48,49 @@
     <center>
         <AnchorPane prefHeight="391.0" prefWidth="368.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="friendsField" layoutX="58.0" layoutY="109.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#getUsers" prefHeight="48.0" prefWidth="244.0" />
-            <Button layoutX="350.0" layoutY="109.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="48.0" prefWidth="131.0" text="Send">
+            <TextField fx:id="friendsField" layoutX="128.0" layoutY="85.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#getUsers" prefHeight="48.0" prefWidth="168.0" />
+            <Button layoutX="319.0" layoutY="85.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="48.0" prefWidth="111.0" style="-fx-background-color: #9BC782;" text="SEND" textFill="WHITE">
                <font>
-                  <Font size="22.0" />
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
                </font>
             </Button>
-            <Label layoutX="58.0" layoutY="70.0" text="Friend Request">
+            <Label alignment="CENTER" layoutX="152.0" layoutY="15.0" prefHeight="48.0" prefWidth="255.0" style="-fx-background-color: #9BC782; -fx-background-radius: 10px;" text="FRIEND REQUEST" textFill="WHITE">
                <font>
-                  <Font size="22.0" />
+                  <Font name="Arial Rounded MT Bold" size="25.0" />
                </font>
             </Label>
-             <Label fx:id="errorLabel" layoutX="58" layoutY="160" text="ERROR">
+             <Label fx:id="errorLabel" layoutX="189.0" layoutY="141.0" text="ERROR">
                  <font>
-                     <Font size="16" />
+                     <Font name="Arial Rounded MT Bold" size="16.0" />
                  </font>
              </Label>
-            <TableView fx:id="requestTable" layoutX="21.0" layoutY="198.0" prefHeight="349.0" prefWidth="457.0">
+            <TableView fx:id="requestTable" layoutX="40.0" layoutY="239.0" prefHeight="327.0" prefWidth="457.0" style="-fx-background-color: #9BC782;">
               <columns>
-                  <TableColumn fx:id="userColumn" prefWidth="288.0" text="Request" />
+                  <TableColumn fx:id="userColumn" prefWidth="288.0" />
                   <TableColumn fx:id="acceptColumn" prefWidth="84.0" />
                   <TableColumn fx:id="rejectColumn" prefWidth="84.0" />
               </columns>
             </TableView>
+            <Label alignment="CENTER" layoutX="206.0" layoutY="183.0" prefHeight="44.0" prefWidth="156.0" style="-fx-background-color: #9BC782; -fx-background-radius: 10px;" text="PENDING" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
+               </font>
+            </Label>
          </children>
         </AnchorPane>
     </center>
    <right>
       <AnchorPane prefHeight="591.0" prefWidth="231.0" BorderPane.alignment="CENTER">
          <children>
-            <ListView layoutY="62.0" prefHeight="524.0" prefWidth="230.0" />
+            <ListView layoutY="62.0" prefHeight="504.0" prefWidth="223.0" />
                 <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="177.0" layoutY="10.0" onMouseClicked="#logOut">
                     <image>
                         <Image url="@Images/logout.png" />
                     </image>
                 </ImageView>
-            <Label layoutX="8.0" layoutY="30.0" text="Friends">
+            <Label alignment="CENTER" layoutX="8.0" layoutY="13.0" prefHeight="44.0" prefWidth="116.0" style="-fx-background-color: #9BC782; -fx-background-radius: 10px;" text="FRIENDS" textFill="WHITE">
                <font>
-                  <Font size="22.0" />
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
                </font>
             </Label>
          </children>
