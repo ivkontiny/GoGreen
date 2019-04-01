@@ -40,7 +40,8 @@ public class ControllerTransport implements Initializable {
         transportBox.setItems(transportActivitieList);
         distanceField.textProperty().addListener(new ChangeListener<String>() {
             @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            public void changed(ObservableValue<? extends String> observable,
+                    String oldValue, String newValue) {
                 if (!newValue.matches("\\d{0,7}([\\.]\\d{0,4})?")) {
                     distanceField.setText(oldValue);
                 }
@@ -53,7 +54,7 @@ public class ControllerTransport implements Initializable {
 
     /*/** Gets an activity and calculates its points.
      *
-     * @param actionEvent the action event on which points should be calculated
+     * param actionEvent the action event on which points should be calculated
      */
     public void inputActivity(/*javafx.event.ActionEvent actionEvent*/) {
 
@@ -62,7 +63,8 @@ public class ControllerTransport implements Initializable {
                 if (distanceField.getText().equals("")) {
                     pointsText.setText("Points: 0");
                 } else {
-                    pointsText.setText("Points: " + ActivityDb.Transportation.points.get(i) * Integer.parseInt(distanceField.getText()));
+                    pointsText.setText("Points: " + ActivityDb.Transportation.points.get(i) 
+                        * Integer.parseInt(distanceField.getText()));
                 }
             }
         }
@@ -79,7 +81,8 @@ public class ControllerTransport implements Initializable {
         for (int i = 0; i < ActivityDb.Transportation.descriptions.size(); i++) {
             if (ActivityDb.Transportation.descriptions.get(i).equals(transportBox.getValue())) {
                 actDesc = ActivityDb.Transportation.descriptions.get(i);
-                points = ActivityDb.Transportation.points.get(i) * Integer.parseInt(distanceField.getText());
+                points = ActivityDb.Transportation.points.get(i) 
+                        * Integer.parseInt(distanceField.getText());
             }
         }
 

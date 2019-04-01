@@ -9,6 +9,9 @@ import java.util.ArrayList;
 
 public class AddSolarPoints {
 
+    /**
+     * Adds points to account for having solarpanels.
+     */
     public static void addPoints() {
         AccountService as = new AccountService();
         DefaultValueService dvs = new DefaultValueService();

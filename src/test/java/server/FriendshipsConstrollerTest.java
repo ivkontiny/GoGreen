@@ -128,4 +128,15 @@ public class FriendshipsConstrollerTest {
         assertEquals(frc.getMatchings("from","match"),match);
         assertEquals(frc.getFriends("from"),match);
     }
+
+    @Test
+    public void testDeleteFriendship() {
+        when(ss.sessionExists("test")).thenReturn(false);
+        Friendship friendship = new Friendship("from", "to");
+        assertFalse(frc.deleteFriendship(friendship, "test"));
+
+        when(ss.sessionExists("test")).thenReturn(true);
+        when(frs.removeFriendship(friendship)).thenReturn(true);
+        assertTrue(frc.deleteFriendship(friendship, "test"));
+    }
 }
