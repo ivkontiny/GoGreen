@@ -18,9 +18,9 @@ public class DefaultValue {
      * Constructs a DefaultValue.
      * @param desc Description of the activity
      * @param cat  The category of the activity
-     * @param unit The unit in which the value of the activity is meassured
+     * @param unit The unit in which the value of the activity is measured
      * @param points The amount of points the activity gives
-     * @param cons The amount thats consumed
+     * @param cons The amount that is consumed
      */
     public DefaultValue(String desc, Category cat, String unit, int points, double cons) {
         this.description = desc;

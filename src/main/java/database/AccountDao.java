@@ -54,7 +54,7 @@ public class AccountDao extends Dao {
     /**
      * Gets all accounts.
      * @return an arraylist of all accounts
-     * @throws SQLException if ther is a problem getting the accounts from the database
+     * @throws SQLException if there is a problem getting the accounts from the database
      */
     public ArrayList<Account> getAccounts() throws SQLException {
         ArrayList<Account> result = new ArrayList<>();
@@ -102,7 +102,7 @@ public class AccountDao extends Dao {
     /**
      * Deletes an account if it exists.
      *
-     * @param account the acount to be deleted from the database
+     * @param account the account to be deleted from the database
      */
     public void deleteAccount(Account account) throws SQLException {
 
