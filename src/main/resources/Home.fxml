@@ -26,25 +26,25 @@
                         </ImageView>
                     </children>
                 </AnchorPane>
-                <Button mnemonicParsing="false" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #6BC782; -fx-background-radius: 0;" text="Home" textFill="WHITE">
+                <Button mnemonicParsing="false" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #6BC782; -fx-background-radius: 0;" text="HOME" textFill="WHITE">
                <font>
-                  <Font size="22.0" />
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
                </font></Button>
-                <Button mnemonicParsing="false" onAction="#loadMyLog" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Feed" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadMyLog" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="FEED" textFill="WHITE">
                <font>
-                  <Font size="22.0" />
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
                </font></Button>
-                <Button mnemonicParsing="false" onAction="#loadActivities" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Activities" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadActivities" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="ACTIVITIES" textFill="WHITE">
                <font>
-                  <Font size="22.0" />
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
                </font></Button>
-                <Button mnemonicParsing="false" onAction="#loadStatistics" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Statistics" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadStatistics" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="STATS" textFill="WHITE">
                <font>
-                  <Font size="22.0" />
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
                </font></Button>
-                <Button mnemonicParsing="false" onAction="#loadFriends" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Friends" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadFriends" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="FRIENDS" textFill="WHITE">
                <font>
-                  <Font size="22.0" />
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
                </font></Button>
             </children>
         </VBox>
@@ -55,11 +55,21 @@
     <center>
         <AnchorPane prefHeight="391.0" prefWidth="368.0" BorderPane.alignment="CENTER">
             <children>
-                <Label fx:id="Welcome" layoutX="110.0" layoutY="175.0" text="Welcome message">
+                <Label fx:id="Welcome" alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="152.0" prefHeight="120.0" prefWidth="496.0" style="-fx-background-color: #9BC782; -fx-background-radius: 10px;" text="Welcome message" textFill="WHITE">
                     <font>
-                        <Font size="50.0" />
+                        <Font name="Arial Rounded MT Bold" size="50.0" />
                     </font>
                 </Label>
+            <Label fx:id="Welcome1" alignment="CENTER" layoutX="144.0" layoutY="314.0" prefHeight="53.0" prefWidth="371.0" style="-fx-background-color: #9BC782; -fx-background-radius: 10px;" text="TOTAL CO2 SAVED: 234" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="29.0" />
+               </font>
+            </Label>
+            <Label fx:id="Welcome11" alignment="CENTER" layoutX="152.0" layoutY="379.0" prefHeight="50.0" prefWidth="355.0" style="-fx-background-color: #9BC782; -fx-background-radius: 10px;" text="DAYS SINCE ACTIVE: 4" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="29.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </center>

@@ -26,25 +26,25 @@
                         </ImageView>
                     </children>
                 </AnchorPane>
-                <Button mnemonicParsing="false" onAction="#loadHome" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Home" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadHome" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="HOME" textFill="WHITE">
                <font>
-                  <Font size="22.0" />
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
                </font></Button>
-                <Button mnemonicParsing="false" onAction="#loadMyLog" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Feed" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadMyLog" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="FEED" textFill="WHITE">
                <font>
-                  <Font size="22.0" />
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
                </font></Button>
-                <Button mnemonicParsing="false" onAction="#loadActivities" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Activities" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadActivities" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="ACTIVITIES" textFill="WHITE">
                <font>
-                  <Font size="22.0" />
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
                </font></Button>
-                <Button mnemonicParsing="false" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #6BC782; -fx-background-radius: 0;" text="Statistics" textFill="WHITE">
+                <Button mnemonicParsing="false" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #6BC782; -fx-background-radius: 0;" text="STATS" textFill="WHITE">
                <font>
-                  <Font size="22.0" />
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
                </font></Button>
-                <Button mnemonicParsing="false" onAction="#loadFriends" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Friends" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadFriends" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="FRIENDS" textFill="WHITE">
                <font>
-                  <Font size="22.0" />
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
                </font></Button>
             </children>
         </VBox>
@@ -57,8 +57,11 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ChoiceBox fx:id="choiceBox" layoutX="174.0" layoutY="25.0" onAction="#changeText" prefHeight="39.0" prefWidth="245.0" />
-                  <Button fx:id="addButton" layoutX="445.0" layoutY="25.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="111.0" text="Add to chart" />
+                  <ChoiceBox fx:id="choiceBox" layoutX="174.0" layoutY="25.0" onAction="#changeText" prefHeight="39.0" prefWidth="245.0" style="-fx-background-color: #9BC782;" />
+                  <Button fx:id="addButton" layoutX="445.0" layoutY="25.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="111.0" style="-fx-background-color: #9BC782;" text="Add to chart" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
+                     </font></Button>
                   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="696.0" layoutY="14.0" onMouseClicked="#logOut">
                      <image>
                         <Image url="@Images/logout.png" />
@@ -70,10 +73,16 @@
                <children>
                   <LineChart fx:id="linechart" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="750.0">
                     <xAxis>
-                      <CategoryAxis fx:id="dateaxis" label="Date" side="BOTTOM" />
+                      <CategoryAxis fx:id="dateaxis" label="Date" side="BOTTOM">
+                           <tickLabelFont>
+                              <Font name="Arial Rounded MT Bold" size="10.0" />
+                           </tickLabelFont></CategoryAxis>
                     </xAxis>
                     <yAxis>
-                      <NumberAxis fx:id="pointsaxis" label="CO2 emissions" side="LEFT" />
+                      <NumberAxis fx:id="pointsaxis" label="CO2 saved" side="LEFT">
+                           <tickLabelFont>
+                              <Font name="Arial Rounded MT Bold" size="12.0" />
+                           </tickLabelFont></NumberAxis>
                     </yAxis>
                   </LineChart>
                </children>

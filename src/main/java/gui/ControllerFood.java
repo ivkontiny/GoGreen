@@ -42,7 +42,7 @@ public class ControllerFood implements Initializable {
 
         for (int i = 0; i < ActivityDb.Food.descriptions.size(); i++) {
             if (ActivityDb.Food.descriptions.get(i).equals(foodBox.getValue())) {
-                pointsText.setText("Points: " + ActivityDb.Food.points.get(i));
+                pointsText.setText("POINTS " + ActivityDb.Food.points.get(i));
             }
         }
     }

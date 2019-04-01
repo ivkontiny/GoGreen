@@ -30,25 +30,25 @@
                         </ImageView>
                     </children>
                 </AnchorPane>
-                <Button mnemonicParsing="false" onAction="#loadHome" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Home" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadHome" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="HOME" textFill="WHITE">
                <font>
-                  <Font size="22.0" />
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
                </font></Button>
-                <Button mnemonicParsing="false" onAction="#loadMyLog" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Feed" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadMyLog" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="FEED" textFill="WHITE">
                <font>
-                  <Font size="22.0" />
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
                </font></Button>
-                <Button mnemonicParsing="false" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #6BC782; -fx-background-radius: 0;" text="Activities" textFill="WHITE">
+                <Button mnemonicParsing="false" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #6BC782; -fx-background-radius: 0;" text="ACTIVITIES" textFill="WHITE">
                <font>
-                  <Font size="22.0" />
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
                </font></Button>
-                <Button mnemonicParsing="false" onAction="#loadStatistics" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Statistics" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadStatistics" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="STATS" textFill="WHITE">
                <font>
-                  <Font size="22.0" />
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
                </font></Button>
-                <Button mnemonicParsing="false" onAction="#loadFriends" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="Friends" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadFriends" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="FRIENDS" textFill="WHITE">
                <font>
-                  <Font size="22.0" />
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
                </font></Button>
             </children>
         </VBox>
@@ -59,19 +59,19 @@
    <center>
       <VBox prefHeight="300.0" prefWidth="150.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="120.0" prefWidth="618.0">
+            <AnchorPane>
                <children>
-                  <ImageView fx:id="foodIcon" fitHeight="80.0" fitWidth="80.0" layoutX="127.0" layoutY="33.0" onMouseClicked="#loadFoodActivity" opacity="0.4">
+                  <ImageView fx:id="foodIcon" fitHeight="97.0" fitWidth="97.0" layoutX="139.0" layoutY="98.0" onMouseClicked="#loadFoodActivity" opacity="0.4">
                      <image>
                         <Image url="@Images/restaurant.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="transportIcon" fitHeight="100.0" fitWidth="100.0" layoutX="267.0" layoutY="23.0" onMouseClicked="#loadTransportActivity" opacity="0.4">
+                  <ImageView fx:id="transportIcon" fitHeight="142.0" fitWidth="142.0" layoutX="303.0" layoutY="76.0" onMouseClicked="#loadTransportActivity" opacity="0.4">
                      <image>
                         <Image url="@Images/car.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="energyIcon" fitHeight="100.0" fitWidth="100.0" layoutX="415.0" layoutY="23.0" onMouseClicked="#loadEnergyActivity" opacity="0.4">
+                  <ImageView fx:id="energyIcon" fitHeight="127.0" fitWidth="127.0" layoutX="499.0" layoutY="80.0" onMouseClicked="#loadEnergyActivity" opacity="0.4">
                      <image>
                         <Image url="@Images/electricity.png" />
                      </image>

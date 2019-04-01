@@ -34,22 +34,34 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-             <Label layoutX="328.0" layoutY="32.0" prefHeight="36.0" prefWidth="104.0" text="Username" textFill="#298c22">
+             <Label layoutX="328.0" layoutY="32.0" prefHeight="36.0" prefWidth="137.0" text="Username" textFill="#298c22">
                <font>
-                  <Font size="21.0" />
+                  <Font name="Arial Rounded MT Bold" size="21.0" />
                </font></Label>
-             <Label layoutX="328.0" layoutY="123.0" text="Password" textFill="#298c22">
+             <Label layoutX="328.0" layoutY="123.0" prefHeight="31.0" prefWidth="129.0" text="Password" textFill="#298c22">
                <font>
-                  <Font size="21.0" />
+                  <Font name="Arial Rounded MT Bold" size="21.0" />
                </font></Label>
-             <TextField id="username" fx:id="username" layoutX="328.0" layoutY="68.0" prefHeight="40.0" prefWidth="245.0" />
-             <PasswordField id="password" fx:id="password" layoutX="328.0" layoutY="154.0" onAction="#loadHome" prefHeight="40.0" prefWidth="245.0" />
+             <TextField id="username" fx:id="username" layoutX="328.0" layoutY="68.0" prefHeight="40.0" prefWidth="245.0">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font></TextField>
+             <PasswordField id="password" fx:id="password" layoutX="328.0" layoutY="154.0" onAction="#loadHome" prefHeight="40.0" prefWidth="245.0">
+               <font>
+                  <Font size="20.0" />
+               </font></PasswordField>
              <Label fx:id="loginerror" layoutX="328.0" layoutY="200.0" style="-fx-text-fill: red" text="Login credentials incorrect">
                <font>
-                  <Font size="21.0" />
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
                </font></Label>
-             <Button layoutX="328.0" layoutY="241.0" mnemonicParsing="false" onAction="#loadHome" prefHeight="40.0" prefWidth="245.0" style="-fx-background-radius: 25px; -fx-background-color: #9bc782;" text="Login" />
-             <Button layoutX="328.0" layoutY="311.0" mnemonicParsing="false" onAction="#loadRegister" prefHeight="40.0" prefWidth="245.0" style="-fx-background-radius: 25px; -fx-background-color: #9bc782;" text="Sign up" />
+             <Button layoutX="328.0" layoutY="241.0" mnemonicParsing="false" onAction="#loadHome" prefHeight="40.0" prefWidth="245.0" style="-fx-background-radius: 25px; -fx-background-color: #9bc782;" text="Login">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font></Button>
+             <Button layoutX="328.0" layoutY="311.0" mnemonicParsing="false" onAction="#loadRegister" prefHeight="40.0" prefWidth="245.0" style="-fx-background-radius: 25px; -fx-background-color: #9bc782;" text="Sign up">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="21.0" />
+               </font></Button>
          </children>
       </AnchorPane>
    </center>
