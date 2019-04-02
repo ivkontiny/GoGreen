@@ -79,17 +79,19 @@ public class ControllerFood implements Initializable {
 
         if (ConnectAccount.addActivity(activity)) {
             addSuccess.setVisible(true);
-
-            fadeOut.setNode(addSuccess);
-
-            fadeOut.setFromValue(1.0);
-            fadeOut.setToValue(0.0);
-            fadeOut.setCycleCount(1);
-            fadeOut.setAutoReverse(false);
-            fadeOut.playFromStart();
-
+            ControllerFood.fade(fadeOut, addSuccess);
         } else {
             addFail.setVisible(true);
+            ControllerFood.fade(fadeOut, addSuccess);
         }
+    }
+
+    public static void fade(FadeTransition fade, Label label) {
+        fade.setNode(label);
+        fade.setFromValue(1.0);
+        fade.setToValue(0.0);
+        fade.setCycleCount(1);
+        fade.setAutoReverse(false);
+        fade.playFromStart();
     }
 }
