@@ -200,4 +200,38 @@ public class ConnectAccount extends Connect {
         boolean response = restTemplate.postForObject(url, requestEntity, Boolean.class);
         return response;
     }
+
+    /**
+     * Sets the heating of the current user.
+     * @param hasHeating the heating status of the user
+     * @return true if the heating status was updated successfully, false otherwise
+     */
+    public static boolean setHeating(boolean hasHeating) {
+        String url = url_default + "set_heating/";
+        url += SESSION_ID;
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<Boolean> reqEntity = new HttpEntity<>(hasHeating, headers);
+
+        boolean resp = restTemplate.postForObject(url, reqEntity, Boolean.class);
+        return resp;
+    }
+
+    /**
+     * Resets the heating status to false when restarting the server.
+     * @return true if the resetting was successful, false otherwise
+     */
+    public static boolean resetHeating() {
+        String url = url_default + "reset_heating";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<Boolean> reqEntity = new HttpEntity<>(headers);
+
+        boolean resp = restTemplate.postForObject(url, reqEntity, Boolean.class);
+        return resp;
+    }
 }

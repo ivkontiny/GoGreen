@@ -10,6 +10,7 @@ public class Account {
     private String lastname;
     private int points;
     private int savedEnergy;
+    private boolean hasHeating;
     private File picture;
 
     /**
@@ -23,6 +24,7 @@ public class Account {
         this.lastname = "";
         this.points = 0;
         this.savedEnergy = 0;
+        this.hasHeating = false;
         this.picture = null;
     }
 
@@ -46,6 +48,7 @@ public class Account {
         this.lastname = surname;
         this.points = 0;
         this.savedEnergy = 0;
+        this.hasHeating = false;
         this.picture = new File("ivaylo.jpg");
     }
 
@@ -112,6 +115,14 @@ public class Account {
 
     public void setSavedEnergy(int savedEnergy) {
         this.savedEnergy = savedEnergy;
+    }
+
+    public boolean hadHeating() {
+        return hasHeating;
+    }
+
+    public void setHasHeating(boolean hasHeating) {
+        this.hasHeating = hasHeating;
     }
 
     @Override

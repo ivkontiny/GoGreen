@@ -82,4 +82,20 @@ public class AccountServiceTest {
         assertFalse(as.checkLogin("username","password"));
         assertFalse(as.updatePoints("username",0));
     }
+
+    @Test
+    public void testResetHeating() throws SQLException {
+        when(db.getAccounts()).thenReturn(new ArrayList<>());
+        assertTrue(as.resetHeating());
+
+        ArrayList<Account> accounts = new ArrayList<>();
+        accounts.add(testaccount);
+        when(db.getAccounts()).thenReturn(accounts);
+        when(db.setHeating("user", false)).thenReturn(true);
+        assertTrue(as.resetHeating());
+
+        when(db.setHeating("user", false)).thenReturn(false);
+        assertFalse(as.resetHeating());
+    }
+
 }

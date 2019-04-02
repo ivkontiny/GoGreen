@@ -3,6 +3,7 @@ package gui;
 import client.ConnectActivity;
 import pojos.Category;
 import pojos.DefaultValue;
+import services.TemperatureService;
 
 import java.util.ArrayList;
 
@@ -30,6 +31,7 @@ public class ActivityDb implements Runnable {
     public static void initialize() {
         ArrayList<DefaultValue> desc = ConnectActivity.getFood(Category.food);
         DefaultValue.initPts();
+        TemperatureService.init();
         for (DefaultValue description : desc) {
             Food.descriptions.add(description.getDescription());
             //DefaultValue dv = ConnectActivity.getConsumption(description);

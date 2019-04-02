@@ -2,6 +2,7 @@ package pojos;
 
 import org.junit.Before;
 import org.junit.Test;
+import server.Application;
 
 import static org.junit.Assert.*;
 

@@ -4,6 +4,7 @@ import client.ConnectActivity;
 
 public class DefaultValue {
     private static int pts250Kwh;
+    private static int pts1Degree;
     private String description;
     private Category category;
     private String unit;
@@ -78,6 +79,7 @@ public class DefaultValue {
 
     public static void initPts() {
         pts250Kwh = ConnectActivity.getConsumption("Power saved by solar panels").getPoints();
+        pts1Degree = ConnectActivity.getConsumption("Lowering home temperature").getPoints();
     }
 
 
@@ -117,5 +119,25 @@ public class DefaultValue {
         }
 
         return realPoints;
+    }
+
+
+    /**
+     * Converts degrees Celsius into points.
+     * @param deg the degrees to be converted
+     * @return the points to be added
+     */
+    public static int degreesToPoints(double deg) {
+        if (deg >= 23.0) {
+            return 0;
+        }
+        double ans = (23.0 - deg) * (double) pts1Degree;
+        int realAns = (int) ans;
+
+        if (ans - realAns >= 0.5) {
+            ++ realAns;
+        }
+
+        return realAns;
     }
 }

@@ -170,6 +170,32 @@ public class AccountDao extends Dao {
         return true;
     }
 
+
+    /**
+     * Sets the heating status of a user.
+     * @param user the user whose heating status we want to update.
+     * @param hasHeating the heating status
+     * @return true if the heating status update was successful, false otherwise
+     * @throws SQLException when something goes wrong with the connection to the database
+     */
+    public boolean setHeating(String user, boolean hasHeating) throws SQLException {
+        if (!exists(user)) {
+            return false;
+        }
+
+        String query = "UPDATE account SET "
+                        + "added_heating = ? "
+                        + "WHERE username = ?";
+
+        PreparedStatement ps = this.conn.prepareStatement(query);
+        ps.setBoolean(1, hasHeating);
+        ps.setString(2, user);
+        ps.execute();
+        ps.close();
+
+        return true;
+    }
+
     /**
      * Returns an account by parsing through a Resultset.
      * @param rs The resultset to be read
@@ -184,9 +210,11 @@ public class AccountDao extends Dao {
         String lastname = rs.getString("last_name");
         int points = rs.getInt("total_points");
         int energy = rs.getInt("saved_energy");
+        boolean heating = rs.getBoolean("added_heating");
         Account account = new Account(name, email, password, firstname, lastname);
         account.setPoints(points);
         account.setSavedEnergy(energy);
+        account.setHasHeating(heating);
         return account;
     }
 }

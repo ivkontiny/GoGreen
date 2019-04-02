@@ -85,4 +85,9 @@ public class AccountDaoTest {
         accountDao.deleteAccount(newaccount);
     }
 
+    @Test
+    public void testSetHeating() throws SQLException {
+        assertFalse(accountDao.setHeating("lel", true));
+    }
+
 }

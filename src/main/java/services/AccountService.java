@@ -132,6 +132,42 @@ public class AccountService {
             return false;
         }
     }
+
+
+    /**
+     * Sets the heating status of a user.
+     * @param user the user whose status we want to update
+     * @param heating the heating status
+     * @return true if the update was successful, false otherwise
+     */
+    public boolean setHeating(String user, boolean heating) {
+        try {
+            return db.setHeating(user, heating);
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
+
+    /**
+     * Resets the heating status of all users.
+     * @return true if the reset was successful, false otherwise
+     */
+    public boolean resetHeating() {
+        try {
+            ArrayList<Account> accounts = db.getAccounts();
+
+            for (Account account : accounts) {
+                if (!db.setHeating(account.getUsername(), false)) {
+                    return false;
+                }
+            }
+
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
 }
 
 
