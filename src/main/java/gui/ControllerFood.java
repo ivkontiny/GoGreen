@@ -1,6 +1,7 @@
 package gui;
 
 import client.ConnectAccount;
+import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.util.Duration;
 import pojos.Activity;
 import pojos.Category;
 
@@ -27,10 +29,20 @@ public class ControllerFood implements Initializable {
     @FXML
     private Label pointsText;
 
+    @FXML
+    private Label addSuccess;
+
+    @FXML
+    private  Label addFail;
+
+    private FadeTransition fadeOut = new FadeTransition(Duration.millis(3000));
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         foodBox.setItems(foodActivitieList);
+
+        addSuccess.setVisible(false);
+        addFail.setVisible(false);
     }
 
 
@@ -66,15 +78,18 @@ public class ControllerFood implements Initializable {
                 Date.valueOf(LocalDate.now()), ConnectAccount.getUsername());
 
         if (ConnectAccount.addActivity(activity)) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setHeaderText("Activity added successfully!");
-            alert.setContentText(actDesc + " added successfully!");
-            alert.showAndWait();
+            addSuccess.setVisible(true);
+
+            fadeOut.setNode(addSuccess);
+
+            fadeOut.setFromValue(1.0);
+            fadeOut.setToValue(0.0);
+            fadeOut.setCycleCount(1);
+            fadeOut.setAutoReverse(false);
+            fadeOut.playFromStart();
+
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Something went wrong!");
-            alert.setContentText("Your " + actDesc + " couldn't be added!");
-            alert.showAndWait();
+            addFail.setVisible(true);
         }
     }
 }
