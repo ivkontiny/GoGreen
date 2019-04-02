@@ -35,8 +35,6 @@ public class ControllerFood implements Initializable {
     @FXML
     private  Label addFail;
 
-    private FadeTransition fadeOut = new FadeTransition(Duration.millis(3000));
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         foodBox.setItems(foodActivitieList);
@@ -79,14 +77,15 @@ public class ControllerFood implements Initializable {
 
         if (ConnectAccount.addActivity(activity)) {
             addSuccess.setVisible(true);
-            ControllerFood.fade(fadeOut, addSuccess);
+            ControllerFood.fade(addSuccess);
         } else {
             addFail.setVisible(true);
-            ControllerFood.fade(fadeOut, addSuccess);
+            ControllerFood.fade(addFail);
         }
     }
 
-    public static void fade(FadeTransition fade, Label label) {
+    public static void fade(Label label) {
+        FadeTransition fade = new FadeTransition(Duration.millis(3000));
         fade.setNode(label);
         fade.setFromValue(1.0);
         fade.setToValue(0.0);
