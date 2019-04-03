@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import pojos.Account;
 import pojos.Friendship;
 import services.AccountService;
 import services.FriendRequestService;
@@ -137,6 +138,15 @@ public class FriendRequestController {
             return frs.getMatchings(match);
         }
         return new ArrayList<>();
+    }
+
+    @RequestMapping("/get_friendAccount/{sessionId}/{friendAccount}")
+    public Account getFriendAccount(@PathVariable("sessionId") String sessionId ,
+        @PathVariable("friendAccount") String friend) {
+        if (ss.sessionExists(sessionId)) {
+            return frs.getFriendAccount(friend);
+        }
+        return new Account();
     }
 
     /**
