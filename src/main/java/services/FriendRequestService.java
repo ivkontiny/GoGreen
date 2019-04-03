@@ -146,7 +146,10 @@ public class FriendRequestService {
 
     public Account getFriendAccount(String friend) {
         try {
-            return db2.getAccount(friend);
+            Account account =  db2.getAccount(friend);
+            account.setMail("");
+            account.setPassword("");
+            return account;
         } catch (SQLException e) {
             return new Account();
         }
