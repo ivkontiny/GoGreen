@@ -18,7 +18,7 @@
          <font>
             <Font name="Arial Rounded MT Bold" size="21.0" />
          </font></TextField>
-      <ComboBox fx:id="energyBox" layoutX="245.0" layoutY="102.0" onAction="#inputActivity" prefHeight="48.0" prefWidth="244.0" style="-fx-background-color: #9bc782; -fx-background-radius: 20px;" />
+      <ComboBox fx:id="energyBox" layoutX="245.0" layoutY="102.0" onAction="#inputActivity" prefHeight="48.0" prefWidth="244.0" />
       <Label alignment="CENTER" layoutX="252.0" layoutY="14.0" prefHeight="72.0" prefWidth="235.0" style="-fx-background-color: #9bc782; -fx-background-radius: 20px;" text="ENERGY" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="44.0" />
