@@ -36,3 +36,23 @@
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
 }
+
+.choice-box {
+    -fx-background-color: #9bc782;
+}
+
+.choice-box .context-menu {
+    -fx-background-color: #9bc782;
+}
+
+.choice-box .menu-item:focused {
+    -fx-background-color: #80a469;
+}
+
+.choice-box .menu-item > .label {
+    -fx-text-fill: white;
+}
+
+.choice-box > .label {
+    -fx-text-fill: white;
+}
