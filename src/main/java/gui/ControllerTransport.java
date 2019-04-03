@@ -30,9 +30,14 @@ public class ControllerTransport implements Initializable {
     @FXML
     private Label pointsText;
 
-
     @FXML
     private TextField distanceField;
+
+    @FXML
+    private Label addSuccess;
+
+    @FXML
+    private  Label addFail;
 
 
     @Override
@@ -49,6 +54,9 @@ public class ControllerTransport implements Initializable {
                 inputActivity();
             }
         });
+
+        addSuccess.setVisible(false);
+        addFail.setVisible(false);
     }
 
 
@@ -90,15 +98,11 @@ public class ControllerTransport implements Initializable {
                 Date.valueOf(LocalDate.now()), ConnectAccount.getUsername());
 
         if (ConnectAccount.addActivity(activity)) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setHeaderText("Activity added successfully!");
-            alert.setContentText(actDesc + " added successfully!");
-            alert.showAndWait();
+            addSuccess.setVisible(true);
+            ControllerFood.fade(addSuccess);
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Something went wrong!");
-            alert.setContentText("Your " + actDesc + " couldn't be added!");
-            alert.showAndWait();
+            addFail.setVisible(true);
+            ControllerFood.fade(addFail);
         }
     }
 }
