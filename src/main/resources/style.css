@@ -60,3 +60,16 @@
 .choice-box > .label {
     -fx-text-fill: white;
 }
+
+#kwhBox {
+    -fx-border-color: #9bc782;
+}
+
+#standardButton:hover {
+    -fx-background-color: #80a469;
+}
+
+#standardButton {
+    -fx-background-color: #9bc782;
+    -fx-background-radius: 10px;
+}

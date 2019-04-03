@@ -10,17 +10,17 @@
 <AnchorPane fx:id="activityPane" prefHeight="331.0" prefWidth="587.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ControllerFood">
    <children>
       <ComboBox fx:id="foodBox" layoutX="245.0" layoutY="102.0" onAction="#inputActivity" prefHeight="48.0" prefWidth="244.0" />
-      <Button layoutX="519.0" layoutY="240.0" mnemonicParsing="false" onAction="#addActivity" prefHeight="72.0" prefWidth="163.0" style="-fx-background-color: #9bc782; -fx-background-radius: 20px;" text="ADD" textFill="WHITE">
+      <Button fx:id="standardButton" layoutX="519.0" layoutY="240.0" mnemonicParsing="false" onAction="#addActivity" prefHeight="72.0" prefWidth="163.0" text="ADD" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="30.0" />
          </font>
       </Button>
-      <Label fx:id="pointsText" alignment="CENTER" layoutX="23.0" layoutY="240.0" prefHeight="72.0" prefWidth="200.0" style="-fx-background-color: #9bc782; -fx-background-radius: 20px; -fx-text-alignment: center;" text="POINTS 0" textFill="WHITE">
+      <Label fx:id="pointsText" alignment="CENTER" layoutX="23.0" layoutY="240.0" prefHeight="72.0" prefWidth="200.0" style="-fx-background-color: #9bc782; -fx-background-radius: 10px; -fx-text-alignment: center;" text="POINTS 0" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="30.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="252.0" layoutY="14.0" prefHeight="72.0" prefWidth="235.0" style="-fx-background-color: #9bc782; -fx-background-radius: 20px;" text="FOOD" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="252.0" layoutY="14.0" prefHeight="72.0" prefWidth="235.0" text="FOOD">
          <font>
             <Font name="Arial Rounded MT Bold" size="44.0" />
          </font>
