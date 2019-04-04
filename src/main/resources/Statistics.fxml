@@ -57,8 +57,8 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ChoiceBox fx:id="choiceBox" layoutX="174.0" layoutY="25.0" onAction="#changeText" prefHeight="39.0" prefWidth="245.0" style="-fx-background-color: #9BC782;" />
-                  <Button fx:id="addButton" layoutX="445.0" layoutY="25.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="111.0" style="-fx-background-color: #9BC782;" text="Add to chart" textFill="WHITE">
+                  <ChoiceBox fx:id="choiceBox" layoutX="152.0" layoutY="25.0" onAction="#changeText" prefHeight="39.0" prefWidth="245.0" />
+                  <Button fx:id="addButton" layoutX="423.0" layoutY="25.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="177.0" style="-fx-background-color: #9BC782;" text="Add to chart" textFill="WHITE">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="15.0" />
                      </font></Button>
