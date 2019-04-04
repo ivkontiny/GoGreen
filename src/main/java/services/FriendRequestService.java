@@ -1,6 +1,8 @@
 package services;
 
+import database.AccountDao;
 import database.FriendshipDao;
+import pojos.Account;
 import pojos.Friendship;
 
 import java.sql.SQLException;
@@ -9,6 +11,7 @@ import java.util.ArrayList;
 public class FriendRequestService {
 
     FriendshipDao db = new FriendshipDao();
+    AccountDao db2 = new AccountDao();
 
     /**
      * Returns whether a friendship exists.
@@ -138,6 +141,17 @@ public class FriendRequestService {
             return db.getMatchings(match);
         } catch (SQLException e) {
             return new ArrayList<>();
+        }
+    }
+
+    public Account getFriendAccount(String friend) {
+        try {
+            Account account =  db2.getAccount(friend);
+            account.setMail("");
+            account.setPassword("");
+            return account;
+        } catch (SQLException e) {
+            return new Account();
         }
     }
 }

@@ -1,19 +1,16 @@
 package client;
 
 import org.springframework.core.ParameterizedTypeReference;
-//import org.springframework.http.*;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-
+import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
+import pojos.Account;
 import pojos.Activity;
 import pojos.Friendship;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+//import org.springframework.http.*;
 
 public class ConnectFriends extends Connect {
 
@@ -126,6 +123,19 @@ public class ConnectFriends extends Connect {
         ConnectFriends.setFriends(usernames);
         return usernames;
 
+    }
+
+    /**
+     *
+     * @return an arraylist contaning all friends accounts
+     */
+    public static ArrayList<Account> getFriendsForList(){
+        ArrayList accounts = new ArrayList<>();
+        ArrayList<String> usernames = getFriends();
+        for(int i = 0; i < usernames.size(); i++){
+            accounts.add(ConnectAccount.getFriendAccount(usernames.get(i)));
+        }
+        return accounts;
     }
 
     /**

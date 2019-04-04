@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import org.controlsfx.control.textfield.TextFields;
+import pojos.Account;
 import pojos.Friendship;
 import pojos.Request;
 
@@ -45,6 +46,14 @@ public class ControllerFriends implements Initializable {
     @FXML
     private TableColumn<Request, Button> rejectColumn;
 
+    @FXML
+    private TableView friendsTable;
+    @FXML
+    private TableColumn friendUserColumn;
+    @FXML
+    private TableColumn pointsColumn;
+
+
 
 
     @Override
@@ -54,6 +63,11 @@ public class ControllerFriends implements Initializable {
         rejectColumn.setCellValueFactory(new PropertyValueFactory<>("reject"));
         requestTable.setItems(getPendings());
         errorLabel.setVisible(false);
+
+
+        friendUserColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
+        pointsColumn.setCellValueFactory(new PropertyValueFactory<>("points"));
+        friendsTable.setItems(getFriends());
 
     }
     
@@ -110,6 +124,19 @@ public class ControllerFriends implements Initializable {
             usernames = new ArrayList<>();
             TextFields.bindAutoCompletion(friendsField, usernames);
         }
+    }
+
+    /**
+     * Makes a request to get all friends of user
+     */
+    public ObservableList<Account> getFriends(){
+        ObservableList<Account> friends = FXCollections.observableArrayList();
+        ArrayList<Account> allFriends = ConnectFriends.getFriendsForList();
+
+        for(Account friend: allFriends){
+            friends.add(friend);
+        }
+        return  friends;
     }
 
     /**

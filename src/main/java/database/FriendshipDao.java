@@ -176,4 +176,5 @@ public class FriendshipDao extends Dao {
         }
         return matchings;
     }
+
 }

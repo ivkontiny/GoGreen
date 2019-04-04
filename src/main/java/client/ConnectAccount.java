@@ -183,6 +183,21 @@ public class ConnectAccount extends Connect {
         return response.getBody();
     }
 
+    public static Account getFriendAccount(String username) {
+        String url = url_default + "get_friendAccount/";
+        url += SESSION_ID;
+        url += "/";
+        url += username;
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<String> requestBody = new HttpEntity<>(headers);
+        ResponseEntity<Account> response = restTemplate.exchange(url, HttpMethod.GET, null,
+                Account.class);
+        return response.getBody();
+    }
+
     /**
      * Sets energy of the user.
      * @param saved The number to have set
