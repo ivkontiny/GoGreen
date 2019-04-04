@@ -1,12 +1,15 @@
 package gui;
 
 import client.ConnectAccount;
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.apache.commons.validator.routines.EmailValidator;
 import pojos.Account;
 import util.HashPassword;
@@ -32,10 +35,13 @@ public class ControllerRegister implements Initializable {
     private javafx.scene.control.TextField confirmPassword;
     @FXML
     private Label errormessage;
+    @FXML
+    private AnchorPane accountCreated;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        accountCreated.setVisible(false);
         errormessage.setVisible(false);
     }
 
@@ -109,16 +115,6 @@ public class ControllerRegister implements Initializable {
     }
 
     /**
-     * Confirmation of registering user.
-     */
-    public void alertUserCreated() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setHeaderText("Account successfully created");
-        alert.showAndWait();
-    }
-
-    /**
      * Creates an account and then closes window when user click button.
      * @param actionEvent the action event
      */
@@ -137,10 +133,14 @@ public class ControllerRegister implements Initializable {
         }
 
         if (ConnectAccount.serverRegister(user)) {
-            alertUserCreated();
+            accountCreated.setVisible(true);
+
             final Node source = (Node) actionEvent.getSource();
             final Stage stage = (Stage) source.getScene().getWindow();
-            stage.close();
+
+            PauseTransition delay = new PauseTransition(Duration.seconds(3));
+            delay.setOnFinished( event -> stage.close() );
+            delay.play();
         } else {
             alertSameUsername();
         }
