@@ -17,6 +17,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import pojos.Activity;
+import pojos.Category;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -49,7 +50,11 @@ public class ControllerMyLog implements Initializable {
         for(int i = 0; i < activities.size(); i++) {
             Activity activity = activities.get(i);
 
-            feed.getChildren().add(ControllerMyLog.newLog(activity.getDescription(), activity.getDate().toString(), Integer.toString(activity.getPoints())));
+            feed.getChildren().add(newLog(
+                    activity.getCategory(),
+                    activity.getDescription(),
+                    activity.getDate().toString(),
+                    Integer.toString(activity.getPoints())));
         }
     }
 
@@ -110,7 +115,8 @@ public class ControllerMyLog implements Initializable {
         return activities;
     }
 
-    public static AnchorPane newLog(String activityDescription, String date, String points) {
+    public AnchorPane newLog(Category category, String activityDescription, String date, String points) {
+
         AnchorPane logLayout = new AnchorPane();
         logLayout.setPrefSize(480, 100);
 
@@ -144,7 +150,26 @@ public class ControllerMyLog implements Initializable {
         logPoints.setLayoutX(427.0);
         logPoints.setLayoutY(54.0);
 
-        logLayout.getChildren().addAll(bigRect, smallRect, logDescr, logDate, logNumPoints, logPoints);
+        String imageURL = new String();
+
+        if (category == Category.food) {
+            imageURL = "/Images/restaurant.png";
+        }
+        else if(category == Category.transportation) {
+            imageURL = "/Images/car.png";
+        }
+        else if(category == Category.energy) {
+            imageURL = "/Images/electricity.png";
+        }
+
+        Image image = new Image(imageURL);
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(40);
+        imageView.setFitWidth(40);
+        imageView.setLayoutX(18.0);
+        imageView.setLayoutY(27.0);
+
+        logLayout.getChildren().addAll(bigRect, smallRect, logDescr, logDate, logNumPoints, logPoints, imageView);
 
         return logLayout;
     }
