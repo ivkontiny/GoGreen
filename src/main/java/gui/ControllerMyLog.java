@@ -30,15 +30,6 @@ public class ControllerMyLog implements Initializable {
     @FXML
     private BorderPane rootPane;
     @FXML
-    private TableView logTable;
-    @FXML
-    private TableColumn<Activity, String> categoryColumn;
-    @FXML
-    private TableColumn<Activity, String> descriptionColumn;
-    @FXML
-    private TableColumn<Activity, Integer> pointsColumn;
-
-    @FXML
     private VBox feed;
 
 
