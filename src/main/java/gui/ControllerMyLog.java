@@ -6,12 +6,19 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import pojos.Activity;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -21,7 +28,6 @@ import java.util.ResourceBundle;
 public class ControllerMyLog implements Initializable {
     @FXML
     private BorderPane rootPane;
-
     @FXML
     private TableView logTable;
     @FXML
@@ -31,14 +37,20 @@ public class ControllerMyLog implements Initializable {
     @FXML
     private TableColumn<Activity, Integer> pointsColumn;
 
+    @FXML
+    private VBox feed;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
-        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
-        pointsColumn.setCellValueFactory(new PropertyValueFactory<>("points"));
 
-        logTable.setItems(getActivity());
+        ObservableList<Activity> activities = getActivity();
+
+        for(int i = 0; i < activities.size(); i++) {
+            Activity activity = activities.get(i);
+
+            feed.getChildren().add(ControllerMyLog.newLog(activity.getDescription(), activity.getDate().toString(), Integer.toString(activity.getPoints())));
+        }
     }
 
 
@@ -96,6 +108,45 @@ public class ControllerMyLog implements Initializable {
             activities.add(activity);
         }
         return activities;
+    }
+
+    public static AnchorPane newLog(String activityDescription, String date, String points) {
+        AnchorPane logLayout = new AnchorPane();
+        logLayout.setPrefSize(480, 100);
+
+        Rectangle bigRect = new Rectangle(490, 80);
+        bigRect.setStyle("-fx-fill: white; -fx-stroke: #9bc782;");
+        bigRect.setLayoutX(1.0);
+        bigRect.setLayoutY(8.0);
+
+        Rectangle smallRect = new Rectangle(340, 80);
+        smallRect.setStyle("-fx-fill: #9bc782;");
+        smallRect.setLayoutX(76.0);
+        smallRect.setLayoutY(8.0);
+
+        Label logDescr = new Label(activityDescription);
+        logDescr.setStyle("-fx-text-fill: white; -fx-text-alignment: center; -fx-font-size: 22px;");
+        logDescr.setLayoutX(90.0);
+        logDescr.setLayoutY(18.0);
+
+        Label logDate = new Label("Added on " + date);
+        logDate.setLayoutX(90.0);
+        logDate.setLayoutY(53.0);
+
+        Label logNumPoints = new Label(points);
+        logNumPoints.setStyle("-fx-font-size: 24px; -fx-alignment: center;");
+        logNumPoints.setPrefHeight(46.0);
+        logNumPoints.setPrefWidth(75.0);
+        logNumPoints.setLayoutX(415.0);
+        logNumPoints.setLayoutY(12.0);
+
+        Label logPoints = new Label("POINTS");
+        logPoints.setLayoutX(427.0);
+        logPoints.setLayoutY(54.0);
+
+        logLayout.getChildren().addAll(bigRect, smallRect, logDescr, logDate, logNumPoints, logPoints);
+
+        return logLayout;
     }
 
     /**

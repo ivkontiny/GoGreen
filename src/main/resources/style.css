@@ -72,4 +72,12 @@
 #standardButton {
     -fx-background-color: #9bc782;
     -fx-background-radius: 10px;
+    -fx-text-fill: white;
+}
+
+/* Feed components */
+#feedBigRect {
+    -fx-background-color: white;
+    -fx-border-color: #9bc782;
+    -fx-border-radius: 8px;
 }
