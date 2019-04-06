@@ -43,21 +43,16 @@
     -fx-background-color: white;
 }
 
-.choice-box,
-.choice-box .context-menu,
 .combo-box-popup .list-cell,
 .combo-box-popup .list-view {
     -fx-background-color: #9bc782;
 }
 
-.choice-box .menu-item:focused,
 .combo-box-popup .list-view .list-cell:filled:hover {
     -fx-background-color: #80a469;
 }
 
-.choice-box .menu-item > .label,
-.combo-box-popup .list-cell,
-.choice-box > .label {
+.combo-box-popup .list-cell {
     -fx-text-fill: white;
 }
 
@@ -65,11 +60,13 @@
     -fx-border-color: #9bc782;
 }
 
-#standardButton:hover {
+#standardButton:hover,
+#addButton:hover {
     -fx-background-color: #80a469;
 }
 
-#standardButton {
+#standardButton,
+#addButton {
     -fx-background-color: #9bc782;
     -fx-background-radius: 10px;
     -fx-text-fill: white;
