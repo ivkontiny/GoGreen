@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -122,23 +123,25 @@ public class ControllerMyLog implements Initializable {
         smallRect.setLayoutY(8.0);
 
         Label logDescr = new Label(activityDescription);
-        logDescr.setStyle("-fx-text-fill: white; -fx-text-alignment: center; -fx-font-size: 22px;");
+        logDescr.setStyle("-fx-text-fill: white; -fx-text-alignment: center; -fx-font-size: 22px; -fx-font-family: 'Arial Rounded MT Bold';");
         logDescr.setLayoutX(90.0);
         logDescr.setLayoutY(18.0);
 
         Label logDate = new Label("Added on " + date);
+        logDate.setStyle("-fx-font-family: 'Arial Rounded MT Bold';");
         logDate.setLayoutX(90.0);
         logDate.setLayoutY(53.0);
 
         Label logNumPoints = new Label(points);
-        logNumPoints.setStyle("-fx-font-size: 24px; -fx-alignment: center;");
+        logNumPoints.setStyle("-fx-font-size: 24px; -fx-alignment: center; -fx-font-family: 'Arial Rounded MT Bold';");
         logNumPoints.setPrefHeight(46.0);
         logNumPoints.setPrefWidth(75.0);
         logNumPoints.setLayoutX(415.0);
         logNumPoints.setLayoutY(12.0);
 
         Label logPoints = new Label("POINTS");
-        logPoints.setLayoutX(427.0);
+        logPoints.setStyle("-fx-font-family: 'Arial Rounded MT Bold';");
+        logPoints.setLayoutX(425.0);
         logPoints.setLayoutY(54.0);
 
         String imageURL = new String();
