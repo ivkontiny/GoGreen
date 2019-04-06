@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import pojos.Activity;
 import pojos.Category;
 import pojos.DefaultValue;
+import services.TemperatureService;
 
 import java.net.URL;
 import java.sql.Date;
@@ -74,12 +75,20 @@ public class ControllerEnergy implements Initializable {
         for (int i = 0; i < energyActivitieList.size(); i++) {
             if (ActivityDb.Energy.descriptions.get(i).equals(energyBox.getValue())) {
                 if (energyBox.getValue().equals("Power saved by solar panels")) {
-                    amountLabel.setText("kWh");
+                    amountLabel.setText("kWh produced daily");
                     if (energyAmount.getText().equals("")) {
                         pointsText.setText("POINTS 0");
                     } else {
                         pointsText.setText("POINTS " + DefaultValue.kwhToPoints(
                                 Integer.parseInt(energyAmount.getText())));
+                    }
+                } else {
+                    amountLabel.setText("degrees Celsius average today");
+                    if (energyAmount.getText().equals("")) {
+                        pointsText.setText("POINTS 0");
+                    } else {
+                        pointsText.setText("POINTS " + DefaultValue.degreesToPoints(
+                                Double.parseDouble(energyAmount.getText())));
                     }
                 }
             }
@@ -97,13 +106,29 @@ public class ControllerEnergy implements Initializable {
      * @param actionEvent the action event on which a new activity should be added
      */
     public void addActivity(javafx.event.ActionEvent actionEvent) {
+        if (energyBox.getValue().equals("Lowering home temperature")
+                && TemperatureService.ifSavedToday(ConnectAccount.getUsername())) {
+            System.out.println("here\n");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Already put temperature for today");
+            alert.setContentText("You cannot set your home temperature more than once a day!");
+            alert.showAndWait();
+            return;
+        }
+
         String actDesc = null;
         int points = 0;
 
         for (int i = 0; i < ActivityDb.Energy.descriptions.size(); i++) {
             if (ActivityDb.Energy.descriptions.get(i).equals(energyBox.getValue())) {
                 actDesc = ActivityDb.Energy.descriptions.get(i);
-                points = DefaultValue.kwhToPoints(Integer.parseInt(energyAmount.getText()));
+                if (actDesc.equals("Power saved by solar panels")) {
+                    points = DefaultValue.kwhToPoints(Integer.parseInt(energyAmount.getText()));
+                } else {
+                    points = DefaultValue.degreesToPoints(
+                            Double.parseDouble(energyAmount.getText()));
+                    TemperatureService.didToday(ConnectAccount.getUsername());
+                }
             }
         }
 

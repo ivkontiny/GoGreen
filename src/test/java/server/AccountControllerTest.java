@@ -120,6 +120,23 @@ public class AccountControllerTest {
         when(acc.getAccount("user")).thenReturn(testaccount);
         assertEquals(testaccount, ac.getAccounts("test"));
     }
+
+    @Test
+    public void testSetHeating() {
+        SessionService ss = mock(SessionService.class);
+        ac.setSs(ss);
+        when(ss.sessionExists("test")).thenReturn(false);
+        assertFalse(ac.setHeating(true, "test"));
+
+        AccountService acc = mock(AccountService.class);
+        ac.setLs(acc);
+        when(ss.sessionExists("test")).thenReturn(true);
+        HashMap<String, Session> hs = new HashMap<>();
+        hs.put("test", new Session("user", LocalDateTime.now()));
+        when(ss.getAllSessions()).thenReturn(hs);
+        when(acc.setHeating("user", true)).thenReturn(true);
+        assertTrue(ac.setHeating(true, "test"));
+    }
 }
 
 

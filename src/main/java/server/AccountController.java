@@ -87,6 +87,28 @@ public class AccountController {
         return false;
     }
 
+    /**
+     * Sets the heating status of a user.
+     * @param hasHeating the status of the heating
+     * @param sessionId the sessionId of the user
+     * @return true if the update was successful, false otherwise
+     */
+    @RequestMapping("/set_heating/{sessionId}")
+    public boolean setHeating(@RequestBody boolean hasHeating,
+                              @PathVariable("sessionId") String sessionId) {
+        if (ss.sessionExists(sessionId)) {
+            String user = ss.getAllSessions().get(sessionId).getUsername();
+            return ls.setHeating(user, hasHeating);
+        }
+
+        return false;
+    }
+
+    @RequestMapping("/reset_heating")
+    public boolean resetHeating() {
+        return ls.resetHeating();
+    }
+
     public void setLs(AccountService ls) {
         this.ls = ls;
     }
