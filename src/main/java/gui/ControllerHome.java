@@ -1,6 +1,9 @@
 package gui;
 
 import client.ConnectAccount;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -8,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,7 +27,15 @@ public class ControllerHome implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        progressbar.setProgress(0.6);
+        progressbar.setProgress(0);
+
+        Timeline timeline = new Timeline();
+
+        KeyValue keyValue = new KeyValue(progressbar.progressProperty(), 0.9);
+        KeyFrame keyFrame = new KeyFrame(new Duration(1000), keyValue);
+        timeline.getKeyFrames().add(keyFrame);
+
+        timeline.play();
     }
 
 
@@ -39,7 +51,7 @@ public class ControllerHome implements Initializable {
     public static void welcomeMessage(Parent root) {
         javafx.scene.control.Label welcome = (Label) root.lookup("#Welcome");
         if (welcome != null) {
-            welcome.setText("Welcome " + ConnectAccount.getUsername());
+            welcome.setText("Welcome " + ConnectAccount.getUsername() + "!");
         }
     }
 
