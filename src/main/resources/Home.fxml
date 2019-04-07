@@ -53,19 +53,19 @@
         <HBox prefHeight="9.0" prefWidth="600.0" style="-fx-background-color: #9BC782;" BorderPane.alignment="CENTER" />
     </top>
     <center>
-        <AnchorPane prefHeight="391.0" prefWidth="368.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="591.0" prefWidth="534.0" BorderPane.alignment="CENTER">
             <children>
-                <Label fx:id="Welcome" alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="152.0" prefHeight="120.0" prefWidth="496.0" style="-fx-background-color: #9BC782; -fx-background-radius: 10px;" text="Welcome message" textFill="WHITE">
+                <Label fx:id="Welcome" alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="167.0" prefHeight="120.0" prefWidth="569.0" text="Welcome message">
                     <font>
                         <Font name="Arial Rounded MT Bold" size="50.0" />
                     </font>
                 </Label>
-            <Label fx:id="Welcome1" alignment="CENTER" layoutX="144.0" layoutY="314.0" prefHeight="53.0" prefWidth="371.0" style="-fx-background-color: #9BC782; -fx-background-radius: 10px;" text="TOTAL CO2 SAVED: 234" textFill="WHITE">
+            <Label fx:id="Welcome1" alignment="CENTER" layoutX="79.0" layoutY="287.0" prefHeight="50.0" prefWidth="420.0" style="-fx-background-color: #9BC782; -fx-background-radius: 10 10 0 0;" text="TOTAL CO2 SAVED: 234" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="29.0" />
                </font>
             </Label>
-            <Label fx:id="Welcome11" alignment="CENTER" layoutX="152.0" layoutY="379.0" prefHeight="50.0" prefWidth="355.0" style="-fx-background-color: #9BC782; -fx-background-radius: 10px;" text="DAYS SINCE ACTIVE: 4" textFill="WHITE">
+            <Label fx:id="Welcome11" alignment="CENTER" layoutX="79.0" layoutY="343.0" prefHeight="50.0" prefWidth="420.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0 0 10 10;" text="DAYS SINCE ACTIVE: 4" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="29.0" />
                </font>
@@ -74,14 +74,19 @@
         </AnchorPane>
     </center>
    <right>
-      <Pane prefHeight="585.0" prefWidth="186.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="591.0" prefWidth="182.0" BorderPane.alignment="CENTER">
          <children>
-                <ProgressBar id="progressbar" fx:id="progressbar" layoutX="-57.0" layoutY="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="300.0" progress="0.0" rotate="-90.0" />
+                <ProgressBar id="progressbar" fx:id="progressbar" layoutX="-67.0" layoutY="265.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="62.0" prefWidth="300.0" progress="0.0" rotate="-90.0" />
             <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="132.0" layoutY="14.0" onMouseClicked="#logOut">
                <image>
                   <Image url="@Images/logout.png" />
                </image>
             </ImageView>
+            <Label layoutX="36.0" layoutY="455.0" prefHeight="41.0" prefWidth="95.0" text="LEVEL 2">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </right>

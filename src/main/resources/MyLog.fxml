@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
@@ -45,22 +47,37 @@
     <top>
         <HBox prefHeight="9.0" prefWidth="600.0" style="-fx-background-color: #9BC782;" BorderPane.alignment="CENTER" />
     </top>
-    <center>
-        <Pane prefHeight="327.0" prefWidth="354.0" BorderPane.alignment="CENTER">
-            <children>
-                <TableView fx:id="logTable" layoutX="54.0" layoutY="83.0" prefHeight="426.0" prefWidth="558.0">
-                    <columns>
-                        <TableColumn fx:id="categoryColumn" prefWidth="132.0" text="Category" />
-                        <TableColumn fx:id="descriptionColumn" editable="false" minWidth="0.0" prefWidth="347.0" sortable="false" text="Description" />
-                        <TableColumn fx:id="pointsColumn" prefWidth="78.0" text="Points" />
-                    </columns>
-                </TableView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="696.0" layoutY="14.0" onMouseClicked="#logOut">
-               <image>
-                  <Image url="@Images/logout.png" />
-               </image>
-            </ImageView>
-            </children>
-        </Pane>
-    </center>
+   <center>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="591.0" prefWidth="180.0">
+               <children>
+                  <ComboBox prefWidth="150.0">
+                      <items>
+
+                      </items>
+                     <VBox.margin>
+                        <Insets left="15.0" top="20.0" />
+                     </VBox.margin></ComboBox>
+                  <Button fx:id="standardButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" text="Apply filter">
+                     <VBox.margin>
+                        <Insets left="15.0" top="10.0" />
+                     </VBox.margin>
+                      <font>
+                          <Font name="Arial Rounded MT Bold" size="20.0" />
+                      </font></Button>
+               </children>
+            </VBox>
+             <ScrollPane hbarPolicy="NEVER" prefHeight="591" prefWidth="510" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
+                <content>
+                   <VBox fx:id="feed" prefHeight="591.0" prefWidth="495.0" style="-fx-background-color: transparent;">
+                      <children>
+
+                   </children>
+                   </VBox>
+                </content>
+             </ScrollPane>
+         </children>
+      </HBox>
+   </center>
 </BorderPane>

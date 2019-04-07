@@ -9,6 +9,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.BorderPane;
 import pojos.Activity;
 import pojos.DefaultValue;
@@ -30,7 +31,7 @@ public class ControllerStatistics implements Initializable {
     @FXML
     private LineChart<String, Number> linechart;
     @FXML
-    private ChoiceBox<String> choiceBox;
+    private ComboBox<String> comboBox;
     @FXML
     private Button addButton;
 
@@ -73,8 +74,8 @@ public class ControllerStatistics implements Initializable {
         // Friend's series
         ArrayList<String> users = ConnectFriends.getFriends();
         users.remove(ConnectAccount.getUsername());
-        choiceBox.getItems().addAll(users);
-        addButton.setOnAction(e -> addFriend(choiceBox, dates));
+        comboBox.getItems().addAll(users);
+        addButton.setOnAction(e -> addFriend(comboBox, dates));
 
         // Plot series of points
         linechart.getData().add(userSeries);
@@ -138,12 +139,12 @@ public class ControllerStatistics implements Initializable {
 
     /**
      * Get choice from choice box.
-     * @param choiceBox The choicebox
+     * @param comboBox The choicebox
      * @param dates The dates
      */
-    public void addFriend(ChoiceBox<String> choiceBox, String[] dates) {
+    public void addFriend(ComboBox<String> comboBox, String[] dates) {
 
-        String friend = choiceBox.getValue();
+        String friend = comboBox.getValue();
         if (ControllerStatistics.usersOnGraph.containsKey(friend)) {
             int counter = 0;
             for (XYChart.Series<String,Number> search : linechart.getData()) {
@@ -186,7 +187,7 @@ public class ControllerStatistics implements Initializable {
      * @throws IOException when there is an error in the action
      */
     public void changeText(javafx.event.ActionEvent actionEvent) throws IOException {
-        if (usersOnGraph.containsKey(choiceBox.getValue())) {
+        if (usersOnGraph.containsKey(comboBox.getValue())) {
             addButton.setText("Remove from chart");
         } else {
             addButton.setText("Add to chart");
