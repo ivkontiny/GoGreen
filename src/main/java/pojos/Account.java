@@ -142,4 +142,22 @@ public class Account {
 
         return false;
     }
+
+    /**
+     * Returns the level of the account according to his/her points.
+     * @return the level of the user
+     */
+    public int getLevel() {
+        int lvl = 1;
+        int fac = 2;
+        int points = 1000;
+
+        while (this.points >= points) {
+            ++ lvl;
+            points += 1000 * fac;
+            ++ fac;
+        }
+
+        return lvl;
+    }
 }

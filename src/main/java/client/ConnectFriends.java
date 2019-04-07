@@ -1,7 +1,11 @@
 package client;
 
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import pojos.Account;
 import pojos.Activity;
@@ -126,13 +130,13 @@ public class ConnectFriends extends Connect {
     }
 
     /**
-     *
+     * Gets all the friends of an account.
      * @return an arraylist contaning all friends accounts
      */
-    public static ArrayList<Account> getFriendsForList(){
+    public static ArrayList<Account> getFriendsForList() {
         ArrayList accounts = new ArrayList<>();
         ArrayList<String> usernames = getFriends();
-        for(int i = 0; i < usernames.size(); i++){
+        for (int i = 0; i < usernames.size(); i++) {
             accounts.add(ConnectAccount.getFriendAccount(usernames.get(i)));
         }
         return accounts;

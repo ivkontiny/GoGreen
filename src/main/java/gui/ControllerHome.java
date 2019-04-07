@@ -25,13 +25,26 @@ public class ControllerHome implements Initializable {
     @FXML
     private ProgressBar progressbar;
 
+    @FXML
+    private Label level;
+
+    @FXML
+    private Label welcome1;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         progressbar.setProgress(0);
 
         Timeline timeline = new Timeline();
 
-        KeyValue keyValue = new KeyValue(progressbar.progressProperty(), 0.9);
+        int lvl = ConnectAccount.getAccount().getLevel();
+        welcome1.setText("Total CO2 saved: "
+                + String.format("%.1f", (double) ConnectAccount.getAccount().getPoints()
+                * 0.1 / (double) 5) + "kg");
+        level.setText("Level " + lvl);
+        KeyValue keyValue = new KeyValue(progressbar.progressProperty(),
+                (double) (ConnectAccount.getAccount().getPoints() - 500 * lvl * (lvl - 1))
+                        / (double) (1000 * lvl));
         KeyFrame keyFrame = new KeyFrame(new Duration(1000), keyValue);
         timeline.getKeyFrames().add(keyFrame);
 

@@ -60,7 +60,7 @@
                         <Font name="Arial Rounded MT Bold" size="50.0" />
                     </font>
                 </Label>
-            <Label fx:id="Welcome1" alignment="CENTER" layoutX="79.0" layoutY="287.0" prefHeight="50.0" prefWidth="420.0" style="-fx-background-color: #9BC782; -fx-background-radius: 10 10 0 0;" text="TOTAL CO2 SAVED: 234" textFill="WHITE">
+            <Label fx:id="welcome1" alignment="CENTER" layoutX="79.0" layoutY="287.0" prefHeight="50.0" prefWidth="420.0" style="-fx-background-color: #9BC782; -fx-background-radius: 10 10 0 0;" text="TOTAL CO2 SAVED: 234" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="29.0" />
                </font>
@@ -82,7 +82,7 @@
                   <Image url="@Images/logout.png" />
                </image>
             </ImageView>
-            <Label layoutX="36.0" layoutY="455.0" prefHeight="41.0" prefWidth="95.0" text="LEVEL 2">
+            <Label fx:id="level" layoutX="36.0" layoutY="455.0" prefHeight="41.0" prefWidth="95.0" text="LEVEL 2">
                <font>
                   <Font name="Arial Rounded MT Bold" size="22.0" />
                </font>

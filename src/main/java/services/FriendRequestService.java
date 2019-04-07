@@ -144,6 +144,11 @@ public class FriendRequestService {
         }
     }
 
+    /**
+     * Returns the account of a friend of the user.
+     * @param friend the friend we are looking for
+     * @return the account of the friend
+     */
     public Account getFriendAccount(String friend) {
         try {
             Account account =  db2.getAccount(friend);
