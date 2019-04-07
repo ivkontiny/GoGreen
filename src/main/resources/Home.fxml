@@ -82,7 +82,7 @@
                   <Image url="@Images/logout.png" />
                </image>
             </ImageView>
-            <Label layoutX="36.0" layoutY="455.0" prefHeight="41.0" prefWidth="95.0" text="LEVEL 2">
+            <Label fx:id="level" layoutX="36.0" layoutY="455.0" prefHeight="41.0" prefWidth="95.0" text="LEVEL 2">
                <font>
                   <Font name="Arial Rounded MT Bold" size="22.0" />
                </font>

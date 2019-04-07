@@ -142,4 +142,18 @@ public class Account {
 
         return false;
     }
+
+    public int getLevel() {
+        int lvl = 1;
+        int fac = 2;
+        int points = 1000;
+
+        while (this.points >= points) {
+            ++ lvl;
+            points += 1000 * fac;
+            ++ fac;
+        }
+
+        return lvl;
+    }
 }
