@@ -24,7 +24,6 @@ public class AddSolarPointsTest {
 
     @Test
     public void testAddPoints() {
-        //Application.main(new String[1024]);
         AddSolarPoints.addPoints();
         as.createAccount(account);
         AddSolarPoints.addPoints();
