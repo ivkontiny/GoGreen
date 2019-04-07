@@ -47,6 +47,8 @@ public class ControllerMyLog implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        OPTION = null;
+        ApplyButton.setText("Apply filter");
         myActivities = ConnectAccount.getActivities();
         ObservableList<Activity> activities = getActivity();
         ObservableList<String> filters = FXCollections.observableArrayList();
