@@ -1,14 +1,14 @@
 package gui;
 
+import client.Connect;
 import client.ConnectAccount;
+import client.ConnectActivity;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
+import pojos.Account;
 import pojos.Activity;
 import pojos.Category;
 
@@ -24,6 +25,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 
@@ -32,12 +34,28 @@ public class ControllerMyLog implements Initializable {
     private BorderPane rootPane;
     @FXML
     private VBox feed;
+    @FXML
+    private ComboBox filter;
+    @FXML
+    private Button ApplyButton;
+
+    private ArrayList<pojos.Activity> myActivities;
+
+    private String OPTION = null;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        myActivities = ConnectAccount.getActivities();
         ObservableList<Activity> activities = getActivity();
+        ObservableList<String> filters = FXCollections.observableArrayList();
+        ArrayList<String> options = new ArrayList<>();
+        options.add("food");
+        options.add("transportation");
+        options.add("energy");
+        filters.setAll(options);
+        filter.setItems(filters);
 
         for(int i = 0; i < activities.size(); i++) {
             Activity activity = activities.get(i);
@@ -50,6 +68,26 @@ public class ControllerMyLog implements Initializable {
         }
     }
 
+    /** Sets the Feed.
+     *
+     * @param
+     * @throws IOException when there is an error in the action
+     */
+    public void setFeed() {
+
+        feed.getChildren().clear();
+        ObservableList<Activity> activities = getActivity();
+
+        for(int i = 0; i < activities.size(); i++) {
+            Activity activity = activities.get(i);
+
+            feed.getChildren().add(newLog(
+                    activity.getCategory(),
+                    activity.getDescription(),
+                    activity.getDate().toString(),
+                    Integer.toString(activity.getPoints())));
+        }
+    }
 
     /** Loads the home page.
      *
@@ -95,14 +133,49 @@ public class ControllerMyLog implements Initializable {
     }
 
     /**
+     * Applies a filter to the activities list.
+     * @param actionEvent the action event on which the friends page should be displayed
+     * @throws IOException when something with the action event goes wrong
+     */
+    public void ApplyFilter(javafx.event.ActionEvent actionEvent) throws IOException {
+        if (filter.getValue().equals(OPTION)) {
+            OPTION = null;
+            ApplyButton.setText("Apply filter");
+        }
+        else
+        {
+            OPTION = (String)filter.getValue();
+            ApplyButton.setText("Remove filter");
+        }
+        setFeed();
+    }
+
+    /**
+     * Chooses the filter to apply to the activities list.
+     * @param actionEvent the action event on which the friends page should be displayed
+     * @throws IOException when something with the action event goes wrong
+     */
+    public void ChooseFilter(javafx.event.ActionEvent actionEvent) throws IOException {
+        if (filter.getValue().equals(OPTION)) {
+            ApplyButton.setText("Remove filter");
+            return;
+        }
+        ApplyButton.setText("Apply filter");
+    }
+
+
+    /**
      * Displays the activities of the current user.
      * @return an observable list containing all activities
      */
-    public ObservableList<Activity> getActivity() {
+    public ObservableList<Activity> getActivity()
+    {
         ObservableList<pojos.Activity> activities = FXCollections.observableArrayList();
-        ArrayList<Activity> myActivities = ConnectAccount.getActivities();
+        Collections.reverse(myActivities);
         for (Activity activity: myActivities) {
-            activities.add(activity);
+            if (OPTION == null || activity.getCategory().toString().equals(OPTION)) {
+                activities.add(activity);
+            }
         }
         return activities;
     }
@@ -178,4 +251,6 @@ public class ControllerMyLog implements Initializable {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         rootPane.getChildren().setAll(pane);
     }
+
+
 }
