@@ -127,13 +127,14 @@ public class ControllerFriends implements Initializable {
     }
 
     /**
-     * Makes a request to get all friends of user
+     * Gets all friends of the current user.
+     * @return an observable list containing all friends
      */
-    public ObservableList<Account> getFriends(){
+    public ObservableList<Account> getFriends() {
         ObservableList<Account> friends = FXCollections.observableArrayList();
         ArrayList<Account> allFriends = ConnectFriends.getFriendsForList();
 
-        for(Account friend: allFriends){
+        for (Account friend: allFriends) {
             friends.add(friend);
         }
         return  friends;

@@ -6,7 +6,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
@@ -84,6 +83,10 @@ public class ControllerFood implements Initializable {
         }
     }
 
+    /**
+     * Used for making a fade-effect of a label.
+     * @param label the label to be faded
+     */
     public static void fade(Label label) {
         FadeTransition fade = new FadeTransition(Duration.millis(3000));
         fade.setNode(label);

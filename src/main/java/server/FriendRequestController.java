@@ -140,6 +140,12 @@ public class FriendRequestController {
         return new ArrayList<>();
     }
 
+    /**
+     * Returns the friend of the user.
+     * @param sessionId the sessionId of the user
+     * @param friend the friend we are searching for
+     * @return the account of the friend
+     */
     @RequestMapping("/get_friendAccount/{sessionId}/{friendAccount}")
     public Account getFriendAccount(@PathVariable("sessionId") String sessionId ,
         @PathVariable("friendAccount") String friend) {

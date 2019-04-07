@@ -183,6 +183,11 @@ public class ConnectAccount extends Connect {
         return response.getBody();
     }
 
+    /**
+     * Returns the account of the friend with the given username.
+     * @param username the username of the account we are looking for
+     * @return the account of this user
+     */
     public static Account getFriendAccount(String username) {
         String url = url_default + "get_friendAccount/";
         url += SESSION_ID;
