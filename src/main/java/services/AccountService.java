@@ -80,6 +80,21 @@ public class AccountService {
             return null;
         }
     }
+    /**
+     * Returns the account information of a user.
+     * @param email of the account we are looking for
+     * @return an Account object containing the necessary information
+     */
+    public Account getEmail(String email) {
+        try {
+            return db.getEmail(email);
+        } catch (SQLException e) {
+            return null;
+        }
+    }
+
+
+
 
     /**
      * Update the points of a user.

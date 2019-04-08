@@ -48,7 +48,29 @@ public class AccountDao extends Dao {
         rs.close();
         st.close();
         return account;
+    }
 
+    /**
+     * Makes a query to the database for a certain account.
+     *
+     * @param email of the user whose account we want to know
+     * @return the details of the account if it exists, null otherwise
+     */
+    public Account getEmail(String email) throws SQLException {
+
+        String query = "SELECT * FROM account WHERE email=?";
+
+        PreparedStatement st = this.conn.prepareStatement(query);
+        st.setString(1, email);
+        ResultSet rs = st.executeQuery();
+
+        Account account = null;
+        if (rs.next()) {
+            account = resultAccount(rs);
+        }
+        rs.close();
+        st.close();
+        return account;
     }
 
     /**
