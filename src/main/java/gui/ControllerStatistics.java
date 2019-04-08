@@ -116,6 +116,17 @@ public class ControllerStatistics implements Initializable {
     }
 
     /**
+     * Loads the statistics page.
+     * @param actionEvent the action event on which the statistics page should be opened
+     * @throws IOException when something with the action event goes wrong
+     */
+    public void loadStatistics(javafx.event.ActionEvent actionEvent) throws IOException {
+        BorderPane pane = FXMLLoader.load(
+                getClass().getClassLoader().getResource("Statistics.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
+    /**
      * Loads the friends page.
      * @param actionEvent the action event on which the friends page should be displayed
      * @throws IOException when there is an error in the action

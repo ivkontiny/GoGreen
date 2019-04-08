@@ -52,7 +52,11 @@ public class ControllerHome implements Initializable {
         timeline.play();
     }
 
-
+    /**
+     * Loads the log page
+     * @param actionEvent
+     * @throws IOException
+     */
     public void loadMyLog(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("MyLog.fxml"));
         rootPane.getChildren().setAll(pane);
@@ -67,6 +71,18 @@ public class ControllerHome implements Initializable {
         if (welcome != null) {
             welcome.setText("Welcome " + ConnectAccount.getUsername() + "!");
         }
+    }
+
+
+    /** Loads the home page.
+     *
+     * @param actionEvent the event needed to be made to go to the home page
+     * @throws IOException when there is an error in the action
+     */
+    public void loadHome(javafx.event.ActionEvent actionEvent) throws IOException {
+        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Home.fxml"));
+        ControllerHome.welcomeMessage(pane);
+        rootPane.getChildren().setAll(pane);
     }
 
     /**
