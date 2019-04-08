@@ -14,6 +14,7 @@ public class ConnectEmail extends Connect {
      * @return true if the adding was successful, false otherwise
      */
     public static boolean recoverPassword(String email) {
+        url_default = "http://localhost:8080/";
         String url = url_default + "recover/";
         HttpHeaders httpHeaders = new HttpHeaders();
 
