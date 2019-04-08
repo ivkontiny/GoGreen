@@ -1,6 +1,5 @@
 package gui;
 
-import client.ConnectEmail;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -21,6 +20,6 @@ public class ControllerRecover implements Initializable {
     }
 
     public void sendEmail(javafx.scene.input.MouseEvent actionEvent){
-        ConnectEmail.sendMail(recoverEmail.getText());
+        //ConnectEmail.sendMail(recoverEmail.getText());
     }
 }
