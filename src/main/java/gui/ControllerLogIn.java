@@ -71,18 +71,4 @@ public class ControllerLogIn implements Initializable {
         registerStage.setScene(new Scene(register));
         registerStage.show();
     }
-
-
-    /**
-     * Loads the register page.
-     * @param actionEvent the action event on which the user should be registered
-     * @throws IOException when something with the action event goes wrong
-     */
-    public void forgotPassword(javafx.scene.input.MouseEvent actionEvent) throws IOException {
-        Parent register = FXMLLoader.load(getClass().getClassLoader().getResource("Recover.fxml"));
-        Stage registerStage = new Stage();
-        registerStage.setTitle("GO GREEN");
-        registerStage.setScene(new Scene(register));
-        registerStage.show();
-    }
 }
