@@ -5,7 +5,9 @@ import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -36,6 +38,10 @@ public class ControllerRegister implements Initializable {
     private Label errormessage;
     @FXML
     private AnchorPane accountCreated;
+    @FXML
+    private TextField recoverEmail;
+    @FXML
+    private Button recoverButton;
 
 
     @Override
@@ -144,4 +150,5 @@ public class ControllerRegister implements Initializable {
             alertSameUsername();
         }
     }
+
 }
