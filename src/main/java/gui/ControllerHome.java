@@ -40,7 +40,7 @@ public class ControllerHome implements Initializable {
 
         int lvl = ConnectAccount.getAccount().getLevel();
         int accPoints = ConnectAccount.getAccount().getPoints();
-        welcome1.setText("Total CO2 saved: "
+        welcome1.setText("Total CO\u2082 saved: "
                 + String.format("%.1f", DefaultValue.converter(accPoints) * 1000) + " kg");
         level.setText("Level " + lvl);
         KeyValue keyValue = new KeyValue(progressbar.progressProperty(),
