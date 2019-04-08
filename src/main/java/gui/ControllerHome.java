@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
+import pojos.DefaultValue;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,12 +39,12 @@ public class ControllerHome implements Initializable {
         Timeline timeline = new Timeline();
 
         int lvl = ConnectAccount.getAccount().getLevel();
-        welcome1.setText("Total CO2 saved: "
-                + String.format("%.1f", (double) ConnectAccount.getAccount().getPoints()
-                * 0.1 / (double) 5) + "kg");
+        int accPoints = ConnectAccount.getAccount().getPoints();
+        welcome1.setText("Total CO\u2082 saved: "
+                + String.format("%.1f", DefaultValue.converter(accPoints) * 1000) + " kg");
         level.setText("Level " + lvl);
         KeyValue keyValue = new KeyValue(progressbar.progressProperty(),
-                (double) (ConnectAccount.getAccount().getPoints() - 500 * lvl * (lvl - 1))
+                ((double) accPoints - (double) 500 * lvl * (lvl - 1))
                         / (double) (1000 * lvl));
         KeyFrame keyFrame = new KeyFrame(new Duration(1000), keyValue);
         timeline.getKeyFrames().add(keyFrame);
@@ -51,7 +52,11 @@ public class ControllerHome implements Initializable {
         timeline.play();
     }
 
-
+    /**
+     * Loads the log page
+     * @param actionEvent
+     * @throws IOException
+     */
     public void loadMyLog(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("MyLog.fxml"));
         rootPane.getChildren().setAll(pane);
@@ -66,6 +71,18 @@ public class ControllerHome implements Initializable {
         if (welcome != null) {
             welcome.setText("Welcome " + ConnectAccount.getUsername() + "!");
         }
+    }
+
+
+    /** Loads the home page.
+     *
+     * @param actionEvent the event needed to be made to go to the home page
+     * @throws IOException when there is an error in the action
+     */
+    public void loadHome(javafx.event.ActionEvent actionEvent) throws IOException {
+        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Home.fxml"));
+        ControllerHome.welcomeMessage(pane);
+        rootPane.getChildren().setAll(pane);
     }
 
     /**

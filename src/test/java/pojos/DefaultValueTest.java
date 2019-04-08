@@ -2,7 +2,6 @@ package pojos;
 
 import org.junit.Before;
 import org.junit.Test;
-import server.Application;
 
 import static org.junit.Assert.*;
 
@@ -124,5 +123,13 @@ public class DefaultValueTest {
         DefaultValue dv1 = new DefaultValue("tomato", Category.food, "kg", 25, 0.5);
         dv1.setConsumption(0.3);
         assertNotEquals(dv, dv1);
+    }
+
+    @Test
+    public void testDegreesToPoints() {
+        DefaultValue.initPts();
+        assertEquals(0, DefaultValue.degreesToPoints(24.0, 24));
+        assertEquals(100, DefaultValue.degreesToPoints(19.0, 24));
+        assertEquals(89, DefaultValue.degreesToPoints(19.111, 24));
     }
 }

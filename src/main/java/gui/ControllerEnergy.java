@@ -28,19 +28,22 @@ public class ControllerEnergy implements Initializable {
 
     @FXML
     private ComboBox energyBox;
-
     @FXML
     private Label pointsText;
-
     @FXML
     private TextField energyAmount;
-
     @FXML
     private Label amountLabel;
-
+    @FXML
+    private Label forLabel;
+    @FXML
+    private TextField hoursAmount;
+    @FXML
+    private Label hoursLabel;
+    @FXML
+    private Label atLabel;
     @FXML
     private Label addSuccess;
-
     @FXML
     private  Label addFail;
 
@@ -60,8 +63,25 @@ public class ControllerEnergy implements Initializable {
             }
         });
 
+        hoursAmount.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable,
+                                String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,7}([\\.]\\d{0,4})?")) {
+                    energyAmount.setText(oldValue);
+                }
+                inputActivity();
+            }
+        });
+
         addSuccess.setVisible(false);
         addFail.setVisible(false);
+        energyAmount.setVisible(false);
+        amountLabel.setVisible(false);
+        forLabel.setVisible(false);
+        hoursAmount.setVisible(false);
+        hoursLabel.setVisible(false);
+        atLabel.setVisible(false);
     }
 
 
@@ -75,7 +95,13 @@ public class ControllerEnergy implements Initializable {
         for (int i = 0; i < energyActivitieList.size(); i++) {
             if (ActivityDb.Energy.descriptions.get(i).equals(energyBox.getValue())) {
                 if (energyBox.getValue().equals("Power saved by solar panels")) {
-                    amountLabel.setText("kWh produced daily");
+                    amountLabel.setText("kWh");
+                    energyAmount.setVisible(true);
+                    amountLabel.setVisible(true);
+                    energyAmount.setLayoutX(284.0);
+                    energyAmount.setLayoutY(170.0);
+                    amountLabel.setLayoutX(383.0);
+                    amountLabel.setLayoutY(178.0);
                     if (energyAmount.getText().equals("")) {
                         pointsText.setText("POINTS 0");
                     } else {
@@ -83,12 +109,23 @@ public class ControllerEnergy implements Initializable {
                                 Integer.parseInt(energyAmount.getText())));
                     }
                 } else {
-                    amountLabel.setText("degrees Celsius average today");
-                    if (energyAmount.getText().equals("")) {
+                    amountLabel.setText("\u00B0C");
+                    energyAmount.setVisible(true);
+                    amountLabel.setVisible(true);
+                    forLabel.setVisible(true);
+                    hoursAmount.setVisible(true);
+                    hoursLabel.setVisible(true);
+                    atLabel.setVisible(true);
+                    energyAmount.setLayoutX(307.0);
+                    energyAmount.setLayoutY(228.0);
+                    amountLabel.setLayoutX(406.0);
+                    amountLabel.setLayoutY(236.0);
+                    if (energyAmount.getText().equals("") || hoursAmount.getText().equals("")) {
                         pointsText.setText("POINTS 0");
                     } else {
                         pointsText.setText("POINTS " + DefaultValue.degreesToPoints(
-                                Double.parseDouble(energyAmount.getText())));
+                                Double.parseDouble(energyAmount.getText()),
+                                Integer.parseInt(hoursAmount.getText())));
                     }
                 }
             }
@@ -126,7 +163,8 @@ public class ControllerEnergy implements Initializable {
                     points = DefaultValue.kwhToPoints(Integer.parseInt(energyAmount.getText()));
                 } else {
                     points = DefaultValue.degreesToPoints(
-                            Double.parseDouble(energyAmount.getText()));
+                            Double.parseDouble(energyAmount.getText()),
+                            Integer.parseInt(hoursAmount.getText()));
                     TemperatureService.didToday(ConnectAccount.getUsername());
                 }
             }

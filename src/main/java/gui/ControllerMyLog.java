@@ -95,6 +95,16 @@ public class ControllerMyLog implements Initializable {
     }
 
     /**
+     * Loads the log page
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void loadMyLog(javafx.event.ActionEvent actionEvent) throws IOException {
+        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("MyLog.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
+    /**
      * Loads the activity page on action.
      * @param actionEvent the action on which the activity page is loaded
      * @throws IOException when there is an error in the action

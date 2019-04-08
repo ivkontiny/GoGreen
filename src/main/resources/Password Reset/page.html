@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Go Green Password Recovery</title>
+        <link href="style.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" type="text/css">
+    </head>
+
+    <body>
+        <header>
+            <h1>Go Green Password Recovery</h1>
+            <h4>*Your password should contain at least 6 characters</h4>
+        </header>
+        <form>
+            <section class="password-input">
+                
+                <p1>Enter your new password: <input type="password" name="pass" minlength="6" required></p1>
+                <p>Confirm new password:    <input type="password" name="passconfirm" minlength="6" required></p>
+                <input type="button" onclick="check(this.form)" value="Confirm"/>
+            </section>
+        </form>
+        <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>

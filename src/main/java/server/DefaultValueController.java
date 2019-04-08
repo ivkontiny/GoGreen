@@ -48,7 +48,6 @@ public class DefaultValueController {
      */
     @PostMapping("/get_consumption_by_description")
     public DefaultValue getDefaultValue(@RequestBody String desc) {
-
         return dvs.getDefaultValue(desc);
     }
 

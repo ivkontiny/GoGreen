@@ -207,6 +207,16 @@ public class ControllerFriends implements Initializable {
     }
 
     /**
+     * Loads the friends page.
+     * @param actionEvent the action event on which the friends page should be displayed
+     * @throws IOException when there is an error in the action
+     */
+    public void loadFriends(javafx.event.ActionEvent actionEvent) throws IOException {
+        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Friends.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
+    /**
      * Logs the user out.
      * @throws IOException when something with the event went wrong
      */
