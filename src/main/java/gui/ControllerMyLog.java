@@ -84,7 +84,6 @@ public class ControllerMyLog implements Initializable {
     }
 
     /** Loads the home page.
-     *
      * @param actionEvent the event needed to be made to go to the home page
      * @throws IOException when there is an error in the action
      */
@@ -95,9 +94,9 @@ public class ControllerMyLog implements Initializable {
     }
 
     /**
-     * Loads the log page
-     * @param actionEvent
-     * @throws IOException
+     * Loads the log page.
+     * @param actionEvent event triggered when log page is loaded
+     * @throws IOException exceptions
      */
     public void loadMyLog(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("MyLog.fxml"));

@@ -2,7 +2,9 @@ package services;
 
 import database.AccountDao;
 import pojos.Account;
+import util.HashPassword;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -80,6 +82,7 @@ public class AccountService {
             return null;
         }
     }
+
     /**
      * Returns the account information of a user.
      * @param email of the account we are looking for
@@ -106,6 +109,24 @@ public class AccountService {
         try {
             return db.updatePoints(user, points);
         } catch (SQLException e) {
+            return false;
+        }
+    }
+
+
+    /**
+     * Sets a new password.
+     * @param user the user that chenges the password
+     * @param password the new password
+     * @return weather the password changed successfully or not
+     */
+    public boolean updatePassword(String user, String password) {
+        try {
+            password = HashPassword.hashPass(password);
+            return db.updatePassword(user,password);
+        } catch (SQLException e) {
+            return false;
+        } catch (NoSuchAlgorithmException e) {
             return false;
         }
     }

@@ -53,9 +53,9 @@ public class ControllerHome implements Initializable {
     }
 
     /**
-     * Loads the log page
-     * @param actionEvent
-     * @throws IOException
+     * Loads the log page.
+     * @param actionEvent the event triggered when the log page loads
+     * @throws IOException exception
      */
     public void loadMyLog(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("MyLog.fxml"));
