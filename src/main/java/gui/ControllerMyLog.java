@@ -34,6 +34,10 @@ public class ControllerMyLog implements Initializable {
     private ComboBox filter;
     @FXML
     private Button applyButton;
+    @FXML
+    private Label noLogsMessage;
+    @FXML
+    private Button addActivityButton;
 
     private ArrayList<pojos.Activity> myActivities;
 
@@ -42,6 +46,9 @@ public class ControllerMyLog implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        noLogsMessage.setManaged(false);
+        addActivityButton.setManaged(false);
+
         option = null;
         applyButton.setText("Apply filter");
         ArrayList<String> options = new ArrayList<>();
@@ -53,14 +60,21 @@ public class ControllerMyLog implements Initializable {
         filter.setItems(filters);
         myActivities = ConnectAccount.getActivities();
         ObservableList<Activity> activities = getActivity();
-        for (int i = 0; i < activities.size(); i++) {
-            Activity activity = activities.get(i);
 
-            feed.getChildren().add( newLog(
-                    activity.getCategory(),
-                    activity.getDescription(),
-                    activity.getDate().toString(),
-                    Integer.toString( activity.getPoints())) );
+        if(activities.size() == 0) {
+            noLogsMessage.setManaged(true);
+            addActivityButton.setManaged(true);
+        }
+        else {
+            for (int i = 0; i < activities.size(); i++) {
+                Activity activity = activities.get(i);
+
+                feed.getChildren().add(newLog(
+                        activity.getCategory(),
+                        activity.getDescription(),
+                        activity.getDate().toString(),
+                        Integer.toString(activity.getPoints())));
+            }
         }
     }
 
