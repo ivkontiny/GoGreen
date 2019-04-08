@@ -13,12 +13,13 @@ public abstract class Dao {
 
     public Connection conn;
 
+    ConfigReader reader = new ConfigReader("src/main/java/config.xml");
+
 
     /**
      * Makes the connection to the database.
      */
     public Dao() {
-        ConfigReader reader = new ConfigReader("src/main/java/config.xml");
         this.url = reader.getUrl();
         try {
             Properties props = new Properties();
@@ -42,8 +43,8 @@ public abstract class Dao {
             this.url = "jdbc:postgresql://142.93.230.132/" + url;
             //this.url = URL;
             Properties props = new Properties();
-            props.setProperty("user", "gogreen");
-            props.setProperty("password", "gogreen123");
+            props.setProperty("user", reader.getUsername());
+            props.setProperty("password", reader.getUsername());
             this.conn = DriverManager.getConnection(this.url, props);
         } catch (SQLException e) {
             System.out.println(e);
