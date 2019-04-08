@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
+import pojos.DefaultValue;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,12 +39,12 @@ public class ControllerHome implements Initializable {
         Timeline timeline = new Timeline();
 
         int lvl = ConnectAccount.getAccount().getLevel();
+        int accPoints = ConnectAccount.getAccount().getPoints();
         welcome1.setText("Total CO2 saved: "
-                + String.format("%.1f", (double) ConnectAccount.getAccount().getPoints()
-                * 0.1 / (double) 5) + "kg");
+                + String.format("%.1f", DefaultValue.converter(accPoints) * 1000) + " kg");
         level.setText("Level " + lvl);
         KeyValue keyValue = new KeyValue(progressbar.progressProperty(),
-                (double) (ConnectAccount.getAccount().getPoints() - 500 * lvl * (lvl - 1))
+                ((double) accPoints - (double) 500 * lvl * (lvl - 1))
                         / (double) (1000 * lvl));
         KeyFrame keyFrame = new KeyFrame(new Duration(1000), keyValue);
         timeline.getKeyFrames().add(keyFrame);

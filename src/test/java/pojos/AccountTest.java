@@ -126,4 +126,11 @@ public class AccountTest {
         account1.setSavedEnergy(305);
         assertNotEquals(account, account1);
     }
+
+    @Test
+    public void testGetLevel() {
+        assertEquals(1, account.getLevel());
+        account.setPoints(2000);
+        assertEquals(2, account.getLevel());
+    }
 }

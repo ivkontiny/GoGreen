@@ -3,6 +3,7 @@ package server;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Matchers;
+import pojos.Account;
 import pojos.Friendship;
 import pojos.Session;
 import services.AccountService;
@@ -138,5 +139,15 @@ public class FriendshipsConstrollerTest {
         when(ss.sessionExists("test")).thenReturn(true);
         when(frs.removeFriendship(friendship)).thenReturn(true);
         assertTrue(frc.deleteFriendship(friendship, "test"));
+    }
+
+
+    @Test
+    public void testGetFriendAccount() {
+        when(ss.sessionExists("test")).thenReturn(false);
+        assertEquals(new Account(), frc.getFriendAccount("test", "friend"));
+
+        when(ss.sessionExists("test")).thenReturn(true);
+        assertNull(frc.getFriendAccount("test", "friend"));
     }
 }
