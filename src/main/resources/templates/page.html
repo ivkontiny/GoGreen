@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Go Green Password Recovery</title>
+        <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" type="text/css">
+    </head>
+
+    <body>
+        <header>
+            <h1>Go Green Password Recovery</h1>
+            <h4>*Your password should contain at least 6 characters</h4>
+        </header>
+        <form method="post" action="">
+            <section class="password-input">
+                
+                <p1>Enter your new password: <input type="password" name="pass" minlength="6" required></p1>
+                <p>Confirm new password:    <input type="password" name="passconfirm" minlength="6" required></p>
+                <input type="submit" onclick="check(this.form)" value="Confirm"/>
+            </section>
+        </form>
+        <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+        <script>
+            function check(form){
+    "use strict"
+    if(form.pass.value.length >= 6){
+        if(form.pass.value === form.passconfirm.value){
+            alert("Password Changed Successfully");
+        }
+        else{
+            alert("Passwords do not match!");
+        }
+    }
+    else{
+        alert("Password should contain at least 6 characters");
+    }
+
+};
+$(document).ready(main);
+        </script>
+    </body>
+</html>
+
+<style>
+    *{
+    font-family: 'Bitter', Serif;
+}
+
+html{
+    background: #9bc782;
+}
+
+h1{
+
+    color: white;
+}
+
+body{
+    text-align: center;
+
+}
+
+p{
+    position: relative;
+    left: 9px;
+}
+
+input{
+    border-radius: 5px;
+}
+
+h4{
+    font-style: italic;
+}
+
+h1{
+    font-size: 50px;
+}
+</style>

@@ -120,11 +120,17 @@
             <version>2.9.4</version>
         </dependency>
 
+
         <!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
         <dependency>
             <groupId>postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>9.1-901-1.jdbc4</version>
+        </dependency>
+        <!-- Spring boot Thymeleaf -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <dependency>
             <groupId>commons-validator</groupId>
@@ -175,6 +181,7 @@
                         <exclude>**/gui/*</exclude>
                         <exclude>**/client/*</exclude>
                         <exclude>**/server/Application.class</exclude>
+                        <exclude>**/server/RecoverController.class</exclude>
                     </excludes>
                     <rules>
                     </rules>

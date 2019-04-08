@@ -2,6 +2,7 @@ package server;
 
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,11 +15,30 @@ import javax.mail.internet.MimeMessage;
 import java.util.HashMap;
 import java.util.Properties;
 
+
 @RestController
 public class RecoverController {
 
-    private static HashMap<String,String> recoverRequests = new HashMap<>();
+    protected static HashMap<String,String> recoverRequests = new HashMap<>();
     AccountService as = new AccountService();
+
+
+
+    /**
+     * Changes the password.
+     * @param recoverId the recoverId
+     * @param newPassword the newPassword
+     */
+    @PostMapping("/recover/{recoverId}")
+    public void changePassword(@PathVariable("recoverId") String recoverId,
+                               @RequestBody String newPassword) {
+        System.out.println(newPassword);
+        String user = recoverRequests.get(recoverId);
+        String[] pieces = newPassword.split("&");
+        String[] piece = pieces[0].split("=");
+        String password = piece[1];
+        as.updatePassword(user,password);
+    }
 
     /**
      * Sends email.
@@ -30,7 +50,8 @@ public class RecoverController {
         Account recoverAccount = as.getEmail(mail);
         if (recoverAccount == null) {
             return false;
-        } try {
+        }
+        try {
             sendMail(mail,recoverAccount.getUsername());
         } catch (MessagingException e) {
             return false;
