@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ControllerMyLog">
+    <left>
+        <VBox prefHeight="300.0" prefWidth="150.0" BorderPane.alignment="CENTER">
+            <children>
+                <AnchorPane prefHeight="123.0" prefWidth="150.0" style="-fx-background-color: #9bc782;">
+                    <children>
+                        <ImageView id="logo" fitHeight="100.0" fitWidth="100.0" layoutX="25.0" layoutY="11.0">
+                            <image>
+                                <Image url="@Images/logo.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+                <Button mnemonicParsing="false" onAction="#loadHome" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="HOME" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
+               </font></Button>
+                <Button mnemonicParsing="false" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #6BC782; -fx-background-radius: 0;" text="FEED" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
+               </font></Button>
+                <Button mnemonicParsing="false" onAction="#loadActivities" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="ACTIVITIES" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font></Button>
+                <Button mnemonicParsing="false" onAction="#loadStatistics" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="STATS" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
+               </font></Button>
+                <Button mnemonicParsing="false" onAction="#loadFriends" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="FRIENDS" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
+               </font></Button>
+            </children>
+        </VBox>
+    </left>
+    <top>
+        <HBox prefHeight="9.0" prefWidth="600.0" style="-fx-background-color: #9BC782;" BorderPane.alignment="CENTER" />
+    </top>
+   <center>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="591.0" prefWidth="180.0">
+               <children>
+                  <ComboBox fx:id="filter" onAction="#chooseFilter" prefWidth="150.0">
+                      <items>
+
+                      </items>
+                     <VBox.margin>
+                        <Insets left="15.0" top="20.0" />
+                     </VBox.margin></ComboBox>
+                  <Button fx:id="applyButton" mnemonicParsing="false" onAction="#applyFilter" prefHeight="31.0" prefWidth="150.0" text="Apply filter">
+                     <VBox.margin>
+                        <Insets left="15.0" top="10.0" />
+                     </VBox.margin>
+                      <font>
+                          <Font name="Arial Rounded MT Bold" size="20.0" />
+                      </font></Button>
+               </children>
+            </VBox>
+             <ScrollPane hbarPolicy="NEVER" prefHeight="591" prefWidth="510" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
+                <content>
+                   <VBox fx:id="feed" prefHeight="591.0" prefWidth="495.0" style="-fx-background-color: transparent;">
+                      <children>
+
+                   </children>
+                   </VBox>
+                </content>
+             </ScrollPane>
+         </children>
+      </HBox>
+   </center>
+</BorderPane>
