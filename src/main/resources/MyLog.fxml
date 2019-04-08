@@ -57,7 +57,12 @@
                              <font>
                                  <Font name="Arial Rounded MT Bold" size="20.0" />
                              </font>
-                  </Button>
+                         </Button>
+                          <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="696.0" layoutY="14.0" onMouseClicked="#logOut">
+                              <image>
+                                  <Image url="@Images/logout.png" />
+                              </image>
+                          </ImageView>
                       </children>
                    </AnchorPane>
                    <ScrollPane hbarPolicy="NEVER" prefHeight="502.0" prefWidth="750.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
