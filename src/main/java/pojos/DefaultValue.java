@@ -127,11 +127,11 @@ public class DefaultValue {
      * @param deg the degrees to be converted
      * @return the points to be added
      */
-    public static int degreesToPoints(double deg) {
-        if (deg >= 23.0) {
+    public static int degreesToPoints(double deg, int hrs) {
+        if (deg >= 20.0) {
             return 0;
         }
-        double ans = (23.0 - deg) * (double) pts1Degree;
+        double ans = (20.0 - deg) * (double) pts1Degree * ((double) hrs / 24.0);
         int realAns = (int) ans;
 
         if (ans - realAns >= 0.5) {

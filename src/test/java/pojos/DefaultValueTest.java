@@ -128,8 +128,8 @@ public class DefaultValueTest {
     @Test
     public void testDegreesToPoints() {
         DefaultValue.initPts();
-        assertEquals(0, DefaultValue.degreesToPoints(24.0));
-        assertEquals(100, DefaultValue.degreesToPoints(22.0));
-        assertEquals(89, DefaultValue.degreesToPoints(22.111));
+        assertEquals(0, DefaultValue.degreesToPoints(24.0, 24));
+        assertEquals(100, DefaultValue.degreesToPoints(19.0, 24));
+        assertEquals(89, DefaultValue.degreesToPoints(19.111, 24));
     }
 }

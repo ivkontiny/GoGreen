@@ -63,6 +63,17 @@ public class ControllerEnergy implements Initializable {
             }
         });
 
+        hoursAmount.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable,
+                                String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,7}([\\.]\\d{0,4})?")) {
+                    energyAmount.setText(oldValue);
+                }
+                inputActivity();
+            }
+        });
+
         addSuccess.setVisible(false);
         addFail.setVisible(false);
         energyAmount.setVisible(false);
@@ -109,11 +120,12 @@ public class ControllerEnergy implements Initializable {
                     energyAmount.setLayoutY(228.0);
                     amountLabel.setLayoutX(406.0);
                     amountLabel.setLayoutY(236.0);
-                    if (energyAmount.getText().equals("")) {
+                    if (energyAmount.getText().equals("") || hoursAmount.getText().equals("")) {
                         pointsText.setText("POINTS 0");
                     } else {
                         pointsText.setText("POINTS " + DefaultValue.degreesToPoints(
-                                Double.parseDouble(energyAmount.getText())));
+                                Double.parseDouble(energyAmount.getText()),
+                                Integer.parseInt(hoursAmount.getText())));
                     }
                 }
             }
@@ -151,7 +163,8 @@ public class ControllerEnergy implements Initializable {
                     points = DefaultValue.kwhToPoints(Integer.parseInt(energyAmount.getText()));
                 } else {
                     points = DefaultValue.degreesToPoints(
-                            Double.parseDouble(energyAmount.getText()));
+                            Double.parseDouble(energyAmount.getText()),
+                            Integer.parseInt(hoursAmount.getText()));
                     TemperatureService.didToday(ConnectAccount.getUsername());
                 }
             }
