@@ -24,7 +24,7 @@
          <font>
             <Font name="Arial Rounded MT Bold" size="21.0" />
          </font></TextField>
-      <Label layoutX="388.0" layoutY="178.0" prefHeight="32.0" prefWidth="54.0" text="KM">
+      <Label fx:id="kmText" layoutX="388.0" layoutY="178.0" prefHeight="32.0" prefWidth="54.0" text="KM">
          <font>
             <Font name="Arial Rounded MT Bold" size="27.0" />
          </font>
