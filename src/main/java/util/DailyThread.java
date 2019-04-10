@@ -10,7 +10,7 @@ public class DailyThread extends Thread {
             ConnectAccount.resetHeating();
 
             try {
-                this.sleep( 86400000000L);
+                this.sleep( 86400000);
             } catch (InterruptedException e) {
                 System.out.println(e);
             }
