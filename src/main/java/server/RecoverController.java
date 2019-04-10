@@ -1,7 +1,6 @@
 package server;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,20 +24,10 @@ import java.util.Properties;
 public class RecoverController {
 
     @Autowired
-    private JavaMailSender mailSender;
-
-    @Autowired
     private TemplateEngine templateEngine; // From Thymeleaf
 
     protected static HashMap<String,String> recoverRequests = new HashMap<>();
     AccountService as = new AccountService();
-
-    static class Send {
-        String name;
-        public Send( String name) {
-            this.name = name;
-        }
-    }
 
 
     /**
@@ -49,7 +38,7 @@ public class RecoverController {
     @PostMapping("/recover/{recoverId}")
     public ModelAndView changePassword(@PathVariable("recoverId") String recoverId,
                                        @RequestBody String newPassword) {
-        if (newPassword == null || newPassword.length() <= 6) {
+        if (newPassword == null || newPassword.length() < 6) {
 
             ModelAndView mv = new ModelAndView();
             mv.setViewName("gogreen.html");
@@ -59,6 +48,7 @@ public class RecoverController {
         String user = recoverRequests.get(recoverId);
         String[] piece = newPassword.split("=");
         String password = piece[1];
+        System.out.println(password);
         as.updatePassword(user,password);
         ModelAndView mv = new ModelAndView();
         mv.setViewName("redirect.html");
@@ -99,9 +89,10 @@ public class RecoverController {
         String link = "http://localhost:8080/recover/";
         link += id;
         Context context = new Context();
+        recoverRequests.put(id,user);
+        user = "Hello " + user;
         context.setVariable("name", user);
         context.setVariable("link", link);
-        recoverRequests.put(id,user);
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(465);
