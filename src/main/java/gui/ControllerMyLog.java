@@ -61,11 +61,10 @@ public class ControllerMyLog implements Initializable {
         myActivities = ConnectAccount.getActivities();
         ObservableList<Activity> activities = getActivity();
 
-        if(activities.size() == 0) {
+        if (activities.size() == 0) {
             noLogsMessage.setManaged(true);
             addActivityButton.setManaged(true);
-        }
-        else {
+        } else {
             for (int i = 0; i < activities.size(); i++) {
                 Activity activity = activities.get(i);
 
@@ -109,9 +108,9 @@ public class ControllerMyLog implements Initializable {
     }
 
     /**
-     * Loads the log page
-     * @param actionEvent
-     * @throws IOException
+     * Loads the log page.
+     * @param actionEvent the event needed to be made to go to refresh the page
+     * @throws IOException when there is an error in the action
      */
     public void loadMyLog(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("MyLog.fxml"));
