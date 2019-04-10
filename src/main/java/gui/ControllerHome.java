@@ -33,7 +33,7 @@ public class ControllerHome implements Initializable {
     private Label welcome1;
     
     @FXML
-    private Label welcome111;
+    private Label levelPointsLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -50,7 +50,7 @@ public class ControllerHome implements Initializable {
                 ((double) accPoints - (double) 500 * lvl * (lvl - 1))
                         / (double) (1000 * lvl));
         KeyFrame keyFrame = new KeyFrame(new Duration(1000), keyValue);
-        welcome111.setText("Points: " + (ConnectAccount.getAccount().getPoints() - ( ConnectAccount.getAccount().getLevelMul(lvl) * 1000) ) +  " / " + ((lvl)  * 1000));
+        levelPointsLabel.setText((ConnectAccount.getAccount().getPoints() - ( ConnectAccount.getAccount().getLevelMul(lvl) * 1000) ) +  " / " + ((lvl)  * 1000));
         timeline.getKeyFrames().add(keyFrame);
 
         timeline.play();
