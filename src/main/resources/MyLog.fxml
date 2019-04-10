@@ -67,7 +67,7 @@
                    </AnchorPane>
             <VBox fx:id="noActivitiesBox" prefHeight="153.0" prefWidth="750.0">
                <children>
-                  <Label fx:id="noLogsMessage" alignment="CENTER" minHeight="80.0" minWidth="490.0" prefHeight="80.0" prefWidth="490.0" style="-fx-border-color: #9bc782; -fx-border-radius: 8;" text="You don't have any activities yet..." textAlignment="CENTER">
+                  <Label fx:id="noLogsMessage" alignment="CENTER" minHeight="80.0" minWidth="490.0" prefHeight="80.0" prefWidth="490.0" style="-fx-border-color: #9bc782; -fx-border-radius: 8;" text="No activities yet..." textAlignment="CENTER">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="22.0" />
                      </font>

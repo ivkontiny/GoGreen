@@ -85,18 +85,33 @@ public class ControllerMyLog implements Initializable {
      * @throws IOException when there is an error in the action
      */
     public void setFeed() {
+        noLogsMessage.setManaged(false);
+        addActivityButton.setManaged(false);
+        noActivitiesBox.setManaged(false);
+        noLogsMessage.setVisible(false);
+        addActivityButton.setVisible(false);
+        noActivitiesBox.setVisible(false);
 
         feed.getChildren().clear();
         ObservableList<Activity> activities = getActivity();
 
-        for (int i = 0; i < activities.size(); i++) {
-            Activity activity = activities.get(i);
+        if (activities.size() == 0) {
+            noLogsMessage.setManaged(true);
+            addActivityButton.setManaged(true);
+            noActivitiesBox.setManaged(true);
+            noLogsMessage.setVisible(true);
+            addActivityButton.setVisible(true);
+            noActivitiesBox.setVisible(true);
+        } else {
+            for (int i = 0; i < activities.size(); i++) {
+                Activity activity = activities.get(i);
 
-            feed.getChildren().add(newLog(
-                    activity.getCategory(),
-                    activity.getDescription(),
-                    activity.getDate().toString(),
-                    Integer.toString(activity.getPoints())));
+                feed.getChildren().add(newLog(
+                        activity.getCategory(),
+                        activity.getDescription(),
+                        activity.getDate().toString(),
+                        Integer.toString(activity.getPoints())));
+            }
         }
     }
 
