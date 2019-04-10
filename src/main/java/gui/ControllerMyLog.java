@@ -116,7 +116,6 @@ public class ControllerMyLog implements Initializable {
     }
 
     /** Loads the home page.
-     *
      * @param actionEvent the event needed to be made to go to the home page
      * @throws IOException when there is an error in the action
      */

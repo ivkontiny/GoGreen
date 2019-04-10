@@ -168,6 +168,31 @@ public class AccountDao extends Dao {
     }
 
     /**
+     * Updates the total points of a user.
+     * @param user the user whose points should be updated
+     * @param password the new password of the user
+     * @return true if the addition went well, false otherwise
+     * @throws SQLException if there was a problem with adding points to the database
+     */
+    public boolean updatePassword(String user, String password) throws SQLException {
+        if (!exists(user)) {
+            return false;
+        }
+
+
+        String query = "UPDATE account SET "
+                + "password = ? "
+                + "WHERE username = ?";
+
+        PreparedStatement ps = this.conn.prepareStatement(query);
+        ps.setString(1, password);
+        ps.setString(2, user);
+        ps.execute();
+        ps.close();
+        return true;
+    }
+
+    /**
      * Sets the energy of a user.
      * @param user The user to have their energy set
      * @param energy The amount the energy will be set to.

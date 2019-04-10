@@ -1,5 +1,6 @@
 package gui;
 
+import client.ConnectEmail;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -19,7 +20,11 @@ public class ControllerRecover implements Initializable {
 
     }
 
-    public void sendEmail(javafx.scene.input.MouseEvent actionEvent){
-        //ConnectEmail.sendMail(recoverEmail.getText());
+    /**
+     * Sends recover password email to the server.
+     * @param actionEvent the event triggered when email recovery is requested
+     */
+    public void sendEmail(javafx.scene.input.MouseEvent actionEvent) {
+        ConnectEmail.recoverPassword(recoverEmail.getText());
     }
 }

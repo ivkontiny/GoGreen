@@ -31,6 +31,9 @@ public class ControllerHome implements Initializable {
 
     @FXML
     private Label welcome1;
+    
+    @FXML
+    private Label levelPointsLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -47,15 +50,16 @@ public class ControllerHome implements Initializable {
                 ((double) accPoints - (double) 500 * lvl * (lvl - 1))
                         / (double) (1000 * lvl));
         KeyFrame keyFrame = new KeyFrame(new Duration(1000), keyValue);
+        levelPointsLabel.setText((ConnectAccount.getAccount().getPoints() - ( ConnectAccount.getAccount().getLevelMul(lvl) * 1000) ) +  " / " + ((lvl)  * 1000));
         timeline.getKeyFrames().add(keyFrame);
 
         timeline.play();
     }
 
     /**
-     * Loads the log page
-     * @param actionEvent
-     * @throws IOException
+     * Loads the log page.
+     * @param actionEvent the event triggered when the log page loads
+     * @throws IOException exception
      */
     public void loadMyLog(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("MyLog.fxml"));
