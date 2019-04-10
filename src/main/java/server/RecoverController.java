@@ -1,5 +1,7 @@
 package server;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -7,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 import pojos.Account;
 import services.AccountService;
 import util.SessionIdGenerator;
@@ -20,9 +24,21 @@ import java.util.Properties;
 @RestController
 public class RecoverController {
 
+    @Autowired
+    private JavaMailSender mailSender;
+
+    @Autowired
+    private TemplateEngine templateEngine; // From Thymeleaf
+
     protected static HashMap<String,String> recoverRequests = new HashMap<>();
     AccountService as = new AccountService();
 
+    static class Send {
+        String name;
+        public Send( String name) {
+            this.name = name;
+        }
+    }
 
 
     /**
@@ -36,8 +52,7 @@ public class RecoverController {
         if (newPassword == null || newPassword.length() <= 6) {
 
             ModelAndView mv = new ModelAndView();
-            mv.addObject("name", recoverRequests.get(recoverId));
-            mv.setViewName("page.html");
+            mv.setViewName("gogreen.html");
             return  mv;
         }
         System.out.println(newPassword);
@@ -81,11 +96,11 @@ public class RecoverController {
         SessionIdGenerator generator = new SessionIdGenerator();
         String id = generator.getAlphaNumericString(20);
         String user = username;
-        String htmlMessage = "Hi " + username + "! You requested to change your"
-                + " GOGreen password \n" + "Please click on the link: ";
         String link = "http://localhost:8080/recover/";
         link += id;
-        htmlMessage += link;
+        Context context = new Context();
+        context.setVariable("name", user);
+        context.setVariable("link", link);
         recoverRequests.put(id,user);
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");
@@ -108,9 +123,10 @@ public class RecoverController {
         String toMailId = gmail;
         helper.setTo(toMailId);
         helper.setSubject("Recover Password GoGreen");
-        helper.setText(htmlMessage, true);
+        helper.setText(templateEngine.process("mail", context), true);
         //Checking Internet Connection and then sending the mail
         mailSender.send(mimeMessage);
 
     }
+
 }
