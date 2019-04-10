@@ -34,6 +34,12 @@ public class ControllerMyLog implements Initializable {
     private ComboBox filter;
     @FXML
     private Button applyButton;
+    @FXML
+    private Label noLogsMessage;
+    @FXML
+    private Button addActivityButton;
+    @FXML
+    private VBox noActivitiesBox;
 
     private ArrayList<pojos.Activity> myActivities;
 
@@ -42,6 +48,10 @@ public class ControllerMyLog implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        noLogsMessage.setManaged(false);
+        addActivityButton.setManaged(false);
+        noActivitiesBox.setManaged(false);
+
         option = null;
         applyButton.setText("Apply filter");
         ArrayList<String> options = new ArrayList<>();
@@ -53,14 +63,21 @@ public class ControllerMyLog implements Initializable {
         filter.setItems(filters);
         myActivities = ConnectAccount.getActivities();
         ObservableList<Activity> activities = getActivity();
-        for (int i = 0; i < activities.size(); i++) {
-            Activity activity = activities.get(i);
 
-            feed.getChildren().add( newLog(
-                    activity.getCategory(),
-                    activity.getDescription(),
-                    activity.getDate().toString(),
-                    Integer.toString( activity.getPoints())) );
+        if (activities.size() == 0) {
+            noLogsMessage.setManaged(true);
+            addActivityButton.setManaged(true);
+            noActivitiesBox.setManaged(true);
+        } else {
+            for (int i = 0; i < activities.size(); i++) {
+                Activity activity = activities.get(i);
+
+                feed.getChildren().add(newLog(
+                        activity.getCategory(),
+                        activity.getDescription(),
+                        activity.getDate().toString(),
+                        Integer.toString(activity.getPoints())));
+            }
         }
     }
 
@@ -68,18 +85,33 @@ public class ControllerMyLog implements Initializable {
      * @throws IOException when there is an error in the action
      */
     public void setFeed() {
+        noLogsMessage.setManaged(false);
+        addActivityButton.setManaged(false);
+        noActivitiesBox.setManaged(false);
+        noLogsMessage.setVisible(false);
+        addActivityButton.setVisible(false);
+        noActivitiesBox.setVisible(false);
 
         feed.getChildren().clear();
         ObservableList<Activity> activities = getActivity();
 
-        for (int i = 0; i < activities.size(); i++) {
-            Activity activity = activities.get(i);
+        if (activities.size() == 0) {
+            noLogsMessage.setManaged(true);
+            addActivityButton.setManaged(true);
+            noActivitiesBox.setManaged(true);
+            noLogsMessage.setVisible(true);
+            addActivityButton.setVisible(true);
+            noActivitiesBox.setVisible(true);
+        } else {
+            for (int i = 0; i < activities.size(); i++) {
+                Activity activity = activities.get(i);
 
-            feed.getChildren().add(newLog(
-                    activity.getCategory(),
-                    activity.getDescription(),
-                    activity.getDate().toString(),
-                    Integer.toString(activity.getPoints())));
+                feed.getChildren().add(newLog(
+                        activity.getCategory(),
+                        activity.getDescription(),
+                        activity.getDate().toString(),
+                        Integer.toString(activity.getPoints())));
+            }
         }
     }
 
@@ -95,8 +127,8 @@ public class ControllerMyLog implements Initializable {
 
     /**
      * Loads the log page.
-     * @param actionEvent event triggered when log page is loaded
-     * @throws IOException exceptions
+     * @param actionEvent the event needed to be made to go to refresh the page
+     * @throws IOException when there is an error in the action
      */
     public void loadMyLog(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("MyLog.fxml"));
