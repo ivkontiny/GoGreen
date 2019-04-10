@@ -39,8 +39,6 @@ public class ControllerHome implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         progressbar.setProgress(0);
 
-        Timeline timeline = new Timeline();
-
         int lvl = ConnectAccount.getAccount().getLevel();
         int accPoints = ConnectAccount.getAccount().getPoints();
         welcome1.setText("Total CO\u2082 saved: "
@@ -50,9 +48,10 @@ public class ControllerHome implements Initializable {
                 ((double) accPoints - (double) 500 * lvl * (lvl - 1))
                         / (double) (1000 * lvl));
         KeyFrame keyFrame = new KeyFrame(new Duration(1000), keyValue);
-        levelPointsLabel.setText((ConnectAccount.getAccount().getPoints() - ( ConnectAccount.getAccount().getLevelMul(lvl) * 1000) ) +  " / " + ((lvl)  * 1000));
+        levelPointsLabel.setText(
+                (ConnectAccount.getAccount().getPoints() - (ConnectAccount.getAccount().getLevelMul(lvl) * 1000) ) +  " / " + ((lvl)  * 1000));
+        Timeline timeline = new Timeline();
         timeline.getKeyFrames().add(keyFrame);
-
         timeline.play();
     }
 
