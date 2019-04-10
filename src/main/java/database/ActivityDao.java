@@ -46,6 +46,10 @@ public class ActivityDao extends Dao {
      * @return true if the insertion was successful, false otherwise
      */
     public boolean createActivity(Activity act) throws SQLException {
+        if (act.getPoints() == 0) {
+            return false;
+        }
+
         String query = "INSERT INTO activity (description, category, points, date, username) "
                 + "VALUES (?, ?, ?, ?, ?)";
 
