@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="269.0" prefWidth="411.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ControllerRecover">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="236.0" prefWidth="411.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ControllerRecover">
     <children>
         <AnchorPane prefHeight="14.0" prefWidth="411.0" style="-fx-background-color: #9bc782;" />
       <Label alignment="CENTER" layoutX="78.0" layoutY="29.0" prefHeight="56.0" prefWidth="249.0" text="Change Password" textFill="#298c22">
@@ -16,17 +16,22 @@
             <Font name="Arial Rounded MT Bold" size="25.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="150.0" layoutY="107.0" prefHeight="56.0" prefWidth="112.0" text="E-mail" textFill="#298c22">
+      <Label alignment="TOP_LEFT" layoutX="109.0" layoutY="91.0" prefHeight="27.0" prefWidth="90.0" text="E-mail" textFill="#298c22">
          <font>
             <Font name="Arial Rounded MT Bold" size="18.0" />
          </font></Label>
-      <TextField id="emailField" fx:id="recoverEmail" layoutX="109.0" layoutY="155.0">
+      <TextField id="emailField" fx:id="recoverEmail" layoutX="109.0" layoutY="118.0">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font></TextField>
-        <Button fx:id="recoverButton" onMouseClicked="#sendEmail" layoutX="109.0" layoutY="202.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="187.0" style="-fx-background-radius: 25px; -fx-background-color: #9bc782;" text="Recover" textFill="WHITE">
+        <Button id="roundButton" fx:id="recoverButton" layoutX="106.0" layoutY="182.0" mnemonicParsing="false" onMouseClicked="#sendEmail" prefHeight="31.0" prefWidth="187.0" text="Recover" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="14.0" />
          </font></Button>
+      <Label fx:id="emailError" alignment="CENTER" layoutX="106.0" layoutY="156.0" prefHeight="18.0" prefWidth="187.0" text="E-mail not found" textAlignment="CENTER" textFill="RED">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
