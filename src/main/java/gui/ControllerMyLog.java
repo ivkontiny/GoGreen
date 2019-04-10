@@ -38,6 +38,8 @@ public class ControllerMyLog implements Initializable {
     private Label noLogsMessage;
     @FXML
     private Button addActivityButton;
+    @FXML
+    private VBox noActivitiesBox;
 
     private ArrayList<pojos.Activity> myActivities;
 
@@ -48,6 +50,7 @@ public class ControllerMyLog implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         noLogsMessage.setManaged(false);
         addActivityButton.setManaged(false);
+        noActivitiesBox.setManaged(false);
 
         option = null;
         applyButton.setText("Apply filter");
@@ -64,6 +67,7 @@ public class ControllerMyLog implements Initializable {
         if (activities.size() == 0) {
             noLogsMessage.setManaged(true);
             addActivityButton.setManaged(true);
+            noActivitiesBox.setManaged(true);
         } else {
             for (int i = 0; i < activities.size(); i++) {
                 Activity activity = activities.get(i);
