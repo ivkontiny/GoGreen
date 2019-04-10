@@ -143,7 +143,7 @@ public class ControllerRegister implements Initializable {
             final Node source = (Node) actionEvent.getSource();
             final Stage stage = (Stage) source.getScene().getWindow();
 
-            PauseTransition delay = new PauseTransition(Duration.seconds(3));
+            PauseTransition delay = new PauseTransition(Duration.seconds(2));
             delay.setOnFinished( event -> stage.close() );
             delay.play();
         } else {
