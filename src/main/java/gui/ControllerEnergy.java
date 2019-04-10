@@ -52,6 +52,7 @@ public class ControllerEnergy implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         energyBox.setItems(energyActivitieList);
+
         energyAmount.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable,
@@ -68,7 +69,7 @@ public class ControllerEnergy implements Initializable {
             public void changed(ObservableValue<? extends String> observable,
                                 String oldValue, String newValue) {
                 if (!newValue.matches("\\d{0,7}([\\.]\\d{0,4})?")) {
-                    energyAmount.setText(oldValue);
+                    hoursAmount.setText(oldValue);
                 }
                 inputActivity();
             }
@@ -96,6 +97,10 @@ public class ControllerEnergy implements Initializable {
             if (ActivityDb.Energy.descriptions.get(i).equals(energyBox.getValue())) {
                 if (energyBox.getValue().equals("Power saved by solar panels")) {
                     amountLabel.setText("kWh");
+                    hoursLabel.setVisible(false);
+                    hoursAmount.setVisible(false);
+                    atLabel.setVisible(false);
+                    forLabel.setVisible(false);
                     energyAmount.setVisible(true);
                     amountLabel.setVisible(true);
                     energyAmount.setLayoutX(284.0);
