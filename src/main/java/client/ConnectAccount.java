@@ -119,9 +119,9 @@ public class ConnectAccount extends Connect {
         // Send request with POST method.
         String response = restTemplate.postForObject(url, requestBody, String.class);
         if (response != null) {
-            ConnectAccount.myAccount = ConnectAccount.getAccount();
             USERNAME = name;
             SESSION_ID = response;
+            ConnectAccount.myAccount = ConnectAccount.getAccount();
             ConnectFriends.setFriends(ConnectFriends.getFriends());
         }
 
