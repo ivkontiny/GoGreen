@@ -14,13 +14,13 @@ import pojos.Account;
 import services.AccountService;
 import util.SessionIdGenerator;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
-
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 
 
 
@@ -28,13 +28,13 @@ import java.util.TimerTask;
 @RestController
 public class ResetPasswordController {
 
+    protected static HashMap<String,String> recoverRequests = new HashMap<>();
     private static String user;
     private static String email;
-    protected static HashMap<String,String> recoverRequests = new HashMap<>();
+    AccountService as = new AccountService();
 
     @Autowired
     private TemplateEngine templateEngine; // From Thymeleaf
-    AccountService as = new AccountService();
 
 
     /**
