@@ -51,7 +51,8 @@ public class ControllerHome implements Initializable {
                         / (double) (1000 * lvl));
         KeyFrame keyFrame = new KeyFrame(new Duration(1000), keyValue);
         levelPointsLabel.setText(
-                (myAccount.getPoints() - (myAccount.getLevelMul(lvl) * 1000) ) +  " / " + ((lvl)  * 1000));
+                (myAccount.getPoints() - (myAccount.getLevelMul(lvl) * 1000) )
+                        +  " / " + (lvl  * 1000));
         Timeline timeline = new Timeline();
         timeline.getKeyFrames().add(keyFrame);
         timeline.play();

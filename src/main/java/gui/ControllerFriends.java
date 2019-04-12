@@ -10,10 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -22,7 +19,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import org.controlsfx.control.textfield.TextFields;
 import pojos.Account;
-import pojos.Category;
 import pojos.Friendship;
 import pojos.Request;
 
@@ -89,11 +85,11 @@ public class ControllerFriends implements Initializable {
             Button reject = new Button();
             reject.setOnAction(e -> {
                 ConnectFriends.removeFriend(new Friendship(user,ConnectAccount.getUsername()));
-               removeRequest(user, false);
+                removeRequest(user, false);
             });
             accept.setOnAction(e -> {
                 ConnectFriends.acceptRequest(user);
-               removeRequest(user, true);
+                removeRequest(user, true);
             });
 
             requests.add(new Request(user,accept,reject));
@@ -304,7 +300,8 @@ public class ControllerFriends implements Initializable {
         logPoints.setLayoutX(289.0);
         logPoints.setLayoutY(51.0);
 
-        myFriendsLayout.getChildren().addAll(bigRect, smallRect, username, userNumPoints, logPoints);
+        myFriendsLayout.getChildren().addAll(bigRect, smallRect, username,
+                userNumPoints, logPoints);
 
         return myFriendsLayout;
     }
@@ -365,7 +362,8 @@ public class ControllerFriends implements Initializable {
         username.setLayoutX(28.0);
         username.setLayoutY(27.0);
 
-        friendReqLayout.getChildren().addAll(bigRect, rejectReq, acceptRequest, username);
+        friendReqLayout.getChildren().addAll(bigRect, rejectReq,
+                acceptRequest, username);
 
         return friendReqLayout;
     }
