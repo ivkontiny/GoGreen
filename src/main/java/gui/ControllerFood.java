@@ -75,6 +75,9 @@ public class ControllerFood implements Initializable {
                 Date.valueOf(LocalDate.now()), ConnectAccount.getUsername());
 
         if (ConnectAccount.addActivity(activity)) {
+            ControllerMyLog.myActivities.add(0,activity);
+            ControllerHome.myAccount.setPoints(ControllerHome.myAccount.getPoints()
+                    + activity.getPoints());
             addSuccess.setVisible(true);
             ControllerFood.fade(addSuccess);
         } else {

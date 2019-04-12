@@ -16,7 +16,7 @@ public class ViewController {
     @GetMapping("/recover/{recoverId}")
     public ModelAndView setNewPassword(@PathVariable("recoverId") String recoverId) {
         ModelAndView mv = new ModelAndView();
-        if (RecoverController.recoverRequests.containsKey(recoverId)) {
+        if (ResetPasswordController.recoverRequests.containsKey(recoverId)) {
             mv.setViewName("gogreen.html");
         }
         return mv;

@@ -148,6 +148,9 @@ public class ControllerEnergy implements Initializable {
      * @param actionEvent the action event on which a new activity should be added
      */
     public void addActivity(javafx.event.ActionEvent actionEvent) {
+        if (energyAmount.getText() == null || energyAmount.getText().length() == 0) {
+            return;
+        }
         if (energyBox.getValue().equals("Lowering home temperature")
                 && TemperatureService.ifSavedToday(ConnectAccount.getUsername())) {
             System.out.println("here\n");
@@ -183,6 +186,9 @@ public class ControllerEnergy implements Initializable {
         }
 
         if (ConnectAccount.addActivity(activity)) {
+            ControllerHome.myAccount.setPoints(ControllerHome.myAccount.getPoints()
+                    + activity.getPoints());
+            ControllerMyLog.myActivities.add(0,activity);
             addSuccess.setVisible(true);
             ControllerFood.fade(addSuccess);
         } else {

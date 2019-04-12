@@ -36,4 +36,6 @@ public class Main extends Application {
             ConnectAccount.logOut();
         }
     }
+
+
 }

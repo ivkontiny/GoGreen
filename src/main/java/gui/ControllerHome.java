@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
 
 public class ControllerHome implements Initializable {
 
+    protected static Account myAccount;
     @FXML
     private BorderPane rootPane;
 
@@ -40,25 +41,10 @@ public class ControllerHome implements Initializable {
     @FXML
     private Region region;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        progressbar.setProgress(0);
-
-        Account myAccount = ConnectAccount.getAccount();
-        int lvl = myAccount.getLevel();
-        int accPoints = myAccount.getPoints();
-        welcome1.setText("Total CO\u2082 saved: "
-                + String.format("%.1f", DefaultValue.converter(accPoints) * 1000) + " kg");
-        level.setText("Level " + lvl);
-        KeyValue keyValue = new KeyValue(progressbar.progressProperty(),
-                ((double) accPoints - (double) 500 * lvl * (lvl - 1))
-                        / (double) (1000 * lvl));
-        KeyFrame keyFrame = new KeyFrame(new Duration(1000), keyValue);
-        levelPointsLabel.setText(
-                (myAccount.getPoints() - (myAccount.getLevelMul(lvl) * 1000) ) +  " / " + ((lvl)  * 1000));
-        Timeline timeline = new Timeline();
-        timeline.getKeyFrames().add(keyFrame);
-        timeline.play();
+        setProgressbar();
     }
 
     /**
@@ -135,5 +121,28 @@ public class ControllerHome implements Initializable {
         ConnectAccount.logOut();
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         rootPane.getChildren().setAll(pane);
+    }
+
+    /**
+     * Sets the progressbar.
+     */
+    public void setProgressbar() {
+        progressbar.setProgress(0);
+        int lvl = myAccount.getLevel();
+        int accPoints = myAccount.getPoints();
+        welcome1.setText("Total CO\u2082 saved: "
+                + String.format("%.1f", DefaultValue.converter(accPoints) * 1000) + " kg");
+        level.setText("Level " + lvl);
+        KeyValue keyValue = new KeyValue(progressbar.progressProperty(),
+                ((double) accPoints - (double) 500 * lvl * (lvl - 1))
+                        / (double) (1000 * lvl));
+        KeyFrame keyFrame = new KeyFrame(new Duration(1000), keyValue);
+        levelPointsLabel.setText(
+                (myAccount.getPoints() - (myAccount.getLevelMul(lvl) * 1000) )
+                        +  " / " + (lvl  * 1000));
+        Timeline timeline = new Timeline();
+        timeline.getKeyFrames().add(keyFrame);
+        timeline.play();
+
     }
 }
