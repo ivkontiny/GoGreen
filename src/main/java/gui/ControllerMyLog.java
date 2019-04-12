@@ -21,11 +21,12 @@ import pojos.Category;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.ResourceBundle;
 
 
 public class ControllerMyLog implements Initializable {
+
+    protected static ArrayList<pojos.Activity> myActivities;
     @FXML
     private BorderPane rootPane;
     @FXML
@@ -40,8 +41,6 @@ public class ControllerMyLog implements Initializable {
     private Button addActivityButton;
     @FXML
     private VBox noActivitiesBox;
-
-    private ArrayList<pojos.Activity> myActivities;
 
     private String option = null;
 
@@ -61,7 +60,6 @@ public class ControllerMyLog implements Initializable {
         ObservableList<String> filters = FXCollections.observableArrayList();
         filters.setAll(options);
         filter.setItems(filters);
-        myActivities = ConnectAccount.getActivities();
         ObservableList<Activity> activities = getActivity();
 
         if (activities.size() == 0) {
@@ -203,7 +201,6 @@ public class ControllerMyLog implements Initializable {
      */
     public ObservableList<Activity> getActivity() {
         ObservableList<pojos.Activity> activities = FXCollections.observableArrayList();
-        Collections.reverse(myActivities);
         for (Activity activity: myActivities) {
             if (option == null || activity.getCategory().toString().equals(option)) {
                 activities.add(activity);

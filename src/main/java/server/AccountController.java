@@ -1,26 +1,39 @@
 package server;
 
 import database.AccountDao;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 import pojos.Account;
 import pojos.Session;
 import services.AccountService;
 import services.SessionService;
 import util.SessionIdGenerator;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Properties;
+import java.util.Timer;
+import java.util.TimerTask;
 
 @RestController
 public class AccountController {
 
+    private static HashMap<String,Account> confirmations = new HashMap<>();
+
+    @Autowired
+    private TemplateEngine templateEngine; // From Thymeleaf
+
     private AccountService ls = new AccountService();
     private AccountDao db = new AccountDao();
     private SessionService ss = new SessionService();
+
 
     /**
      * Trying to log a user in.
@@ -68,6 +81,48 @@ public class AccountController {
             defaultValue = "user") String username, @RequestBody Account newuser) {
         System.out.println(newuser.getPassword());
         return ls.createAccount(newuser);
+    }
+
+    /**
+     * Registers the account.
+     * @param confirmId the confirmation Id of the new created account
+     * @return and Html page
+     */
+    @GetMapping("/register/{confirmId}")
+    public ModelAndView registerConfirmation(@PathVariable("confirmId") String confirmId) {
+        ModelAndView mv = new ModelAndView();
+        if (confirmations.containsKey(confirmId)) {
+            if (ls.createAccount(confirmations.get(confirmId))) {
+                confirmations.remove(confirmId);
+                mv.setViewName("success.html");
+                return mv;
+            }
+        }
+        mv.setViewName("failed.html");
+        return mv;
+    }
+
+    /**
+     * Registers a user.
+     * @param newuser the account to be registered.
+     * @return true or false depending on whether the method was successful.
+     */
+    @PostMapping("/confirm")
+    public boolean confirmUser(@RequestBody Account newuser) {
+        if (!ls.createAccount(newuser)) {
+            return false;
+        }
+        ls.deleteAccount(newuser);
+        SessionIdGenerator generator = new SessionIdGenerator();
+        String confirmId = generator.getAlphaNumericString(20);
+        confirmations.put(confirmId,newuser);
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            public void run() {
+                sendMail(confirmId,newuser);
+            }
+        }, 1000);
+        return true;
     }
 
     /**
@@ -119,6 +174,53 @@ public class AccountController {
 
     public void setSs(SessionService ss) {
         this.ss = ss;
+    }
+
+    /**
+     * Sends email from the gmail server.
+     * @param confirmId of the account to be confirmed
+     * @param newAccount of the account to be created
+     * @throws MessagingException when the email was unable to be sent
+     */
+    public boolean sendMail(String confirmId,Account newAccount) {
+
+        try {
+            String user = newAccount.getUsername();
+            String link = "http://localhost:8080/register/";
+            link += confirmId;
+            Context context = new Context();
+            user = "Hello " + user;
+            context.setVariable("name", user);
+            context.setVariable("link", link);
+            JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+            mailSender.setHost("smtp.gmail.com");
+            mailSender.setPort(465);
+            mailSender.setUsername("gogreen.group57");
+            mailSender.setPassword("oopgroup57");
+
+            //from email id and password
+
+            Properties mailProp = mailSender.getJavaMailProperties();
+            mailProp.put("mail.transport.protocol", "smtp");
+            mailProp.put("mail.smtp.auth", "true");
+            mailProp.put("mail.smtp.starttls.enable", "true");
+            mailProp.put("mail.smtp.starttls.required", "true");
+            mailProp.put("mail.debug", "true");
+            mailProp.put("mail.smtp.ssl.enable", "true");
+
+            MimeMessage mimeMessage = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
+            String toMailId = newAccount.getMail();
+            helper.setTo(toMailId);
+            helper.setSubject("Welcome to GoGreen");
+            helper.setText(templateEngine.process("confirmation", context), true);
+            //Checking Internet Connection and then sending the mail
+            mailSender.send(mimeMessage);
+            return true;
+        } catch (MessagingException e) {
+            return false;
+        }
+
     }
 
 }

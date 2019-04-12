@@ -16,22 +16,25 @@ import util.SessionIdGenerator;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.Timer;
 import java.util.TimerTask;
 
 
+
+
 @RestController
-public class RecoverController {
+public class ResetPasswordController {
+
+    private static String user;
+    private static String email;
+    protected static HashMap<String,String> recoverRequests = new HashMap<>();
 
     @Autowired
     private TemplateEngine templateEngine; // From Thymeleaf
-
-    protected static HashMap<String,String> recoverRequests = new HashMap<>();
     AccountService as = new AccountService();
-    private static String user;
-    private static String email;
 
 
     /**
@@ -42,9 +45,12 @@ public class RecoverController {
     @PostMapping("/recover/{recoverId}")
     public ModelAndView changePassword(@PathVariable("recoverId") String recoverId,
                                        @RequestBody String newPassword) {
+        ModelAndView mv = new ModelAndView();
+        if (!recoverRequests.containsKey(recoverId)) {
+            mv.setViewName("failed.html");
+        }
         if (newPassword == null || newPassword.length() < 6) {
 
-            ModelAndView mv = new ModelAndView();
             mv.setViewName("gogreen.html");
             return  mv;
         }
@@ -54,8 +60,8 @@ public class RecoverController {
         String password = piece[1];
         System.out.println(password);
         as.updatePassword(user,password);
-        ModelAndView mv = new ModelAndView();
         mv.setViewName("redirect.html");
+        recoverRequests.remove(recoverId);
         return mv;
     }
 

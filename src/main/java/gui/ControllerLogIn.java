@@ -16,6 +16,7 @@ import util.HashPassword;
 import java.io.IOException;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 public class ControllerLogIn implements Initializable {
@@ -51,6 +52,9 @@ public class ControllerLogIn implements Initializable {
         String pass = HashPassword.hashPass(password.getText());
 
         if (ConnectAccount.serverLogin(username.getText(), pass)) {
+            ControllerMyLog.myActivities = ConnectAccount.getActivities();
+            Collections.reverse(ControllerMyLog.myActivities);
+            ControllerHome.myAccount = ConnectAccount.getAccount();
             BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Home.fxml"));
             ControllerHome.welcomeMessage(pane);
             rootPane.getChildren().setAll(pane);
