@@ -267,11 +267,11 @@ public class ControllerMyLog implements Initializable {
         String imageUrl = new String();
 
         if (category == Category.food) {
-            imageUrl = "/Images/restaurant.png";
+            imageUrl = "/images/restaurant.png";
         } else if (category == Category.transportation) {
-            imageUrl = "/Images/car.png";
+            imageUrl = "/images/car.png";
         } else if (category == Category.energy) {
-            imageUrl = "/Images/electricity.png";
+            imageUrl = "/images/electricity.png";
         }
 
         Image image = new Image(imageUrl);

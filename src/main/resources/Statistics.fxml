@@ -21,7 +21,7 @@
                     <children>
                         <ImageView id="logo" fitHeight="100.0" fitWidth="100.0" layoutX="25.0" layoutY="11.0">
                             <image>
-                                <Image url="@Images/logo.png" />
+                                <Image url="@images/logo.png" />
                             </image>
                         </ImageView>
                     </children>
@@ -65,7 +65,7 @@
                   </Button>
                   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="696.0" layoutY="14.0">
                      <image>
-                        <Image url="@Images/logout.png" />
+                        <Image url="@images/logout.png" />
                      </image>
                   </ImageView>
                   <Region layoutX="690.0" layoutY="17.0" onMouseClicked="#logOut" prefHeight="34.0" prefWidth="52.0" />
