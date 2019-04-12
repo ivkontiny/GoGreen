@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
+import pojos.Account;
 import pojos.DefaultValue;
 
 import java.io.IOException;
@@ -39,8 +40,9 @@ public class ControllerHome implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         progressbar.setProgress(0);
 
-        int lvl = ConnectAccount.getAccount().getLevel();
-        int accPoints = ConnectAccount.getAccount().getPoints();
+        Account myAccount = ConnectAccount.getAccount();
+        int lvl = myAccount.getLevel();
+        int accPoints = myAccount.getPoints();
         welcome1.setText("Total CO\u2082 saved: "
                 + String.format("%.1f", DefaultValue.converter(accPoints) * 1000) + " kg");
         level.setText("Level " + lvl);
@@ -49,7 +51,7 @@ public class ControllerHome implements Initializable {
                         / (double) (1000 * lvl));
         KeyFrame keyFrame = new KeyFrame(new Duration(1000), keyValue);
         levelPointsLabel.setText(
-                (ConnectAccount.getAccount().getPoints() - (ConnectAccount.getAccount().getLevelMul(lvl) * 1000) ) +  " / " + ((lvl)  * 1000));
+                (myAccount.getPoints() - (myAccount.getLevelMul(lvl) * 1000) ) +  " / " + ((lvl)  * 1000));
         Timeline timeline = new Timeline();
         timeline.getKeyFrames().add(keyFrame);
         timeline.play();
@@ -72,7 +74,7 @@ public class ControllerHome implements Initializable {
     public static void welcomeMessage(Parent root) {
         javafx.scene.control.Label welcome = (Label) root.lookup("#Welcome");
         if (welcome != null) {
-            welcome.setText("Welcome " + ConnectAccount.getUsername() + "!");
+            welcome.setText("Welcome " + ConnectAccount.getMyAccount().getUsername() + "!");
         }
     }
 

@@ -32,6 +32,7 @@ public class ControllerLogIn implements Initializable {
     @FXML
     private Label loginerror;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loginerror.setVisible(false);
