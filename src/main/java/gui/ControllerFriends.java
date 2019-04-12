@@ -58,6 +58,7 @@ public class ControllerFriends implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        /*
         userColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
         acceptColumn.setCellValueFactory(new PropertyValueFactory<>("accept"));
         rejectColumn.setCellValueFactory(new PropertyValueFactory<>("reject"));
@@ -68,6 +69,7 @@ public class ControllerFriends implements Initializable {
         friendUserColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
         pointsColumn.setCellValueFactory(new PropertyValueFactory<>("points"));
         friendsTable.setItems(getFriends());
+        */
 
     }
     
