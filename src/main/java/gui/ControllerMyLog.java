@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import pojos.Activity;
@@ -44,6 +45,9 @@ public class ControllerMyLog implements Initializable {
     private ArrayList<pojos.Activity> myActivities;
 
     private String option = null;
+    
+    @FXML
+    private Region region;
 
 
     @Override
