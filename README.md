@@ -1,20 +1,16 @@
-# Readme
-
-explanation of how great the project is
-
 # Installation Instructions:
 
 Make sure you have git, maven and java installed on your machine
 
 - First clone the repository with git using one of the following links:
-	- **HTTPS** https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-57/template.git
-	- **SSH** git@gitlab.ewi.tudelft.nl:cse1105/2018-2019/oopp-group-57/template.git
+	- **HTTPS:**     [https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-57/template.git]()
+	- **SSH:**       [git@gitlab.ewi.tudelft.nl:cse1105/2018-2019/oopp-group-57/template.git]()
 - Next, navigate into the folder of the cloned repository and run: mvn install
 - After the installation is finished, run the appropriate file for your operating system:
 	- gogreen.bat for windows users
 	- gogreen.sh for linux users
 
-
+# Contributors:
 
 ## Wouter Jehee
 
