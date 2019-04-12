@@ -25,7 +25,7 @@
          <children>
             <ImageView id="logo" fitHeight="140.0" fitWidth="140.0" layoutX="380.0" layoutY="30.0">
                <image>
-                  <Image url="@Images/logo.png" />
+                  <Image url="@images/logo.png" />
                </image>
             </ImageView>
          </children>

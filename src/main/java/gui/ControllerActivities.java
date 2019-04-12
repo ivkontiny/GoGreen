@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Region;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,6 +32,9 @@ public class ControllerActivities implements Initializable {
     private ImageView transportIcon;
     @FXML
     private ImageView energyIcon;
+    
+    @FXML
+    private Region region;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

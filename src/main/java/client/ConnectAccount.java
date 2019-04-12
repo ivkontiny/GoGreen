@@ -18,8 +18,6 @@ import java.util.ArrayList;
 //142.93.230.132:8080
 
 public class ConnectAccount extends Connect {
-
-
     private static String USERNAME = "";
     private static String SESSION_ID = "";
     private static Account myAccount;
@@ -110,12 +108,9 @@ public class ConnectAccount extends Connect {
         HttpHeaders headers = new HttpHeaders();
         //  headers.add("Accept", MediaType.APPLICATION_JSON_VALUE);
         headers.setContentType(MediaType.APPLICATION_JSON);
-
         RestTemplate restTemplate = new RestTemplate();
-
         // Data attached to the request.
         HttpEntity<String> requestBody = new HttpEntity<>(credentials, headers);
-
         // Send request with POST method.
         String response = restTemplate.postForObject(url, requestBody, String.class);
         if (response != null) {

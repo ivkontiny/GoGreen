@@ -2,8 +2,12 @@ package util;
 
 import client.ConnectAccount;
 
+
 public class DailyThread extends Thread {
 
+    /**
+     * Runs daily thead, updating solarPoints and resets heating.
+     */
     public void run() {
         while (true) {
             AddSolarPoints.addPoints();

@@ -1,6 +1,6 @@
 package gui;
 
-import client.ConnectAccount;
+import client.ConnectEmail;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -137,7 +137,7 @@ public class ControllerRegister implements Initializable {
             return;
         }
 
-        if (ConnectAccount.serverRegister(user)) {
+        if (ConnectEmail.confirmAccount(user)) {
             accountCreated.setVisible(true);
 
             final Node source = (Node) actionEvent.getSource();
