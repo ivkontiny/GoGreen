@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
@@ -45,8 +46,8 @@
     <top>
         <HBox prefHeight="9.0" prefWidth="600.0" style="-fx-background-color: #9BC782;" BorderPane.alignment="CENTER" />
     </top>
-    <center>
-        <AnchorPane prefHeight="391.0" prefWidth="368.0" BorderPane.alignment="CENTER">
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="friendsField" layoutX="128.0" layoutY="85.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#getUsers" prefHeight="48.0" prefWidth="168.0" />
             <Button layoutX="319.0" layoutY="85.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="48.0" prefWidth="111.0" style="-fx-background-color: #9BC782;" text="SEND" textFill="WHITE">
@@ -99,6 +100,6 @@
                </font>
             </Label>
          </children>
-      </AnchorPane>
-   </right>
+      </VBox>
+   </center>
 </BorderPane>
