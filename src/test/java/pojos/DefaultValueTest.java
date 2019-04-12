@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 public class DefaultValueTest {
 
     DefaultValue dv;
+
     @Before
     public void initialize() {
         dv = new DefaultValue("tomato", Category.food, "kg", 25, 0.5);
@@ -125,11 +126,18 @@ public class DefaultValueTest {
         assertNotEquals(dv, dv1);
     }
 
-//    @Test
-//    public void testDegreesToPoints() {
-//        DefaultValue.initPts();
-//        assertEquals(0, DefaultValue.degreesToPoints(24.0, 24));
-//        assertEquals(100, DefaultValue.degreesToPoints(19.0, 24));
-//        assertEquals(89, DefaultValue.degreesToPoints(19.111, 24));
-//    }
+    @Test
+    public void testDegreesToPoints() {
+        DefaultValue.initPts();
+        assertEquals(0, DefaultValue.degreesToPoints(24.0, 24));
+        assertEquals(100, DefaultValue.degreesToPoints(19.0, 24));
+        assertEquals(89, DefaultValue.degreesToPoints(19.111, 24));
+    }
+
+    @Test
+    public void testKwhToPoints() {
+        DefaultValue.initPts();
+        assertEquals(14, DefaultValue.kwhToPoints(250));
+        assertEquals(14, DefaultValue.kwhToPoints(249));
+    }
 }
