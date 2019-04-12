@@ -1,26 +1,20 @@
-﻿﻿# CSE1105 Template Repository
+# Readme
 
-This a template repository to help you get started on making the best project possible!
+explanation of how great the project is
 
-You can download the latest version [here](https://github.com/SERG-Delft/TI1216/releases)
+# Installation Instructions:
 
-http://stackoverflow.com/a/6466993
+Make sure you have git, maven and java installed on your machine
 
-## How to import into your IDE
+- First clone the repository with git using one of the following links:
+	- **HTTPS** https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-57/template.git
+	- **SSH** git@gitlab.ewi.tudelft.nl:cse1105/2018-2019/oopp-group-57/template.git
+- Next, navigate into the folder of the cloned repository and run: mvn install
+- After the installation is finished, run the appropriate file for your operating system:
+	- gogreen.bat for windows users
+	- gogreen.sh for linux users
 
-Eclipse:
-[http://javapapers.com/java/import-maven-project-into-eclipse/](http://javapapers.com/java/import-maven-project-into-eclipse/)
 
-Intellij:  
-[https://www.jetbrains.com/help/idea/2016.2/importing-project-from-maven-model.html](https://www.jetbrains.com/help/idea/2016.2/importing-project-from-maven-model.html)
-
-## Getting your weekly reports
-
-**Jacoco**:  
-Run `maven install` ([Intellij](https://www.jetbrains.com/help/idea/2016.3/getting-started-with-maven.html#execute_maven_goal)/[Eclipse](http://imgur.com/a/6q7pV))
-
-**Checkstyle**:  
-Run `maven site`
 
 ## Wouter Jehee
 
@@ -182,3 +176,27 @@ Weak points:
 Goals: 
 - learn to work in a team.
 - become a better programmer and learn how to make a big project from scratch.
+
+# CSE1105 Template Repository
+
+This a template repository to help you get started on making the best project possible!
+
+You can download the latest version [here](https://github.com/SERG-Delft/TI1216/releases)
+
+http://stackoverflow.com/a/6466993
+
+## How to import into your IDE
+
+Eclipse:
+[http://javapapers.com/java/import-maven-project-into-eclipse/](http://javapapers.com/java/import-maven-project-into-eclipse/)
+
+Intellij:  
+[https://www.jetbrains.com/help/idea/2016.2/importing-project-from-maven-model.html](https://www.jetbrains.com/help/idea/2016.2/importing-project-from-maven-model.html)
+
+## Getting your weekly reports
+
+**Jacoco**:  
+Run `maven install` ([Intellij](https://www.jetbrains.com/help/idea/2016.3/getting-started-with-maven.html#execute_maven_goal)/[Eclipse](http://imgur.com/a/6q7pV))
+
+**Checkstyle**:  
+Run `maven site`
