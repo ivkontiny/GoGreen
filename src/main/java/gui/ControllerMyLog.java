@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import pojos.Activity;
@@ -21,11 +22,12 @@ import pojos.Category;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.ResourceBundle;
 
 
 public class ControllerMyLog implements Initializable {
+
+    protected static ArrayList<pojos.Activity> myActivities;
     @FXML
     private BorderPane rootPane;
     @FXML
@@ -41,9 +43,10 @@ public class ControllerMyLog implements Initializable {
     @FXML
     private VBox noActivitiesBox;
 
-    private ArrayList<pojos.Activity> myActivities;
-
     private String option = null;
+    
+    @FXML
+    private Region region;
 
 
     @Override
@@ -61,7 +64,6 @@ public class ControllerMyLog implements Initializable {
         ObservableList<String> filters = FXCollections.observableArrayList();
         filters.setAll(options);
         filter.setItems(filters);
-        myActivities = ConnectAccount.getActivities();
         ObservableList<Activity> activities = getActivity();
 
         if (activities.size() == 0) {
@@ -203,7 +205,6 @@ public class ControllerMyLog implements Initializable {
      */
     public ObservableList<Activity> getActivity() {
         ObservableList<pojos.Activity> activities = FXCollections.observableArrayList();
-        Collections.reverse(myActivities);
         for (Activity activity: myActivities) {
             if (option == null || activity.getCategory().toString().equals(option)) {
                 activities.add(activity);
@@ -263,11 +264,11 @@ public class ControllerMyLog implements Initializable {
         String imageUrl = new String();
 
         if (category == Category.food) {
-            imageUrl = "/Images/restaurant.png";
+            imageUrl = "/images/restaurant.png";
         } else if (category == Category.transportation) {
-            imageUrl = "/Images/car.png";
+            imageUrl = "/images/car.png";
         } else if (category == Category.energy) {
-            imageUrl = "/Images/electricity.png";
+            imageUrl = "/images/electricity.png";
         }
 
         Image image = new Image(imageUrl);

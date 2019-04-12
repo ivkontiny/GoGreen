@@ -6,6 +6,7 @@ import database.FriendshipDao;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -25,6 +26,7 @@ public class AccountDaoTest {
 
 
     private AccountDao accountDao = new AccountDao();
+    private AccountDao accountDao1 = Mockito.spy(accountDao);
     private FriendshipDao friendshipDao;
     private Account newaccount;
     private ActivityDao activityDao;
@@ -88,6 +90,24 @@ public class AccountDaoTest {
     @Test
     public void testSetHeating() throws SQLException {
         assertFalse(accountDao.setHeating("lel", true));
+        accountDao.createAccount(newaccount);
+        assertTrue(accountDao.setHeating("user_test", true));
+        accountDao.deleteAccount(newaccount);
+    }
+
+    @Test
+    public void testUpdatePassword() throws SQLException {
+        assertFalse(accountDao.updatePassword("user_test", "blabla"));
+        accountDao.createAccount(newaccount);
+        assertTrue(accountDao.updatePassword("user_test", "blabla"));
+        accountDao.deleteAccount(newaccount);
+    }
+
+    @Test
+    public void testGetEmail() throws SQLException {
+        assertNull(accountDao.getEmail(newaccount.getMail()));
+        accountDao.createAccount(newaccount);
+        assertEquals(newaccount, accountDao.getEmail(newaccount.getMail()));
     }
 
 }
