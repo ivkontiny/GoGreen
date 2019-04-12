@@ -192,6 +192,7 @@
                         <exclude>**/client/*</exclude>
                         <exclude>**/server/Application.class</exclude>
                         <exclude>**/server/RecoverController.class</exclude>
+                        <exclude>**/server/ViewController.class</exclude>
                     </excludes>
                     <rules>
                     </rules>

@@ -42,6 +42,9 @@ public class ControllerHome implements Initializable {
     private Region region;
 
 
+    @FXML
+    private Label welcome11;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setProgressbar();

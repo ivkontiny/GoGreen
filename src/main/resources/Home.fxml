@@ -65,7 +65,7 @@
                   <Font name="Arial Rounded MT Bold" size="29.0" />
                </font>
             </Label>
-            <Label fx:id="Welcome11" alignment="CENTER" layoutX="79.0" layoutY="343.0" prefHeight="50.0" prefWidth="420.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0 0 10 10;" text="DAYS SINCE ACTIVE: 4" textFill="WHITE">
+            <Label fx:id="welcome11" alignment="CENTER" layoutX="79.0" layoutY="343.0" prefHeight="50.0" prefWidth="420.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0 0 10 10;" text="DAYS SINCE ACTIVE: 4" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="29.0" />
                </font>

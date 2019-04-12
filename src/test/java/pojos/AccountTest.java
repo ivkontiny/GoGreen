@@ -133,4 +133,10 @@ public class AccountTest {
         account.setPoints(2000);
         assertEquals(2, account.getLevel());
     }
+
+    @Test
+    public void testGetLevelMul() {
+        assertEquals(0, account.getLevelMul(0));
+        assertEquals(1, account.getLevelMul(2));
+    }
 }
