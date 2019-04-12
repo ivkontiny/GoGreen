@@ -135,6 +135,8 @@ public class ControllerHome implements Initializable {
         int accPoints = myAccount.getPoints();
         welcome1.setText("Total CO\u2082 saved: "
                 + String.format("%.1f", DefaultValue.converter(accPoints) * 1000) + " kg");
+
+        welcome11.setText("Total points: " + accPoints);
         level.setText("Level " + lvl);
         KeyValue keyValue = new KeyValue(progressbar.progressProperty(),
                 ((double) accPoints - (double) 500 * lvl * (lvl - 1))
