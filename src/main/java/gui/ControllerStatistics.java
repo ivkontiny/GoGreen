@@ -10,6 +10,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Region;
 import pojos.Activity;
 import pojos.DefaultValue;
 
@@ -33,6 +34,9 @@ public class ControllerStatistics implements Initializable {
     private ComboBox<String> comboBox;
     @FXML
     private Button addButton;
+    
+    @FXML
+    private Region region;
 
 
     @Override

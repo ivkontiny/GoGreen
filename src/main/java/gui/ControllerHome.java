@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Region;
 import javafx.util.Duration;
 import pojos.Account;
 import pojos.DefaultValue;
@@ -35,6 +36,9 @@ public class ControllerHome implements Initializable {
     
     @FXML
     private Label levelPointsLabel;
+    
+    @FXML
+    private Region region;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
