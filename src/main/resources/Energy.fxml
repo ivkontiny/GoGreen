@@ -9,7 +9,7 @@
 
 <AnchorPane fx:id="activityPane" prefHeight="331.0" prefWidth="587.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ControllerEnergy">
    <children>
-      <Label alignment="CENTER" layoutX="252.0" layoutY="14.0" prefHeight="72.0" prefWidth="235.0" text="ENERGY">
+      <Label alignment="CENTER" layoutX="252.0" layoutY="14.0" prefHeight="72.0" prefWidth="235.0" text="ENERGY" textFill="#298c22">
          <font>
             <Font name="Arial Rounded MT Bold" size="44.0" />
          </font>
