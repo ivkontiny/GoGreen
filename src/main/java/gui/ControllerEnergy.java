@@ -183,9 +183,7 @@ public class ControllerEnergy implements Initializable {
 
         if (actDesc.equals("Power saved by solar panels")) {
             ConnectAccount.setEnergy(Integer.parseInt(energyAmount.getText()));
-        }
-
-        if (ConnectAccount.addActivity(activity)) {
+        } else if (ConnectAccount.addActivity(activity)) {
             ControllerHome.myAccount.setPoints(ControllerHome.myAccount.getPoints()
                     + activity.getPoints());
             ControllerMyLog.myActivities.add(0,activity);
