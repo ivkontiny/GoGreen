@@ -166,7 +166,7 @@ public class Account {
      * @param lvl the current level to convert.
      * @return Num to reset the num points to zero without reducing actual points of user.
      */
-    public int getLevelMul(int lvl) {
+    public static int getLevelMul(int lvl) {
         int ret = 0;
         for (int i = 1; i < lvl; i++) {
             ret = ret + i;
