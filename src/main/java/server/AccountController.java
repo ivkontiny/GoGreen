@@ -4,14 +4,12 @@ import database.AccountDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import pojos.Account;
@@ -31,7 +29,7 @@ import javax.mail.internet.MimeMessage;
 @RestController
 public class AccountController {
 
-    private static HashMap<String,Account> confirmations = new HashMap<>();
+    private static HashMap<String, Account> confirmations = new HashMap<>();
 
     @Autowired
     private TemplateEngine templateEngine; // From Thymeleaf
@@ -89,24 +87,7 @@ public class AccountController {
         return ls.createAccount(newuser);
     }
 
-    /**
-     * Registers the account.
-     * @param confirmId the confirmation Id of the new created account
-     * @return and Html page
-     */
-    @GetMapping("/register/{confirmId}")
-    public ModelAndView registerConfirmation(@PathVariable("confirmId") String confirmId) {
-        ModelAndView mv = new ModelAndView();
-        if (confirmations.containsKey(confirmId)) {
-            if (ls.createAccount(confirmations.get(confirmId))) {
-                confirmations.remove(confirmId);
-                mv.setViewName("success.html");
-                return mv;
-            }
-        }
-        mv.setViewName("failed.html");
-        return mv;
-    }
+
 
     /**
      * Registers a user.
@@ -181,6 +162,15 @@ public class AccountController {
     public void setSs(SessionService ss) {
         this.ss = ss;
     }
+
+    public static HashMap<String, Account> getConfirmations() {
+        return confirmations;
+    }
+
+    public static void setConfirmations(HashMap<String, Account> confirmations1) {
+        confirmations = confirmations1;
+    }
+
 
     /**
      * Sends email from the gmail server.

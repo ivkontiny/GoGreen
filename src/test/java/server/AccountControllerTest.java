@@ -4,6 +4,7 @@ import database.AccountDao;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Matchers;
+import org.springframework.web.servlet.ModelAndView;
 import pojos.Account;
 import pojos.Activity;
 import pojos.Session;
@@ -137,6 +138,18 @@ public class AccountControllerTest {
         when(acc.setHeating("user", true)).thenReturn(true);
         assertTrue(ac.setHeating(true, "test"));
     }
+
+    @Test
+    public void testConfirmUser() {
+        AccountService as = mock(AccountService.class);
+        ac.setLs(as);
+        when(as.createAccount(testaccount)).thenReturn(false);
+        assertFalse(ac.confirmUser(testaccount));
+
+        when(as.createAccount(testaccount)).thenReturn(true);
+        assertTrue(ac.confirmUser(testaccount));
+    }
+
 }
 
 

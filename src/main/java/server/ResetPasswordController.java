@@ -3,11 +3,9 @@ package server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import pojos.Account;
@@ -33,36 +31,13 @@ public class ResetPasswordController {
     private static String email;
     AccountService as = new AccountService();
 
+
     @Autowired
     private TemplateEngine templateEngine; // From Thymeleaf
 
 
-    /**
-     * Changes the password.
-     * @param recoverId the recoverId
-     * @param newPassword the newPassword
-     */
-    @PostMapping("/recover/{recoverId}")
-    public ModelAndView changePassword(@PathVariable("recoverId") String recoverId,
-                                       @RequestBody String newPassword) {
-        ModelAndView mv = new ModelAndView();
-        if (!recoverRequests.containsKey(recoverId)) {
-            mv.setViewName("failed.html");
-        }
-        if (newPassword == null || newPassword.length() < 6) {
-
-            mv.setViewName("gogreen.html");
-            return  mv;
-        }
-        System.out.println(newPassword);
-        String user = recoverRequests.get(recoverId);
-        String[] piece = newPassword.split("=");
-        String password = piece[1];
-        System.out.println(password);
-        as.updatePassword(user,password);
-        mv.setViewName("redirect.html");
-        recoverRequests.remove(recoverId);
-        return mv;
+    public void setAs(AccountService as) {
+        this.as = as;
     }
 
     /**
