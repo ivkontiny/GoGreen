@@ -1,6 +1,6 @@
 # Installation Instructions:
 
-Make sure you have git, maven and java installed on your machine
+Make sure you have Git, Maven and Java installed on your machine
 
 - First clone the repository with git using one of the following links:
 	- **HTTPS:**     [https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-57/template.git]()
@@ -9,6 +9,8 @@ Make sure you have git, maven and java installed on your machine
 - After the installation is finished, run the appropriate file for your operating system:
 	- gogreen.bat for windows users
 	- gogreen.sh for linux users
+
+To run all the tests for this project, one can simply run: mvn test
 
 # Contributors:
 
@@ -172,6 +174,32 @@ Weak points:
 Goals: 
 - learn to work in a team.
 - become a better programmer and learn how to make a big project from scratch.
+
+# Licensing
+
+MIT License
+
+Copyright (c) [2019] [Wouter Jehee, Dragos Vecerdea, Jochem van Lith, Alec Nonnemaker, Ali Sinan Cetingoz, Ivaylo Georgiev, Jeroen Looij]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
 
 # CSE1105 Template Repository
 
