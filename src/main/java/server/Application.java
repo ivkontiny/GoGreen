@@ -2,7 +2,6 @@ package server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import util.DailyThread;
 
 @SpringBootApplication
 public class Application {
@@ -14,8 +13,5 @@ public class Application {
     public static void main(String[] args) {
 
         SpringApplication.run(Application.class, args);
-
-        DailyThread thread = new DailyThread();
-        thread.start();
     }
 }

@@ -13,6 +13,10 @@ import java.util.ArrayList;
 
 public class AddSolarPoints {
 
+    public static void main(String[] args) {
+        addPoints();
+    }
+
     /**
      * Adds points to account for having solarpanels.
      */
