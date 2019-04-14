@@ -81,7 +81,7 @@
                            </tickLabelFont></CategoryAxis>
                     </xAxis>
                     <yAxis>
-                      <NumberAxis fx:id="pointsaxis" label="CO2 saved" side="LEFT">
+                      <NumberAxis fx:id="pointsaxis" label="CO2 saved in kg" side="LEFT">
                            <tickLabelFont>
                               <Font name="Arial Rounded MT Bold" size="12.0" />
                            </tickLabelFont></NumberAxis>
