@@ -61,7 +61,7 @@ public class ControllerStatistics implements Initializable {
             System.out.println(search.getDate().toLocalDate().toString());
             for (int i = 0; i <= 6; i++) {
                 if (search.getDate().toLocalDate().toString().equals(dates[i])) {
-                    userCo2[i] += DefaultValue.converter(search.getPoints());
+                    userCo2[i] += DefaultValue.converter(search.getPoints()) * 1000;
                 }
             }
         }
@@ -182,7 +182,7 @@ public class ControllerStatistics implements Initializable {
         for (Activity search : friendActivities) {
             for (int i = 0; i <= 6; i++) {
                 if (search.getDate().toLocalDate().toString().equals(dates[i])) {
-                    friendCo2[i] += DefaultValue.converter(search.getPoints());
+                    friendCo2[i] += DefaultValue.converter(search.getPoints() * 1000);
                 }
             }
         }
