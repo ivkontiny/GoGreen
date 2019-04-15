@@ -18,9 +18,12 @@ import java.util.ArrayList;
 //142.93.230.132:8080
 
 public class ConnectAccount extends Connect {
+    public static int temperature = 0;
+    public static int hours = 0;
     private static String USERNAME = "";
     private static String SESSION_ID = "";
     private static Account myAccount;
+
 
     /**
      * Gets own account object.
