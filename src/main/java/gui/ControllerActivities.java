@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Region;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,6 +32,9 @@ public class ControllerActivities implements Initializable {
     private ImageView transportIcon;
     @FXML
     private ImageView energyIcon;
+    
+    @FXML
+    private Region region;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -58,6 +62,17 @@ public class ControllerActivities implements Initializable {
 
     public void loadMyLog(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("MyLog.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
+    /**
+     * Loads the activity page on action.
+     * @param actionEvent the action on which the activity page is loaded
+     * @throws IOException when there is an error in the action
+     */
+    public void loadActivities(javafx.event.ActionEvent actionEvent) throws IOException {
+        BorderPane pane =
+                FXMLLoader.load(getClass().getClassLoader().getResource("Activities.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 

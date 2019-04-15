@@ -1,5 +1,8 @@
 package gui;
 
+import static client.ConnectAccount.hours;
+import static client.ConnectAccount.temperature;
+
 import client.ConnectAccount;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -28,19 +31,22 @@ public class ControllerEnergy implements Initializable {
 
     @FXML
     private ComboBox energyBox;
-
     @FXML
     private Label pointsText;
-
     @FXML
     private TextField energyAmount;
-
     @FXML
     private Label amountLabel;
-
+    @FXML
+    private Label forLabel;
+    @FXML
+    private TextField hoursAmount;
+    @FXML
+    private Label hoursLabel;
+    @FXML
+    private Label atLabel;
     @FXML
     private Label addSuccess;
-
     @FXML
     private  Label addFail;
 
@@ -53,15 +59,58 @@ public class ControllerEnergy implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observable,
                     String oldValue, String newValue) {
-                if (!newValue.matches("\\d{0,7}([\\.]\\d{0,4})?")) {
-                    energyAmount.setText(oldValue);
+                char[] array = newValue.toCharArray();
+                for (char search : array) {
+                    if (search < '0' || search > '9') {
+                        energyAmount.setText(oldValue);
+                    }
+
                 }
-                inputActivity();
+                if (energyAmount.getText().equals("")) {
+                    pointsText.setText("POINTS 0");
+                } else {
+                    if (energyBox.getValue().equals("Power saved by solar panels")) {
+                        pointsText.setText("POINTS " + DefaultValue.kwhToPoints(
+                                Integer.parseInt(energyAmount.getText())));
+                    } else {
+                        if (energyAmount.getText().equals("") || hoursAmount.getText().equals("")) {
+                            pointsText.setText("POINTS 0");
+                        } else {
+                            pointsText.setText("POINTS " + DefaultValue.degreesToPoints(
+                                    Double.parseDouble(energyAmount.getText()),
+                                    Integer.parseInt(hoursAmount.getText())));
+                        }
+
+                    }
+                }
+            }
+        });
+
+        hoursAmount.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable,
+                                String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,7}([\\.]\\d{0,4})?")) {
+                    hoursAmount.setText(oldValue);
+                }
+                if (energyAmount.getText().equals("") || hoursAmount.getText().equals("")) {
+                    pointsText.setText("POINTS 0");
+                } else {
+                    pointsText.setText("POINTS " + DefaultValue.degreesToPoints(
+                            Double.parseDouble(energyAmount.getText()),
+                            Integer.parseInt(hoursAmount.getText())));
+                }
             }
         });
 
         addSuccess.setVisible(false);
         addFail.setVisible(false);
+        energyAmount.setVisible(false);
+        amountLabel.setVisible(false);
+        forLabel.setVisible(false);
+        hoursAmount.setVisible(false);
+        hoursLabel.setVisible(false);
+        atLabel.setVisible(false);
     }
 
 
@@ -75,7 +124,19 @@ public class ControllerEnergy implements Initializable {
         for (int i = 0; i < energyActivitieList.size(); i++) {
             if (ActivityDb.Energy.descriptions.get(i).equals(energyBox.getValue())) {
                 if (energyBox.getValue().equals("Power saved by solar panels")) {
-                    amountLabel.setText("kWh produced daily");
+                    amountLabel.setText("kWh");
+                    hoursLabel.setVisible(false);
+                    hoursAmount.setVisible(false);
+                    atLabel.setVisible(false);
+                    forLabel.setVisible(false);
+                    energyAmount.setText(String.valueOf(ConnectAccount.getMyAccount()
+                            .getSavedEnergy()));
+                    energyAmount.setVisible(true);
+                    amountLabel.setVisible(true);
+                    energyAmount.setLayoutX(284.0);
+                    energyAmount.setLayoutY(170.0);
+                    amountLabel.setLayoutX(383.0);
+                    amountLabel.setLayoutY(178.0);
                     if (energyAmount.getText().equals("")) {
                         pointsText.setText("POINTS 0");
                     } else {
@@ -83,12 +144,25 @@ public class ControllerEnergy implements Initializable {
                                 Integer.parseInt(energyAmount.getText())));
                     }
                 } else {
-                    amountLabel.setText("degrees Celsius average today");
-                    if (energyAmount.getText().equals("")) {
+                    amountLabel.setText("\u00B0C");
+                    energyAmount.setVisible(true);
+                    energyAmount.setText(String.valueOf(temperature));
+                    hoursAmount.setText(String.valueOf(hours));
+                    amountLabel.setVisible(true);
+                    forLabel.setVisible(true);
+                    hoursAmount.setVisible(true);
+                    hoursLabel.setVisible(true);
+                    atLabel.setVisible(true);
+                    energyAmount.setLayoutX(307.0);
+                    energyAmount.setLayoutY(228.0);
+                    amountLabel.setLayoutX(406.0);
+                    amountLabel.setLayoutY(236.0);
+                    if (energyAmount.getText().equals("") || hoursAmount.getText().equals("")) {
                         pointsText.setText("POINTS 0");
                     } else {
                         pointsText.setText("POINTS " + DefaultValue.degreesToPoints(
-                                Double.parseDouble(energyAmount.getText())));
+                                Double.parseDouble(energyAmount.getText()),
+                                Integer.parseInt(hoursAmount.getText())));
                     }
                 }
             }
@@ -106,6 +180,9 @@ public class ControllerEnergy implements Initializable {
      * @param actionEvent the action event on which a new activity should be added
      */
     public void addActivity(javafx.event.ActionEvent actionEvent) {
+        if (energyAmount.getText() == null || energyAmount.getText().length() == 0) {
+            return;
+        }
         if (energyBox.getValue().equals("Lowering home temperature")
                 && TemperatureService.ifSavedToday(ConnectAccount.getUsername())) {
             System.out.println("here\n");
@@ -126,7 +203,8 @@ public class ControllerEnergy implements Initializable {
                     points = DefaultValue.kwhToPoints(Integer.parseInt(energyAmount.getText()));
                 } else {
                     points = DefaultValue.degreesToPoints(
-                            Double.parseDouble(energyAmount.getText()));
+                            Double.parseDouble(energyAmount.getText()),
+                            Integer.parseInt(hoursAmount.getText()));
                     TemperatureService.didToday(ConnectAccount.getUsername());
                 }
             }
@@ -136,10 +214,18 @@ public class ControllerEnergy implements Initializable {
                 Date.valueOf(LocalDate.now()), ConnectAccount.getUsername());
 
         if (actDesc.equals("Power saved by solar panels")) {
+            ConnectAccount.getMyAccount().setSavedEnergy(Integer.parseInt(energyAmount.getText()));
             ConnectAccount.setEnergy(Integer.parseInt(energyAmount.getText()));
-        }
-
-        if (ConnectAccount.addActivity(activity)) {
+            addSuccess.setText("Energy changed");
+            addSuccess.setVisible(true);
+            ControllerFood.fade(addSuccess);
+        } else if (ConnectAccount.addActivity(activity)) {
+            ControllerHome.myAccount.setPoints(ControllerHome.myAccount.getPoints()
+                    + activity.getPoints());
+            ControllerMyLog.myActivities.add(0,activity);
+            temperature = Integer.valueOf(energyAmount.getText());
+            hours = Integer.valueOf(hoursAmount.getText());
+            addSuccess.setText("Temperature set");
             addSuccess.setVisible(true);
             ControllerFood.fade(addSuccess);
         } else {

@@ -38,18 +38,28 @@
     -fx-text-fill: white;
 }
 
-#kwhBox {
+#kwhBox,
+#hoursAmount {
     -fx-border-color: #9bc782;
 }
 
 #standardButton:hover,
-#addButton:hover {
+#addButton:hover,
+#applyButton:hover,
+#roundButton:hover {
     -fx-background-color: #80a469;
 }
 
 #standardButton,
-#addButton {
+#addButton,
+#applyButton {
     -fx-background-color: #9bc782;
     -fx-background-radius: 10px;
+    -fx-text-fill: white;
+}
+
+#roundButton {
+    -fx-background-color: #9bc782;
+    -fx-background-radius: 25px;
     -fx-text-fill: white;
 }

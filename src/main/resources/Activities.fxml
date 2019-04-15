@@ -25,7 +25,7 @@
                     <children>
                         <ImageView id="logo" fitHeight="100.0" fitWidth="100.0" layoutX="25.0" layoutY="11.0">
                             <image>
-                                <Image url="@Images/logo.png" />
+                                <Image url="@images/logo.png" />
                             </image>
                         </ImageView>
                     </children>
@@ -34,11 +34,11 @@
                <font>
                   <Font name="Arial Rounded MT Bold" size="22.0" />
                </font></Button>
-                <Button mnemonicParsing="false" onAction="#loadMyLog" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="FEED" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadMyLog" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="LOG" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="22.0" />
                </font></Button>
-                <Button mnemonicParsing="false" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #6BC782; -fx-background-radius: 0;" text="ACTIVITIES" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadActivities" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #6BC782; -fx-background-radius: 0;" text="ACTIVITIES" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="20.0" />
                </font></Button>
@@ -63,24 +63,25 @@
                <children>
                   <ImageView fx:id="foodIcon" fitHeight="97.0" fitWidth="97.0" layoutX="139.0" layoutY="98.0" onMouseClicked="#loadFoodActivity" opacity="0.4">
                      <image>
-                        <Image url="@Images/restaurant.png" />
+                        <Image url="@images/restaurant.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="transportIcon" fitHeight="142.0" fitWidth="142.0" layoutX="303.0" layoutY="76.0" onMouseClicked="#loadTransportActivity" opacity="0.4">
                      <image>
-                        <Image url="@Images/car.png" />
+                        <Image url="@images/car.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="energyIcon" fitHeight="127.0" fitWidth="127.0" layoutX="499.0" layoutY="80.0" onMouseClicked="#loadEnergyActivity" opacity="0.4">
                      <image>
-                        <Image url="@Images/electricity.png" />
+                        <Image url="@images/electricity.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="698.0" layoutY="13.0" onMouseClicked="#logOut">
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="696.0" layoutY="14.0">
                      <image>
-                        <Image url="@Images/logout.png" />
+                        <Image url="@images/logout.png" />
                      </image>
                   </ImageView>
+                  <Region layoutX="697.0" layoutY="13.0" onMouseClicked="#logOut" prefHeight="38.0" prefWidth="43.0" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="activityPane" prefHeight="468.0" prefWidth="634.0" />

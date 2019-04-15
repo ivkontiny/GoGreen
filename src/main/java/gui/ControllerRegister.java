@@ -1,11 +1,13 @@
 package gui;
 
-import client.ConnectAccount;
+import client.ConnectEmail;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -36,6 +38,10 @@ public class ControllerRegister implements Initializable {
     private Label errormessage;
     @FXML
     private AnchorPane accountCreated;
+    @FXML
+    private TextField recoverEmail;
+    @FXML
+    private Button recoverButton;
 
 
     @Override
@@ -131,17 +137,18 @@ public class ControllerRegister implements Initializable {
             return;
         }
 
-        if (ConnectAccount.serverRegister(user)) {
+        if (ConnectEmail.confirmAccount(user)) {
             accountCreated.setVisible(true);
 
             final Node source = (Node) actionEvent.getSource();
             final Stage stage = (Stage) source.getScene().getWindow();
 
-            PauseTransition delay = new PauseTransition(Duration.seconds(3));
+            PauseTransition delay = new PauseTransition(Duration.seconds(2));
             delay.setOnFinished( event -> stage.close() );
             delay.play();
         } else {
             alertSameUsername();
         }
     }
+
 }

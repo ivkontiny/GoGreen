@@ -1,27 +1,40 @@
 package util;
 
 import pojos.Account;
+import pojos.Activity;
+import pojos.Category;
 import pojos.DefaultValue;
 import services.AccountService;
-import services.DefaultValueService;
+import services.ActivityService;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class AddSolarPoints {
+
+    public static void main(String[] args) {
+        addPoints();
+    }
 
     /**
      * Adds points to account for having solarpanels.
      */
     public static void addPoints() {
-        AccountService as = new AccountService();
-        DefaultValueService dvs = new DefaultValueService();
+        ActivityService acts = new ActivityService();
+        AccountService accs = new AccountService();
 
-        ArrayList<Account> all = as.getAccounts();
-        //DefaultValue value = dvs.getDefaultValue("Power saved by solar panels");
+        ArrayList<Account> all = accs.getAccounts();
         DefaultValue.initPts();
 
         for (Account acc : all) {
-            as.updatePoints(acc.getUsername(), DefaultValue.kwhToPoints(acc.getSavedEnergy()));
+            Activity act = new Activity("Power saved by solar panels",
+                    Category.energy,
+                    DefaultValue.kwhToPoints(acc.getSavedEnergy()),
+                    Date.valueOf(LocalDate.now()),
+                    acc.getUsername());
+
+            acts.createActivity(act);
         }
     }
 }

@@ -11,7 +11,9 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Region;
 import javafx.util.Duration;
+import pojos.Account;
 import pojos.DefaultValue;
 
 import java.io.IOException;
@@ -20,6 +22,7 @@ import java.util.ResourceBundle;
 
 public class ControllerHome implements Initializable {
 
+    protected static Account myAccount;
     @FXML
     private BorderPane rootPane;
 
@@ -31,28 +34,27 @@ public class ControllerHome implements Initializable {
 
     @FXML
     private Label welcome1;
+    
+    @FXML
+    private Label levelPointsLabel;
+    
+    @FXML
+    private Region region;
+
+
+    @FXML
+    private Label welcome11;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        progressbar.setProgress(0);
-
-        Timeline timeline = new Timeline();
-
-        int lvl = ConnectAccount.getAccount().getLevel();
-        int accPoints = ConnectAccount.getAccount().getPoints();
-        welcome1.setText("Total CO2 saved: "
-                + String.format("%.1f", DefaultValue.converter(accPoints) * 1000) + " kg");
-        level.setText("Level " + lvl);
-        KeyValue keyValue = new KeyValue(progressbar.progressProperty(),
-                ((double) accPoints - (double) 500 * lvl * (lvl - 1))
-                        / (double) (1000 * lvl));
-        KeyFrame keyFrame = new KeyFrame(new Duration(1000), keyValue);
-        timeline.getKeyFrames().add(keyFrame);
-
-        timeline.play();
+        setProgressbar();
     }
 
-
+    /**
+     * Loads the log page.
+     * @param actionEvent the event triggered when the log page loads
+     * @throws IOException exception
+     */
     public void loadMyLog(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("MyLog.fxml"));
         rootPane.getChildren().setAll(pane);
@@ -65,8 +67,20 @@ public class ControllerHome implements Initializable {
     public static void welcomeMessage(Parent root) {
         javafx.scene.control.Label welcome = (Label) root.lookup("#Welcome");
         if (welcome != null) {
-            welcome.setText("Welcome " + ConnectAccount.getUsername() + "!");
+            welcome.setText("Welcome " + ConnectAccount.getMyAccount().getFirstName() + "!");
         }
+    }
+
+
+    /** Loads the home page.
+     *
+     * @param actionEvent the event needed to be made to go to the home page
+     * @throws IOException when there is an error in the action
+     */
+    public void loadHome(javafx.event.ActionEvent actionEvent) throws IOException {
+        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Home.fxml"));
+        ControllerHome.welcomeMessage(pane);
+        rootPane.getChildren().setAll(pane);
     }
 
     /**
@@ -110,5 +124,30 @@ public class ControllerHome implements Initializable {
         ConnectAccount.logOut();
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         rootPane.getChildren().setAll(pane);
+    }
+
+    /**
+     * Sets the progressbar.
+     */
+    public void setProgressbar() {
+        progressbar.setProgress(0);
+        int lvl = myAccount.getLevel();
+        int accPoints = myAccount.getPoints();
+        welcome1.setText("Total CO\u2082 saved: "
+                + String.format("%.1f", DefaultValue.converter(accPoints) * 1000) + " kg");
+
+        welcome11.setText("Total points: " + accPoints);
+        level.setText("Level " + lvl);
+        KeyValue keyValue = new KeyValue(progressbar.progressProperty(),
+                ((double) accPoints - (double) 500 * lvl * (lvl - 1))
+                        / (double) (1000 * lvl));
+        KeyFrame keyFrame = new KeyFrame(new Duration(1000), keyValue);
+        levelPointsLabel.setText(
+                (myAccount.getPoints() - (myAccount.getLevelMul(lvl) * 1000) )
+                        +  " / " + (lvl  * 1000));
+        Timeline timeline = new Timeline();
+        timeline.getKeyFrames().add(keyFrame);
+        timeline.play();
+
     }
 }

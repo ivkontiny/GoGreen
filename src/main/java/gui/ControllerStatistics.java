@@ -10,6 +10,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Region;
 import pojos.Activity;
 import pojos.DefaultValue;
 
@@ -33,6 +34,9 @@ public class ControllerStatistics implements Initializable {
     private ComboBox<String> comboBox;
     @FXML
     private Button addButton;
+    
+    @FXML
+    private Region region;
 
 
     @Override
@@ -57,7 +61,7 @@ public class ControllerStatistics implements Initializable {
             System.out.println(search.getDate().toLocalDate().toString());
             for (int i = 0; i <= 6; i++) {
                 if (search.getDate().toLocalDate().toString().equals(dates[i])) {
-                    userCo2[i] += DefaultValue.converter(search.getPoints());
+                    userCo2[i] += DefaultValue.converter(search.getPoints()) * 1000;
                 }
             }
         }
@@ -116,6 +120,17 @@ public class ControllerStatistics implements Initializable {
     }
 
     /**
+     * Loads the statistics page.
+     * @param actionEvent the action event on which the statistics page should be opened
+     * @throws IOException when something with the action event goes wrong
+     */
+    public void loadStatistics(javafx.event.ActionEvent actionEvent) throws IOException {
+        BorderPane pane = FXMLLoader.load(
+                getClass().getClassLoader().getResource("Statistics.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
+    /**
      * Loads the friends page.
      * @param actionEvent the action event on which the friends page should be displayed
      * @throws IOException when there is an error in the action
@@ -167,7 +182,7 @@ public class ControllerStatistics implements Initializable {
         for (Activity search : friendActivities) {
             for (int i = 0; i <= 6; i++) {
                 if (search.getDate().toLocalDate().toString().equals(dates[i])) {
-                    friendCo2[i] += DefaultValue.converter(search.getPoints());
+                    friendCo2[i] += DefaultValue.converter(search.getPoints() * 1000);
                 }
             }
         }

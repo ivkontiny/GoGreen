@@ -160,4 +160,17 @@ public class Account {
 
         return lvl;
     }
+
+    /**
+     * Converts the level of a user into a number used to display the points on their home page.
+     * @param lvl the current level to convert.
+     * @return Num to reset the num points to zero without reducing actual points of user.
+     */
+    public int getLevelMul(int lvl) {
+        int ret = 0;
+        for (int i = 1; i < lvl; i++) {
+            ret = ret + i;
+        }
+        return ret;
+    }
 }

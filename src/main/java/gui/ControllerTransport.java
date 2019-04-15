@@ -33,6 +33,9 @@ public class ControllerTransport implements Initializable {
     private TextField distanceField;
 
     @FXML
+    private Label kmText;
+
+    @FXML
     private Label addSuccess;
 
     @FXML
@@ -56,6 +59,8 @@ public class ControllerTransport implements Initializable {
 
         addSuccess.setVisible(false);
         addFail.setVisible(false);
+        distanceField.setVisible(false);
+        kmText.setVisible(false);
     }
 
 
@@ -67,6 +72,8 @@ public class ControllerTransport implements Initializable {
 
         for (int i = 0; i < transportActivitieList.size(); i++) {
             if (ActivityDb.Transportation.descriptions.get(i).equals(transportBox.getValue())) {
+                distanceField.setVisible(true);
+                kmText.setVisible(true);
                 if (distanceField.getText().equals("")) {
                     pointsText.setText("POINTS 0");
                 } else {
@@ -82,6 +89,9 @@ public class ControllerTransport implements Initializable {
      * @param actionEvent the action event on which a new activity should be added
      */
     public void addActivity(javafx.event.ActionEvent actionEvent) {
+        if (distanceField.getText() == null || distanceField.getText().length() == 0) {
+            return;
+        }
         String actDesc = null;
         int points = 0;
 
@@ -97,6 +107,9 @@ public class ControllerTransport implements Initializable {
                 Date.valueOf(LocalDate.now()), ConnectAccount.getUsername());
 
         if (ConnectAccount.addActivity(activity)) {
+            ControllerMyLog.myActivities.add(0,activity);
+            ControllerHome.myAccount.setPoints(ControllerHome.myAccount.getPoints()
+                    + activity.getPoints());
             addSuccess.setVisible(true);
             ControllerFood.fade(addSuccess);
         } else {

@@ -10,11 +10,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import org.controlsfx.control.textfield.TextFields;
 import pojos.Account;
 import pojos.Friendship;
@@ -34,40 +36,40 @@ public class ControllerFriends implements Initializable {
     private TextField friendsField;
     @FXML
     private Label errorLabel;
+    @FXML
+    private VBox myFriendsContainer;
+    @FXML
+    private VBox friendReqContainer;
 
     private ArrayList<String> usernames;
 
-    @FXML
-    private TableView<Request> requestTable;
-    @FXML
-    private TableColumn<Request, String> userColumn;
-    @FXML
-    private TableColumn<Request, Button> acceptColumn;
-    @FXML
-    private TableColumn<Request, Button> rejectColumn;
+    private ObservableList<Request> friendReqs;
 
-    @FXML
-    private TableView friendsTable;
-    @FXML
-    private TableColumn friendUserColumn;
-    @FXML
-    private TableColumn pointsColumn;
-
-
+    private ObservableList<Account> myFriends;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        userColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
-        acceptColumn.setCellValueFactory(new PropertyValueFactory<>("accept"));
-        rejectColumn.setCellValueFactory(new PropertyValueFactory<>("reject"));
-        requestTable.setItems(getPendings());
         errorLabel.setVisible(false);
 
+        myFriends = getFriends();
 
-        friendUserColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
-        pointsColumn.setCellValueFactory(new PropertyValueFactory<>("points"));
-        friendsTable.setItems(getFriends());
+        for (int i = 0; i < myFriends.size(); i++) {
+            Account friend = myFriends.get(i);
+
+            myFriendsContainer.getChildren().add(newMyFriend(
+                    friend.getUsername(),
+                    Integer.toString(friend.getPoints())));
+        }
+
+        friendReqs = getPendings();
+
+        for (int i = 0; i < friendReqs.size(); i++) {
+            Request friendReq = friendReqs.get(i);
+
+            friendReqContainer.getChildren().add(newFriendReq(
+                    friendReq));
+        }
 
     }
     
@@ -83,11 +85,11 @@ public class ControllerFriends implements Initializable {
             Button reject = new Button();
             reject.setOnAction(e -> {
                 ConnectFriends.removeFriend(new Friendship(user,ConnectAccount.getUsername()));
-                removeRequest(user);
+                removeRequest(user, false);
             });
             accept.setOnAction(e -> {
                 ConnectFriends.acceptRequest(user);
-                removeRequest(user);
+                removeRequest(user, true);
             });
 
             requests.add(new Request(user,accept,reject));
@@ -99,14 +101,35 @@ public class ControllerFriends implements Initializable {
      * Removes a request from a user.
      * @param user the user to be removed from the pending requests list
      */
-    public void removeRequest(String user) {
-        int counter = 0;
-        for (Request search : requestTable.getItems()) {
-            if (search.getUsername().equals(user)) {
-                requestTable.getItems().remove(counter);
+    public void removeRequest(String user, boolean accept) {
+        for (int i = 0; i < friendReqs.size(); i++) {
+            if (friendReqs.get(i).getUsername().equals(user)) {
+                friendReqs.remove(i);
                 break;
             }
-            counter++;
+        }
+
+        friendReqContainer.getChildren().clear();
+
+        for (int i = 0; i < friendReqs.size(); i++) {
+            Request friendReq = friendReqs.get(i);
+
+            friendReqContainer.getChildren().add(newFriendReq(
+                    friendReq));
+        }
+
+        if (accept == true) {
+            myFriends.add(ConnectAccount.getFriendAccount(user));
+
+            myFriendsContainer.getChildren().clear();
+
+            for (int i = 0; i < myFriends.size(); i++) {
+                Account friend = myFriends.get(i);
+
+                myFriendsContainer.getChildren().add(newMyFriend(
+                        friend.getUsername(),
+                        Integer.toString(friend.getPoints())));
+            }
         }
 
     }
@@ -207,6 +230,16 @@ public class ControllerFriends implements Initializable {
     }
 
     /**
+     * Loads the friends page.
+     * @param actionEvent the action event on which the friends page should be displayed
+     * @throws IOException when there is an error in the action
+     */
+    public void loadFriends(javafx.event.ActionEvent actionEvent) throws IOException {
+        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Friends.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
+    /**
      * Logs the user out.
      * @throws IOException when something with the event went wrong
      */
@@ -227,5 +260,111 @@ public class ControllerFriends implements Initializable {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Home.fxml"));
         ControllerHome.welcomeMessage(pane);
         rootPane.getChildren().setAll(pane);
+    }
+
+    /**
+     * Creates a new log on the screen.
+     * @param friendUsername the description
+     * @param points the number of points gained
+     * @return an AnchorPane
+     */
+    public AnchorPane newMyFriend(String friendUsername, String points) {
+        AnchorPane myFriendsLayout = new AnchorPane();
+        myFriendsLayout.setPrefSize(375, 86);
+
+        Rectangle bigRect = new Rectangle(350, 70);
+        bigRect.setStyle("-fx-fill: white; -fx-stroke: #9bc782;");
+        bigRect.setLayoutX(13.0);
+        bigRect.setLayoutY(8.0);
+
+        Rectangle smallRect = new Rectangle(90, 70);
+        smallRect.setStyle("-fx-fill: #9bc782;");
+        smallRect.setLayoutX(273.0);
+        smallRect.setLayoutY(8.0);
+
+        Label username = new Label(friendUsername);
+        username.setStyle("-fx-font-size: 26px; -fx-font-family: 'Arial Rounded MT Bold';");
+        username.setLayoutX(28.0);
+        username.setLayoutY(27.0);
+
+        Label userNumPoints = new Label(points);
+        userNumPoints.setStyle("-fx-font-size: 24px; -fx-alignment: center; "
+                + "-fx-font-family: 'Arial Rounded MT Bold'; -fx-text-fill: white;");
+        userNumPoints.setPrefHeight(46.0);
+        userNumPoints.setPrefWidth(90.0);
+        userNumPoints.setLayoutX(272.0);
+        userNumPoints.setLayoutY(9.0);
+
+        Label logPoints = new Label("POINTS");
+        logPoints.setStyle("-fx-font-family: 'Arial Rounded MT Bold'; -fx-text-fill: white");
+        logPoints.setLayoutX(289.0);
+        logPoints.setLayoutY(51.0);
+
+        myFriendsLayout.getChildren().addAll(bigRect, smallRect, username,
+                userNumPoints, logPoints);
+
+        return myFriendsLayout;
+    }
+
+    /**
+     * Creates a new log on the screen.
+     * @param friendReq Request object
+     * @return an AnchorPane
+     */
+    public AnchorPane newFriendReq(Request friendReq) {
+        AnchorPane friendReqLayout = new AnchorPane();
+        friendReqLayout.setPrefSize(375, 86);
+
+        Rectangle bigRect = new Rectangle(350, 70);
+        bigRect.setStyle("-fx-fill: white; -fx-stroke: #9bc782;");
+        bigRect.setLayoutX(13.0);
+        bigRect.setLayoutY(8.0);
+
+        final String buttonStyle = "-fx-background-color: #9bc782; -fx-background-radius: 0;";
+        final String buttonHover = "-fx-background-color: #80a469; -fx-background-radius: 0;";
+
+        Image check = new Image("/Images/check.png");
+        ImageView checkView = new ImageView(check);
+        checkView.setFitHeight(30);
+        checkView.setFitWidth(30);
+        checkView.preserveRatioProperty();
+
+        Button acceptRequest = friendReq.getAccept();
+        acceptRequest.setGraphic(checkView);
+        acceptRequest.setText("");
+        acceptRequest.setStyle(buttonStyle);
+        acceptRequest.setOnMouseEntered(e -> acceptRequest.setStyle(buttonHover));
+        acceptRequest.setOnMouseExited(e -> acceptRequest.setStyle(buttonStyle));
+        acceptRequest.setPrefWidth(70);
+        acceptRequest.setPrefHeight(70);
+        acceptRequest.setLayoutX(219.0);
+        acceptRequest.setLayoutY(8.0);
+
+        Image bin = new Image("/Images/bin.png");
+        ImageView binView = new ImageView(bin);
+        binView.setFitHeight(40);
+        binView.setFitWidth(40);
+        binView.preserveRatioProperty();
+
+        Button rejectReq = friendReq.getReject();
+        rejectReq.setGraphic(binView);
+        rejectReq.setText("");
+        rejectReq.setStyle(buttonStyle);
+        rejectReq.setOnMouseEntered(e -> rejectReq.setStyle(buttonHover));
+        rejectReq.setOnMouseExited(e -> rejectReq.setStyle(buttonStyle));
+        rejectReq.setPrefWidth(70);
+        rejectReq.setPrefHeight(70);
+        rejectReq.setLayoutX(293.0);
+        rejectReq.setLayoutY(8.0);
+
+        Label username = new Label(friendReq.getUsername());
+        username.setStyle("-fx-font-size: 26px; -fx-font-family: 'Arial Rounded MT Bold';");
+        username.setLayoutX(28.0);
+        username.setLayoutY(27.0);
+
+        friendReqLayout.getChildren().addAll(bigRect, rejectReq,
+                acceptRequest, username);
+
+        return friendReqLayout;
     }
 }

@@ -25,7 +25,7 @@
          <children>
             <ImageView id="logo" fitHeight="140.0" fitWidth="140.0" layoutX="380.0" layoutY="30.0">
                <image>
-                  <Image url="@Images/logo.png" />
+                  <Image url="@images/logo.png" />
                </image>
             </ImageView>
          </children>
@@ -50,18 +50,23 @@
                <font>
                   <Font size="20.0" />
                </font></PasswordField>
-             <Label fx:id="loginerror" layoutX="328.0" layoutY="200.0" style="-fx-text-fill: red" text="Login credentials incorrect">
+             <Label fx:id="loginerror" layoutX="331.0" layoutY="206.0" style="-fx-text-fill: red" text="Login credentials incorrect">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font></Label>
-             <Button layoutX="328.0" layoutY="241.0" mnemonicParsing="false" onAction="#loadHome" prefHeight="40.0" prefWidth="245.0" style="-fx-background-radius: 25px; -fx-background-color: #9bc782;" text="Login">
+             <Button id="roundButton" layoutX="328.0" layoutY="241.0" mnemonicParsing="false" onAction="#loadHome" prefHeight="40.0" prefWidth="245.0" text="Login" textFill="WHITE">
                <font>
-                  <Font name="Arial Rounded MT Bold" size="20.0" />
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
                </font></Button>
-             <Button layoutX="328.0" layoutY="311.0" mnemonicParsing="false" onAction="#loadRegister" prefHeight="40.0" prefWidth="245.0" style="-fx-background-radius: 25px; -fx-background-color: #9bc782;" text="Sign up">
+             <Button id="roundButton" layoutX="328.0" layoutY="296.0" mnemonicParsing="false" onAction="#loadRegister" prefHeight="40.0" prefWidth="245.0" text="Sign up" textFill="WHITE">
                <font>
-                  <Font name="Arial Rounded MT Bold" size="21.0" />
+                  <Font name="Arial Rounded MT Bold" size="22.0" />
                </font></Button>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="364.0" layoutY="347.0" onMouseClicked="#forgotPassword" prefHeight="24.0" prefWidth="172.0" text="Forgot password ?" textFill="#6b6868" underline="true">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>

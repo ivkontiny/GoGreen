@@ -13,22 +13,21 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
-
 import pojos.Activity;
 import pojos.Category;
 
 import java.io.IOException;
-
 import java.net.URL;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.ResourceBundle;
 
 
 public class ControllerMyLog implements Initializable {
+
+    protected static ArrayList<pojos.Activity> myActivities;
     @FXML
     private BorderPane rootPane;
     @FXML
@@ -37,14 +36,25 @@ public class ControllerMyLog implements Initializable {
     private ComboBox filter;
     @FXML
     private Button applyButton;
-
-    private ArrayList<pojos.Activity> myActivities;
+    @FXML
+    private Label noLogsMessage;
+    @FXML
+    private Button addActivityButton;
+    @FXML
+    private VBox noActivitiesBox;
 
     private String option = null;
+    
+    @FXML
+    private Region region;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        noLogsMessage.setManaged(false);
+        addActivityButton.setManaged(false);
+        noActivitiesBox.setManaged(false);
+
         option = null;
         applyButton.setText("Apply filter");
         ArrayList<String> options = new ArrayList<>();
@@ -54,16 +64,22 @@ public class ControllerMyLog implements Initializable {
         ObservableList<String> filters = FXCollections.observableArrayList();
         filters.setAll(options);
         filter.setItems(filters);
-        myActivities = ConnectAccount.getActivities();
         ObservableList<Activity> activities = getActivity();
-        for (int i = 0; i < activities.size(); i++) {
-            Activity activity = activities.get(i);
 
-            feed.getChildren().add( newLog(
-                    activity.getCategory(),
-                    activity.getDescription(),
-                    activity.getDate().toString(),
-                    Integer.toString( activity.getPoints())) );
+        if (activities.size() == 0) {
+            noLogsMessage.setManaged(true);
+            addActivityButton.setManaged(true);
+            noActivitiesBox.setManaged(true);
+        } else {
+            for (int i = 0; i < activities.size(); i++) {
+                Activity activity = activities.get(i);
+
+                feed.getChildren().add(newLog(
+                        activity.getCategory(),
+                        activity.getDescription(),
+                        activity.getDate().toString(),
+                        Integer.toString(activity.getPoints())));
+            }
         }
     }
 
@@ -71,29 +87,53 @@ public class ControllerMyLog implements Initializable {
      * @throws IOException when there is an error in the action
      */
     public void setFeed() {
+        noLogsMessage.setManaged(false);
+        addActivityButton.setManaged(false);
+        noActivitiesBox.setManaged(false);
+        noLogsMessage.setVisible(false);
+        addActivityButton.setVisible(false);
+        noActivitiesBox.setVisible(false);
 
         feed.getChildren().clear();
         ObservableList<Activity> activities = getActivity();
 
-        for (int i = 0; i < activities.size(); i++) {
-            Activity activity = activities.get(i);
+        if (activities.size() == 0) {
+            noLogsMessage.setManaged(true);
+            addActivityButton.setManaged(true);
+            noActivitiesBox.setManaged(true);
+            noLogsMessage.setVisible(true);
+            addActivityButton.setVisible(true);
+            noActivitiesBox.setVisible(true);
+        } else {
+            for (int i = 0; i < activities.size(); i++) {
+                Activity activity = activities.get(i);
 
-            feed.getChildren().add(newLog(
-                    activity.getCategory(),
-                    activity.getDescription(),
-                    activity.getDate().toString(),
-                    Integer.toString(activity.getPoints())));
+                feed.getChildren().add(newLog(
+                        activity.getCategory(),
+                        activity.getDescription(),
+                        activity.getDate().toString(),
+                        Integer.toString(activity.getPoints())));
+            }
         }
     }
 
     /** Loads the home page.
-     *
      * @param actionEvent the event needed to be made to go to the home page
      * @throws IOException when there is an error in the action
      */
     public void loadHome(javafx.event.ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Home.fxml"));
         ControllerHome.welcomeMessage(pane);
+        rootPane.getChildren().setAll(pane);
+    }
+
+    /**
+     * Loads the log page.
+     * @param actionEvent the event needed to be made to go to refresh the page
+     * @throws IOException when there is an error in the action
+     */
+    public void loadMyLog(javafx.event.ActionEvent actionEvent) throws IOException {
+        BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("MyLog.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 
@@ -165,7 +205,6 @@ public class ControllerMyLog implements Initializable {
      */
     public ObservableList<Activity> getActivity() {
         ObservableList<pojos.Activity> activities = FXCollections.observableArrayList();
-        Collections.reverse(myActivities);
         for (Activity activity: myActivities) {
             if (option == null || activity.getCategory().toString().equals(option)) {
                 activities.add(activity);
@@ -225,11 +264,11 @@ public class ControllerMyLog implements Initializable {
         String imageUrl = new String();
 
         if (category == Category.food) {
-            imageUrl = "/Images/restaurant.png";
+            imageUrl = "/images/restaurant.png";
         } else if (category == Category.transportation) {
-            imageUrl = "/Images/car.png";
+            imageUrl = "/images/car.png";
         } else if (category == Category.energy) {
-            imageUrl = "/Images/electricity.png";
+            imageUrl = "/images/electricity.png";
         }
 
         Image image = new Image(imageUrl);
@@ -255,6 +294,7 @@ public class ControllerMyLog implements Initializable {
         BorderPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         rootPane.getChildren().setAll(pane);
     }
+
 
 
 }

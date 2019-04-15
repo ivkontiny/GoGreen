@@ -24,12 +24,12 @@
          <font>
             <Font name="Arial Rounded MT Bold" size="21.0" />
          </font></TextField>
-      <Label layoutX="388.0" layoutY="178.0" prefHeight="32.0" prefWidth="54.0" text="KM">
+      <Label fx:id="kmText" layoutX="388.0" layoutY="178.0" prefHeight="32.0" prefWidth="54.0" text="KM">
          <font>
             <Font name="Arial Rounded MT Bold" size="27.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="213.0" layoutY="14.0" prefHeight="72.0" prefWidth="308.0" text="TRANSPORT">
+      <Label alignment="CENTER" layoutX="213.0" layoutY="14.0" prefHeight="72.0" prefWidth="308.0" text="TRANSPORT" textFill="#298c22">
          <font>
             <Font name="Arial Rounded MT Bold" size="44.0" />
          </font>

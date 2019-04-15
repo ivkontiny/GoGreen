@@ -21,7 +21,7 @@
                     <children>
                         <ImageView id="logo" fitHeight="100.0" fitWidth="100.0" layoutX="25.0" layoutY="11.0">
                             <image>
-                                <Image url="@Images/logo.png" />
+                                <Image url="@images/logo.png" />
                             </image>
                         </ImageView>
                     </children>
@@ -30,7 +30,7 @@
                <font>
                   <Font name="Arial Rounded MT Bold" size="22.0" />
                </font></Button>
-                <Button mnemonicParsing="false" onAction="#loadMyLog" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="FEED" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadMyLog" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #9BC782; -fx-background-radius: 0;" text="LOG" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="22.0" />
                </font></Button>
@@ -38,7 +38,7 @@
                <font>
                   <Font name="Arial Rounded MT Bold" size="20.0" />
                </font></Button>
-                <Button mnemonicParsing="false" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #6BC782; -fx-background-radius: 0;" text="STATS" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#loadStatistics" prefHeight="96.0" prefWidth="150.0" style="-fx-background-color: #6BC782; -fx-background-radius: 0;" text="STATS" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="22.0" />
                </font></Button>
@@ -57,16 +57,18 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ComboBox fx:id="comboBox" layoutX="152.0" layoutY="25.0" onAction="#changeText" prefHeight="39.0" prefWidth="245.0" />
-                  <Button fx:id="addButton" layoutX="423.0" layoutY="25.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="177.0" style="-fx-background-color: #9BC782;" text="Add to chart" textFill="WHITE">
+                  <ComboBox fx:id="comboBox" layoutX="125.0" layoutY="25.0" onAction="#changeText" prefHeight="39.0" prefWidth="230.0" />
+                  <Button fx:id="addButton" layoutX="395.0" layoutY="25.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="230.0" text="Add to chart">
                      <font>
-                        <Font name="Arial Rounded MT Bold" size="15.0" />
-                     </font></Button>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="696.0" layoutY="14.0" onMouseClicked="#logOut">
+                        <Font name="Arial Rounded MT Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="696.0" layoutY="14.0">
                      <image>
-                        <Image url="@Images/logout.png" />
+                        <Image url="@images/logout.png" />
                      </image>
                   </ImageView>
+                  <Region layoutX="690.0" layoutY="17.0" onMouseClicked="#logOut" prefHeight="34.0" prefWidth="52.0" />
                </children>
             </AnchorPane>
             <StackPane prefHeight="283.0" prefWidth="368.0">
@@ -79,7 +81,7 @@
                            </tickLabelFont></CategoryAxis>
                     </xAxis>
                     <yAxis>
-                      <NumberAxis fx:id="pointsaxis" label="CO2 saved" side="LEFT">
+                      <NumberAxis fx:id="pointsaxis" label="CO2 saved in kg" side="LEFT">
                            <tickLabelFont>
                               <Font name="Arial Rounded MT Bold" size="12.0" />
                            </tickLabelFont></NumberAxis>
