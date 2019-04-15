@@ -57,7 +57,7 @@
             <children>
                 <Label fx:id="Welcome" alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="167.0" prefHeight="120.0" prefWidth="569.0" text="Welcome message">
                     <font>
-                        <Font name="Arial Rounded MT Bold" size="50.0" />
+                        <Font name="Arial Rounded MT Bold" size="48.0" />
                     </font>
                 </Label>
             <Label fx:id="welcome1" alignment="CENTER" layoutX="79.0" layoutY="287.0" prefHeight="50.0" prefWidth="420.0" style="-fx-background-color: #9BC782; -fx-background-radius: 10 10 0 0;" text="TOTAL CO2 SAVED: 234" textFill="WHITE">
