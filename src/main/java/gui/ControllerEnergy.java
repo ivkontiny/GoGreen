@@ -1,5 +1,8 @@
 package gui;
 
+import static client.ConnectAccount.hours;
+import static client.ConnectAccount.temperature;
+
 import client.ConnectAccount;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -20,10 +23,6 @@ import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-
-import static client.ConnectAccount.hours;
-import static client.ConnectAccount.temperature;
-
 
 public class ControllerEnergy implements Initializable {
 
