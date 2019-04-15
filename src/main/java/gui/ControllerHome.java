@@ -67,7 +67,7 @@ public class ControllerHome implements Initializable {
     public static void welcomeMessage(Parent root) {
         javafx.scene.control.Label welcome = (Label) root.lookup("#Welcome");
         if (welcome != null) {
-            welcome.setText("Welcome " + ConnectAccount.getMyAccount().getUsername() + "!");
+            welcome.setText("Welcome " + ConnectAccount.getMyAccount().getFirstName() + "!");
         }
     }
 
